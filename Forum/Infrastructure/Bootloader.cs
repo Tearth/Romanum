@@ -6,6 +6,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data.Entity;
 using Infrastructure.Migrations;
+using Autofac;
+using System.Reflection;
 
 namespace Infrastructure
 {
@@ -16,9 +18,14 @@ namespace Infrastructure
             System.Data.Entity.Database.SetInitializer(new MigrateDatabaseToLatestVersion<DatabaseContext, Configuration>());
         }
 
-        public void InitDependencyContainer()
+        public ContainerBuilder InitDependencyContainer()
         {
+            var dependenciesBuilder = new ContainerBuilder();
 
+            dependenciesBuilder.RegisterModule(new App.Services.Dependencies());
+            dependenciesBuilder.RegisterModule(new Domain.Services.Dependencies());
+
+            return dependenciesBuilder;
         }
 
         public void InitMapper()

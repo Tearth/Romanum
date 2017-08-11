@@ -1,4 +1,6 @@
-﻿using Infrastructure;
+﻿using App.MVC.Controllers;
+using Autofac.Integration.Mvc;
+using Infrastructure;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,8 +25,12 @@ namespace App.MVC
             var bootloader = new Bootloader();
 
             bootloader.InitDatabase();
-            bootloader.InitDependencyContainer();
             bootloader.InitMapper();
+
+            var dependenciesBuilder = bootloader.InitDependencyContainer();
+            dependenciesBuilder.RegisterControllers(typeof(HomeController).Assembly);
+
+            DependencyResolver.SetResolver(new AutofacDependencyResolver(dependenciesBuilder.Build()));
         }
     }
 }
