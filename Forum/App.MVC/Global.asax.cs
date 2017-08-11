@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Infrastructure;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -13,6 +14,17 @@ namespace App.MVC
         {
             AreaRegistration.RegisterAllAreas();
             RouteConfig.RegisterRoutes(RouteTable.Routes);
+
+            InitInfrastructure();
+        }
+
+        void InitInfrastructure()
+        {
+            var bootloader = new Bootloader();
+
+            bootloader.InitDatabase();
+            bootloader.InitDependencyContainer();
+            bootloader.InitMapper();
         }
     }
 }
