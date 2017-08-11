@@ -1,4 +1,6 @@
-﻿using Domain.Services.PostServices;
+﻿using App.Services.ViewModels;
+using AutoMapper;
+using Domain.Services.PostServices;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,6 +16,11 @@ namespace App.Services.PostServices
         public PostAppService(IPostService postService)
         {
             _postService = postService;
+        }
+
+        public PostViewModel GetPost()
+        {
+            return Mapper.Map<PostViewModel>(_postService.GetPost());
         }
     }
 }

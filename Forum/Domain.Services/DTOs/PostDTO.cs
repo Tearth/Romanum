@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Domain.Services.DTOs
 {
-    class PostDTO
+    public class PostDTO
     {
         public int ID { get; set; }
         public String Content { get; set; }
