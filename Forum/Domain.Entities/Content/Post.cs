@@ -21,5 +21,7 @@ namespace Domain.Entities.Content
                 _content = value;
             }
         }
+
+        public virtual Topic Topic { get; set; }
     }
 }
