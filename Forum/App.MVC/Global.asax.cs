@@ -1,6 +1,7 @@
 ﻿using App.MVC.Controllers;
 using Autofac.Integration.Mvc;
 using Infrastructure;
+using NLog;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,6 +20,15 @@ namespace App.MVC
 
             InitInfrastructure();
         }
+
+        protected void Application_Error(object sender, EventArgs e)
+        {
+            var exception = Server.GetLastError();
+            Server.ClearError();
+            
+            Logger logger = LogManager.GetCurrentClassLogger();
+            logger.Fatal(exception);
+    }
 
         void InitInfrastructure()
         {
