@@ -59,6 +59,7 @@
   <ItemGroup>
     <Compile Include="Bootloader.cs" />
     <Compile Include="Database\DatabaseContext.cs" />
+    <Compile Include="Database\Fluent\Content\CategoryConfig.cs" />
     <Compile Include="Database\Fluent\Content\PostConfig.cs" />
     <Compile Include="Database\Fluent\Content\SectionConfig.cs" />
     <Compile Include="Dependencies.cs" />

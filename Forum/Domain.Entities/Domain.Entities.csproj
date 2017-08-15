@@ -40,6 +40,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Content\Category.cs" />
     <Compile Include="EntityBase.cs" />
     <Compile Include="Content\Post.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

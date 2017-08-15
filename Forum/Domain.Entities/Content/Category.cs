@@ -6,12 +6,10 @@ using System.Threading.Tasks;
 
 namespace Domain.Entities.Content
 {
-    public class Section : EntityBase
+    public class Category
     {
         public string Name { get; set; }
         public string Alias { get; set; }
         public string Description { get; set; }
-
-        public virtual ICollection<Category> Categories { get; set; }
     }
 }

@@ -15,6 +15,7 @@ namespace Infrastructure.Database
     public class DatabaseContext : DbContext, IDatabaseContext
     {
         public virtual IDbSet<Section> Sections { get; set; }
+        public virtual IDbSet<Category> Categories { get; set; }
         public virtual IDbSet<Post> Posts { get; set; }
 
         public DatabaseContext() : base("MainDB")
