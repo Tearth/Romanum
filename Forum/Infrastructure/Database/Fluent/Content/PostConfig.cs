@@ -1,4 +1,5 @@
 ﻿using Domain.Entities;
+using Domain.Entities.Content;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity.ModelConfiguration;
@@ -12,7 +13,9 @@ namespace Infrastructure.Database.Fluent.Content
     {
         public PostConfig()
         {
-
+            Property(p => p.Content).HasMaxLength(1000);
+            Property(p => p.CreateTime).IsRequired();
+            Property(p => p.ModifyTime).IsRequired();
         }
     }
 }
