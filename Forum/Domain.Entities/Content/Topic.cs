@@ -6,12 +6,15 @@ using System.Threading.Tasks;
 
 namespace Domain.Entities.Content
 {
-    public class Category
+    public class Topic
     {
         public string Name { get; set; }
-        public string Alias { get; set; }
-        public string Description { get; set; }
+        public DateTime CreateTime { get; private set; }
 
-        public virtual ICollection<Topic> Topics { get; set; }
+        public Topic(string name)
+        {
+            Name = name;
+            CreateTime = DateTime.Now;
+        }
     }
 }
