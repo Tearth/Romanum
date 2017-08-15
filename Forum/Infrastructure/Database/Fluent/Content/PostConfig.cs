@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Infrastructure.Database.Fluent
+namespace Infrastructure.Database.Fluent.Content
 {
     class PostConfig : EntityTypeConfiguration<Post>
     {
