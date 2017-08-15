@@ -23,5 +23,13 @@ namespace Domain.Entities.Content
         }
 
         public virtual Topic Topic { get; set; }
+
+        public Post(string content)
+        {
+            _content = content;
+
+            CreateTime = DateTime.Now;
+            ModifyTime = DateTime.Now;
+        }
     }
 }

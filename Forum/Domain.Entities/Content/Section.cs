@@ -13,5 +13,11 @@ namespace Domain.Entities.Content
         public string Description { get; set; }
 
         public virtual ICollection<Category> Categories { get; set; }
+
+        public Section(string name, string alias)
+        {
+            Name = name;
+            Alias = alias;
+        }
     }
 }

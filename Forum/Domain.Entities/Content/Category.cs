@@ -14,5 +14,11 @@ namespace Domain.Entities.Content
 
         public virtual Section Section { get; set; }
         public virtual ICollection<Topic> Topics { get; set; }
+
+        public Category(string name, string alias)
+        {
+            Name = name;
+            Alias = alias;
+        }
     }
 }
