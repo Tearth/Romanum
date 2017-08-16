@@ -13,7 +13,7 @@ namespace App.MVC.Controllers
 
         }
 
-        public ActionResult Index()
+        public ActionResult Index(String alias)
         {
             return View();
         }
