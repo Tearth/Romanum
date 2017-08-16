@@ -63,11 +63,15 @@
   <ItemGroup>
     <Compile Include="Database\IDatabaseContext.cs" />
     <Compile Include="Dependencies.cs" />
+    <Compile Include="DTOs\CategoryDetailsDTO.cs" />
     <Compile Include="DTOs\PostDTO.cs" />
+    <Compile Include="DTOs\SectionWithCategoriesDTO.cs" />
     <Compile Include="MapperProfile.cs" />
     <Compile Include="PostServices\IPostService.cs" />
     <Compile Include="PostServices\PostService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SectionServices\ISectionService.cs" />
+    <Compile Include="SectionServices\SectionService.cs" />
     <Compile Include="ServiceBase.cs" />
   </ItemGroup>
   <ItemGroup>
