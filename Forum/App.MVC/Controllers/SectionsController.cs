@@ -1,5 +1,5 @@
 ﻿using App.Services.PostServices;
-using App.Services.SectionService;
+using App.Services.SectionServices;
 using System;
 using System.Collections.Generic;
 using System.Linq;
