@@ -10,7 +10,7 @@ namespace Domain.Entities.Content
     {
         public DateTime CreateTime { get; private set; }
         public DateTime ModifyTime { get; private set; }
-        private string Content { get; private set; }
+        public string Content { get; private set; }
 
         public virtual Topic Topic { get; set; }
 

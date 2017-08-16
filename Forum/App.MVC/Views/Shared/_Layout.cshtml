@@ -1,0 +1,103 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" dir="ltr" lang="en-gb" xml:lang="en-gb">
+<head>
+    <title>Forum Romanum</title>
+    <meta name="description" content="Forum Romanum" />
+    <meta name="keywords" content="Forum, Romanum" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+    <link rel="stylesheet" href="/Content/stylesheet.css" type="text/css" />
+</head>
+<body class="ltr">
+    <div id="wrapper">
+        <a name="top"></a>
+        <table border="0" cellspacing="0" cellpadding="0" width="100%" id="maintable" align="center">
+            <tbody>
+                <tr>
+                    <td id="logorow" align="center">
+                        <a href="/"><img src="/Content/Images/site_logo.gif" alt="" title=""/></a>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="navtd">
+                        <div class="navrow">
+                            <div class="navrow-right">
+                                • <a href="#">Search</a>
+                                • <a href="#">Login</a>
+                            </div>
+                            <a href="#">Register</a>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td id="contentrow">
+                        <table width="100%" cellspacing="0">
+                            <tbody>
+                                <tr>
+                                    <td class="gensmall" align="right">
+                                        It is currently @DateTime.Now.ToString("dd MMMM yyyy", new CultureInfo("en-US"))
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        @RenderBody()
+
+                        <div class="cap-div"><div class="cap-left"><div class="cap-right">&nbsp;<a href="#">Who is online</a>&nbsp;</div></div></div>
+                        <table class="tablebg" width="100%" cellspacing="0">
+                            <tbody>
+                                <tr>
+                                    <td class="row1" rowspan="2" align="center" valign="middle"><img src="/Content/Images/whosonline.gif" alt="Who is online"/></td>
+                                    <td class="row1" width="100%"><span class="genmed">In total there are <strong>0</strong> users online :: 0 registered, 0 hidden and 0 guests (based on users active over the past 10 minutes)<br/>Most users ever online was <strong>339</strong> on 21 Dec 2013, 00:39<br/><br/>Registered users: <span style="color: #9E8DA7;" class="username-coloured">Baidu [Spider]</span>, <span style="color: #9E8DA7;" class="username-coloured">Bing [Bot]</span>, <span style="color: #9E8DA7;" class="username-coloured">Dotbot [Bot]</span>, <span style="color: #9E8DA7;" class="username-coloured">Google [Bot]</span>, <span style="color: #9E8DA7;" class="username-coloured">Yandex [Bot]</span></span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <div class="cap-div"><div class="cap-left"><div class="cap-right">&nbsp;Statistics&nbsp;</div></div></div>
+                        <table class="tablebg" width="100%" cellspacing="0">
+                            <tbody>
+                                <tr>
+                                    <td class="row1">
+                                        <img src="/Content/Images/stats.gif" alt="Statistics"/>
+                                    </td>
+                                    <td class="row1 nobold" width="100%" valign="middle">
+                                        <p class="genmed">Total posts <strong>0</strong> | Total topics <strong>0</strong> | Total members <strong>0</strong> | Our newest member <strong>None</strong></p>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <form method="post" action="#">
+                            <div class="cap-div"><div class="cap-left"><div class="cap-right">&nbsp;<a href="#">Login</a>&nbsp;</div></div></div>
+                            <table class="tablebg" width="100%" cellspacing="0">
+                                <tbody>
+                                    <tr>
+                                        <td class="row1" align="center">
+                                            <span class="genmed">Username:</span> 
+                                            <input class="post" type="text" name="username" size="10"/>&nbsp; 
+                                            <span class="genmed">Password:</span> 
+                                            <input class="post" type="password" name="password" size="10"/>&nbsp; 
+                                            <span class="gensmall"/>Log me on automatically each visit
+                                            <input type="checkbox" class="radio" name="autologin"/>&nbsp; 
+                                            <input type="submit" class="btnmain" name="login" value="Login"/>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                            <input type="hidden" name="redirect" value="/Content/Images/index.php?style=36&amp;style=36"/>
+                        </form>
+
+                        <div id="wrapfooter">
+                            <span class="copyright">
+                                
+                            </span>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

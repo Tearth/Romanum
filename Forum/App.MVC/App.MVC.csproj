@@ -109,6 +109,16 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\Images\forum_link.gif" />
+    <Content Include="Content\Images\forum_read.gif" />
+    <Content Include="Content\Images\forum_read_locked.gif" />
+    <Content Include="Content\Images\forum_read_subforum.gif" />
+    <Content Include="Content\Images\forum_unread.gif" />
+    <Content Include="Content\Images\icon_topic_latest.gif" />
+    <Content Include="Content\Images\site_logo.gif" />
+    <Content Include="Content\Images\stats.gif" />
+    <Content Include="Content\Images\whosonline.gif" />
+    <Content Include="Content\stylesheet.css" />
     <Content Include="Global.asax" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -130,6 +140,7 @@
     <None Include="NLog.xsd">
       <SubType>Designer</SubType>
     </None>
+    <Content Include="Views\Shared\_Layout.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -137,7 +148,9 @@
       <DependentUpon>Web.config</DependentUpon>
     </None>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Scripts\" />
+  </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\App.Services\App.Services.csproj">
       <Project>{85242224-1539-40cf-9adb-0c54832021cb}</Project>

@@ -18,7 +18,7 @@ namespace App.MVC.Controllers
 
         public ActionResult Index()
         {
-            return View(_postAppService.GetPost());
+            return View();
         }
     }
 }
