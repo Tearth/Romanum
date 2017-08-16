@@ -16,6 +16,8 @@ namespace Infrastructure.Database.Fluent.Content
             Property(p => p.Content).HasMaxLength(1000);
             Property(p => p.CreateTime).IsRequired();
             Property(p => p.ModifyTime).IsRequired();
+
+            HasRequired(p => p.Topic);
         }
     }
 }
