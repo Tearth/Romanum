@@ -8,11 +8,11 @@ using System.Web.Mvc;
 
 namespace App.MVC.Controllers
 {
-    public class HomeController : Controller
+    public class SectionsController : Controller
     {
         ISectionAppService _sectionAppService;
 
-        public HomeController(ISectionAppService sectionAppService)
+        public SectionsController(ISectionAppService sectionAppService)
         {
             _sectionAppService = sectionAppService;
         }

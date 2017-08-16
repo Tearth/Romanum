@@ -38,7 +38,7 @@ namespace App.MVC
             bootloader.InitMapper();
 
             var dependenciesBuilder = bootloader.InitDependencyContainer();
-            dependenciesBuilder.RegisterControllers(typeof(HomeController).Assembly);
+            dependenciesBuilder.RegisterControllers(typeof(SectionsController).Assembly);
 
             DependencyResolver.SetResolver(new AutofacDependencyResolver(dependenciesBuilder.Build()));
         }
