@@ -25,6 +25,7 @@ namespace Domain.Services.SectionServices
                 Categories = section.Categories.Select(category => new CategoryDetailsDTO()
                 {
                     Name = category.Name,
+                    Alias = category.Alias,
                     Description = category.Description,
                     TopicsCount = category.Topics.Count(),
                     PostsCount = category.Topics.SelectMany(topic => topic.Posts).Count(),

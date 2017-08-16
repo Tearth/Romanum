@@ -27,7 +27,7 @@
                     <tr>
                         <td class="row1" width="31" align="center"><img src="/Content/Images/forum_unread.gif" width="27" height="27" alt="Unread posts" title="Unread posts" /></td>
                         <td class="row1">
-                            <a class="forumlink link-new" href="#">@categoryDetails.Name</a>
+                            @Html.ActionLink(categoryDetails.Name, "Index", "Category", new { alias = categoryDetails.Alias }, new { @class = "forumlink link" })
                             <p class="forumdesc">@categoryDetails.Description</p>
                         </td>
                         <td class="row2" align="center"><p class="topicdetails">@categoryDetails.TopicsCount</p></td>
