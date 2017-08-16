@@ -14,6 +14,8 @@ namespace App.Services
         public MapperProfile()
         {
             CreateMap<PostViewModel, PostDTO>().ReverseMap();
+            CreateMap<SectionWithCategoriesViewModel, SectionWithCategoriesDTO>().ReverseMap();
+            CreateMap<CategoryDetalisViewModel, CategoryDetailsDTO>().ReverseMap();
         } 
     }
 }

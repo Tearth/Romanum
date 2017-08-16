@@ -14,7 +14,7 @@ namespace Domain.Services
     {
         public MapperProfile()
         {
-            CreateMap<PostDTO, Post>().ReverseMap();
+            
         }
     }
 }

@@ -11,6 +11,9 @@ namespace Domain.Services.Database
 {
     public interface IDatabaseContext
     {
+        IDbSet<Section> Sections { get; set; }
+        IDbSet<Category> Categories { get; set; }
+        IDbSet<Topic> Topics { get; set; }
         IDbSet<Post> Posts { get; set; }
 
         int SaveChanges();

@@ -1,4 +1,5 @@
 ﻿using App.Services.PostServices;
+using App.Services.SectionService;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,16 +10,16 @@ namespace App.MVC.Controllers
 {
     public class HomeController : Controller
     {
-        IPostAppService _postAppService;
+        ISectionAppService _sectionAppService;
 
-        public HomeController(IPostAppService postAppService)
+        public HomeController(ISectionAppService sectionAppService)
         {
-            _postAppService = postAppService;
+            _sectionAppService = sectionAppService;
         }
 
         public ActionResult Index()
         {
-            return View();
+            return View(_sectionAppService.GetAllSectionsWithDetails());
         }
     }
 }

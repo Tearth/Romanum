@@ -1,27 +1,47 @@
-﻿@{ 
+﻿@model IEnumerable<SectionWithCategoriesViewModel>
+@{ 
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<div class="cap-div"><div class="cap-left"><div class="cap-right">&nbsp;<h4><a href="#">Test Category 1</a></h4>&nbsp;</div></div></div>
-<table class="tablebg" cellspacing="0" width="100%">
-    <tbody>
-        <tr>
-            <th colspan="2">&nbsp;Forum&nbsp;</th>
-            <th width="50">&nbsp;Topics&nbsp;</th>
-            <th width="50">&nbsp;Posts&nbsp;</th>
-            <th width="175">&nbsp;Last post&nbsp;</th>
-        </tr>
-        <tr>
-            <td class="row1" width="31" align="center"><img src="/Content/Images/forum_unread.gif" width="27" height="27" alt="Unread posts" title="Unread posts"/></td>
-            <td class="row1">
-                <a class="forumlink link-new" href="#">Test Forum 1</a>
-                <p class="forumdesc">Unread forum</p>
-            </td>
-            <td class="row2" align="center"><p class="topicdetails">6</p></td>
-            <td class="row2" align="center"><p class="topicdetails">6</p></td>
-            <td class="row2" align="center" nowrap="nowrap">
-                <p class="topicdetails">22 May 2007, 08:51</p>
-            </td>
-        </tr>
-    </tbody>
-</table>
+@foreach (SectionWithCategoriesViewModel sectionDetails in Model)
+{
+    <div class="cap-div">
+        <div class="cap-left">
+            <div class="cap-right">
+                &nbsp;<h4><a href="#">@sectionDetails.Name</a></h4>&nbsp;
+            </div>
+        </div>
+    </div>
+
+    <table class="tablebg" cellspacing="0" width="100%">
+        <tbody>
+            <tr>
+                <th colspan="2">&nbsp;Forum&nbsp;</th>
+                <th width="50">&nbsp;Topics&nbsp;</th>
+                <th width="50">&nbsp;Posts&nbsp;</th>
+                <th width="175">&nbsp;Last post&nbsp;</th>
+            </tr>
+                @foreach (CategoryDetalisViewModel categoryDetails in sectionDetails.Categories)
+                {
+
+                    <tr>
+                        <td class="row1" width="31" align="center"><img src="/Content/Images/forum_unread.gif" width="27" height="27" alt="Unread posts" title="Unread posts" /></td>
+                        <td class="row1">
+                            <a class="forumlink link-new" href="#">@categoryDetails.Name</a>
+                            <p class="forumdesc">@categoryDetails.Description</p>
+                        </td>
+                        <td class="row2" align="center"><p class="topicdetails">@categoryDetails.TopicsCount</p></td>
+                        <td class="row2" align="center"><p class="topicdetails">@categoryDetails.PostsCount</p></td>
+                        <td class="row2" align="center" nowrap="nowrap">
+                            <p class="topicdetails">
+                                @if (categoryDetails.PostsCount != 0)
+                                {
+                                    @categoryDetails.LastPostTime.ToString("hh:mm:ss dd:MM:yyyy")
+                                }
+                            </p>
+                        </td>
+                    </tr>
+                }
+        </tbody>
+    </table>
+}
