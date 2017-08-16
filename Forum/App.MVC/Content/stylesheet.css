@@ -250,7 +250,6 @@ td.profile {
 	border-right: solid 1px #E0E0E0;
 	border-top: solid 1px #FFF;
 	border-bottom: solid 1px #E0E0E0;
-	background: #F1F1F1 url(images/bg_tfoot.gif) top left repeat-x;
 }
 .cat {
 	height: 24px;
@@ -259,11 +258,9 @@ td.profile {
 	border-right: solid 1px #E0E0E0;
 	border-top: solid 1px #FFF;
 	border-bottom: solid 1px #E0E0E0;
-	background: #F1F1F1 url(images/bg_tfoot.gif) top left repeat-x;
 	text-indent: 4px;
 }
 .cathead {
-	background: #F1F1F1 url(images/bg_tfoot.gif) top left repeat-x;
 	height: 24px;
 	padding: 1px 3px;
 	border-left: solid 1px #FFF;
@@ -398,7 +395,6 @@ p.datetime {
 	color: #2E5B82;
 }
 td.postbottom { 
-	background: #F1F1F1 url(images/bg_tfoot.gif) top left repeat-x;
 	font-size: 10px;
 	color: #444;
 	white-space: nowrap;
