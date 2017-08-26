@@ -14,12 +14,17 @@ namespace Domain.Entities.Content
 
         public virtual Topic Topic { get; set; }
 
-        public Post(string content)
+        public Post(string content) : this(content, DateTime.Now)
+        {
+            
+        }
+
+        public Post(string content, DateTime createTime)
         {
             Content = content;
 
-            CreateTime = DateTime.Now;
-            ModifyTime = DateTime.Now;
+            CreateTime = createTime;
+            ModifyTime = createTime;
         }
 
         public void SetContent(string content)
