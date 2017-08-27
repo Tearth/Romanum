@@ -1,4 +1,4 @@
-﻿using Business.Services.DTOs;
+﻿using Business.Services.DTO.Content;
 using DataAccess.Database;
 using System;
 using System.Collections.Generic;

@@ -62,9 +62,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Dependencies.cs" />
-    <Compile Include="DTOs\CategoryDetailsDTO.cs" />
-    <Compile Include="DTOs\PostDTO.cs" />
-    <Compile Include="DTOs\SectionWithCategoriesDTO.cs" />
+    <Compile Include="DTO\Content\CategoryDetailsDTO.cs" />
+    <Compile Include="DTO\Content\PostDTO.cs" />
+    <Compile Include="DTO\Content\SectionWithCategoriesDTO.cs" />
     <Compile Include="MapperProfile.cs" />
     <Compile Include="PostServices\IPostService.cs" />
     <Compile Include="PostServices\PostService.cs" />
