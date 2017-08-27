@@ -13,7 +13,9 @@ namespace App.MVC.App_Start
         public static void SetDependeciesResolver()
         {
             var builder = new ContainerBuilder();
-            builder.RegisterAssemblyModules(AppDomain.CurrentDomain.GetAssemblies());
+            var assemblies = AppDomain.CurrentDomain.GetAssemblies();
+
+            builder.RegisterAssemblyModules(assemblies);
 
             var container = builder.Build();
             var dependenciesResolver = new AutofacDependencyResolver(container);
