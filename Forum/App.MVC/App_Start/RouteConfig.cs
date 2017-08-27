@@ -5,9 +5,9 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
 
-namespace App.MVC
+namespace App.MVC.App_Start
 {
-    public class RouteConfig
+    internal class RouteConfig
     {
         public static void RegisterRoutes(RouteCollection routes)
         {

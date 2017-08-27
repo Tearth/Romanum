@@ -1,5 +1,6 @@
-﻿using App.Services.PostServices;
-using App.Services.SectionServices;
+﻿using App.MVC.ViewModels.Content;
+using AutoMapper;
+using Business.Services.SectionServices;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,16 +11,19 @@ namespace App.MVC.Controllers
 {
     public class SectionsController : Controller
     {
-        ISectionAppService _sectionAppService;
+        ISectionService _sections;
 
-        public SectionsController(ISectionAppService sectionAppService)
+        public SectionsController(ISectionService sections)
         {
-            _sectionAppService = sectionAppService;
+            _sections = sections;
         }
 
         public ActionResult Index()
         {
-            return View(_sectionAppService.GetAllSectionsWithDetails());
+            var sections = _sections.GetAllSetionsWithCategories();
+            var viewModel = Mapper.Map<IEnumerable<SectionWithCategoriesViewModel>>(sections);
+
+            return View(viewModel);
         }
     }
 }

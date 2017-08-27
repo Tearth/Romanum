@@ -1,6 +1,6 @@
-﻿using App.MVC.Controllers;
+﻿using App.MVC.App_Start;
+using App.MVC.Controllers;
 using Autofac.Integration.Mvc;
-using Infrastructure;
 using NLog;
 using System;
 using System.Collections.Generic;
@@ -17,30 +17,16 @@ namespace App.MVC
         {
             AreaRegistration.RegisterAllAreas();
             RouteConfig.RegisterRoutes(RouteTable.Routes);
-
-            InitInfrastructure();
+            DIConfiguration.SetDependeciesResolver();
+            MapperConfig.RegisterProfiles();
         }
 
         protected void Application_Error(object sender, EventArgs e)
         {
-            var exception = Server.GetLastError();
-            Server.ClearError();
-            
             Logger logger = LogManager.GetCurrentClassLogger();
-            logger.Fatal(exception);
-    }
+            logger.Fatal(Server.GetLastError());
 
-        void InitInfrastructure()
-        {
-            var bootloader = new Bootloader();
-
-            bootloader.InitDatabase();
-            bootloader.InitMapper();
-
-            var dependenciesBuilder = bootloader.InitDependencyContainer();
-            dependenciesBuilder.RegisterControllers(typeof(SectionsController).Assembly);
-
-            DependencyResolver.SetResolver(new AutofacDependencyResolver(dependenciesBuilder.Build()));
+            //Server.ClearError();
         }
     }
 }
