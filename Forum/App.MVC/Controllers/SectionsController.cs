@@ -1,4 +1,4 @@
-﻿using App.MVC.ViewModels.Content;
+﻿using App.MVC.ViewModels.Section;
 using AutoMapper;
 using Business.Services.SectionServices;
 using System;

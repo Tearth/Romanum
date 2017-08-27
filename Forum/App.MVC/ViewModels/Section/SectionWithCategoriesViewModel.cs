@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace App.MVC.ViewModels.Content
+namespace App.MVC.ViewModels.Section
 {
     public class SectionWithCategoriesViewModel
     {

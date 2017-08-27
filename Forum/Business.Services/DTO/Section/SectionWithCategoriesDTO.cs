@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Business.Services.DTO.Content
+namespace Business.Services.DTO.Section
 {
     public class SectionWithCategoriesDTO
     {

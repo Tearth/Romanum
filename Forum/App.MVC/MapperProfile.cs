@@ -1,6 +1,6 @@
-﻿using App.MVC.ViewModels.Content;
+﻿using App.MVC.ViewModels.Section;
 using AutoMapper;
-using Business.Services.DTO.Content;
+using Business.Services.DTO.Section;
 using System;
 using System.Collections.Generic;
 using System.Linq;
