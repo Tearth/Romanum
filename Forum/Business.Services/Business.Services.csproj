@@ -61,9 +61,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CategoryService\CategoryService.cs" />
+    <Compile Include="CategoryService\ICategoryService.cs" />
     <Compile Include="Dependencies.cs" />
+    <Compile Include="DTO\Category\CategoryWithPostsDTO.cs" />
+    <Compile Include="DTO\Category\PostDetailsDTO.cs" />
     <Compile Include="DTO\Section\CategoryDetailsDTO.cs" />
-    <Compile Include="DTO\Section\PostDTO.cs" />
     <Compile Include="DTO\Section\SectionWithCategoriesDTO.cs" />
     <Compile Include="MapperProfile.cs" />
     <Compile Include="PostServices\IPostService.cs" />
