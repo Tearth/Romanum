@@ -15,6 +15,10 @@ namespace App.MVC
     {
         protected void Application_Start()
         {
+            //Make sure that all necessary assemblies are loaded
+            App.Services.Bootloader.Init();
+            Business.Services.Bootloader.Init();
+
             AreaRegistration.RegisterAllAreas();
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             DIConfiguration.SetDependeciesResolver();

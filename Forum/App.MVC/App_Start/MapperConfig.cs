@@ -11,10 +11,6 @@ namespace App.MVC.App_Start
     {
         public static void RegisterProfiles()
         {
-            //Make sure that all necessary assemblies are loaded
-            App.Services.Bootloader.Init();
-            Business.Services.Bootloader.Init();
-
             //AutoMapper will cause MissingMethodException when
             //trying to pass to AddProfiles, so get all assemblies
             //without this library
