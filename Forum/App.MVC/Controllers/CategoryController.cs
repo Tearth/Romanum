@@ -1,4 +1,5 @@
-﻿using AutoMapper;
+﻿using App.MVC.ViewModels.Category;
+using AutoMapper;
 using Domain.Services.CategoryService;
 using System;
 using System.Collections.Generic;
@@ -20,7 +21,9 @@ namespace App.MVC.Controllers
         public ActionResult Index(String alias)
         {
             var category = _categoryService.GetCategoryWithPosts(alias);
-            return View();
+            var viewModel = Mapper.Map<CategoryWithPostsViewModel>(category);
+
+            return View(viewModel);
         }
     }
 }
