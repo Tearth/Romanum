@@ -9,6 +9,7 @@ namespace DataAccess.Entities.Content
     public class Topic : EntityBase
     {
         public string Name { get; set; }
+        public string Alias { get; set; }
         public DateTime CreateTime { get; private set; }
 
         public virtual Category Category { get; set; }

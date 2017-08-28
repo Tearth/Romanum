@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Domain.Services.DTO.Category;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,5 +9,6 @@ namespace Domain.Services.CategoryService
 {
     public interface ICategoryService
     {
+        CategoryWithPostsDTO GetCategoryWithPosts(string categoryAlias);
     }
 }

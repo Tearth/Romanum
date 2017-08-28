@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Domain.Services.DTO.Category
 {
-    public class PostDetailsDTO
+    public class TopicDetailsDTO
     {
         public String Name { get; set; }
         public String Alias { get; set; }
@@ -15,5 +15,6 @@ namespace Domain.Services.DTO.Category
         public DateTime CreateTime { get; set; }
         public String LastPostAuthorName { get; set; }
         public DateTime LastPostTime { get; set; }
+        public int PostsCount { get; set; }
     }
 }

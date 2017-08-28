@@ -10,6 +10,6 @@ namespace Domain.Services.DTO.Category
     {
         public String Name { get; set; }
         public String Alias { get; set; }
-        public IEnumerable<PostDetailsDTO> Posts { get; set; }
+        public IEnumerable<TopicDetailsDTO> Topics { get; set; }
     }
 }

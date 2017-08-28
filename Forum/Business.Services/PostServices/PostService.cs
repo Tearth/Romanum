@@ -17,10 +17,5 @@ namespace Business.Services.PostServices
         {
             _databaseContext = databaseContext;
         }
-
-        public PostDTO GetPost()
-        {
-            return Mapper.Map<PostDTO>(_databaseContext.Posts.First());
-        }
     }
 }
