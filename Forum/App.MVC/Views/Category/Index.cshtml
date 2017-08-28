@@ -1,4 +1,5 @@
-﻿@{
+﻿@model CategoryWithPostsViewModel
+@{
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
@@ -21,7 +22,7 @@
     <div class="cap-div">
         <div class="cap-left">
             <div class="cap-right">
-                &nbsp;Test Forum 1&nbsp;
+                &nbsp;@Model.Name&nbsp;
             </div>
         </div>
     </div>
@@ -29,33 +30,36 @@
     <table class="tablebg" width="100%" cellspacing="0">
         <tbody>
             <tr>
-
                 <th colspan="2">&nbsp;Topics&nbsp;</th>
-
                 <th>&nbsp;Author&nbsp;</th>
+                <th>&nbsp;Create time&nbsp;</th>
                 <th>&nbsp;Replies&nbsp;</th>
                 <th>&nbsp;Views&nbsp;</th>
                 <th>&nbsp;Last post&nbsp;</th>
             </tr>
-            <tr>
-                <td class="row1" width="25" align="center"><img src="/Content/Images/topic_unread.gif" width="18" height="18" alt="Unread posts" title="Unread posts"/></td>
+            @foreach (TopicDetailsViewModel topic in Model.Topics)
+            {
+                <tr>
+                    <td class="row1" width="25" align="center"><img src="/Content/Images/topic_unread.gif" width="18" height="18" alt="Unread posts" title="Unread posts" /></td>
 
-                <td class="row1">
-                    <a href="#"><img src="/Content/Images/icon_topic_newest.gif" width="9" height="9" alt="View first unread post" title="View first unread post"/></a>
-                    <a title="Posted: 22 May 2007, 08:51" href="#" class="topictitle link-new">Normal topic</a>
+                    <td class="row1">
+                        <a href="#"><img src="/Content/Images/icon_topic_newest.gif" width="9" height="9" alt="View first unread post" title="View first unread post" /></a>
+                        <a title="Posted: 22 May 2007, 08:51" href="#" class="topictitle link-new">@topic.Name</a>
 
-                </td>
-                <td class="row2" width="130" align="center"><p class="topicauthor"><a href="#">Author</a></p></td>
-                <td class="row1" width="50" align="center"><p class="topicdetails">0</p></td>
-                <td class="row2" width="50" align="center"><p class="topicdetails">290725</p></td>
-                <td class="row1" width="140" align="center">
-                    <p class="topicdetails" style="white-space: nowrap;">22 May 2007, 08:51</p>
-                    <p class="topicdetails">
-                        <a href="#">Author</a>
-                        <a href="#"><img src="/Content/Images/icon_topic_latest.gif" width="9" height="9" alt="View the latest post" title="View the latest post"/></a>
-                    </p>
-                </td>
-            </tr>
+                    </td>
+                    <td class="row2" width="130" align="center"><p class="topicauthor"><a href="#">@topic.AuthorName</a></p></td>
+                    <td class="row1" width="50" align="center"><p class="topicdetails">@topic.CreateTime</p></td>
+                    <td class="row1" width="50" align="center"><p class="topicdetails">@topic.PostsCount</p></td>
+                    <td class="row2" width="50" align="center"><p class="topicdetails">0</p></td>
+                    <td class="row1" width="140" align="center">
+                        <p class="topicdetails" style="white-space: nowrap;">@topic.LastPostTime</p>
+                        <p class="topicdetails">
+                            <a href="#">@topic.LastPostAuthorName</a>
+                            <a href="#"><img src="/Content/Images/icon_topic_latest.gif" width="9" height="9" alt="View the latest post" title="View the latest post" /></a>
+                        </p>
+                    </td>
+                </tr>
+            }
         </tbody>
     </table>
 
