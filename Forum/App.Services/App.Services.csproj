@@ -52,6 +52,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Bootloader.cs" />
     <Compile Include="Dependencies.cs" />
     <Compile Include="MapperProfile.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

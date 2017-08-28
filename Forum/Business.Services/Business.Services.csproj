@@ -61,6 +61,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Bootloader.cs" />
     <Compile Include="CategoryService\CategoryService.cs" />
     <Compile Include="CategoryService\ICategoryService.cs" />
     <Compile Include="Dependencies.cs" />

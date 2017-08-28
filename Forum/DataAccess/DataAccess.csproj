@@ -57,6 +57,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Bootloader.cs" />
     <Compile Include="Database\IDatabaseContext.cs" />
     <Compile Include="Entities\Content\Category.cs" />
     <Compile Include="Entities\Content\Post.cs" />
