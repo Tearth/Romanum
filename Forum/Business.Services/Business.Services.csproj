@@ -77,6 +77,8 @@
     <Compile Include="SectionServices\ISectionService.cs" />
     <Compile Include="SectionServices\SectionService.cs" />
     <Compile Include="ServiceBase.cs" />
+    <Compile Include="TopicServices\ITopicService.cs" />
+    <Compile Include="TopicServices\TopicService.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -86,6 +88,9 @@
       <Project>{76d0727d-93c6-49dc-8806-83634cae5bfa}</Project>
       <Name>DataAccess</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="DTO\Topic\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
