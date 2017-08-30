@@ -1,4 +1,4 @@
-﻿using Business.Services.CategoryService;
+﻿using Business.Services.CategoryServices;
 using Business.Services.Tests.Helpers;
 using DataAccess.Database;
 using DataAccess.Entities.Content;
@@ -11,7 +11,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Xunit;
 
-namespace Domain.Services.Tests
+namespace Business.Services.Tests
 {
     public class CategoryServiceTests
     {

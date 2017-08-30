@@ -7,8 +7,8 @@
     <ProjectGuid>{19AD0B8A-6459-4F31-93EF-F3F57CD0D114}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Domain.Services</RootNamespace>
-    <AssemblyName>Domain.Services</AssemblyName>
+    <RootNamespace>Business.Services</RootNamespace>
+    <AssemblyName>Business.Services</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -62,8 +62,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Bootloader.cs" />
-    <Compile Include="CategoryService\CategoryService.cs" />
-    <Compile Include="CategoryService\ICategoryService.cs" />
+    <Compile Include="CategoryServices\CategoryService.cs" />
+    <Compile Include="CategoryServices\ICategoryService.cs" />
     <Compile Include="Dependencies.cs" />
     <Compile Include="DTO\Category\CategoryWithPostsDTO.cs" />
     <Compile Include="DTO\Category\TopicDetailsDTO.cs" />

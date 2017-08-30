@@ -7,8 +7,8 @@
     <ProjectGuid>{BB57F3AC-2B92-4FAA-AE4F-2D4589849E56}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Domain.Services.Tests</RootNamespace>
-    <AssemblyName>Domain.Services.Tests</AssemblyName>
+    <RootNamespace>Business.Services.Tests</RootNamespace>
+    <AssemblyName>Business.Services.Tests</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>

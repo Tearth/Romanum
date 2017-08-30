@@ -2,7 +2,7 @@
 using App.MVC.ViewModels.Section;
 using AutoMapper;
 using Business.Services.DTO.Section;
-using Domain.Services.DTO.Category;
+using Business.Services.DTO.Category;
 using System;
 using System.Collections.Generic;
 using System.Linq;
