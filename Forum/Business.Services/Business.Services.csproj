@@ -68,8 +68,10 @@
     <Compile Include="Dependencies.cs" />
     <Compile Include="DTO\Category\CategoryWithPostsDTO.cs" />
     <Compile Include="DTO\Category\TopicDetailsDTO.cs" />
+    <Compile Include="DTO\Post\PostDTO.cs" />
     <Compile Include="DTO\Section\CategoryDetailsDTO.cs" />
     <Compile Include="DTO\Section\SectionWithCategoriesDTO.cs" />
+    <Compile Include="DTO\Topic\TopicDTO.cs" />
     <Compile Include="MapperProfile.cs" />
     <Compile Include="PostServices\IPostService.cs" />
     <Compile Include="PostServices\PostService.cs" />
@@ -89,9 +91,7 @@
       <Name>DataAccess</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="DTO\Topic\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
