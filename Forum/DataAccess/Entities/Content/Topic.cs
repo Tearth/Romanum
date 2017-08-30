@@ -10,15 +10,20 @@ namespace DataAccess.Entities.Content
     {
         public string Name { get; set; }
         public string Alias { get; set; }
-        public DateTime CreateTime { get; private set; }
+        public DateTime CreateTime { get; set; }
 
         public virtual Category Category { get; set; }
         public virtual ICollection<Post> Posts { get; set; }
 
-        public Topic(string name)
+        public Topic(string name) : this(name, DateTime.Now)
+        {
+
+        }
+
+        public Topic(string name, DateTime createTime)
         {
             Name = name;
-            CreateTime = DateTime.Now;
+            CreateTime = createTime;
         }
     }
 }
