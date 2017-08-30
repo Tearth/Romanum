@@ -36,7 +36,6 @@ namespace Business.Services.CategoryServices
                         ID = topic.ID,
                         Name = topic.Name,
                         Alias = topic.Alias,
-                        CreateTime = topic.CreateTime,
                         AuthorName = "Foo bar",
                         PostsCount = topic.Posts.Count,
                         LastPostAuthorName = "Lorem Ipsum",
