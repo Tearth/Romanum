@@ -18,9 +18,9 @@ namespace App.MVC.Controllers
             _categoryService = categoryService;
         }
 
-        public ActionResult Index(String alias)
+        public ActionResult Index(String categoryAlias)
         {
-            var category = _categoryService.GetCategoryWithPosts(alias);
+            var category = _categoryService.GetCategoryWithPosts(categoryAlias);
             var viewModel = Mapper.Map<CategoryWithPostsViewModel>(category);
 
             return View(viewModel);
