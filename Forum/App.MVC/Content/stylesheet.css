@@ -71,7 +71,7 @@ img {
 }
 
 .spacer {
-	background: #3E698D url(images/spacerbg.gif) top left repeat-x;
+	background: #3E698D;
 }
 
 .current {
@@ -607,12 +607,12 @@ textarea.posting-textarea, #ie8#fix {
 	border: solid 1px #D8D8D8;
 	border-bottom-width: 0;
 	color: #2E5B82;
-	background: #FAFAFA url(images/bg_box_code.gif) top right no-repeat;
+	background: #FAFAFA;
 	font-size: 0.85em;
 	font-weight: bold;
 }
 
-.quotetitle { background-image: url(images/bg_box_quote.gif); }
+.quotetitle { }
 .attachtitle { background-image: url(images/bg_box_attach.gif); }
 
 .quotetitle .quotetitle {

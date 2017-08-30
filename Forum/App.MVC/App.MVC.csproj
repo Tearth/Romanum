@@ -113,14 +113,27 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\Images\button_topic_new.gif" />
+    <Content Include="Content\Images\button_topic_reply.gif" />
     <Content Include="Content\Images\forum_link.gif" />
     <Content Include="Content\Images\forum_read.gif" />
     <Content Include="Content\Images\forum_read_locked.gif" />
     <Content Include="Content\Images\forum_read_subforum.gif" />
     <Content Include="Content\Images\forum_unread.gif" />
+    <Content Include="Content\Images\icon_topic_attach.gif" />
     <Content Include="Content\Images\icon_topic_latest.gif" />
+    <Content Include="Content\Images\icon_topic_newest.gif" />
     <Content Include="Content\Images\site_logo.gif" />
     <Content Include="Content\Images\stats.gif" />
+    <Content Include="Content\Images\sticky_read.gif" />
+    <Content Include="Content\Images\sticky_unread.gif" />
+    <Content Include="Content\Images\topic_moved.gif" />
+    <Content Include="Content\Images\topic_read.gif" />
+    <Content Include="Content\Images\topic_read_hot.gif" />
+    <Content Include="Content\Images\topic_read_locked.gif" />
+    <Content Include="Content\Images\topic_unread.gif" />
+    <Content Include="Content\Images\topic_unread_hot.gif" />
+    <Content Include="Content\Images\topic_unread_locked.gif" />
     <Content Include="Content\Images\whosonline.gif" />
     <Content Include="Content\stylesheet.css" />
     <Content Include="Global.asax" />
@@ -131,6 +144,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\CategoryController.cs" />
     <Compile Include="Controllers\SectionsController.cs" />
+    <Compile Include="Controllers\TopicController.cs" />
     <Compile Include="Dependencies.cs" />
     <Compile Include="App_Start\DIConfig.cs" />
     <Compile Include="Global.asax.cs">
@@ -155,6 +169,7 @@
     </None>
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Category\Index.cshtml" />
+    <Content Include="Views\Topic\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
