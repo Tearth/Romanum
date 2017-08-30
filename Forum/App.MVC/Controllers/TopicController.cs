@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Business.Services.TopicServices;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,9 +9,11 @@ namespace App.MVC.Controllers
 {
     public class TopicController : Controller
     {
-        public TopicController()
-        {
+        ITopicService _topicService;
 
+        public TopicController(ITopicService topicService)
+        {
+            _topicService = topicService;
         }
 
         [HttpGet]

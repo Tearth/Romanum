@@ -1,4 +1,6 @@
-﻿using DataAccess.Database;
+﻿using Business.Services.DTO.Post;
+using Business.Services.DTO.Topic;
+using DataAccess.Database;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,6 +16,26 @@ namespace Business.Services.TopicServices
         public TopicService(IDatabaseContext databaseContext)
         {
             _databaseContext = databaseContext;
+        }
+
+        public TopicWithPostsDTO GetTopicWithPosts(int topicID)
+        {
+            var topicWithPosts = _databaseContext.Topics.Where(topic => topic.ID == topicID)
+                                    .Select(topic => new TopicWithPostsDTO()
+                                    {
+                                        ID = topic.ID,
+                                        Name = topic.Name,
+                                        Alias = topic.Alias,
+                                        Posts = topic.Posts.Select(post => new PostDTO()
+                                        {
+                                            ID = post.ID,
+                                            CreateTime = post.CreateTime,
+                                            ModifyTime = post.ModifyTime,
+                                            Content = post.Content
+                                        })
+                                    }).Single();
+
+            return topicWithPosts;
         }
     }
 }

@@ -71,7 +71,7 @@
     <Compile Include="DTO\Post\PostDTO.cs" />
     <Compile Include="DTO\Section\CategoryDetailsDTO.cs" />
     <Compile Include="DTO\Section\SectionWithCategoriesDTO.cs" />
-    <Compile Include="DTO\Topic\TopicDTO.cs" />
+    <Compile Include="DTO\Topic\TopicWithPostsDTO.cs" />
     <Compile Include="MapperProfile.cs" />
     <Compile Include="PostServices\IPostService.cs" />
     <Compile Include="PostServices\PostService.cs" />

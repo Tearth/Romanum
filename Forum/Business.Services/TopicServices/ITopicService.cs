@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Business.Services.DTO.Topic;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,5 +9,6 @@ namespace Business.Services.TopicServices
 {
     public interface ITopicService
     {
+        TopicWithPostsDTO GetPosts(int topicID);
     }
 }
