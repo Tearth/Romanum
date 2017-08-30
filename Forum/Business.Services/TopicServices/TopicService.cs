@@ -37,5 +37,11 @@ namespace Business.Services.TopicServices
 
             return topicWithPosts;
         }
+
+        public bool ValidateAliasAndID(string topicAlias, int topicID)
+        {
+            return _databaseContext.Topics.Any(topic => topic.Alias == topicAlias && 
+                                                        topic.ID == topicID);
+        }
     }
 }

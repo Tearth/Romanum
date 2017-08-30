@@ -9,6 +9,8 @@ namespace Business.Services.TopicServices
 {
     public interface ITopicService
     {
-        TopicWithPostsDTO GetPosts(int topicID);
+        TopicWithPostsDTO GetTopicWithPosts(int topicID);
+
+        bool ValidateAliasAndID(string topicAlias, int topicID);
     }
 }
