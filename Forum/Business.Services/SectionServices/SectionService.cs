@@ -19,22 +19,23 @@ namespace Business.Services.SectionServices
 
         public IEnumerable<SectionWithCategoriesDTO> GetAllSetionsWithCategories()
         {
-            var sectionsWithCategories = _databaseContext.Sections.Select(section => new SectionWithCategoriesDTO()
-            {
-                Name = section.Name,
-                Categories = section.Categories.Select(category => new CategoryDetailsDTO()
+            var sectionsWithCategories = _databaseContext
+                .Sections.Select(section => new SectionWithCategoriesDTO()
                 {
-                    ID = category.ID,
-                    Name = category.Name,
-                    Alias = category.Alias,
-                    Description = category.Description,
-                    TopicsCount = category.Topics.Count(),
-                    PostsCount = category.Topics.SelectMany(topic => topic.Posts).Count(),
-                    LastPostTime = category.Topics.SelectMany(topic => topic.Posts).Select(post => post.CreateTime)
-                                                                                   .DefaultIfEmpty()
-                                                                                   .Max()
-                })
-            }).ToList();
+                    Name = section.Name,
+                    Categories = section.Categories.Select(category => new CategoryDetailsDTO()
+                    {
+                        ID = category.ID,
+                        Name = category.Name,
+                        Alias = category.Alias,
+                        Description = category.Description,
+                        TopicsCount = category.Topics.Count(),
+                        PostsCount = category.Topics.SelectMany(topic => topic.Posts).Count(),
+                        LastPostTime = category.Topics.SelectMany(topic => topic.Posts).Select(post => post.CreateTime)
+                                                                                       .DefaultIfEmpty()
+                                                                                       .Max()
+                    })
+                }).ToList();
 
             return sectionsWithCategories;
         }
