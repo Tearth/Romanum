@@ -15,8 +15,14 @@ namespace App.MVC.App_Start
 
             routes.MapRoute(
                 name: "Category",
-                url: "Category/{categoryAlias}",
+                url: "{categoryAlias}",
                 defaults: new { controller = "Category", action = "Index" }
+            );
+
+            routes.MapRoute(
+                name: "Topic",
+                url: "{categoryAlias}/{topicUniqueNumber}-{topicAlias}",
+                defaults: new { controller = "Topic", action = "Index" }
             );
 
             routes.MapRoute(
