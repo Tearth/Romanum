@@ -14,7 +14,7 @@ namespace App.MVC.Controllers
         }
 
         [HttpGet]
-        public ActionResult Index(string categoryAlias, string topicAlias, int topicUniqueNumber)
+        public ActionResult Index(string categoryAlias, string topicAlias, int topicID)
         {
             return View();
         }

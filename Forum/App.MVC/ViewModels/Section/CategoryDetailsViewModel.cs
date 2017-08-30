@@ -7,6 +7,7 @@ namespace App.MVC.ViewModels.Section
 {
     public class CategoryDetalisViewModel
     {
+        public int ID { get; set; }
         public string Name { get; set; }
         public string Alias { get; set; }
         public string Description { get; set; }

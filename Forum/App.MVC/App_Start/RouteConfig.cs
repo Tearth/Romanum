@@ -21,7 +21,7 @@ namespace App.MVC.App_Start
 
             routes.MapRoute(
                 name: "Topic",
-                url: "{categoryAlias}/{topicUniqueNumber}-{topicAlias}",
+                url: "{categoryAlias}/{topicID}-{topicAlias}",
                 defaults: new { controller = "Topic", action = "Index" }
             );
 

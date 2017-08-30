@@ -28,13 +28,14 @@ namespace Business.Services.CategoryServices
                 .Categories.Where(category => category.Alias == categoryAlias)
                 .Select(category => new CategoryWithPostsDTO()
                 {
+                    ID = category.ID,
                     Name = category.Name,
                     Alias = category.Alias,
                     Topics = category.Topics.Select(topic => new TopicDetailsDTO()
                     {
+                        ID = topic.ID,
                         Name = topic.Name,
                         Alias = topic.Alias,
-                        UniqueNumber = topic.ID,
                         CreateTime = topic.CreateTime,
                         AuthorName = "Foo bar",
                         PostsCount = topic.Posts.Count,

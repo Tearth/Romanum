@@ -9,6 +9,7 @@ namespace Business.Services.DTO.Topic
 {
     public class TopicDTO
     {
+        public int ID { get; set; }
         public string Name { get; set; }
         public string Alias { get; set; }
         public int UniqueNumber { get; set; }

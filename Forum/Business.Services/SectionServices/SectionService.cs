@@ -24,6 +24,7 @@ namespace Business.Services.SectionServices
                 Name = section.Name,
                 Categories = section.Categories.Select(category => new CategoryDetailsDTO()
                 {
+                    ID = category.ID,
                     Name = category.Name,
                     Alias = category.Alias,
                     Description = category.Description,
