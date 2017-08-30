@@ -18,6 +18,7 @@ namespace App.MVC.Controllers
             _categoryService = categoryService;
         }
 
+        [HttpGet]
         public ActionResult Index(String categoryAlias)
         {
             var category = _categoryService.GetCategoryWithPosts(categoryAlias);

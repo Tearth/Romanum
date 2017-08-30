@@ -18,6 +18,7 @@ namespace App.MVC.Controllers
             _sections = sections;
         }
 
+        [HttpGet]
         public ActionResult Index()
         {
             var sections = _sections.GetAllSetionsWithCategories();

@@ -8,7 +8,12 @@ namespace App.MVC.Controllers
 {
     public class TopicController : Controller
     {
-        // GET: Topic
+        public TopicController()
+        {
+
+        }
+
+        [HttpGet]
         public ActionResult Index(string categoryAlias, string topicAlias, int topicUniqueNumber)
         {
             return View();
