@@ -63,6 +63,7 @@
   <ItemGroup>
     <Compile Include="Bootloader.cs" />
     <Compile Include="CategoryServices\CategoryService.cs" />
+    <Compile Include="CategoryServices\Exceptions\CategoryNotFoundException.cs" />
     <Compile Include="CategoryServices\ICategoryService.cs" />
     <Compile Include="Dependencies.cs" />
     <Compile Include="DTO\Category\CategoryWithPostsDTO.cs" />

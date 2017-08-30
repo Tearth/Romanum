@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Business.Services.CategoryServices.Exceptions;
 
 namespace Business.Services.CategoryServices
 {
@@ -20,6 +21,9 @@ namespace Business.Services.CategoryServices
 
         public CategoryWithPostsDTO GetCategoryWithPosts(string categoryAlias)
         {
+            if (!Exists(categoryAlias))
+                throw new CategoryNotFoundException(categoryAlias);
+
             var categoryWithPosts = _databaseContext
                 .Categories.Where(category => category.Alias == categoryAlias)
                 .Select(category => new CategoryWithPostsDTO()
@@ -42,7 +46,7 @@ namespace Business.Services.CategoryServices
             return categoryWithPosts;
         }
 
-        public bool CategoryExists(String categoryAlias)
+        public bool Exists(string categoryAlias)
         {
             return _databaseContext.Categories.Any(p => p.Alias == categoryAlias);
         }
