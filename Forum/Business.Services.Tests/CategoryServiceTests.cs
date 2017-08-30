@@ -32,14 +32,9 @@ namespace Business.Services.Tests
             data[0].Name = "Test name";
             data[0].Alias = "test-alias";
 
-            var topic = data[0].Topics.ElementAt(2);
-            topic.Posts.Clear();
-
-            topic.Posts.Add(new Post("Test content 1", new DateTime(2100, 1, 12)));
-            topic.Posts.Add(new Post("Test content 2", new DateTime(2100, 2, 12)));
-            topic.Posts.Add(new Post("Test content 3", new DateTime(2100, 3, 12)));
-            topic.Posts.Add(new Post("Test content 4", new DateTime(2100, 4, 12)));
-            topic.Posts.Add(new Post("Test content 5", new DateTime(2100, 5, 12)));
+            data[0].Topics.ElementAt(0).Name = "Topic 1";
+            data[0].Topics.ElementAt(1).Name = "Topic 2";
+            data[0].Topics.ElementAt(2).Name = "Topic 3";
 
             var fakeDbSet = FakeDbSetFactory.Create<Category>(data);
 
@@ -51,7 +46,11 @@ namespace Business.Services.Tests
 
             Assert.Equal("Test name", result.Name);
             Assert.Equal("test-alias", result.Alias);
-            Assert.Equal(5, result.Topics.Count());
+            Assert.Equal(3, result.Topics.Count());
+
+            Assert.Equal("Topic 1", result.Topics.ElementAt(0).Name);
+            Assert.Equal("Topic 2", result.Topics.ElementAt(1).Name);
+            Assert.Equal("Topic 3", result.Topics.ElementAt(2).Name);
         }
 
         [Fact]

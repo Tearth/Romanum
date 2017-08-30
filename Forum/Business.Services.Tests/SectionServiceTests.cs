@@ -41,7 +41,7 @@ namespace Business.Services.Tests
 
             var service = new SectionService(databaseContext.Object);
             var result = service.GetAllSetionsWithCategories();
-
+            
             Assert.Equal(new DateTime(3100, 1, 5).Date, result.ElementAt(0).Categories.ElementAt(1).LastPostTime.Date);
         }
 
@@ -49,7 +49,6 @@ namespace Business.Services.Tests
         public void GetAllSetionsWithCategories_EmptyCategory_NoLatestPost()
         {
             var data = GetSectionsData();
-
             data[0].Categories.ElementAt(1).Topics.Clear();
 
             var fakeDbSet = FakeDbSetFactory.Create<Section>(data);
@@ -67,7 +66,6 @@ namespace Business.Services.Tests
         public void GetAllSetionsWithCategories_EmptySection_NoCategories()
         {
             var data = GetSectionsData();
-
             data[0].Categories.Clear();
 
             var fakeDbSet = FakeDbSetFactory.Create<Section>(data);
@@ -78,7 +76,7 @@ namespace Business.Services.Tests
             var service = new SectionService(databaseContext.Object);
             var result = service.GetAllSetionsWithCategories();
 
-            Assert.Equal(result.ElementAt(0).Categories.Count(), 0);
+            Assert.Equal(0, result.ElementAt(0).Categories.Count());
         }
 
         [Fact]
@@ -94,7 +92,7 @@ namespace Business.Services.Tests
             var service = new SectionService(databaseContext.Object);
             var result = service.GetAllSetionsWithCategories();
 
-            Assert.Equal(result.Count(), 0);
+            Assert.Equal(0, result.Count());
         }
     }
 }
