@@ -90,6 +90,7 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="CategoryServiceTests.cs" />
     <Compile Include="Helpers\FakeDbSetFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SectionServiceTests.cs" />

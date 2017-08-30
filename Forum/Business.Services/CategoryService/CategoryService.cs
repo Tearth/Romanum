@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Domain.Services.CategoryService
+namespace Business.Services.CategoryService
 {
     public class CategoryService : ServiceBase, ICategoryService
     {
