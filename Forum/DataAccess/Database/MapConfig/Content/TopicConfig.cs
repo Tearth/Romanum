@@ -13,6 +13,7 @@ namespace DataAccess.Database.MapConfig.Content
         public TopicConfig()
         {
             Property(p => p.Name).HasMaxLength(50).IsRequired();
+            Property(p => p.Alias).HasMaxLength(100).IsRequired();
 
             HasRequired(p => p.Category);
         }
