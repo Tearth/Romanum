@@ -18,10 +18,10 @@ namespace Business.Services.TopicServices
             _databaseContext = databaseContext;
         }
 
-        public TopicWithPostsDTO GetTopicWithPosts(string topicAlias, int topicID)
+        public TopicWithPostsDTO GetTopicWithPosts(string topicAlias)
         {
             var topicWithPosts = _databaseContext
-                .Topics.Where(topic => topic.ID == topicID && topic.Alias == topicAlias)
+                .Topics.Where(topic => topic.Alias == topicAlias)
                 .Select(topic => new TopicWithPostsDTO()
                 {
                     ID = topic.ID,
@@ -39,10 +39,15 @@ namespace Business.Services.TopicServices
             return topicWithPosts;
         }
 
-        public bool ValidateAliasAndID(string topicAlias, int topicID)
+        public bool Exists(string topicAlias)
         {
-            return _databaseContext.Topics.Any(topic => topic.Alias == topicAlias && 
-                                                        topic.ID == topicID);
+            return _databaseContext.Topics.Any(p => p.Alias == topicAlias);
+        }
+
+        public bool ValidateTopicAndCategoryAlias(string topicAlias, string categoryAlias)
+        {
+            return _databaseContext.Topics.Any(p => p.Alias == topicAlias && 
+                                                    p.Category.Alias == categoryAlias);
         }
     }
 }

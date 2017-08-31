@@ -79,6 +79,8 @@
     <Compile Include="SectionServices\ISectionService.cs" />
     <Compile Include="SectionServices\SectionService.cs" />
     <Compile Include="ServiceBase.cs" />
+    <Compile Include="TopicServices\Exceptions\InvalidCategoryAliasException.cs" />
+    <Compile Include="TopicServices\Exceptions\TopicNotFoundException.cs" />
     <Compile Include="TopicServices\ITopicService.cs" />
     <Compile Include="TopicServices\TopicService.cs" />
   </ItemGroup>
