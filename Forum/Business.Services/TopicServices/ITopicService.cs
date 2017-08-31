@@ -11,6 +11,7 @@ namespace Business.Services.TopicServices
     {
         TopicWithPostsDTO GetTopicWithPosts(string topicAlias, int topicID);
 
-        bool ValidateAliasAndID(string topicAlias, int topicID);
+        bool Exists(string topicAlias);
+        bool ValidateTopicAndCategoryAlias(string topicAlias, string categoryAlias);
     }
 }

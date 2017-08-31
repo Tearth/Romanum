@@ -1,5 +1,6 @@
 ﻿using Business.Services.DTO.Post;
 using Business.Services.DTO.Topic;
+using Business.Services.TopicServices.Exceptions;
 using DataAccess.Database;
 using System;
 using System.Collections.Generic;
@@ -20,6 +21,9 @@ namespace Business.Services.TopicServices
 
         public TopicWithPostsDTO GetTopicWithPosts(string topicAlias)
         {
+            if (Exists(topicAlias))
+                throw new TopicNotFoundException(topicAlias);
+
             var topicWithPosts = _databaseContext
                 .Topics.Where(topic => topic.Alias == topicAlias)
                 .Select(topic => new TopicWithPostsDTO()
