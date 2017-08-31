@@ -9,8 +9,6 @@ using System.Linq;
 using System.Web;
 using App.MVC.ViewModels.Topic;
 using Business.Services.DTO.Topic;
-using App.MVC.ViewModels.Post;
-using Business.Services.DTO.Post;
 
 namespace App.MVC
 {

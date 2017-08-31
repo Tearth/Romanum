@@ -1,5 +1,4 @@
-﻿using Business.Services.DTO.Post;
-using Business.Services.DTO.Topic;
+﻿using Business.Services.DTO.Topic;
 using Business.Services.TopicServices.Exceptions;
 using DataAccess.Database;
 using System;

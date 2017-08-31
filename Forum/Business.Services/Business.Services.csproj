@@ -68,7 +68,7 @@
     <Compile Include="Dependencies.cs" />
     <Compile Include="DTO\Category\CategoryWithPostsDTO.cs" />
     <Compile Include="DTO\Category\TopicDetailsDTO.cs" />
-    <Compile Include="DTO\Post\PostDTO.cs" />
+    <Compile Include="DTO\Topic\PostDTO.cs" />
     <Compile Include="DTO\Section\CategoryDetailsDTO.cs" />
     <Compile Include="DTO\Section\SectionWithCategoriesDTO.cs" />
     <Compile Include="DTO\Topic\TopicWithPostsDTO.cs" />

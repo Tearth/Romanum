@@ -154,7 +154,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModels\Category\CategoryWithTopicsViewModel.cs" />
     <Compile Include="ViewModels\Category\TopicDetailsViewModel.cs" />
-    <Compile Include="ViewModels\Post\PostViewModel.cs" />
+    <Compile Include="ViewModels\Topic\PostViewModel.cs" />
     <Compile Include="ViewModels\Section\CategoryDetailsViewModel.cs" />
     <Compile Include="ViewModels\Section\SectionWithCategoriesViewModel.cs" />
     <Compile Include="ViewModels\Topic\TopicWithPostsViewModel.cs" />

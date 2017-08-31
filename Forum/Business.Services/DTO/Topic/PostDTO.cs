@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Business.Services.DTO.Post
+namespace Business.Services.DTO.Topic
 {
     public class PostDTO
     {

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace App.MVC.ViewModels.Post
+namespace App.MVC.ViewModels.Topic
 {
     public class PostViewModel
     {
