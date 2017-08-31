@@ -1,10 +1,9 @@
-﻿using Business.Services.CategoryServices;
-using Business.Services.CategoryServices.Exceptions;
-using Business.Services.Tests.Helpers;
+﻿using Business.Services.Tests.Helpers;
+using Business.Services.TopicServices;
+using Business.Services.TopicServices.Exceptions;
 using DataAccess.Database;
 using DataAccess.Entities.Content;
 using Moq;
-using Ploeh.AutoFixture;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,7 +13,7 @@ using Xunit;
 
 namespace Business.Services.Tests
 {
-    public class CategoryServiceTests
+    public class TopicServiceTests
     {
         private Mock<IDatabaseContext> GetDatabaseContextMock()
         {
@@ -61,67 +60,6 @@ namespace Business.Services.Tests
             fakeDatabaseContext.Setup(p => p.Posts).Returns(postsFakeDbSet.Object);
 
             return fakeDatabaseContext;
-        }
-
-        [Fact]
-        public void GetCategoryWithPosts_ValidCategoryAlias_ValidReturnedCategory()
-        {
-            var databaseContextMock = GetDatabaseContextMock();
-
-            var service = new CategoryService(databaseContextMock.Object);
-            var result = service.GetCategoryWithPosts("cat-1");
-
-            Assert.Equal("Category 1", result.Name);
-            Assert.Equal("cat-1", result.Alias);
-        }
-
-        [Fact]
-        public void GetCategoryWithPosts_ValidCategoryAlias_ValidReturnedCategoryTopics()
-        {
-            var databaseContextMock = GetDatabaseContextMock();
-
-            var service = new CategoryService(databaseContextMock.Object);
-            var result = service.GetCategoryWithPosts("cat-1");
-
-            Assert.Equal(2, result.Topics.Count());
-            Assert.Equal("Topic 1", result.Topics.ElementAt(0).Name);
-            Assert.Equal("Topic 2", result.Topics.ElementAt(1).Name);
-            Assert.Equal("top-1", result.Topics.ElementAt(0).Alias);
-            Assert.Equal("top-2", result.Topics.ElementAt(1).Alias);
-        }
-
-        [Fact]
-        public void GetCategoryWithPosts_BadAlias_CategoryNotFoundException()
-        {
-            var databaseContextMock = GetDatabaseContextMock();
-
-            var service = new CategoryService(databaseContextMock.Object);
-            var result = Record.Exception(() => service.GetCategoryWithPosts("bad-category-alias"));
-
-            Assert.Equal(typeof(CategoryNotFoundException), result.GetType());
-            Assert.Equal("bad-category-alias", result.Message);
-        }
-
-        [Fact]
-        public void Exists_ValidAlias_CategoryExists()
-        {
-            var databaseContextMock = GetDatabaseContextMock();
-
-            var service = new CategoryService(databaseContextMock.Object);
-            var result = service.Exists("cat-3");
-
-            Assert.True(result);
-        }
-
-        [Fact]
-        public void Exists_BadAlias_CategoryNotExists()
-        {
-            var databaseContextMock = GetDatabaseContextMock();
-
-            var service = new CategoryService(databaseContextMock.Object);
-            var result = service.Exists("bad-category-alias");
-
-            Assert.False(result);
         }
     }
 }

@@ -56,9 +56,20 @@ namespace Business.Services.Tests
             secondTopic.Posts.Add(fourthPost);
             thirdTopic.Posts.Add(fifthPost);
 
-            var fakeDbSet = FakeDbSetFactory.Create<Section>(data);
+            var categoriesList = data.SelectMany(p => p.Categories);
+            var topicsList = categoriesList.SelectMany(p => p.Topics);
+            var postsList = topicsList.SelectMany(p => p.Posts);
+
+            var sectionsFakeDbSet = FakeDbSetFactory.Create<Section>(data);
+            var categoriesFakeDbSet = FakeDbSetFactory.Create<Category>(categoriesList);
+            var topicsFakeDbSet = FakeDbSetFactory.Create<Topic>(topicsList);
+            var postsFakeDbSet = FakeDbSetFactory.Create<Post>(postsList);
+
             var fakeDatabaseContext = new Mock<IDatabaseContext>();
-            fakeDatabaseContext.Setup(p => p.Sections).Returns(fakeDbSet.Object);
+            fakeDatabaseContext.Setup(p => p.Sections).Returns(sectionsFakeDbSet.Object);
+            fakeDatabaseContext.Setup(p => p.Categories).Returns(categoriesFakeDbSet.Object);
+            fakeDatabaseContext.Setup(p => p.Topics).Returns(topicsFakeDbSet.Object);
+            fakeDatabaseContext.Setup(p => p.Posts).Returns(postsFakeDbSet.Object);
 
             return fakeDatabaseContext;
         }
