@@ -12,7 +12,6 @@ namespace Business.Services.DTO.Topic
         public int ID { get; set; }
         public string Name { get; set; }
         public string Alias { get; set; }
-        public int UniqueNumber { get; set; }
 
         public IEnumerable<PostDTO> Posts { get; set; }
     }
