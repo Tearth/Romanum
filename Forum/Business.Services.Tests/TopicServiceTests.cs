@@ -61,5 +61,90 @@ namespace Business.Services.Tests
 
             return fakeDatabaseContext;
         }
+
+        [Fact]
+        public void GetTopicWithPosts_ValidTopicAlias_ValidTopicData()
+        {
+            var databaseContextMock = GetDatabaseContextMock();
+
+            var service = new TopicService(databaseContextMock.Object);
+            var result = service.GetTopicWithPosts("top-1");
+
+            Assert.Equal("Topic 1", result.Name);
+            Assert.Equal("top-1", result.Alias);
+        }
+
+        [Fact]
+        public void GetTopicWithPosts_BadTopicAlias_ValidPosts()
+        {
+            var databaseContextMock = GetDatabaseContextMock();
+
+            var service = new TopicService(databaseContextMock.Object);
+            var result = service.GetTopicWithPosts("top-1");
+
+            Assert.Equal(3, result.Posts.Count());
+            Assert.Equal("Content 1", result.Posts.ElementAt(0).Content);
+            Assert.Equal("Content 2", result.Posts.ElementAt(1).Content);
+            Assert.Equal("Content 3", result.Posts.ElementAt(2).Content);
+            Assert.Equal(new DateTime(2000, 5, 10).Date, result.Posts.ElementAt(0).CreateTime.Date);
+            Assert.Equal(new DateTime(2001, 1, 2).Date, result.Posts.ElementAt(1).CreateTime.Date);
+            Assert.Equal(new DateTime(2002, 10, 12).Date, result.Posts.ElementAt(2).CreateTime.Date);
+        }
+
+        [Fact]
+        public void GetTopicWithPosts_BadTopicAlias_ValidTopicData()
+        {
+            var databaseContextMock = GetDatabaseContextMock();
+
+            var service = new TopicService(databaseContextMock.Object);
+            var result = Record.Exception(() => service.GetTopicWithPosts("bad-topic-alias"));
+
+            Assert.Equal(typeof(TopicNotFoundException), result.GetType());
+            Assert.Equal("bad-topic-alias", result.Message);
+        }
+
+        [Fact]
+        public void Exists_ValidAlias_ReturnsTrue()
+        {
+            var databaseContextMock = GetDatabaseContextMock();
+
+            var service = new TopicService(databaseContextMock.Object);
+            var result = service.Exists("top-1");
+
+            Assert.True(result);
+        }
+
+        [Fact]
+        public void Exists_InvalidAlias_ReturnsFalse()
+        {
+            var databaseContextMock = GetDatabaseContextMock();
+
+            var service = new TopicService(databaseContextMock.Object);
+            var result = service.Exists("bad-topic-alias");
+
+            Assert.False(result);
+        }
+
+        [Fact]
+        public void ValidateTopicAndCategoryAlias_ValidAlias_ReturnsTrue()
+        {
+            var databaseContextMock = GetDatabaseContextMock();
+
+            var service = new TopicService(databaseContextMock.Object);
+            var result = service.ValidateTopicAndCategoryAlias("top-1", "cat-1");
+
+            Assert.True(result);
+        }
+
+        [Fact]
+        public void ValidateTopicAndCategoryAlias_InvalidCategoryAlias_ReturnsFalse()
+        {
+            var databaseContextMock = GetDatabaseContextMock();
+
+            var service = new TopicService(databaseContextMock.Object);
+            var result = service.ValidateTopicAndCategoryAlias("top-1", "bad-category-alias");
+
+            Assert.False(result);
+        }
     }
 }
