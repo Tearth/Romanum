@@ -63,7 +63,7 @@ namespace Business.Services.Tests
         }
 
         [Fact]
-        public void GetTopicWithPosts_ValidTopicAlias_ValidTopicData()
+        public void GetTopicWithPosts_ExistingTopicAlias_ReturnsValidTopicData()
         {
             var databaseContextMock = GetDatabaseContextMock();
 
@@ -75,7 +75,7 @@ namespace Business.Services.Tests
         }
 
         [Fact]
-        public void GetTopicWithPosts_BadTopicAlias_ValidPosts()
+        public void GetTopicWithPosts_ExistingTopicAlias_ReturnsValidPosts()
         {
             var databaseContextMock = GetDatabaseContextMock();
 
@@ -92,7 +92,7 @@ namespace Business.Services.Tests
         }
 
         [Fact]
-        public void GetTopicWithPosts_BadTopicAlias_ValidTopicData()
+        public void GetTopicWithPosts_InvalidTopicAlias_ThrowsTopicNotFoundException()
         {
             var databaseContextMock = GetDatabaseContextMock();
 
@@ -104,7 +104,7 @@ namespace Business.Services.Tests
         }
 
         [Fact]
-        public void Exists_ValidAlias_ReturnsTrue()
+        public void Exists_ExistingAlias_ReturnsTrue()
         {
             var databaseContextMock = GetDatabaseContextMock();
 
@@ -126,7 +126,7 @@ namespace Business.Services.Tests
         }
 
         [Fact]
-        public void ValidateTopicAndCategoryAlias_ValidAlias_ReturnsTrue()
+        public void ValidateTopicAndCategoryAlias_ExistingAlias_ReturnsTrue()
         {
             var databaseContextMock = GetDatabaseContextMock();
 

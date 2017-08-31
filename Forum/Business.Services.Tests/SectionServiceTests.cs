@@ -75,7 +75,7 @@ namespace Business.Services.Tests
         }
 
         [Fact]
-        public void GetAllSetionsWithCategories_ValidData_ValidCategories()
+        public void GetAllSetionsWithCategories_ReturnsValidCategoriesData()
         {
             var databaseContextMock = GetDatabaseContextMock();
 
@@ -88,7 +88,7 @@ namespace Business.Services.Tests
         }
 
         [Fact]
-        public void GetAllSetionsWithCategories_ValidData_ValidLastPostTime()
+        public void GetAllSetionsWithCategories_ReturnsValidLastPostTime()
         {
             var databaseContextMock = GetDatabaseContextMock();
 
@@ -101,7 +101,7 @@ namespace Business.Services.Tests
         }
 
         [Fact]
-        public void GetAllSetionsWithCategories_EmptySection_NoCategories()
+        public void GetAllSetionsWithCategories_ReturnsSectionWithoutCategories()
         {
             var databaseContextMock = GetDatabaseContextMock();
 
