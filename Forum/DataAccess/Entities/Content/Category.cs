@@ -19,6 +19,8 @@ namespace DataAccess.Entities.Content
         {
             Name = name;
             Alias = alias;
+
+            Topics = new List<Topic>();
         }
     }
 }

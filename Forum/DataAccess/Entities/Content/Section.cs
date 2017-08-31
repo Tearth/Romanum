@@ -18,6 +18,8 @@ namespace DataAccess.Entities.Content
         {
             Name = name;
             Alias = alias;
+
+            Categories = new List<Category>();
         }
     }
 }

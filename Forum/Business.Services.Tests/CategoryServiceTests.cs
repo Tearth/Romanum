@@ -16,41 +16,72 @@ namespace Business.Services.Tests
 {
     public class CategoryServiceTests
     {
-        List<Category> GetCategoriesData()
+        IEnumerable<Category> GetCategoriesData()
         {
-            var fixture = new Fixture();
-            fixture.Behaviors.Remove(new ThrowingRecursionBehavior());
-            fixture.Behaviors.Add(new OmitOnRecursionBehavior());
+            var data = new List<Category>();
 
-            return fixture.CreateMany<Category>(3).ToList();
+            var firstCategory = new Category("Category 1", "cat-1");
+            var secondCategory = new Category("Category 2", "cat-2");
+            var thirdCategory = new Category("Category 3", "cat-3");
+
+            data.Add(firstCategory);
+            data.Add(secondCategory);
+            data.Add(thirdCategory);
+
+            var firstTopic = new Topic("Topic 1") { Category = firstCategory };
+            var secondTopic = new Topic("Topic 2") { Category = firstCategory };
+            var thirdTopic = new Topic("Topic 3") { Category = secondCategory };
+
+            firstCategory.Topics.Add(firstTopic);
+            firstCategory.Topics.Add(secondTopic);
+            secondCategory.Topics.Add(thirdTopic);
+
+            var firstPost = new Post("Content 1", new DateTime(2000, 5, 10)) { Topic = firstTopic };
+            var secondPost = new Post("Content 2", new DateTime(2001, 1, 2)) { Topic = firstTopic };
+            var thirdPost = new Post("Content 3", new DateTime(2002, 10, 12)) { Topic = firstTopic };
+            var fourthPost = new Post("Content 4", new DateTime(2003, 3, 27)) { Topic = secondTopic };
+            var fifthPost = new Post("Content 5", new DateTime(2004, 2, 1)) { Topic = thirdTopic };
+
+            firstTopic.Posts.Add(firstPost);
+            firstTopic.Posts.Add(secondPost);
+            firstTopic.Posts.Add(thirdPost);
+            secondTopic.Posts.Add(fourthPost);
+            thirdTopic.Posts.Add(fifthPost);
+
+            return data;
         }
 
         [Fact]
-        public void GetCategoryWithPosts_ValidData_CategoryHasValidData()
+        public void GetCategoryWithPosts_ValidCategoryAlias_ValidReturnedCategory()
         {
             var data = GetCategoriesData();
-            data[0].Name = "Test name";
-            data[0].Alias = "test-alias";
-
-            data[0].Topics.ElementAt(0).Name = "Topic 1";
-            data[0].Topics.ElementAt(1).Name = "Topic 2";
-            data[0].Topics.ElementAt(2).Name = "Topic 3";
-
             var fakeDbSet = FakeDbSetFactory.Create<Category>(data);
 
             var databaseContext = new Mock<IDatabaseContext>();
             databaseContext.Setup(p => p.Categories).Returns(fakeDbSet.Object);
 
             var service = new CategoryService(databaseContext.Object);
-            var result = service.GetCategoryWithPosts("test-alias");
+            var result = service.GetCategoryWithPosts("cat-1");
 
-            Assert.Equal("Test name", result.Name);
-            Assert.Equal("test-alias", result.Alias);
-            Assert.Equal(3, result.Topics.Count());
+            Assert.Equal("Category 1", result.Name);
+            Assert.Equal("cat-1", result.Alias);
+            Assert.Equal(2, result.Topics.Count());
+        }
+
+        [Fact]
+        public void GetCategoryWithPosts_ValidCategoryAlias_ValidReturnedCategoryTopics()
+        {
+            var data = GetCategoriesData();
+            var fakeDbSet = FakeDbSetFactory.Create<Category>(data);
+
+            var databaseContext = new Mock<IDatabaseContext>();
+            databaseContext.Setup(p => p.Categories).Returns(fakeDbSet.Object);
+
+            var service = new CategoryService(databaseContext.Object);
+            var result = service.GetCategoryWithPosts("cat-1");
 
             Assert.Equal("Topic 1", result.Topics.ElementAt(0).Name);
             Assert.Equal("Topic 2", result.Topics.ElementAt(1).Name);
-            Assert.Equal("Topic 3", result.Topics.ElementAt(2).Name);
         }
 
         [Fact]
@@ -63,18 +94,16 @@ namespace Business.Services.Tests
             databaseContext.Setup(p => p.Categories).Returns(fakeDbSet.Object);
 
             var service = new CategoryService(databaseContext.Object);
-            var result = Record.Exception(() => service.GetCategoryWithPosts("bad alias"));
+            var result = Record.Exception(() => service.GetCategoryWithPosts("bad-category-alias"));
 
             Assert.Equal(typeof(CategoryNotFoundException), result.GetType());
-            Assert.Equal("bad alias", result.Message);
+            Assert.Equal("bad-category-alias", result.Message);
         }
 
         [Fact]
         public void Exists_ValidData_CategoryExists()
         {
             var data = GetCategoriesData();
-            data[0].Name = "Test name";
-            data[0].Alias = "test-alias";
 
             var fakeDbSet = FakeDbSetFactory.Create<Category>(data);
 
@@ -82,7 +111,7 @@ namespace Business.Services.Tests
             databaseContext.Setup(p => p.Categories).Returns(fakeDbSet.Object);
 
             var service = new CategoryService(databaseContext.Object);
-            var result = service.Exists("test-alias");
+            var result = service.Exists("cat-3");
 
             Assert.True(result);
         }
@@ -98,7 +127,7 @@ namespace Business.Services.Tests
             databaseContext.Setup(p => p.Categories).Returns(fakeDbSet.Object);
 
             var service = new CategoryService(databaseContext.Object);
-            var result = service.Exists("test-alias");
+            var result = service.Exists("bad-category-alias");
 
             Assert.False(result);
         }

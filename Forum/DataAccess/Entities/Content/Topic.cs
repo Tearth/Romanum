@@ -17,6 +17,8 @@ namespace DataAccess.Entities.Content
         public Topic(string name)
         {
             Name = name;
+
+            Posts = new List<Post>();
         }
     }
 }
