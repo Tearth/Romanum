@@ -8,8 +8,8 @@ namespace DataAccess.Entities.Content
 {
     public class Post : EntityBase
     {
-        public DateTime CreateTime { get; set; }
-        public DateTime ModifyTime { get; set; }
+        public DateTime CreationTime { get; set; }
+        public DateTime ModificationTime { get; set; }
         public string Content { get; set; }
 
         public virtual Topic Topic { get; set; }
@@ -19,12 +19,12 @@ namespace DataAccess.Entities.Content
             
         }
 
-        public Post(string content, DateTime createTime)
+        public Post(string content, DateTime creationTime)
         {
             Content = content;
 
-            CreateTime = createTime;
-            ModifyTime = createTime;
+            CreationTime = creationTime;
+            ModificationTime = creationTime;
         }
     }
 }

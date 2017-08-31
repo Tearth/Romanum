@@ -14,8 +14,8 @@ namespace DataAccess.Database.MapConfig.Content
         public PostConfig()
         {
             Property(p => p.Content).HasMaxLength(1000);
-            Property(p => p.CreateTime).IsRequired();
-            Property(p => p.ModifyTime).IsRequired();
+            Property(p => p.CreationTime).IsRequired();
+            Property(p => p.ModificationTime).IsRequired();
 
             HasRequired(p => p.Topic);
         }

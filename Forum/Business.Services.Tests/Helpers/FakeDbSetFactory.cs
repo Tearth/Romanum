@@ -10,7 +10,7 @@ namespace Business.Services.Tests.Helpers
 {
     internal static class FakeDbSetFactory
     {
-        public static Mock<DbSet<T>> Create<T>(IEnumerable<T> elements) where T : class
+        public static Mock<DbSet<T>> Creation<T>(IEnumerable<T> elements) where T : class
         {
             var elementsAsQueryable = elements.AsQueryable();
             var dbSetMock = new Mock<DbSet<T>>();

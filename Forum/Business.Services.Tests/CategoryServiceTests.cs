@@ -51,9 +51,9 @@ namespace Business.Services.Tests
             var topicsList = data.SelectMany(p => p.Topics);
             var postsList = topicsList.SelectMany(p => p.Posts);
 
-            var categoriesFakeDbSet = FakeDbSetFactory.Create<Category>(data);
-            var topicsFakeDbSet = FakeDbSetFactory.Create<Topic>(topicsList);
-            var postsFakeDbSet = FakeDbSetFactory.Create<Post>(postsList);
+            var categoriesFakeDbSet = FakeDbSetFactory.Creation<Category>(data);
+            var topicsFakeDbSet = FakeDbSetFactory.Creation<Topic>(topicsList);
+            var postsFakeDbSet = FakeDbSetFactory.Creation<Post>(postsList);
 
             var fakeDatabaseContext = new Mock<IDatabaseContext>();
             fakeDatabaseContext.Setup(p => p.Categories).Returns(categoriesFakeDbSet.Object);

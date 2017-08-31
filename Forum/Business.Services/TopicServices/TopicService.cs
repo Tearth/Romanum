@@ -34,8 +34,8 @@ namespace Business.Services.TopicServices
                     Posts = topic.Posts.Select(post => new PostDTO()
                     {
                         ID = post.ID,
-                        CreateTime = post.CreateTime,
-                        ModifyTime = post.ModifyTime,
+                        CreationTime = post.CreationTime,
+                        ModificationTime = post.ModificationTime,
                         Content = post.Content
                     })
                 }).Single();

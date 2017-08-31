@@ -50,9 +50,9 @@ namespace Business.Services.Tests
             var topicsList = data.SelectMany(p => p.Topics);
             var postsList = topicsList.SelectMany(p => p.Posts);
 
-            var categoriesFakeDbSet = FakeDbSetFactory.Create<Category>(data);
-            var topicsFakeDbSet = FakeDbSetFactory.Create<Topic>(topicsList);
-            var postsFakeDbSet = FakeDbSetFactory.Create<Post>(postsList);
+            var categoriesFakeDbSet = FakeDbSetFactory.Creation<Category>(data);
+            var topicsFakeDbSet = FakeDbSetFactory.Creation<Topic>(topicsList);
+            var postsFakeDbSet = FakeDbSetFactory.Creation<Post>(postsList);
 
             var fakeDatabaseContext = new Mock<IDatabaseContext>();
             fakeDatabaseContext.Setup(p => p.Categories).Returns(categoriesFakeDbSet.Object);
@@ -86,9 +86,9 @@ namespace Business.Services.Tests
             Assert.Equal("Content 1", result.Posts.ElementAt(0).Content);
             Assert.Equal("Content 2", result.Posts.ElementAt(1).Content);
             Assert.Equal("Content 3", result.Posts.ElementAt(2).Content);
-            Assert.Equal(new DateTime(2000, 5, 10).Date, result.Posts.ElementAt(0).CreateTime.Date);
-            Assert.Equal(new DateTime(2001, 1, 2).Date, result.Posts.ElementAt(1).CreateTime.Date);
-            Assert.Equal(new DateTime(2002, 10, 12).Date, result.Posts.ElementAt(2).CreateTime.Date);
+            Assert.Equal(new DateTime(2000, 5, 10).Date, result.Posts.ElementAt(0).CreationTime.Date);
+            Assert.Equal(new DateTime(2001, 1, 2).Date, result.Posts.ElementAt(1).CreationTime.Date);
+            Assert.Equal(new DateTime(2002, 10, 12).Date, result.Posts.ElementAt(2).CreationTime.Date);
         }
 
         [Fact]

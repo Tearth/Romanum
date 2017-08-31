@@ -8,8 +8,8 @@ namespace App.MVC.ViewModels.Post
     public class PostViewModel
     {
         public int ID { get; set; }
-        public DateTime CreateTime { get; set; }
-        public DateTime ModifyTime { get; set; }
+        public DateTime CreationTime { get; set; }
+        public DateTime ModificationTime { get; set; }
         public string Content { get; set; }
     }
 }
