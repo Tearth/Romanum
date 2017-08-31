@@ -1,4 +1,6 @@
-﻿using Business.Services.TopicServices;
+﻿using App.MVC.ViewModels.Topic;
+using AutoMapper;
+using Business.Services.TopicServices;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,9 +19,15 @@ namespace App.MVC.Controllers
         }
 
         [HttpGet]
-        public ActionResult Index(string categoryAlias, string topicAlias, int topicID)
+        public ActionResult Index(string categoryAlias, string topicAlias)
         {
-            return View();
+            if (!_topicService.ValidateTopicAndCategoryAlias(topicAlias, categoryAlias))
+                throw new HttpException(404, "test");
+
+            var topicData = _topicService.GetTopicWithPosts(topicAlias);
+            var viewModel = Mapper.Map<TopicWithPostsViewModel>(topicData);
+
+            return View(viewModel);
         }
     }
 }

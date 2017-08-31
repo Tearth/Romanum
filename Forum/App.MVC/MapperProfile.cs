@@ -7,6 +7,10 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using App.MVC.ViewModels.Topic;
+using Business.Services.DTO.Topic;
+using App.MVC.ViewModels.Post;
+using Business.Services.DTO.Post;
 
 namespace App.MVC
 {
@@ -18,6 +22,8 @@ namespace App.MVC
             CreateMap<CategoryDetalisViewModel, CategoryDetailsDTO>().ReverseMap();
             CreateMap<CategoryWithTopicsViewModel, CategoryWithPostsDTO>().ReverseMap();
             CreateMap<TopicDetailsViewModel, TopicDetailsDTO>().ReverseMap();
+            CreateMap<TopicWithPostsViewModel, TopicWithPostsDTO>().ReverseMap();
+            CreateMap<PostViewModel, PostDTO>().ReverseMap();
         }
     }
 }
