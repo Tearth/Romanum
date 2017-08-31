@@ -14,9 +14,10 @@ namespace DataAccess.Entities.Content
         public virtual Category Category { get; set; }
         public virtual ICollection<Post> Posts { get; set; }
 
-        public Topic(string name)
+        public Topic(string name, string alias)
         {
             Name = name;
+            Alias = alias;
 
             Posts = new List<Post>();
         }

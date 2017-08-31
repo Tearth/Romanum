@@ -8,6 +8,6 @@ namespace DataAccess.Entities
 {
     public abstract class EntityBase
     {
-        public int ID { get; protected set; }
+        public int ID { get; set; }
     }
 }
