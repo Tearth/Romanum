@@ -16,7 +16,7 @@ namespace Business.Services.Tests
 {
     public class CategoryServiceTests
     {
-        IEnumerable<Category> GetCategoriesData()
+        private Mock<IDatabaseContext> GetDatabaseContextMock()
         {
             var data = new List<Category>();
 
@@ -48,19 +48,19 @@ namespace Business.Services.Tests
             secondTopic.Posts.Add(fourthPost);
             thirdTopic.Posts.Add(fifthPost);
 
-            return data;
+            var fakeDbSet = FakeDbSetFactory.Create<Category>(data);
+            var fakeDatabaseContext = new Mock<IDatabaseContext>();
+            fakeDatabaseContext.Setup(p => p.Categories).Returns(fakeDbSet.Object);
+
+            return fakeDatabaseContext;
         }
 
         [Fact]
         public void GetCategoryWithPosts_ValidCategoryAlias_ValidReturnedCategory()
         {
-            var data = GetCategoriesData();
-            var fakeDbSet = FakeDbSetFactory.Create<Category>(data);
+            var databaseContextMock = GetDatabaseContextMock();
 
-            var databaseContext = new Mock<IDatabaseContext>();
-            databaseContext.Setup(p => p.Categories).Returns(fakeDbSet.Object);
-
-            var service = new CategoryService(databaseContext.Object);
+            var service = new CategoryService(databaseContextMock.Object);
             var result = service.GetCategoryWithPosts("cat-1");
 
             Assert.Equal("Category 1", result.Name);
@@ -70,20 +70,14 @@ namespace Business.Services.Tests
         [Fact]
         public void GetCategoryWithPosts_ValidCategoryAlias_ValidReturnedCategoryTopics()
         {
-            var data = GetCategoriesData();
-            var fakeDbSet = FakeDbSetFactory.Create<Category>(data);
+            var databaseContextMock = GetDatabaseContextMock();
 
-            var databaseContext = new Mock<IDatabaseContext>();
-            databaseContext.Setup(p => p.Categories).Returns(fakeDbSet.Object);
-
-            var service = new CategoryService(databaseContext.Object);
+            var service = new CategoryService(databaseContextMock.Object);
             var result = service.GetCategoryWithPosts("cat-1");
 
             Assert.Equal(2, result.Topics.Count());
-
             Assert.Equal("Topic 1", result.Topics.ElementAt(0).Name);
             Assert.Equal("Topic 2", result.Topics.ElementAt(1).Name);
-
             Assert.Equal("top-1", result.Topics.ElementAt(0).Alias);
             Assert.Equal("top-2", result.Topics.ElementAt(1).Alias);
         }
@@ -91,13 +85,9 @@ namespace Business.Services.Tests
         [Fact]
         public void GetCategoryWithPosts_BadAlias_CategoryNotFoundException()
         {
-            var data = GetCategoriesData();
-            var fakeDbSet = FakeDbSetFactory.Create<Category>(data);
+            var databaseContextMock = GetDatabaseContextMock();
 
-            var databaseContext = new Mock<IDatabaseContext>();
-            databaseContext.Setup(p => p.Categories).Returns(fakeDbSet.Object);
-
-            var service = new CategoryService(databaseContext.Object);
+            var service = new CategoryService(databaseContextMock.Object);
             var result = Record.Exception(() => service.GetCategoryWithPosts("bad-category-alias"));
 
             Assert.Equal(typeof(CategoryNotFoundException), result.GetType());
@@ -105,32 +95,22 @@ namespace Business.Services.Tests
         }
 
         [Fact]
-        public void Exists_ValidData_CategoryExists()
+        public void Exists_ValidAlias_CategoryExists()
         {
-            var data = GetCategoriesData();
+            var databaseContextMock = GetDatabaseContextMock();
 
-            var fakeDbSet = FakeDbSetFactory.Create<Category>(data);
-
-            var databaseContext = new Mock<IDatabaseContext>();
-            databaseContext.Setup(p => p.Categories).Returns(fakeDbSet.Object);
-
-            var service = new CategoryService(databaseContext.Object);
+            var service = new CategoryService(databaseContextMock.Object);
             var result = service.Exists("cat-3");
 
             Assert.True(result);
         }
 
         [Fact]
-        public void Exists_NoCategory_CategoryNotExists()
+        public void Exists_BadAlias_CategoryNotExists()
         {
-            var data = GetCategoriesData();
+            var databaseContextMock = GetDatabaseContextMock();
 
-            var fakeDbSet = FakeDbSetFactory.Create<Category>(data);
-
-            var databaseContext = new Mock<IDatabaseContext>();
-            databaseContext.Setup(p => p.Categories).Returns(fakeDbSet.Object);
-
-            var service = new CategoryService(databaseContext.Object);
+            var service = new CategoryService(databaseContextMock.Object);
             var result = service.Exists("bad-category-alias");
 
             Assert.False(result);
