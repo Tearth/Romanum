@@ -39,7 +39,7 @@ namespace Business.Services.CategoryServices
                         AuthorName = "Foo bar",
                         PostsCount = topic.Posts.Count,
                         LastPostAuthorName = "Lorem Ipsum",
-                        LastPostTime = topic.Posts.Max(post => post.CreationTime)
+                        LastPostCreationTime = topic.Posts.Max(post => post.CreationTime)
                     })
                 }).Single();
 

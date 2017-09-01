@@ -88,16 +88,16 @@ namespace Business.Services.Tests
         }
 
         [Fact]
-        public void GetAllSetionsWithCategories_ReturnsValidLastPostTime()
+        public void GetAllSetionsWithCategories_ReturnsValidLastPostCreationTime()
         {
             var databaseContextMock = GetDatabaseContextMock();
 
             var service = new SectionService(databaseContextMock.Object);
             var result = service.GetAllSetionsWithCategories();
             
-            Assert.Equal(new DateTime(2003, 3, 27).Date, result.ElementAt(0).Categories.ElementAt(0).LastPostTime.Date);
-            Assert.Equal(new DateTime(2004, 2, 1).Date, result.ElementAt(0).Categories.ElementAt(1).LastPostTime.Date);
-            Assert.Equal(default(DateTime), result.ElementAt(1).Categories.ElementAt(0).LastPostTime.Date);
+            Assert.Equal(new DateTime(2003, 3, 27).Date, result.ElementAt(0).Categories.ElementAt(0).LastPostCreationTime.Date);
+            Assert.Equal(new DateTime(2004, 2, 1).Date, result.ElementAt(0).Categories.ElementAt(1).LastPostCreationTime.Date);
+            Assert.Equal(default(DateTime), result.ElementAt(1).Categories.ElementAt(0).LastPostCreationTime.Date);
         }
 
         [Fact]

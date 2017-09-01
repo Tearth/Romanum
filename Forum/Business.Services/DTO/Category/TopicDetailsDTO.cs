@@ -14,7 +14,7 @@ namespace Business.Services.DTO.Category
         public String AuthorName { get; set; }
         public DateTime CreationTime { get; set; }
         public String LastPostAuthorName { get; set; }
-        public DateTime LastPostTime { get; set; }
+        public DateTime LastPostCreationTime { get; set; }
         public int PostsCount { get; set; }
     }
 }

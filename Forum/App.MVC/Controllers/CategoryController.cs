@@ -19,7 +19,7 @@ namespace App.MVC.Controllers
         }
 
         [HttpGet]
-        public ActionResult Index(String categoryAlias)
+        public ActionResult Index(string categoryAlias)
         {
             var category = _categoryService.GetCategoryWithPosts(categoryAlias);
             var viewModel = Mapper.Map<CategoryWithTopicsViewModel>(category);
