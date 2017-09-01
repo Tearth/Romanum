@@ -71,33 +71,34 @@ namespace Business.Services.Tests
             return fakeDatabaseContext;
         }
 
-        [Fact]
-        public void GetTopicWithPosts_ExistingTopicAlias_ReturnsValidTopicData()
+        [Theory]
+        [InlineData(1, "top-1", "Topic 1")]
+        [InlineData(2, "top-2", "Topic 2")]
+        [InlineData(3, "top-3", "Topic 3")]
+        public void GetTopicWithPosts_ExistingTopicAlias_ReturnsValidTopicData(int id, string topicAlias, string topicName)
         {
             var databaseContextMock = GetDatabaseContextMock();
 
             var service = new TopicService(databaseContextMock.Object);
-            var result = service.GetTopicWithPosts("top-1");
+            var result = service.GetTopicWithPosts(topicAlias);
 
-            Assert.Equal("Topic 1", result.Name);
-            Assert.Equal("top-1", result.Alias);
+            Assert.Equal(id, result.ID);
+            Assert.Equal(topicName, result.Name);
+            Assert.Equal(topicAlias, result.Alias);
         }
 
-        [Fact]
-        public void GetTopicWithPosts_ExistingTopicAlias_ReturnsValidPosts()
+        [Theory]
+        [InlineData("top-1", 3)]
+        [InlineData("top-2", 1)]
+        [InlineData("top-3", 1)]
+        public void GetTopicWithPosts_ExistingTopicAlias_ReturnsValidPosts(string topicAlias, int postsCount)
         {
             var databaseContextMock = GetDatabaseContextMock();
 
             var service = new TopicService(databaseContextMock.Object);
-            var result = service.GetTopicWithPosts("top-1");
+            var result = service.GetTopicWithPosts(topicAlias);
 
-            Assert.Equal(3, result.Posts.Count());
-            Assert.Equal("Content 1", result.Posts.ElementAt(0).Content);
-            Assert.Equal("Content 2", result.Posts.ElementAt(1).Content);
-            Assert.Equal("Content 3", result.Posts.ElementAt(2).Content);
-            Assert.Equal(new DateTime(2000, 5, 10).Date, result.Posts.ElementAt(0).CreationTime.Date);
-            Assert.Equal(new DateTime(2001, 1, 2).Date, result.Posts.ElementAt(1).CreationTime.Date);
-            Assert.Equal(new DateTime(2002, 10, 12).Date, result.Posts.ElementAt(2).CreationTime.Date);
+            Assert.Equal(postsCount, result.Posts.Count());
         }
 
         [Fact]
@@ -112,13 +113,16 @@ namespace Business.Services.Tests
             Assert.Equal("bad-topic-alias", result.Message);
         }
 
-        [Fact]
-        public void Exists_ExistingAlias_ReturnsTrue()
+        [Theory]
+        [InlineData("top-1")]
+        [InlineData("top-2")]
+        [InlineData("top-3")]
+        public void Exists_ExistingAlias_ReturnsTrue(string topicAlias)
         {
             var databaseContextMock = GetDatabaseContextMock();
 
             var service = new TopicService(databaseContextMock.Object);
-            var result = service.Exists("top-1");
+            var result = service.Exists(topicAlias);
 
             Assert.True(result);
         }
@@ -134,24 +138,30 @@ namespace Business.Services.Tests
             Assert.False(result);
         }
 
-        [Fact]
-        public void ValidateTopicAndCategoryAlias_ExistingAlias_ReturnsTrue()
+        [Theory]
+        [InlineData("top-1", "cat-1")]
+        [InlineData("top-2", "cat-1")]
+        [InlineData("top-3", "cat-2")]
+        public void ValidateTopicAndCategoryAlias_ExistingAlias_ReturnsTrue(string topicAlias, string categoryAlias)
         {
             var databaseContextMock = GetDatabaseContextMock();
 
             var service = new TopicService(databaseContextMock.Object);
-            var result = service.ValidateTopicAndCategoryAlias("top-1", "cat-1");
+            var result = service.ValidateTopicAndCategoryAlias(topicAlias, categoryAlias);
 
             Assert.True(result);
         }
 
-        [Fact]
-        public void ValidateTopicAndCategoryAlias_InvalidCategoryAlias_ReturnsFalse()
+        [Theory]
+        [InlineData("top-1", "bad-category-alias")]
+        [InlineData("bad-topic-alias", "bad-category-alias")]
+        [InlineData("bad-topic-alias", "cat-3")]
+        public void ValidateTopicAndCategoryAlias_InvalidCategoryAlias_ReturnsFalse(string topicAlias, string categoryAlias)
         {
             var databaseContextMock = GetDatabaseContextMock();
 
             var service = new TopicService(databaseContextMock.Object);
-            var result = service.ValidateTopicAndCategoryAlias("top-1", "bad-category-alias");
+            var result = service.ValidateTopicAndCategoryAlias(topicAlias, categoryAlias);
 
             Assert.False(result);
         }
