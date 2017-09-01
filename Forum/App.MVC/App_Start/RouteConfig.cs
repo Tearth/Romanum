@@ -7,7 +7,7 @@ using System.Web.Routing;
 
 namespace App.MVC.App_Start
 {
-    internal class RouteConfig
+    class RouteConfig
     {
         public static void RegisterRoutes(RouteCollection routes)
         {

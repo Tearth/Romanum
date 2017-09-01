@@ -7,9 +7,9 @@ using System.Web;
 
 namespace App.MVC.App_Start
 {
-    internal class MapperConfig
+    class MapperConfig
     {
-        public static void RegisterProfiles()
+        internal static void RegisterProfiles()
         {
             //AutoMapper will cause MissingMethodException when
             //trying to pass to AddProfiles, so get all assemblies

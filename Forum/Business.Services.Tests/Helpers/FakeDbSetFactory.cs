@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Business.Services.Tests.Helpers
 {
-    internal static class FakeDbSetFactory
+    static class FakeDbSetFactory
     {
         public static Mock<DbSet<T>> Creation<T>(IEnumerable<T> elements) where T : class
         {

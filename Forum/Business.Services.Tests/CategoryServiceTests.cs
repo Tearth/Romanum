@@ -16,7 +16,7 @@ namespace Business.Services.Tests
 {
     public class CategoryServiceTests
     {
-        private Mock<IDatabaseContext> GetDatabaseContextMock()
+        Mock<IDatabaseContext> GetDatabaseContextMock()
         {
             var data = new List<Category>();
 
