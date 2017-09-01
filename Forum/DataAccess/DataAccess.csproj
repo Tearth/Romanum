@@ -69,6 +69,7 @@
     <Compile Include="Database\MapConfig\Content\SectionConfig.cs" />
     <Compile Include="Database\MapConfig\Content\TopicConfig.cs" />
     <Compile Include="Dependencies.cs" />
+    <Compile Include="Entities\Content\User.cs" />
     <Compile Include="EntityBase.cs" />
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

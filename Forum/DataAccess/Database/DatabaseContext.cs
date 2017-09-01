@@ -17,6 +17,7 @@ namespace DataAccess.Database
         public virtual IDbSet<Category> Categories { get; set; }
         public virtual IDbSet<Topic> Topics { get; set; }
         public virtual IDbSet<Post> Posts { get; set; }
+        public virtual IDbSet<User> Users { get; set; }
 
         static bool Ready = false;
 
