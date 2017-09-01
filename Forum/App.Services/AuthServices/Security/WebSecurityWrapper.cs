@@ -1,4 +1,5 @@
-﻿using System;
+﻿using App.Services.DTO.Auth;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +24,16 @@ namespace App.Services.AuthServices.Security
                 WebSecurity.InitializeDatabaseConnection(ConnectionStringName, UserTableName, UserIDColumn, UserNameColumn, true);
                 Ready = true;
             }
+        }
+
+        public void CreateUser(NewUserDTO user)
+        {
+            WebSecurity.CreateUserAndAccount(user.Name, user.Password, new { EMail = user.EMail });
+        }
+
+        public bool UserExists(string name)
+        {
+            return WebSecurity.UserExists(name);
         }
     }
 }
