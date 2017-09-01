@@ -22,7 +22,7 @@ namespace App.MVC.Controllers
         public ActionResult Index(string categoryAlias, string topicAlias)
         {
             if (!_topicService.ValidateTopicAndCategoryAlias(topicAlias, categoryAlias))
-                throw new HttpException(404, "test");
+                throw new HttpException(404, "Not found"); //TODO
 
             var topicData = _topicService.GetTopicWithPosts(topicAlias);
             var viewModel = Mapper.Map<TopicWithPostsViewModel>(topicData);

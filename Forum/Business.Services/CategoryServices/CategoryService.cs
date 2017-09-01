@@ -36,10 +36,11 @@ namespace Business.Services.CategoryServices
                         ID = topic.ID,
                         Name = topic.Name,
                         Alias = topic.Alias,
-                        AuthorName = "Foo bar",
+                        AuthorName = topic.Posts.OrderByDescending(p => p.CreationTime).FirstOrDefault().User.Name,
+                        CreationTime = topic.Posts.OrderByDescending(p => p.CreationTime).FirstOrDefault().CreationTime,
                         PostsCount = topic.Posts.Count,
-                        LastPostAuthorName = "Lorem Ipsum",
-                        LastPostCreationTime = topic.Posts.Max(post => post.CreationTime)
+                        LastPostAuthorName = topic.Posts.OrderBy(p => p.CreationTime).FirstOrDefault().User.Name,
+                        LastPostCreationTime = topic.Posts.OrderBy(p => p.CreationTime).FirstOrDefault().CreationTime
                     })
                 }).Single();
 

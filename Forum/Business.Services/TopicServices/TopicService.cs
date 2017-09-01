@@ -35,6 +35,7 @@ namespace Business.Services.TopicServices
                         ID = post.ID,
                         CreationTime = post.CreationTime,
                         ModificationTime = post.ModificationTime,
+                        AuthorName = post.User.Name,
                         Content = post.Content
                     })
                 }).Single();
