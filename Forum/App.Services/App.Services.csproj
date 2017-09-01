@@ -62,6 +62,8 @@
   <ItemGroup>
     <Compile Include="AuthServices\AuthService.cs" />
     <Compile Include="AuthServices\IAuthService.cs" />
+    <Compile Include="AuthServices\Security\IWebSecurityWrapper.cs" />
+    <Compile Include="AuthServices\Security\WebSecurityWrapper.cs" />
     <Compile Include="Bootloader.cs" />
     <Compile Include="Dependencies.cs" />
     <Compile Include="MapperProfile.cs" />
