@@ -12,5 +12,10 @@ namespace DataAccess.Entities.Content
         public String Name { get; set; }
 
         public virtual ICollection<Post> Posts { get; set; }
+
+        public User(string name)
+        {
+            Name = name;
+        }
     }
 }

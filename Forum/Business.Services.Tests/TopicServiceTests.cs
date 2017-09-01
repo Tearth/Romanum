@@ -17,15 +17,22 @@ namespace Business.Services.Tests
     {
         Mock<IDatabaseContext> GetDatabaseContextMock()
         {
-            var data = new List<Category>();
+            var categories = new List<Category>();
+            var users = new List<User>();
+
+            var firstUser = new User("User 1") { ID = 1 };
+            var secondUser = new User("User 2") { ID = 2 };
+
+            users.Add(firstUser);
+            users.Add(secondUser);
 
             var firstCategory = new Category("Category 1", "cat-1") { ID = 1 };
             var secondCategory = new Category("Category 2", "cat-2") { ID = 2 };
             var thirdCategory = new Category("Category 3", "cat-3") { ID = 3 };
 
-            data.Add(firstCategory);
-            data.Add(secondCategory);
-            data.Add(thirdCategory);
+            categories.Add(firstCategory);
+            categories.Add(secondCategory);
+            categories.Add(thirdCategory);
 
             var firstTopic = new Topic("Topic 1", "top-1") { ID = 1, Category = firstCategory };
             var secondTopic = new Topic("Topic 2", "top-2") { ID = 2, Category = firstCategory };
@@ -35,11 +42,11 @@ namespace Business.Services.Tests
             firstCategory.Topics.Add(secondTopic);
             secondCategory.Topics.Add(thirdTopic);
 
-            var firstPost = new Post("Content 1", new DateTime(2000, 5, 10)) { ID = 1, Topic = firstTopic };
-            var secondPost = new Post("Content 2", new DateTime(2001, 1, 2)) { ID = 2, Topic = firstTopic };
-            var thirdPost = new Post("Content 3", new DateTime(2002, 10, 12)) { ID = 3, Topic = firstTopic };
-            var fourthPost = new Post("Content 4", new DateTime(2003, 3, 27)) { ID = 4, Topic = secondTopic };
-            var fifthPost = new Post("Content 5", new DateTime(2004, 2, 1)) { ID = 5, Topic = thirdTopic };
+            var firstPost = new Post("Content 1", new DateTime(2000, 5, 10)) { ID = 1, Topic = firstTopic, Author = firstUser };
+            var secondPost = new Post("Content 2", new DateTime(2001, 1, 2)) { ID = 2, Topic = firstTopic, Author = firstUser };
+            var thirdPost = new Post("Content 3", new DateTime(2002, 10, 12)) { ID = 3, Topic = firstTopic, Author = secondUser };
+            var fourthPost = new Post("Content 4", new DateTime(2003, 3, 27)) { ID = 4, Topic = secondTopic, Author = secondUser };
+            var fifthPost = new Post("Content 5", new DateTime(2004, 2, 1)) { ID = 5, Topic = thirdTopic, Author = firstUser };
 
             firstTopic.Posts.Add(firstPost);
             firstTopic.Posts.Add(secondPost);
@@ -47,14 +54,16 @@ namespace Business.Services.Tests
             secondTopic.Posts.Add(fourthPost);
             thirdTopic.Posts.Add(fifthPost);
 
-            var topicsList = data.SelectMany(p => p.Topics);
+            var topicsList = categories.SelectMany(p => p.Topics);
             var postsList = topicsList.SelectMany(p => p.Posts);
 
-            var categoriesFakeDbSet = FakeDbSetFactory.Creation<Category>(data);
+            var usersFakeDbSet = FakeDbSetFactory.Creation<User>(users);
+            var categoriesFakeDbSet = FakeDbSetFactory.Creation<Category>(categories);
             var topicsFakeDbSet = FakeDbSetFactory.Creation<Topic>(topicsList);
             var postsFakeDbSet = FakeDbSetFactory.Creation<Post>(postsList);
 
             var fakeDatabaseContext = new Mock<IDatabaseContext>();
+            fakeDatabaseContext.Setup(p => p.Users).Returns(usersFakeDbSet.Object);
             fakeDatabaseContext.Setup(p => p.Categories).Returns(categoriesFakeDbSet.Object);
             fakeDatabaseContext.Setup(p => p.Topics).Returns(topicsFakeDbSet.Object);
             fakeDatabaseContext.Setup(p => p.Posts).Returns(postsFakeDbSet.Object);

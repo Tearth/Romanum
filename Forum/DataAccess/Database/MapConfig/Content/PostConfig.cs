@@ -18,7 +18,7 @@ namespace DataAccess.Database.MapConfig.Content
             Property(p => p.ModificationTime).IsRequired();
 
             HasRequired(p => p.Topic);
-            HasRequired(p => p.User);
+            HasRequired(p => p.Author);
         }
     }
 }
