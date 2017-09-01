@@ -14,7 +14,7 @@ namespace App.Services.AuthServices.Security
         const string ConnectionStringName = "MainDB";
         const string UserTableName = "Users";
         const string UserIDColumn = "ID";
-        const string UserNameColumn = "UserName";
+        const string UserNameColumn = "Name";
 
         public WebSecurityWrapper()
         {
