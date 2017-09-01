@@ -35,5 +35,32 @@ namespace App.Services.AuthServices.Security
         {
             return WebSecurity.UserExists(name);
         }
+
+        public bool LogIn(LogInDTO data)
+        {
+            return WebSecurity.Login(data.Name, data.Password, data.RememberMe);
+        }
+
+        public void LogOut()
+        {
+            WebSecurity.Logout();
+        }
+
+        public bool ChangePassword(ChangePasswordDTO data)
+        {
+            return WebSecurity.ChangePassword(data.Name, data.OldPassword, data.NewPassword);
+        }
+
+        public CurrentUserDTO GetCurrentUser()
+        {
+            if (!WebSecurity.IsAuthenticated)
+                return null;
+
+            return new CurrentUserDTO()
+            {
+                ID = WebSecurity.CurrentUserId,
+                Name = WebSecurity.CurrentUserName
+            };
+        }
     }
 }
