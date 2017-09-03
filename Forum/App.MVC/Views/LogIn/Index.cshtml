@@ -1,8 +1,10 @@
-﻿@{
+﻿@model LogInViewModel
+@{
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<form action="#" method="post">
+@using (Html.BeginForm("Index", "LogIn"))
+{
     <div class="cap-div"><div class="cap-left"><div class="cap-right">&nbsp;Login&nbsp;</div></div></div>
     <table class="tablebg" width="100%" cellspacing="0">
         <tr>
@@ -19,7 +21,7 @@
                     <tr>
                         <td valign="top"><b class="gensmall">Username:</b></td>
                         <td>
-                            <input class="post" type="text" name="username" size="25" value="" tabindex="1" />
+                            @Html.TextBoxFor(p => Model.UserName)
 
                             <br /><a class="gensmall" href="#">Register</a>
 
@@ -28,14 +30,14 @@
                     <tr>
                         <td valign="top"><b class="gensmall">Password:</b></td>
                         <td>
-                            <input class="post" type="password" name="password" size="25" tabindex="2" />
+                            @Html.PasswordFor(p => Model.Password)
                             <br /><a class="gensmall" href="#">I forgot my password</a><br /><a class="gensmall" href="#">Resend activation e-mail</a>
                         </td>
                     </tr>
 
                     <tr>
                         <td>&nbsp;</td>
-                        <td><input type="checkbox" class="radio" name="autologin" tabindex="3" /> <span class="gensmall">Log me on automatically each visit</span></td>
+                        <td>@Html.RadioButtonFor(p => p.RememberMe) <span class="gensmall">Log me on automatically each visit</span></td>
                     </tr>
 
                     <tr>
@@ -48,12 +50,10 @@
 
         <tr>
             <td class="cat" colspan="2" align="center">
-                <input type="hidden" name="sid" value="0d3b69efc6ea2049e81dc94e5c8db9f6" />
-                <input type="hidden" name="redirect" value="index.php" />
                 <input type="submit" name="login" class="btnmain" value="Login" tabindex="5" />
             </td>
         </tr>
     </table>
-</form>
+}
 
 <br clear="all" />
