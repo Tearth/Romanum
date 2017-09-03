@@ -794,3 +794,8 @@ pre {
     background-color: #FFF;
     color: #000;
 }
+
+.validation-error{
+    color: red;
+    font-weight: bold;
+}

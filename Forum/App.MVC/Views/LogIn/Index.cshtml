@@ -17,6 +17,9 @@
             </td>
 
             <td class="row2">
+                <div class="validation-error">@Html.ValidationMessageFor(p => Model.UserName)</div>
+                <div class="validation-error">@Html.ValidationMessageFor(p => Model.Password)</div>
+                
                 <table align="center" cellspacing="1" cellpadding="4" style="width: 100%;">
                     <tr>
                         <td valign="top"><b class="gensmall">Username:</b></td>
@@ -37,7 +40,7 @@
 
                     <tr>
                         <td>&nbsp;</td>
-                        <td>@Html.RadioButtonFor(p => p.RememberMe) <span class="gensmall">Log me on automatically each visit</span></td>
+                        <td>@Html.RadioButtonFor(p => Model.RememberMe, false) <span class="gensmall">Log me on automatically each visit</span></td>
                     </tr>
 
                     <tr>
