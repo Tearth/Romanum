@@ -11,7 +11,7 @@ namespace App.MVC.App_Start
     {
         public static void RegisterGlobalFilters(GlobalFilterCollection filters)
         {
-            filters.Add(new ValidationModelStateAttribute());
+            filters.Add(new ValidateModelStateAttribute());
         }
     }
 }
