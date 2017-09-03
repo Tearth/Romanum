@@ -21,8 +21,8 @@ namespace Business.Services.TopicServices
         public TopicWithPostsDTO GetTopicWithPosts(string topicAlias)
         {
             if (!Exists(topicAlias))
-                throw new TopicNotFoundException(topicAlias);
-
+                throw new TopicNotFoundException();
+            
             var topicWithPosts = _databaseContext
                 .Topics.Where(topic => topic.Alias == topicAlias)
                 .Select(topic => new TopicWithPostsDTO()

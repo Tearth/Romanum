@@ -22,7 +22,7 @@ namespace Business.Services.CategoryServices
         public CategoryWithPostsDTO GetCategoryWithPosts(string categoryAlias)
         {
             if (!Exists(categoryAlias))
-                throw new CategoryNotFoundException(categoryAlias);
+                throw new CategoryNotFoundException();
 
             var categoryWithPosts = _databaseContext
                 .Categories.Where(category => category.Alias == categoryAlias)

@@ -38,9 +38,6 @@ namespace App.Services.AuthServices
 
         public bool LogIn(LogInDTO data)
         {
-            if (_webSecurityWrapper.UserExists(data.Name))
-                throw new UserNameExistsException();
-
             return _webSecurityWrapper.LogIn(data);
         }
 
