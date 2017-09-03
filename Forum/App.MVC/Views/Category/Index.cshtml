@@ -44,8 +44,7 @@
 
                     <td class="row1">
                         <a href="#"><img src="/Content/Images/icon_topic_newest.gif" width="9" height="9" alt="View first unread post" title="View first unread post" /></a>
-                        <a title="Posted: 22 May 2007, 08:51" href="#" class="topictitle link-new">@topic.Name</a>
-
+                        @Html.ActionLink(topic.Name, "Index", "Topic", new { topicAlias = topic.Alias }, new { @class = "topictitle link-new" })
                     </td>
                     <td class="row2" width="130" align="center"><p class="topicauthor"><a href="#">@topic.AuthorName</a></p></td>
                     <td class="row1" width="50" align="center"><p class="topicdetails">@topic.CreationTime</p></td>
