@@ -31,9 +31,10 @@ namespace Business.Services.SectionServices
                         Description = category.Description,
                         TopicsCount = category.Topics.Count(),
                         PostsCount = category.Topics.SelectMany(topic => topic.Posts).Count(),
-                        LastPostCreationTime = category.Topics.SelectMany(topic => topic.Posts).Select(post => post.CreationTime)
-                                                                                       .DefaultIfEmpty()
-                                                                                       .Max()
+                        LastPostCreationTime = category.Topics.SelectMany(topic => topic.Posts)
+                                                              .Select(post => post.CreationTime)
+                                                              .DefaultIfEmpty()
+                                                              .Max()
                     })
                 }).ToList();
 

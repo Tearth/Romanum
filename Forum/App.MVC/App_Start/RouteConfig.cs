@@ -14,6 +14,12 @@ namespace App.MVC.App_Start
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
             routes.MapRoute(
+                name: "LogIn",
+                url: "LogIn",
+                defaults: new { controller = "LogIn", action = "Index" }
+            );
+
+            routes.MapRoute(
                 name: "Category",
                 url: "{categoryAlias}",
                 defaults: new { controller = "Category", action = "Index" }
