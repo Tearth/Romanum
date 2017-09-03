@@ -108,8 +108,7 @@ namespace Business.Services.Tests
             var service = new CategoryService(databaseContextMock.Object);
             var exception = Record.Exception(() => service.GetCategoryWithPosts("bad-category-alias"));
 
-            Assert.Equal(typeof(CategoryNotFoundException), exception.GetType());
-            Assert.Equal("bad-category-alias", exception.Message);
+            Assert.IsType<CategoryNotFoundException>(exception);
         }
 
         [Theory]

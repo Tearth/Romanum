@@ -108,8 +108,7 @@ namespace Business.Services.Tests
             var service = new TopicService(databaseContextMock.Object);
             var exception = Record.Exception(() => service.GetTopicWithPosts("bad-topic-alias"));
 
-            Assert.Equal(typeof(TopicNotFoundException), exception.GetType());
-            Assert.Equal("bad-topic-alias", exception.Message);
+            Assert.IsType<TopicNotFoundException>(exception);
         }
 
         [Theory]
