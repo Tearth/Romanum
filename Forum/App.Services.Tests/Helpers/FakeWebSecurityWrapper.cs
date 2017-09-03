@@ -25,6 +25,11 @@ namespace App.Services.Tests.Helpers
             return null;
         }
 
+        public bool IsUserLoggedIn()
+        {
+            return false;
+        }
+
         public bool LogIn(LogInDTO data)
         {
             return false;

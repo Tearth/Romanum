@@ -11,6 +11,7 @@ namespace App.Services.AuthServices.Security
     {
         void CreateUser(NewUserDTO user);
         bool UserExists(string name);
+        bool IsUserLoggedIn();
         bool LogIn(LogInDTO data);
         void LogOut();
         bool ChangePassword(ChangePasswordDTO data);

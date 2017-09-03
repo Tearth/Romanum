@@ -61,6 +61,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AuthServices\AuthService.cs" />
+    <Compile Include="AuthServices\Exceptions\UserNameExistsException.cs" />
+    <Compile Include="AuthServices\Exceptions\UserNotLoggedInException.cs" />
     <Compile Include="AuthServices\IAuthService.cs" />
     <Compile Include="AuthServices\Security\IWebSecurityWrapper.cs" />
     <Compile Include="AuthServices\Security\WebSecurityWrapper.cs" />

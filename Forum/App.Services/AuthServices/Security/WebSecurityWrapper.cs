@@ -36,6 +36,11 @@ namespace App.Services.AuthServices.Security
             return WebSecurity.UserExists(name);
         }
 
+        public bool IsUserLoggedIn()
+        {
+            return WebSecurity.IsAuthenticated;
+        }
+
         public bool LogIn(LogInDTO data)
         {
             return WebSecurity.Login(data.Name, data.Password, data.RememberMe);
