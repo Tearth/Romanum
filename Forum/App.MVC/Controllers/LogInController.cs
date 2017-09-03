@@ -1,4 +1,5 @@
-﻿using System;
+﻿using App.MVC.ViewModels.LogIn;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -15,6 +16,12 @@ namespace App.MVC.Controllers
 
         [HttpGet]
         public ActionResult Index()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Index(LogInViewModel viewModel)
         {
             return View();
         }
