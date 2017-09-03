@@ -43,13 +43,16 @@ namespace App.Services.AuthServices
 
         public void LogOut()
         {
+            if (!_webSecurityWrapper.IsUserLoggedIn())
+                throw new UserNotLoggedInException();
+
             _webSecurityWrapper.LogOut();
         }
 
         public bool ChangePassword(ChangePasswordDTO data)
         {
-            if (_webSecurityWrapper.UserExists(data.Name))
-                throw new UserNameExistsException();
+            if (!_webSecurityWrapper.UserExists(data.Name))
+                throw new UserNameNotExistsException();
 
             return _webSecurityWrapper.ChangePassword(data);
         }
