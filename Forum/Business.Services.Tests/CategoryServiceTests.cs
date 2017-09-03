@@ -72,27 +72,32 @@ namespace Business.Services.Tests
             return fakeDatabaseContext;
         }
 
-        [Fact]
-        public void GetCategoryWithPosts_ExistingAlias_ReturnsValidCategoryData()
+        [Theory]
+        [InlineData("cat-1", "Category 1")]
+        [InlineData("cat-2", "Category 2")]
+        [InlineData("cat-3", "Category 3")]
+        public void GetCategoryWithPosts_ExistingAlias_ReturnsValidCategoryName(string categoryAlias, string expectedCategoryName)
         {
             var databaseContextMock = GetDatabaseContextMock();
 
             var service = new CategoryService(databaseContextMock.Object);
-            var result = service.GetCategoryWithPosts("cat-1");
+            var category = service.GetCategoryWithPosts(categoryAlias);
 
-            Assert.Equal("Category 1", result.Name);
-            Assert.Equal("cat-1", result.Alias);
+            Assert.Equal(expectedCategoryName, category.Name);
         }
 
-        [Fact]
-        public void GetCategoryWithPosts_ExistingAlias_ReturnsValidCategoryTopicsCount()
+        [Theory]
+        [InlineData("cat-1", 2)]
+        [InlineData("cat-2", 1)]
+        [InlineData("cat-3", 0)]
+        public void GetCategoryWithPosts_ExistingAlias_ReturnsValidCategoryTopicsCount(string categoryAlias, int expectedTopicsCount)
         {
             var databaseContextMock = GetDatabaseContextMock();
 
             var service = new CategoryService(databaseContextMock.Object);
-            var result = service.GetCategoryWithPosts("cat-1");
+            var category = service.GetCategoryWithPosts(categoryAlias);
 
-            Assert.Equal(2, result.Topics.Count());
+            Assert.Equal(expectedTopicsCount, category.Topics.Count());
         }
 
         [Fact]
@@ -101,19 +106,22 @@ namespace Business.Services.Tests
             var databaseContextMock = GetDatabaseContextMock();
 
             var service = new CategoryService(databaseContextMock.Object);
-            var result = Record.Exception(() => service.GetCategoryWithPosts("bad-category-alias"));
+            var exception = Record.Exception(() => service.GetCategoryWithPosts("bad-category-alias"));
 
-            Assert.Equal(typeof(CategoryNotFoundException), result.GetType());
-            Assert.Equal("bad-category-alias", result.Message);
+            Assert.Equal(typeof(CategoryNotFoundException), exception.GetType());
+            Assert.Equal("bad-category-alias", exception.Message);
         }
 
-        [Fact]
-        public void Exists_ExistingAlias_ReturnsTrue()
+        [Theory]
+        [InlineData("cat-1")]
+        [InlineData("cat-2")]
+        [InlineData("cat-3")]
+        public void Exists_ExistingAlias_ReturnsTrue(string categoryAlias)
         {
             var databaseContextMock = GetDatabaseContextMock();
 
             var service = new CategoryService(databaseContextMock.Object);
-            var result = service.Exists("cat-3");
+            var result = service.Exists(categoryAlias);
 
             Assert.True(result);
         }

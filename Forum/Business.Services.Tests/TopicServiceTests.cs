@@ -80,11 +80,10 @@ namespace Business.Services.Tests
             var databaseContextMock = GetDatabaseContextMock();
 
             var service = new TopicService(databaseContextMock.Object);
-            var result = service.GetTopicWithPosts(topicAlias);
+            var topic = service.GetTopicWithPosts(topicAlias);
 
-            Assert.Equal(expectedTopicID, result.ID);
-            Assert.Equal(expectedTopicName, result.Name);
-            Assert.Equal(topicAlias, result.Alias);
+            Assert.Equal(expectedTopicID, topic.ID);
+            Assert.Equal(expectedTopicName, topic.Name);
         }
 
         [Theory]
@@ -96,9 +95,9 @@ namespace Business.Services.Tests
             var databaseContextMock = GetDatabaseContextMock();
 
             var service = new TopicService(databaseContextMock.Object);
-            var result = service.GetTopicWithPosts(topicAlias);
+            var topic = service.GetTopicWithPosts(topicAlias);
 
-            Assert.Equal(expectedPostsCount, result.Posts.Count());
+            Assert.Equal(expectedPostsCount, topic.Posts.Count());
         }
 
         [Fact]
@@ -107,10 +106,10 @@ namespace Business.Services.Tests
             var databaseContextMock = GetDatabaseContextMock();
 
             var service = new TopicService(databaseContextMock.Object);
-            var result = Record.Exception(() => service.GetTopicWithPosts("bad-topic-alias"));
+            var exception = Record.Exception(() => service.GetTopicWithPosts("bad-topic-alias"));
 
-            Assert.Equal(typeof(TopicNotFoundException), result.GetType());
-            Assert.Equal("bad-topic-alias", result.Message);
+            Assert.Equal(typeof(TopicNotFoundException), exception.GetType());
+            Assert.Equal("bad-topic-alias", exception.Message);
         }
 
         [Theory]
