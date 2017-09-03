@@ -72,18 +72,18 @@ namespace Business.Services.Tests
         }
 
         [Theory]
-        [InlineData(1, "top-1", "Topic 1")]
-        [InlineData(2, "top-2", "Topic 2")]
-        [InlineData(3, "top-3", "Topic 3")]
-        public void GetTopicWithPosts_ExistingTopicAlias_ReturnsValidTopicData(int id, string topicAlias, string topicName)
+        [InlineData("top-1", 1, "Topic 1")]
+        [InlineData("top-2", 2, "Topic 2")]
+        [InlineData("top-3", 3, "Topic 3")]
+        public void GetTopicWithPosts_ExistingTopicAlias_ReturnsValidTopicData(string topicAlias, int expectedTopicID, string expectedTopicName)
         {
             var databaseContextMock = GetDatabaseContextMock();
 
             var service = new TopicService(databaseContextMock.Object);
             var result = service.GetTopicWithPosts(topicAlias);
 
-            Assert.Equal(id, result.ID);
-            Assert.Equal(topicName, result.Name);
+            Assert.Equal(expectedTopicID, result.ID);
+            Assert.Equal(expectedTopicName, result.Name);
             Assert.Equal(topicAlias, result.Alias);
         }
 
@@ -91,14 +91,14 @@ namespace Business.Services.Tests
         [InlineData("top-1", 3)]
         [InlineData("top-2", 1)]
         [InlineData("top-3", 1)]
-        public void GetTopicWithPosts_ExistingTopicAlias_ReturnsValidPosts(string topicAlias, int postsCount)
+        public void GetTopicWithPosts_ExistingTopicAlias_ReturnsValidPosts(string topicAlias, int expectedPostsCount)
         {
             var databaseContextMock = GetDatabaseContextMock();
 
             var service = new TopicService(databaseContextMock.Object);
             var result = service.GetTopicWithPosts(topicAlias);
 
-            Assert.Equal(postsCount, result.Posts.Count());
+            Assert.Equal(expectedPostsCount, result.Posts.Count());
         }
 
         [Fact]
