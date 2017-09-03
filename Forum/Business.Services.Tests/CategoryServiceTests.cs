@@ -76,7 +76,7 @@ namespace Business.Services.Tests
         [InlineData("cat-1", "Category 1")]
         [InlineData("cat-2", "Category 2")]
         [InlineData("cat-3", "Category 3")]
-        public void GetCategoryWithPosts_ExistingAlias_ReturnsValidCategoryName(string categoryAlias, string expectedCategoryName)
+        public void GetCategoryWithPosts_ExistingCategoryAlias_ReturnsValidCategoryName(string categoryAlias, string expectedCategoryName)
         {
             var databaseContextMock = GetDatabaseContextMock();
 
@@ -90,7 +90,7 @@ namespace Business.Services.Tests
         [InlineData("cat-1", 2)]
         [InlineData("cat-2", 1)]
         [InlineData("cat-3", 0)]
-        public void GetCategoryWithPosts_ExistingAlias_ReturnsValidCategoryTopicsCount(string categoryAlias, int expectedTopicsCount)
+        public void GetCategoryWithPosts_ExistingCategoryAlias_ReturnsValidCategoryTopicsCount(string categoryAlias, int expectedTopicsCount)
         {
             var databaseContextMock = GetDatabaseContextMock();
 
@@ -101,7 +101,7 @@ namespace Business.Services.Tests
         }
 
         [Fact]
-        public void GetCategoryWithPosts_InvalidAlias_ThrowsCategoryNotFoundException()
+        public void GetCategoryWithPosts_NotExistingCategoryAlias_ThrowsCategoryNotFoundException()
         {
             var databaseContextMock = GetDatabaseContextMock();
 
@@ -116,7 +116,7 @@ namespace Business.Services.Tests
         [InlineData("cat-1")]
         [InlineData("cat-2")]
         [InlineData("cat-3")]
-        public void Exists_ExistingAlias_ReturnsTrue(string categoryAlias)
+        public void Exists_ExistingCategoryAlias_ReturnsTrue(string categoryAlias)
         {
             var databaseContextMock = GetDatabaseContextMock();
 
@@ -127,7 +127,7 @@ namespace Business.Services.Tests
         }
 
         [Fact]
-        public void Exists_InvalidAlias_ReturnsFalse()
+        public void Exists_NotExistingCategoryAlias_ReturnsFalse()
         {
             var databaseContextMock = GetDatabaseContextMock();
 

@@ -101,7 +101,7 @@ namespace Business.Services.Tests
         }
 
         [Fact]
-        public void GetTopicWithPosts_InvalidTopicAlias_ThrowsTopicNotFoundException()
+        public void GetTopicWithPosts_NotExistingTopicAlias_ThrowsTopicNotFoundException()
         {
             var databaseContextMock = GetDatabaseContextMock();
 
@@ -116,7 +116,7 @@ namespace Business.Services.Tests
         [InlineData("top-1")]
         [InlineData("top-2")]
         [InlineData("top-3")]
-        public void Exists_ExistingAlias_ReturnsTrue(string topicAlias)
+        public void Exists_ExistingTopicAlias_ReturnsTrue(string topicAlias)
         {
             var databaseContextMock = GetDatabaseContextMock();
 
@@ -127,7 +127,7 @@ namespace Business.Services.Tests
         }
 
         [Fact]
-        public void Exists_InvalidAlias_ReturnsFalse()
+        public void Exists_NotExistingTopicAlias_ReturnsFalse()
         {
             var databaseContextMock = GetDatabaseContextMock();
 
@@ -141,7 +141,7 @@ namespace Business.Services.Tests
         [InlineData("top-1", "cat-1")]
         [InlineData("top-2", "cat-1")]
         [InlineData("top-3", "cat-2")]
-        public void ValidateTopicAndCategoryAlias_ExistingAlias_ReturnsTrue(string topicAlias, string categoryAlias)
+        public void ValidateTopicAndCategoryAlias_ExistingTopicAlias_ReturnsTrue(string topicAlias, string categoryAlias)
         {
             var databaseContextMock = GetDatabaseContextMock();
 
@@ -155,7 +155,7 @@ namespace Business.Services.Tests
         [InlineData("top-1", "bad-category-alias")]
         [InlineData("bad-topic-alias", "bad-category-alias")]
         [InlineData("bad-topic-alias", "cat-3")]
-        public void ValidateTopicAndCategoryAlias_InvalidCategoryAlias_ReturnsFalse(string topicAlias, string categoryAlias)
+        public void ValidateTopicAndCategoryAlias_NotExistingCategoryAlias_ReturnsFalse(string topicAlias, string categoryAlias)
         {
             var databaseContextMock = GetDatabaseContextMock();
 
