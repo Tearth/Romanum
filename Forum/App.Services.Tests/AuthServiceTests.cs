@@ -120,7 +120,7 @@ namespace App.Services.Tests
         }
 
         [Fact]
-        public void LogIn_InvalidUserNamePassword_ReturnsTrue()
+        public void LogIn_InvalidUserNamePassword_ReturnsFalse()
         {
             var webSecurityWrapperMock = new Mock<IWebSecurityWrapper>();
             var logInDataDTO = new LogInDTO()
@@ -135,7 +135,125 @@ namespace App.Services.Tests
             var authService = new AuthService(webSecurityWrapperMock.Object);
             var result = authService.LogIn(logInDataDTO);
 
+            Assert.False(result);
+        }
+
+        [Fact]
+        public void LogOut_UserLoggedIn_WrapperLogOutCalled()
+        {
+            var webSecurityWrapperMock = new Mock<IWebSecurityWrapper>();
+            var authService = new AuthService(webSecurityWrapperMock.Object);
+
+            webSecurityWrapperMock.Setup(p => p.IsUserLoggedIn()).Returns(true);
+
+            authService.LogOut();
+
+            webSecurityWrapperMock.Verify(p => p.LogOut());
+        }
+
+        [Fact]
+        public void LogOut_UserNotLoggedIn_WrapperLogOutCalled()
+        {
+            var webSecurityWrapperMock = new Mock<IWebSecurityWrapper>();
+            var authService = new AuthService(webSecurityWrapperMock.Object);
+
+            webSecurityWrapperMock.Setup(p => p.IsUserLoggedIn()).Returns(false);
+
+            var exception = Record.Exception(() => authService.LogOut());
+
+            Assert.IsType<UserNotLoggedInException>(exception);
+        }
+
+        [Fact]
+        public void ChangePassword_ValidOldNewPasswords_ReturnsTrue()
+        {
+            var webSecurityWrapperMock = new Mock<IWebSecurityWrapper>();
+            var changePasswordDTO = new ChangePasswordDTO()
+            {
+                Name = "UserNameTest",
+                OldPassword = "OldPassword",
+                NewPassword = "NewPassword"
+            };
+
+            webSecurityWrapperMock.Setup(p => p.UserExists("UserNameTest")).Returns(true);
+            webSecurityWrapperMock.Setup(p => p.ChangePassword(changePasswordDTO)).Returns(true);
+
+            var authService = new AuthService(webSecurityWrapperMock.Object);
+            var result = authService.ChangePassword(changePasswordDTO);
+
             Assert.True(result);
+        }
+
+        [Fact]
+        public void ChangePassword_InvalidOldOrNewPassword_ReturnsTrue()
+        {
+            var webSecurityWrapperMock = new Mock<IWebSecurityWrapper>();
+            var changePasswordDTO = new ChangePasswordDTO()
+            {
+                Name = "UserNameTest",
+                OldPassword = "OldPassword",
+                NewPassword = "NewPassword"
+            };
+
+            webSecurityWrapperMock.Setup(p => p.UserExists("UserNameTest")).Returns(true);
+            webSecurityWrapperMock.Setup(p => p.ChangePassword(changePasswordDTO)).Returns(false);
+
+            var authService = new AuthService(webSecurityWrapperMock.Object);
+            var result = authService.ChangePassword(changePasswordDTO);
+
+            Assert.False(result);
+        }
+
+        [Fact]
+        public void ChangePassword_NotExistingUserName_ReturnsTrue()
+        {
+            var webSecurityWrapperMock = new Mock<IWebSecurityWrapper>();
+            var changePasswordDTO = new ChangePasswordDTO()
+            {
+                Name = "UserNameTest",
+                OldPassword = "OldPassword",
+                NewPassword = "NewPassword"
+            };
+
+            webSecurityWrapperMock.Setup(p => p.UserExists("UserNameTest")).Returns(false);
+            webSecurityWrapperMock.Setup(p => p.ChangePassword(changePasswordDTO)).Returns(true);
+
+            var authService = new AuthService(webSecurityWrapperMock.Object);
+            var exception = Record.Exception(() => authService.ChangePassword(changePasswordDTO));
+
+            Assert.IsType<UserNameNotExistsException>(exception);
+        }
+
+        [Fact]
+        public void GetCurrentUser_UserLoggedIn_ReturnsValidCurrentUserData()
+        {
+            var webSecurityWrapperMock = new Mock<IWebSecurityWrapper>();
+            var authService = new AuthService(webSecurityWrapperMock.Object);
+            var currentUserDTO = new CurrentUserDTO()
+            {
+                ID = 445,
+                Name = "TestUserName"
+            };
+
+            webSecurityWrapperMock.Setup(p => p.IsUserLoggedIn()).Returns(true);
+            webSecurityWrapperMock.Setup(p => p.GetCurrentUser()).Returns(currentUserDTO);
+
+            var result = authService.GetCurrentUser();
+
+            Assert.Equal(currentUserDTO, result);
+        }
+
+        [Fact]
+        public void GetCurrentUser_UserNotLoggedIn_ReturnsValidCurrentUserData()
+        {
+            var webSecurityWrapperMock = new Mock<IWebSecurityWrapper>();
+            var authService = new AuthService(webSecurityWrapperMock.Object);
+
+            webSecurityWrapperMock.Setup(p => p.IsUserLoggedIn()).Returns(false);
+
+            var exception = Record.Exception(() => authService.LogOut());
+
+            Assert.IsType<UserNotLoggedInException>(exception);
         }
     }
 }

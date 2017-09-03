@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace App.Services.AuthServices.Exceptions
 {
     [Serializable]
-    class UserNotLoggedInException : Exception
+    public class UserNotLoggedInException : Exception
     {
         public UserNotLoggedInException()
         {
