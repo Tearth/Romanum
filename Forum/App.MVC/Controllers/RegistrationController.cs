@@ -1,4 +1,5 @@
-﻿using System;
+﻿using App.Services.AuthServices;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,9 +9,11 @@ namespace App.MVC.Controllers
 {
     public class RegistrationController : Controller
     {
-        public RegistrationController()
-        {
+        IAuthService _authService;
 
+        public RegistrationController(IAuthService authService)
+        {
+            _authService = authService;
         }
 
         [HttpGet]
