@@ -205,6 +205,7 @@
     <Content Include="Views\Topic\Index.cshtml" />
     <Content Include="Views\LogIn\Index.cshtml" />
     <Content Include="Views\Registration\Index.cshtml" />
+    <Content Include="Views\Registration\SuccessMessage.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

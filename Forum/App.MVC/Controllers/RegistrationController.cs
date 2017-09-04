@@ -29,12 +29,21 @@ namespace App.MVC.Controllers
         public ActionResult Index(RegistrationViewModel viewModel)
         {
             if (_authService.UserExists(viewModel.UserName))
-                throw new HttpException(404, "Already exists"); //TODO
+            {
+                ModelState.AddModelError("UserName", "User name already exists.");
+                return View(viewModel);
+            }
 
             var newUserDTO = Mapper.Map<RegistrationDTO>(viewModel);
             _authService.CreateUser(newUserDTO);
 
-            return RedirectToAction("Index", "Sections");
+            return RedirectToAction("SuccessMessage");
+        }
+
+        [HttpGet]
+        public ActionResult SuccessMessage()
+        {
+            return View();
         }
     }
 }
