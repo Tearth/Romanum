@@ -15,7 +15,7 @@ namespace App.Services.Tests.Helpers
             return false;
         }
 
-        public void CreateUser(NewUserDTO user)
+        public void CreateUser(RegistrationDTO user)
         {
 
         }

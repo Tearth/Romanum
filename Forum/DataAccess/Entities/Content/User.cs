@@ -9,13 +9,14 @@ namespace DataAccess.Entities.Content
     public class User
     {
         public int ID { get; set; }
-        public String Name { get; set; }
+        public string Name { get; set; }
+        public string EMail { get; set; }
 
         public virtual ICollection<Post> Posts { get; set; }
 
-        public User(string name)
+        public User(string userName)
         {
-            Name = name;
+            Name = userName;
         }
     }
 }

@@ -21,9 +21,9 @@ namespace App.Services.Tests
             webSecurityWrapperMock.Setup(p => p.UserExists("TestUserName")).Returns(false);
 
             var authService = new AuthService(webSecurityWrapperMock.Object);
-            var userDTO = new NewUserDTO()
+            var userDTO = new RegistrationDTO()
             {
-                Name = "TestUserName",
+                UserName = "TestUserName",
                 Password = "TestPassword",
                 EMail = "user@local.domain"
             };
@@ -40,9 +40,9 @@ namespace App.Services.Tests
             webSecurityWrapperMock.Setup(p => p.UserExists("TestUserName")).Returns(true);
 
             var authService = new AuthService(webSecurityWrapperMock.Object);
-            var userDTO = new NewUserDTO()
+            var userDTO = new RegistrationDTO()
             {
-                Name = "TestUserName",
+                UserName = "TestUserName",
                 Password = "TestPassword",
                 EMail = "user@local.domain"
             };

@@ -9,6 +9,8 @@ using System.Linq;
 using System.Web;
 using App.MVC.ViewModels.Topic;
 using Business.Services.DTO.Topic;
+using App.MVC.ViewModels.Registration;
+using App.Services.DTO.Auth;
 
 namespace App.MVC
 {
@@ -22,6 +24,7 @@ namespace App.MVC
             CreateMap<TopicDetailsViewModel, TopicDetailsDTO>().ReverseMap();
             CreateMap<TopicWithPostsViewModel, TopicWithPostsDTO>().ReverseMap();
             CreateMap<PostViewModel, PostDTO>().ReverseMap();
+            CreateMap<RegistrationViewModel, RegistrationDTO>().ReverseMap();
         }
     }
 }

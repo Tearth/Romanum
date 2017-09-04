@@ -1,4 +1,7 @@
-﻿using App.Services.AuthServices;
+﻿using App.MVC.ViewModels.Registration;
+using App.Services.AuthServices;
+using App.Services.DTO.Auth;
+using AutoMapper;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,6 +23,18 @@ namespace App.MVC.Controllers
         public ActionResult Index()
         {
             return View();
+        }
+
+        [HttpPost]
+        public ActionResult Index(RegistrationViewModel viewModel)
+        {
+            if (_authService.UserExists(viewModel.UserName))
+                throw new HttpException(404, "Already exists"); //TODO
+
+            var newUserDTO = Mapper.Map<RegistrationDTO>(viewModel);
+            _authService.CreateUser(newUserDTO);
+
+            return RedirectToAction("Index", "Sections");
         }
     }
 }

@@ -9,7 +9,7 @@ namespace App.Services.AuthServices
 {
     public interface IAuthService
     {
-        void CreateUser(NewUserDTO user);
+        void CreateUser(RegistrationDTO user);
         bool UserExists(string name);
         bool IsUserLoggedIn();
         bool LogIn(LogInDTO data);

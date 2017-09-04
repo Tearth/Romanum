@@ -72,7 +72,7 @@
     <Compile Include="DTO\Auth\ChangePasswordDTO.cs" />
     <Compile Include="DTO\Auth\CurrentUserDTO.cs" />
     <Compile Include="DTO\Auth\LogInDTO.cs" />
-    <Compile Include="DTO\Auth\NewUserDTO.cs" />
+    <Compile Include="DTO\Auth\RegistrationDTO.cs" />
     <Compile Include="MapperProfile.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ServiceBase.cs" />
