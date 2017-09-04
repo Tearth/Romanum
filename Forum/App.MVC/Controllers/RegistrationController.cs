@@ -28,7 +28,7 @@ namespace App.MVC.Controllers
         [HttpPost]
         public ActionResult Index(RegistrationViewModel viewModel)
         {
-            if (_authService.UserExists(viewModel.UserName))
+            if (_authService.UserNameExists(viewModel.UserName))
             {
                 ModelState.AddModelError("UserName", "User name already exists.");
                 return View(viewModel);

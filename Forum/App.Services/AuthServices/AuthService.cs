@@ -26,7 +26,7 @@ namespace App.Services.AuthServices
             _webSecurityWrapper.CreateUser(user);
         }
 
-        public bool UserExists(string name)
+        public bool UserNameExists(string name)
         {
             return _webSecurityWrapper.UserExists(name);
         }
