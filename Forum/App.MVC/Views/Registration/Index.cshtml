@@ -3,3 +3,54 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+@using (Html.BeginForm("Index", "Registration"))
+{
+    <div class="cap-div">
+        <div class="cap-left">
+            <div class="cap-right">&nbsp;Registration&nbsp;</div>
+        </div>
+    </div>
+
+    <table class="tablebg" width="100%" cellspacing="0">
+        <tr>
+            <td class="row1" width="38%"><b class="genmed">Username: </b><br /><span class="gensmall">Length must be between 3 and 20 characters.</span></td>
+            <td class="row2">
+                @Html.TextBoxFor(p => Model.UserName)
+                <div class="validation-error">@Html.ValidationMessageFor(p => Model.UserName)</div>
+            </td>
+        </tr>
+        <tr>
+            <td class="row1"><b class="genmed">E-mail address: </b></td>
+            <td class="row2">
+                @Html.TextBoxFor(p => Model.EMail)
+                <div class="validation-error">@Html.ValidationMessageFor(p => Model.EMail)</div>
+            </td>
+        </tr>
+        <tr>
+            <td class="row1"><b class="genmed">Confirm e-mail address: </b></td>
+            <td class="row2">
+                @Html.TextBoxFor(p => Model.ConfirmEMail)
+                <div class="validation-error">@Html.ValidationMessageFor(p => Model.ConfirmEMail)</div>
+            </td>
+        </tr>
+        <tr>
+            <td class="row1"><b class="genmed">Password: </b><br /><span class="gensmall">Must be between 8 and 30 characters.</span></td>
+            <td class="row2">
+                @Html.PasswordFor(p => Model.Password)
+                <div class="validation-error">@Html.ValidationMessageFor(p => Model.Password)</div>
+            </td>
+        </tr>
+        <tr>
+            <td class="row1"><b class="genmed">Confirm password: </b></td>
+            <td class="row2">
+                @Html.PasswordFor(p => Model.ConfirmPassword)
+                <div class="validation-error">@Html.ValidationMessageFor(p => Model.ConfirmPassword)</div>
+            </td>
+        </tr>
+        <tr>
+            <td class="cat" colspan="2" align="center">
+                <input class="btnmain" type="submit" name="submit" id="submit" value="Submit" />
+            </td>
+        </tr>
+    </table>
+}

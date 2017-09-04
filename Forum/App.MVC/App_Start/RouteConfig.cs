@@ -20,6 +20,12 @@ namespace App.MVC.App_Start
             );
 
             routes.MapRoute(
+                name: "Registration",
+                url: "Registration",
+                defaults: new { controller = "Registration", action = "Index" }
+            );
+
+            routes.MapRoute(
                 name: "Category",
                 url: "{categoryAlias}",
                 defaults: new { controller = "Category", action = "Index" }
