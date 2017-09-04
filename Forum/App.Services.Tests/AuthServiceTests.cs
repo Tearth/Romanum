@@ -142,9 +142,9 @@ namespace App.Services.Tests
         public void LogOut_UserLoggedIn_WrapperLogOutCalled()
         {
             var webSecurityWrapperMock = new Mock<IWebSecurityWrapper>();
-            var authService = new AuthService(webSecurityWrapperMock.Object);
-
             webSecurityWrapperMock.Setup(p => p.IsUserLoggedIn()).Returns(true);
+
+            var authService = new AuthService(webSecurityWrapperMock.Object);
 
             authService.LogOut();
 
@@ -155,10 +155,9 @@ namespace App.Services.Tests
         public void LogOut_UserNotLoggedIn_WrapperLogOutCalled()
         {
             var webSecurityWrapperMock = new Mock<IWebSecurityWrapper>();
-            var authService = new AuthService(webSecurityWrapperMock.Object);
-
             webSecurityWrapperMock.Setup(p => p.IsUserLoggedIn()).Returns(false);
 
+            var authService = new AuthService(webSecurityWrapperMock.Object);
             var exception = Record.Exception(() => authService.LogOut());
 
             Assert.IsType<UserNotLoggedInException>(exception);
@@ -228,7 +227,6 @@ namespace App.Services.Tests
         public void GetCurrentUser_UserLoggedIn_ReturnsValidCurrentUserData()
         {
             var webSecurityWrapperMock = new Mock<IWebSecurityWrapper>();
-            var authService = new AuthService(webSecurityWrapperMock.Object);
             var currentUserDTO = new CurrentUserDTO()
             {
                 ID = 445,
@@ -238,19 +236,20 @@ namespace App.Services.Tests
             webSecurityWrapperMock.Setup(p => p.IsUserLoggedIn()).Returns(true);
             webSecurityWrapperMock.Setup(p => p.GetCurrentUser()).Returns(currentUserDTO);
 
+            var authService = new AuthService(webSecurityWrapperMock.Object);
             var result = authService.GetCurrentUser();
 
-            Assert.Equal(currentUserDTO, result);
+            Assert.Equal(currentUserDTO.ID, result.ID);
+            Assert.Equal(currentUserDTO.Name, result.Name);
         }
 
         [Fact]
         public void GetCurrentUser_UserNotLoggedIn_ReturnsValidCurrentUserData()
         {
             var webSecurityWrapperMock = new Mock<IWebSecurityWrapper>();
-            var authService = new AuthService(webSecurityWrapperMock.Object);
-
             webSecurityWrapperMock.Setup(p => p.IsUserLoggedIn()).Returns(false);
 
+            var authService = new AuthService(webSecurityWrapperMock.Object);
             var exception = Record.Exception(() => authService.LogOut());
 
             Assert.IsType<UserNotLoggedInException>(exception);

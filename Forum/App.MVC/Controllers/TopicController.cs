@@ -24,10 +24,10 @@ namespace App.MVC.Controllers
             if (!_topicService.ValidateTopicAndCategoryAlias(topicAlias, categoryAlias))
                 throw new HttpException(404, "Not found"); //TODO
 
-            var topicData = _topicService.GetTopicWithPosts(topicAlias);
-            var viewModel = Mapper.Map<TopicWithPostsViewModel>(topicData);
+            var topic = _topicService.GetTopicWithPosts(topicAlias);
+            var topicViewModel = Mapper.Map<TopicWithPostsViewModel>(topic);
 
-            return View(viewModel);
+            return View(topicViewModel);
         }
     }
 }

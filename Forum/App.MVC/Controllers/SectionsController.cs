@@ -22,9 +22,9 @@ namespace App.MVC.Controllers
         public ActionResult Index()
         {
             var sections = _sections.GetAllSetionsWithCategories();
-            var viewModel = Mapper.Map<IEnumerable<SectionWithCategoriesViewModel>>(sections);
+            var sectionsViewModel = Mapper.Map<IEnumerable<SectionWithCategoriesViewModel>>(sections);
 
-            return View(viewModel);
+            return View(sectionsViewModel);
         }
     }
 }

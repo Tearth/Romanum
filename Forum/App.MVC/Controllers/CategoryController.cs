@@ -22,9 +22,9 @@ namespace App.MVC.Controllers
         public ActionResult Index(string categoryAlias)
         {
             var category = _categoryService.GetCategoryWithPosts(categoryAlias);
-            var viewModel = Mapper.Map<CategoryWithTopicsViewModel>(category);
+            var categoryViewModel = Mapper.Map<CategoryWithTopicsViewModel>(category);
 
-            return View(viewModel);
+            return View(categoryViewModel);
         }
     }
 }
