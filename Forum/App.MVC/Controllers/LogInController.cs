@@ -30,5 +30,11 @@ namespace App.MVC.Controllers
         {
             return View();
         }
+
+        [HttpGet]
+        public ActionResult SuccessMessage()
+        {
+            return View();
+        }
     }
 }
