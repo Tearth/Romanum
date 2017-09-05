@@ -17,6 +17,8 @@ namespace DataAccess.Entities.Content
         public User(string userName)
         {
             Name = userName;
+
+            Posts = new List<Post>();
         }
     }
 }

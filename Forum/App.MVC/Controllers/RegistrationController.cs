@@ -28,11 +28,11 @@ namespace App.MVC.Controllers
         [HttpPost]
         public ActionResult Index(RegistrationViewModel viewModel)
         {
-            if (_authService.UserNameExists(viewModel.UserName))
-            {
-                ModelState.AddModelError("UserName", "User name already exists.");
-                return View(viewModel);
-            }
+            //if (_authService.UserNameExists(viewModel.UserName))
+            //{
+            //    ModelState.AddModelError("UserName", "User name already exists.");
+            //    return View(viewModel);
+            //}
 
             var newUserDTO = Mapper.Map<RegistrationDTO>(viewModel);
             _authService.CreateUser(newUserDTO);
