@@ -8,6 +8,7 @@ namespace Business.Services.ProfileServices
 {
     public interface IProfileService
     {
-
+        bool UserNameExists(string userName);
+        bool EMailExists(string email);
     }
 }

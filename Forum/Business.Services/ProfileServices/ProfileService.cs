@@ -15,5 +15,15 @@ namespace Business.Services.ProfileServices
         {
             _databaseContext = databaseContext;
         }
+
+        public bool UserNameExists(string name)
+        {
+            return _databaseContext.Users.Any(user => user.Name == name);
+        }
+
+        public bool EMailExists(string email)
+        {
+            return _databaseContext.Users.Any(user => user.EMail == email);
+        }
     }
 }
