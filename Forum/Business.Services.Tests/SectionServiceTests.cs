@@ -24,44 +24,40 @@ namespace Business.Services.Tests
             var firstUser = new User("User 1") { ID = 1 };
             var secondUser = new User("User 2") { ID = 2 };
 
-            users.Add(firstUser);
-            users.Add(secondUser);
+            users.AddMany(firstUser, secondUser);
 
             var firstSection = new Section("Section 1", "sec-1");
             var secondSection = new Section("Section 2", "sec-2");
             var thirdSection = new Section("Section 3", "sec-3");
 
-            sections.Add(firstSection);
-            sections.Add(secondSection);
-            sections.Add(thirdSection);
+            sections.AddMany(firstSection, secondSection, thirdSection);
 
             var firstCategory = new Category("Category 1", "cat-1") { ID = 1, Section = firstSection };
             var secondCategory = new Category("Category 2", "cat-2") { ID = 2, Section = firstSection };
             var thirdCategory = new Category("Category 3", "cat-3") { ID = 3, Section = secondSection };
 
-            firstSection.Categories.Add(firstCategory);
-            firstSection.Categories.Add(secondCategory);
-            secondSection.Categories.Add(thirdCategory);
+            firstSection.Categories.AddMany(firstCategory, secondCategory);
+            secondSection.Categories.AddMany(thirdCategory);
 
             var firstTopic = new Topic("Topic 1", "top-1") { ID = 1, Category = firstCategory };
             var secondTopic = new Topic("Topic 2", "top-2") { ID = 2, Category = firstCategory };
             var thirdTopic = new Topic("Topic 3", "top-3") { ID = 3, Category = secondCategory };
 
-            firstCategory.Topics.Add(firstTopic);
-            firstCategory.Topics.Add(secondTopic);
-            secondCategory.Topics.Add(thirdTopic);
+            firstCategory.Topics.AddMany(firstTopic, secondTopic);
+            secondCategory.Topics.AddMany(thirdTopic);
 
             var firstPost = new Post("Content 1", new DateTime(2000, 5, 10)) { ID = 1, Topic = firstTopic, Author = firstUser };
             var secondPost = new Post("Content 2", new DateTime(2001, 1, 2)) { ID = 2, Topic = firstTopic, Author = firstUser };
-            var thirdPost = new Post("Content 3", new DateTime(2002, 10, 12)) { ID = 3, Topic = firstTopic, Author = secondUser };
+            var thirdPost = new Post("Content 3", new DateTime(2002, 10, 12)) { ID = 3, Topic = firstTopic, Author = firstUser };
             var fourthPost = new Post("Content 4", new DateTime(2003, 3, 27)) { ID = 4, Topic = secondTopic, Author = secondUser };
-            var fifthPost = new Post("Content 5", new DateTime(2004, 2, 1)) { ID = 5, Topic = thirdTopic, Author = firstUser };
+            var fifthPost = new Post("Content 5", new DateTime(2004, 2, 1)) { ID = 5, Topic = thirdTopic, Author = secondUser };
 
-            firstTopic.Posts.Add(firstPost);
-            firstTopic.Posts.Add(secondPost);
-            firstTopic.Posts.Add(thirdPost);
-            secondTopic.Posts.Add(fourthPost);
-            thirdTopic.Posts.Add(fifthPost);
+            firstTopic.Posts.AddMany(firstPost, secondPost, thirdPost);
+            secondTopic.Posts.AddMany(fourthPost);
+            thirdTopic.Posts.AddMany(fifthPost);
+
+            firstUser.Posts.AddMany(firstPost, secondPost, thirdPost);
+            secondUser.Posts.AddMany(fourthPost, fifthPost);
 
             var categoriesList = sections.SelectMany(p => p.Categories);
             var topicsList = categoriesList.SelectMany(p => p.Topics);

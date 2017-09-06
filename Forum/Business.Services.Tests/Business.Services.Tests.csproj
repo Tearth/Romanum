@@ -91,6 +91,7 @@
   </Choose>
   <ItemGroup>
     <Compile Include="CategoryServiceTests.cs" />
+    <Compile Include="Helpers\AddManyIEnumerableExtension.cs" />
     <Compile Include="Helpers\FakeDbSetFactory.cs" />
     <Compile Include="ProfileServiceTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

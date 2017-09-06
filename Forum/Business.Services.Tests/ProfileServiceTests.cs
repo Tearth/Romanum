@@ -22,9 +22,7 @@ namespace Business.Services.Tests
             var secondUser = new User("Test user 2") { ID = 2, EMail = "user2@domain.local" };
             var thirdUser = new User("Test user 3") { ID = 3, EMail = "user3@domain.local" };
 
-            users.Add(firstUser);
-            users.Add(secondUser);
-            users.Add(thirdUser);
+            users.AddMany(firstUser, secondUser, thirdUser);
 
             var firstPost = new Post("Content 1", new DateTime(2000, 5, 10)) { ID = 1, Author = firstUser };
             var secondPost = new Post("Content 2", new DateTime(2001, 1, 2)) { ID = 2, Author = firstUser };
@@ -32,11 +30,8 @@ namespace Business.Services.Tests
             var fourthPost = new Post("Content 4", new DateTime(2003, 3, 27)) { ID = 4, Author = secondUser };
             var fifthPost = new Post("Content 5", new DateTime(2004, 2, 1)) { ID = 5, Author = secondUser };
 
-            firstUser.Posts.Add(firstPost);
-            firstUser.Posts.Add(secondPost);
-            firstUser.Posts.Add(thirdPost);
-            secondUser.Posts.Add(fourthPost);
-            secondUser.Posts.Add(fifthPost);
+            firstUser.Posts.AddMany(firstPost, secondPost, thirdPost);
+            secondUser.Posts.AddMany(fourthPost, fifthPost);
 
             var postsList = users.SelectMany(p => p.Posts);
 
