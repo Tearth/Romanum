@@ -28,7 +28,15 @@ namespace App.MVC.Controllers
         [HttpPost]
         public ActionResult Index(LogInViewModel viewModel)
         {
-            return View();
+            var logInDTO = Mapper.Map<LogInDTO>(viewModel);
+
+            if(!_authService.LogIn(logInDTO))
+            {
+                ModelState.AddModelError("UserName", "Incorrent username or password");
+                return View(viewModel);
+            }
+
+            return RedirectToAction("SuccessMessage");
         }
 
         [HttpGet]

@@ -12,13 +12,11 @@
                 <p class="genmed">In order to login you must be registered. Registering takes only a few moments but gives you increased capabilities. The board administrator may also grant additional permissions to registered users. Before you register please ensure you are familiar with our terms of use and related policies. Please ensure you read any forum rules as you navigate around the board.</p>
 
                 <p class="genmed" align="center">
-                    <a href="./ucp.php?style=36&amp;mode=terms">Terms of use</a> | <a href="#">Privacy policy</a>
+                    <a href="#">Terms of use</a> | <a href="#">Privacy policy</a>
                 </p>
             </td>
 
             <td class="row2">
-                <div class="validation-error">@Html.ValidationMessageFor(p => Model.UserName)</div>
-                <div class="validation-error">@Html.ValidationMessageFor(p => Model.Password)</div>
                 
                 <table align="center" cellspacing="1" cellpadding="4" style="width: 100%;">
                     <tr>
@@ -26,27 +24,26 @@
                         <td>
                             @Html.TextBoxFor(p => Model.UserName)
 
-                            <br /><a class="gensmall" href="#">Register</a>
+                            <br />
+                            <div class="validation-error">@Html.ValidationMessageFor(p => Model.UserName)</div>
 
                         </td>
                     </tr>
                     <tr>
                         <td valign="top"><b class="gensmall">Password:</b></td>
                         <td>
-                            @Html.PasswordFor(p => Model.Password)
-                            <br /><a class="gensmall" href="#">I forgot my password</a><br /><a class="gensmall" href="#">Resend activation e-mail</a>
+                                                        @Html.PasswordFor(p => Model.Password)
+                            <br />
+                                                        <div class="validation-error">@Html.ValidationMessageFor(p => Model.Password)</div>
+                            <br /><a class="gensmall" href="#">I forgot my password</a><br /><a class="gensmall" href="#">Resend activation e-mail</a><br/><a class="gensmall" href="#">Register</a>
                         </td>
                     </tr>
 
                     <tr>
                         <td>&nbsp;</td>
-                        <td>@Html.RadioButtonFor(p => Model.RememberMe, false) <span class="gensmall">Log me on automatically each visit</span></td>
+                        <td>@Html.CheckBoxFor(p => Model.RememberMe, false) <span class="gensmall">Log me on automatically each visit</span></td>
                     </tr>
 
-                    <tr>
-                        <td>&nbsp;</td>
-                        <td><input type="checkbox" class="radio" name="viewonline" tabindex="4" /> <span class="gensmall">Hide my online status this session</span></td>
-                    </tr>
                 </table>
             </td>
         </tr>

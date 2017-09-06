@@ -43,7 +43,7 @@ namespace App.Services.AuthServices.Security
 
         public bool LogIn(LogInDTO data)
         {
-            return WebSecurity.Login(data.Name, data.Password, data.RememberMe);
+            return WebSecurity.Login(data.UserName, data.Password, data.RememberMe);
         }
 
         public void LogOut()

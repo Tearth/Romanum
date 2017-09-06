@@ -11,6 +11,7 @@ using App.MVC.ViewModels.Topic;
 using Business.Services.DTO.Topic;
 using App.MVC.ViewModels.Registration;
 using App.Services.DTO.Auth;
+using App.MVC.ViewModels.LogIn;
 
 namespace App.MVC
 {
@@ -25,6 +26,7 @@ namespace App.MVC
             CreateMap<TopicWithPostsViewModel, TopicWithPostsDTO>().ReverseMap();
             CreateMap<PostViewModel, PostDTO>().ReverseMap();
             CreateMap<RegistrationViewModel, RegistrationDTO>().ReverseMap();
+            CreateMap<LogInViewModel, LogInDTO>().ReverseMap();
         }
     }
 }
