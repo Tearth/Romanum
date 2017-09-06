@@ -2,6 +2,7 @@
 using App.Services.AuthServices;
 using App.Services.DTO.Auth;
 using AutoMapper;
+using Business.Services.ProfileServices;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,10 +14,12 @@ namespace App.MVC.Controllers
     public class RegistrationController : Controller
     {
         IAuthService _authService;
+        IProfileService _profileService;
 
-        public RegistrationController(IAuthService authService)
+        public RegistrationController(IAuthService authService, IProfileService profileService)
         {
             _authService = authService;
+            _profileService = profileService;
         }
 
         [HttpGet]
@@ -28,11 +31,17 @@ namespace App.MVC.Controllers
         [HttpPost]
         public ActionResult Index(RegistrationViewModel viewModel)
         {
-            //if (_authService.UserNameExists(viewModel.UserName))
-            //{
-            //    ModelState.AddModelError("UserName", "User name already exists.");
-            //    return View(viewModel);
-            //}
+            if (_profileService.UserNameExists(viewModel.UserName))
+            {
+                ModelState.AddModelError("UserName", "User name already exists.");
+                return View(viewModel);
+            }
+
+            if (_profileService.EMailExists(viewModel.EMail))
+            {
+                ModelState.AddModelError("EMail", "E-Mail already exists.");
+                return View(viewModel);
+            }
 
             var newUserDTO = Mapper.Map<RegistrationDTO>(viewModel);
             _authService.CreateUser(newUserDTO);
