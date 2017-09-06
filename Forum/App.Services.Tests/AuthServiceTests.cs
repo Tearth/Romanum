@@ -82,7 +82,7 @@ namespace App.Services.Tests
             var webSecurityWrapperMock = new Mock<IWebSecurityWrapper>();
             var logInDataDTO = new LogInDTO()
             {
-                Name = "TestUserName",
+                UserName = "TestUserName",
                 Password = "TestUserPassword",
                 RememberMe = true
             };
@@ -101,7 +101,7 @@ namespace App.Services.Tests
             var webSecurityWrapperMock = new Mock<IWebSecurityWrapper>();
             var logInDataDTO = new LogInDTO()
             {
-                Name = "TestUserName",
+                UserName = "TestUserName",
                 Password = "TestUserPassword",
                 RememberMe = true
             };
