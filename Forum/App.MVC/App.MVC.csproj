@@ -169,6 +169,7 @@
     <Compile Include="App_Start\MapperConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\CategoryController.cs" />
+    <Compile Include="Controllers\ControlPanelController.cs" />
     <Compile Include="Controllers\LogInController.cs" />
     <Compile Include="Controllers\RegistrationController.cs" />
     <Compile Include="Controllers\SectionsController.cs" />
@@ -207,6 +208,7 @@
     <Content Include="Views\Registration\Index.cshtml" />
     <Content Include="Views\Registration\SuccessMessage.cshtml" />
     <Content Include="Views\LogIn\SuccessMessage.cshtml" />
+    <Content Include="Views\ControlPanel\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
