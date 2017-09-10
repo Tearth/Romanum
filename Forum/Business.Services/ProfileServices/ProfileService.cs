@@ -1,4 +1,5 @@
-﻿using DataAccess.Database;
+﻿using Business.Services.DTO.Profile;
+using DataAccess.Database;
 using System;
 using System.Collections.Generic;
 using System.Linq;
