@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Business.Services.ProfileServices;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,9 +9,11 @@ namespace App.MVC.Controllers
 {
     public class ControlPanelController : Controller
     {
-        public ControlPanelController()
-        {
+        IProfileService _profileService;
 
+        public ControlPanelController(IProfileService profileService)
+        {
+            _profileService = profileService;
         }
 
         [HttpGet]
