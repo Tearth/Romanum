@@ -11,6 +11,7 @@ namespace DataAccess.Entities.Content
         public int ID { get; set; }
         public string Name { get; set; }
         public string EMail { get; set; }
+        public DateTime JoinTime { get; set; }
 
         public virtual ICollection<Post> Posts { get; set; }
 
