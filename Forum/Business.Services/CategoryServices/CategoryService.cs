@@ -24,9 +24,8 @@ namespace Business.Services.CategoryServices
             if (!Exists(categoryAlias))
                 throw new CategoryNotFoundException();
 
-            var categoryWithPosts = _databaseContext
-                .Categories.Where(category => category.Alias == categoryAlias)
-                .Select(category => new CategoryWithPostsDTO()
+            var categoryQuery = _databaseContext.Categories.Where(category => category.Alias == categoryAlias);
+            var categoryWithPosts = categoryQuery.Select(category => new CategoryWithPostsDTO()
                 {
                     ID = category.ID,
                     Name = category.Name,

@@ -22,10 +22,9 @@ namespace Business.Services.TopicServices
         {
             if (!Exists(topicAlias))
                 throw new TopicNotFoundException();
-            
-            var topicWithPosts = _databaseContext
-                .Topics.Where(topic => topic.Alias == topicAlias)
-                .Select(topic => new TopicWithPostsDTO()
+
+            var topicQuery = _databaseContext.Topics.Where(topic => topic.Alias == topicAlias);
+            var topicWithPosts = topicQuery.Select(topic => new TopicWithPostsDTO()
                 {
                     ID = topic.ID,
                     Name = topic.Name,

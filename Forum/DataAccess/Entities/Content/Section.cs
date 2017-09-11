@@ -14,6 +14,11 @@ namespace DataAccess.Entities.Content
 
         public virtual ICollection<Category> Categories { get; set; }
 
+        public Section()
+        {
+
+        }
+
         public Section(string name, string alias)
         {
             Name = name;

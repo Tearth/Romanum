@@ -5,6 +5,7 @@ using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Data.Entity;
 
 namespace Business.Services.Tests.Helpers
 {
@@ -14,7 +15,7 @@ namespace Business.Services.Tests.Helpers
         {
             var elementsAsQueryable = elements.AsQueryable();
             var dbSetMock = new Mock<DbSet<T>>();
-
+            
             dbSetMock.As<IQueryable<T>>().Setup(m => m.Provider).Returns(elementsAsQueryable.Provider);
             dbSetMock.As<IQueryable<T>>().Setup(m => m.Expression).Returns(elementsAsQueryable.Expression);
             dbSetMock.As<IQueryable<T>>().Setup(m => m.ElementType).Returns(elementsAsQueryable.ElementType);

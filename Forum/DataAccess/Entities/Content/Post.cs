@@ -15,6 +15,11 @@ namespace DataAccess.Entities.Content
         public virtual Topic Topic { get; set; }
         public virtual User Author { get; set; }
 
+        public Post()
+        {
+
+        }
+
         public Post(string content) : this(content, DateTime.Now)
         {
             
