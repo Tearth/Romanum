@@ -19,6 +19,7 @@ namespace App.MVC.Controllers
         [HttpGet]
         public ActionResult Index()
         {
+            var qwe = _profileService.GetProfileByUserID(2);
             return View();
         }
     }
