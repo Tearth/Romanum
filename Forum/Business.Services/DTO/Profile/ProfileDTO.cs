@@ -18,7 +18,7 @@ namespace Business.Services.DTO.Profile
         public string MostActiveCategoryAlias { get; set; }
 
         public string MostActiveTopicName { get; set; }
-        public string MostActiveTopicCategory { get; set; }
+        public string MostActiveTopicCategoryAlias { get; set; }
         public string MostActiveTopicAlias { get; set; }
     }
 }

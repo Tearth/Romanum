@@ -49,10 +49,10 @@ namespace Business.Services.ProfileServices
                                                     .SelectMany(p => p, (group, post) => post)
                                                     .First().Topic.Alias,
 
-                    MostActiveTopicCategory = user.Posts.GroupBy(post => post.Topic.ID)
+                    MostActiveTopicCategoryAlias = user.Posts.GroupBy(post => post.Topic.ID)
                                                     .OrderByDescending(post => post.Count())
                                                     .SelectMany(p => p, (group, post) => post)
-                                                    .First().Topic.Name,
+                                                    .First().Topic.Category.Alias,
 
                     MostActiveCategoryName = user.Posts.GroupBy(post => post.Topic.Category.ID)
                                                     .OrderByDescending(post => post.Count())
