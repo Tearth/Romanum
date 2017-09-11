@@ -1,4 +1,5 @@
 ﻿using Business.Services.ProfileServices;
+using Business.Services.ProfileServices.Exceptions;
 using Business.Services.Tests.Helpers;
 using DataAccess.Database;
 using DataAccess.Entities.Content;
@@ -144,7 +145,7 @@ namespace Business.Services.Tests
             Assert.Equal(expectedCategoryName, result.MostActiveCategoryName);
             Assert.Equal(expectedCategoryAlias, result.MostActiveCategoryAlias);
         }
-
+        
         [Theory]
         [InlineData(1, "Topic 1", "top-1", "cat-1")]
         [InlineData(2, "Topic 2", "top-2", "cat-1")]
@@ -159,6 +160,17 @@ namespace Business.Services.Tests
             Assert.Equal(expectedTopicName, result.MostActiveTopicName);
             Assert.Equal(expectedTopicAlias, result.MostActiveTopicAlias);
             Assert.Equal(expectedTopicCategoryAlias, result.MostActiveTopicCategoryAlias);
+        }
+
+        [Fact]
+        public void GetProfileByUserID_NotExistingID_ThrowsUserProfileNotFoundException()
+        {
+            var databaseContextMock = GetDatabaseContextMock();
+
+            var profileService = new ProfileService(databaseContextMock.Object);
+            var exception = Record.Exception(() => profileService.GetProfileByUserID(1001));
+
+            Assert.IsType<UserProfileNotFoundException>(exception);
         }
     }
 }

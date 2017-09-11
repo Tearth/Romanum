@@ -1,4 +1,5 @@
 ﻿using Business.Services.DTO.Profile;
+using Business.Services.ProfileServices.Exceptions;
 using DataAccess.Database;
 using System;
 using System.Collections.Generic;
@@ -29,6 +30,9 @@ namespace Business.Services.ProfileServices
 
         public ProfileDTO GetProfileByUserID(int id)
         {
+            if (!_databaseContext.Users.Any(user => user.ID == id))
+                throw new UserProfileNotFoundException();
+
             var profile = _databaseContext
                 .Users.Where(user => user.ID == id)
                 .Select(user => new ProfileDTO()
