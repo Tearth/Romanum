@@ -39,14 +39,30 @@ namespace Business.Services.ProfileServices
                     PostsPerDay = user.Posts.Count() / (float)(DateTime.Now - user.JoinTime).TotalDays,
                     PercentageOfAllPosts = (float)user.Posts.Count() / _databaseContext.Posts.Count(),
 
-                    MostActiveTopicName = user.Posts.Select(post => post.Topic).Max(topic => topic.Name),
-                    MostActiveTopicAlias = user.Posts.Select(post => post.Topic).Max(topic => topic.Alias),
-                    MostActiveTopicCategory = user.Posts.Select(post => post.Topic).Max(topic => topic.Category.Alias),
+                    MostActiveTopicName = user.Posts.GroupBy(post => post.Topic.ID)
+                                                    .OrderByDescending(post => post.Count())
+                                                    .SelectMany(p => p, (group, post) => post)
+                                                    .First().Topic.Name,
 
-                    MostActiveCategoryName = user.Posts.Select(post => post.Topic).Select(topic => topic.Category)
-                                                                                  .Max(category => category.Name),
-                    MostActiveCategoryAlias = user.Posts.Select(post => post.Topic).Select(topic => topic.Category)
-                                                                                   .Max(category => category.Alias)
+                    MostActiveTopicAlias = user.Posts.GroupBy(post => post.Topic.ID)
+                                                    .OrderByDescending(post => post.Count())
+                                                    .SelectMany(p => p, (group, post) => post)
+                                                    .First().Topic.Alias,
+
+                    MostActiveTopicCategory = user.Posts.GroupBy(post => post.Topic.ID)
+                                                    .OrderByDescending(post => post.Count())
+                                                    .SelectMany(p => p, (group, post) => post)
+                                                    .First().Topic.Name,
+
+                    MostActiveCategoryName = user.Posts.GroupBy(post => post.Topic.Category.ID)
+                                                    .OrderByDescending(post => post.Count())
+                                                    .SelectMany(p => p, (group, post) => post.Topic.Category)
+                                                    .First().Name,
+
+                    MostActiveCategoryAlias = user.Posts.GroupBy(post => post.Topic.ID)
+                                                    .OrderByDescending(post => post.Count())
+                                                    .SelectMany(p => p, (group, post) => post.Topic.Category)
+                                                    .First().Alias
                 }).Single();
 
             return profile;
