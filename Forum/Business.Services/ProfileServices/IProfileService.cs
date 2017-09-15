@@ -11,6 +11,7 @@ namespace Business.Services.ProfileServices
     {
         bool UserNameExists(string userName);
         bool EMailExists(string email);
+        bool ProfileExists(int id);
         ProfileDTO GetProfileByUserID(int id);
     }
 }

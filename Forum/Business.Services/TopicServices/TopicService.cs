@@ -25,19 +25,19 @@ namespace Business.Services.TopicServices
 
             var topicQuery = _databaseContext.Topics.Where(topic => topic.Alias == topicAlias);
             var topicWithPosts = topicQuery.Select(topic => new TopicWithPostsDTO()
+            {
+                ID = topic.ID,
+                Name = topic.Name,
+                Alias = topic.Alias,
+                Posts = topic.Posts.Select(post => new PostDTO()
                 {
-                    ID = topic.ID,
-                    Name = topic.Name,
-                    Alias = topic.Alias,
-                    Posts = topic.Posts.Select(post => new PostDTO()
-                    {
-                        ID = post.ID,
-                        CreationTime = post.CreationTime,
-                        ModificationTime = post.ModificationTime,
-                        AuthorName = post.Author.Name,
-                        Content = post.Content
-                    })
-                }).Single();
+                    ID = post.ID,
+                    CreationTime = post.CreationTime,
+                    ModificationTime = post.ModificationTime,
+                    AuthorName = post.Author.Name,
+                    Content = post.Content
+                })
+            }).Single();
 
             return topicWithPosts;
         }

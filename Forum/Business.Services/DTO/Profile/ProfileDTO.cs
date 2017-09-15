@@ -14,11 +14,7 @@ namespace Business.Services.DTO.Profile
         public float PostsPerDay { get; set; }
         public float PercentageOfAllPosts { get; set; }
 
-        public string MostActiveCategoryName { get; set; }
-        public string MostActiveCategoryAlias { get; set; }
-
-        public string MostActiveTopicName { get; set; }
-        public string MostActiveTopicCategoryAlias { get; set; }
-        public string MostActiveTopicAlias { get; set; }
+        public UserMostActiveTopicDTO MostActiveTopic { get; set; }
+        public UserMostActiveCategoryDTO MostActiveCategory { get; set; }
     }
 }

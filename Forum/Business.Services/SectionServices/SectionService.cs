@@ -19,24 +19,29 @@ namespace Business.Services.SectionServices
 
         public IEnumerable<SectionWithCategoriesDTO> GetAllSetionsWithCategories()
         {
-            var sectionsWithCategories = _databaseContext
-                .Sections.Select(section => new SectionWithCategoriesDTO()
+            var sectionsQuery = _databaseContext.Sections;
+            var sectionsWithCategories = sectionsQuery.Select(section => new SectionWithCategoriesDTO()
+            {
+                Name = section.Name,
+                Categories = section.Categories.Select(category => new CategoryDetailsDTO()
                 {
-                    Name = section.Name,
-                    Categories = section.Categories.Select(category => new CategoryDetailsDTO()
-                    {
-                        ID = category.ID,
-                        Name = category.Name,
-                        Alias = category.Alias,
-                        Description = category.Description,
-                        TopicsCount = category.Topics.Count(),
-                        PostsCount = category.Topics.SelectMany(topic => topic.Posts).Count(),
-                        LastPostCreationTime = category.Topics.SelectMany(topic => topic.Posts)
-                                                              .Select(post => post.CreationTime)
-                                                              .DefaultIfEmpty()
-                                                              .Max()
-                    })
-                }).ToList();
+                    ID = category.ID,
+                    Name = category.Name,
+                    Alias = category.Alias,
+                    Description = category.Description,
+                    TopicsCount = category.Topics.Count(),
+
+                    PostsCount = category.Topics
+                        .SelectMany(topic => topic.Posts)
+                        .Count(),
+
+                    LastPostCreationTime = category.Topics
+                        .SelectMany(topic => topic.Posts)
+                        .Select(post => post.CreationTime)
+                        .DefaultIfEmpty()
+                        .Max()
+                })
+            }).ToList();
 
             return sectionsWithCategories;
         }

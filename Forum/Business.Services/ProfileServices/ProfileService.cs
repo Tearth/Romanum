@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Data.Entity;
+using DataAccess.Entities.Content;
 
 namespace Business.Services.ProfileServices
 {
@@ -29,53 +30,46 @@ namespace Business.Services.ProfileServices
             return _databaseContext.Users.Any(user => user.EMail == email);
         }
 
+        public bool ProfileExists(int id)
+        {
+            return _databaseContext.Users.Any(user => user.ID == id);
+        }
+
         public ProfileDTO GetProfileByUserID(int id)
         {
-            var selectedUser = _databaseContext.Users
-                .Include(user => user.Posts)
-                .Include(user => user.Posts.Select(post => post.Topic))
-                .Include(user => user.Posts.Select(post => post.Topic.Category))
-                .FirstOrDefault(u => u.ID == id);
-
-            if(selectedUser == null)
+            if (!ProfileExists(id))
                 throw new UserProfileNotFoundException();
 
-            var userMostActiveTopic = selectedUser.Posts
-                .GroupBy(post => post.Topic.ID)
-                .OrderByDescending(post => post.Count())
-                .First()
-                .Select(post => new
-                {
-                    TopicName = post.Topic.Name,
-                    TopicAlias = post.Topic.Alias,
-                    CategoryAlias = post.Topic.Category.Alias
-                }).First();
-
-            var userMostActiveCategory = selectedUser.Posts
-                .GroupBy(post => post.Topic.Category.ID)
-                .OrderByDescending(post => post.Count())
-                .First()
-                .Select(post => new
-                {
-                    CategoryName = post.Topic.Category.Name,
-                    CategoryAlias = post.Topic.Category.Alias
-                }).First();
-
-            var profile = new ProfileDTO()
+            var profileQuery = _databaseContext.Users.Where(user => user.ID == id);
+            var profile = profileQuery.Select(user => new ProfileDTO()
             {
-                JoinTime = selectedUser.JoinTime,
+                JoinTime = user.JoinTime,
 
-                PostsCount = selectedUser.Posts.Count(),
-                PostsPerDay = selectedUser.Posts.Count() / (float)(DateTime.Now - selectedUser.JoinTime).TotalDays,
-                PercentageOfAllPosts = (float)selectedUser.Posts.Count() / _databaseContext.Posts.Count(),
+                PostsCount = user.Posts.Count(),
+                PostsPerDay = user.Posts.Count() / (float)(DateTime.Now - user.JoinTime).TotalDays,
+                PercentageOfAllPosts = (float)user.Posts.Count() / _databaseContext.Posts.Count(),
 
-                MostActiveTopicName = userMostActiveTopic.TopicAlias,
-                MostActiveTopicAlias = userMostActiveTopic.TopicAlias,
-                MostActiveTopicCategoryAlias = userMostActiveTopic.CategoryAlias,
+                MostActiveCategory = user.Posts
+                    .GroupBy(post => post.Topic.ID)
+                    .OrderByDescending(post => post.Count())
+                    .FirstOrDefault()
+                    .Select(post => new UserMostActiveCategoryDTO()
+                    {
+                        CategoryName = post.Topic.Category.Name,
+                        CategoryAlias = post.Topic.Category.Alias
+                    }).FirstOrDefault(),
 
-                MostActiveCategoryName = userMostActiveCategory.CategoryName,
-                MostActiveCategoryAlias = userMostActiveCategory.CategoryAlias
-            };
+                MostActiveTopic = user.Posts
+                    .GroupBy(post => post.Topic.Category.ID)
+                    .OrderByDescending(post => post.Count())
+                    .FirstOrDefault()
+                    .Select(post => new UserMostActiveTopicDTO()
+                    {
+                        TopicName = post.Topic.Name,
+                        TopicAlias = post.Topic.Alias,
+                        TopicCategoryAlias = post.Topic.Category.Alias
+                    }).FirstOrDefault()
+            }).Single();
 
             return profile;
         }

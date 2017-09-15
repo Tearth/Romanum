@@ -25,23 +25,36 @@ namespace Business.Services.CategoryServices
                 throw new CategoryNotFoundException();
 
             var categoryQuery = _databaseContext.Categories.Where(category => category.Alias == categoryAlias);
+
             var categoryWithPosts = categoryQuery.Select(category => new CategoryWithPostsDTO()
+            {
+                ID = category.ID,
+                Name = category.Name,
+                Alias = category.Alias,
+                Topics = category.Topics.Select(topic => new TopicDetailsDTO()
                 {
-                    ID = category.ID,
-                    Name = category.Name,
-                    Alias = category.Alias,
-                    Topics = category.Topics.Select(topic => new TopicDetailsDTO()
-                    {
-                        ID = topic.ID,
-                        Name = topic.Name,
-                        Alias = topic.Alias,
-                        AuthorName = topic.Posts.OrderByDescending(p => p.CreationTime).FirstOrDefault().Author.Name,
-                        CreationTime = topic.Posts.OrderByDescending(p => p.CreationTime).FirstOrDefault().CreationTime,
-                        PostsCount = topic.Posts.Count,
-                        LastPostAuthorName = topic.Posts.OrderBy(p => p.CreationTime).FirstOrDefault().Author.Name,
-                        LastPostCreationTime = topic.Posts.OrderBy(p => p.CreationTime).FirstOrDefault().CreationTime
-                    })
-                }).Single();
+                    ID = topic.ID,
+                    Name = topic.Name,
+                    Alias = topic.Alias,
+                    PostsCount = topic.Posts.Count(),
+
+                    FirstPost = topic.Posts
+                        .OrderByDescending(p => p.CreationTime)
+                        .Select(post => new FeaturedPostDTO()
+                        {
+                            AuthorName = post.Author.Name,
+                            CreationTime = post.CreationTime
+                        }).FirstOrDefault(),
+
+                    LastPost = topic.Posts
+                        .OrderBy(p => p.CreationTime)
+                        .Select(post => new FeaturedPostDTO()
+                        {
+                            AuthorName = post.Author.Name,
+                            CreationTime = post.CreationTime
+                        }).FirstOrDefault()
+                })
+            }).Single();
 
             return categoryWithPosts;
         }

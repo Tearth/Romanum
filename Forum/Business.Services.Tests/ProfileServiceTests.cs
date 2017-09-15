@@ -134,7 +134,7 @@ namespace Business.Services.Tests
         [Theory]
         [InlineData(1, "Category 1", "cat-1")]
         [InlineData(2, "Category 1", "cat-1")]
-        [InlineData(3, "", "")]
+        [InlineData(3, null, null)]
         public void GetProfileByUserID_ExistingID_ReturnsValidMostActiveCategory(int userID, string expectedCategoryName, string expectedCategoryAlias)
         {
             var databaseContextMock = GetDatabaseContextMock();
@@ -142,14 +142,14 @@ namespace Business.Services.Tests
             var profileService = new ProfileService(databaseContextMock.Object);
             var result = profileService.GetProfileByUserID(userID);
 
-            Assert.Equal(expectedCategoryName, result.MostActiveCategoryName);
-            Assert.Equal(expectedCategoryAlias, result.MostActiveCategoryAlias);
+            Assert.Equal(expectedCategoryName, result.MostActiveCategory.CategoryName);
+            Assert.Equal(expectedCategoryAlias, result.MostActiveCategory.CategoryAlias);
         }
         
         [Theory]
         [InlineData(1, "Topic 1", "top-1", "cat-1")]
         [InlineData(2, "Topic 2", "top-2", "cat-1")]
-        [InlineData(3, "", "")]
+        [InlineData(3, null, null)]
         public void GetProfileByUserID_ExistingID_ReturnsValidMostActiveTopic(int userID, string expectedTopicName, string expectedTopicAlias, string expectedTopicCategoryAlias)
         {
             var databaseContextMock = GetDatabaseContextMock();
@@ -157,9 +157,9 @@ namespace Business.Services.Tests
             var profileService = new ProfileService(databaseContextMock.Object);
             var result = profileService.GetProfileByUserID(userID);
 
-            Assert.Equal(expectedTopicName, result.MostActiveTopicName);
-            Assert.Equal(expectedTopicAlias, result.MostActiveTopicAlias);
-            Assert.Equal(expectedTopicCategoryAlias, result.MostActiveTopicCategoryAlias);
+            Assert.Equal(expectedTopicName, result.MostActiveTopic.TopicName);
+            Assert.Equal(expectedTopicAlias, result.MostActiveTopic.TopicAlias);
+            Assert.Equal(expectedTopicCategoryAlias, result.MostActiveTopic.TopicCategoryAlias);
         }
 
         [Fact]
