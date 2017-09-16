@@ -32,6 +32,19 @@ namespace Business.Services.Tests.Integration
         }
 
         [Fact]
+        public void GetAllSetionsWithCategories_ReturnsValidCategoriesCount()
+        {
+            var testDatabaseContext = DbContextFactory.Create();
+
+            var service = new SectionService(testDatabaseContext);
+            var sections = service.GetAllSetionsWithCategories();
+
+            Assert.Equal(2, sections.ElementAt(0).Categories.Count());
+            Assert.Equal(1, sections.ElementAt(1).Categories.Count());
+            Assert.Equal(0, sections.ElementAt(2).Categories.Count());
+        }
+
+        [Fact]
         public void GetAllSetionsWithCategories_ReturnsValidLastPostCreationTime()
         {
             var testDatabaseContext = DbContextFactory.Create();
@@ -39,20 +52,9 @@ namespace Business.Services.Tests.Integration
             var service = new SectionService(testDatabaseContext);
             var sections = service.GetAllSetionsWithCategories();
             
-            Assert.Equal(new DateTime(2003, 3, 27).Date, sections.ElementAt(0).Categories.ElementAt(0).LastPostCreationTime.Date);
-            Assert.Equal(new DateTime(2004, 2, 1).Date, sections.ElementAt(0).Categories.ElementAt(1).LastPostCreationTime.Date);
-            Assert.Equal(default(DateTime), sections.ElementAt(1).Categories.ElementAt(0).LastPostCreationTime.Date);
-        }
-
-        [Fact]
-        public void GetAllSetionsWithCategories_ReturnsSectionWithoutCategories()
-        {
-            var testDatabaseContext = DbContextFactory.Create();
-
-            var service = new SectionService(testDatabaseContext);
-            var sections = service.GetAllSetionsWithCategories();
-
-            Assert.Equal(0, sections.ElementAt(2).Categories.Count());
+            Assert.Equal(new DateTime(2015, 9, 9).Date, sections.ElementAt(0).Categories.ElementAt(0).LastPostCreationTime.Date);
+            Assert.Equal(new DateTime(2015, 10, 10).Date, sections.ElementAt(0).Categories.ElementAt(1).LastPostCreationTime.Date);
+            Assert.Equal(default(DateTime).Date, sections.ElementAt(1).Categories.ElementAt(0).LastPostCreationTime.Date);
         }
     }
 }

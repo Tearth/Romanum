@@ -15,6 +15,7 @@ namespace DataAccess.Database.MapConfig.Content
             Property(p => p.Name).HasMaxLength(50).IsRequired();
             Property(p => p.Alias).HasMaxLength(50).IsRequired();
             Property(p => p.Description).HasMaxLength(200);
+            Property(p => p.Order).IsRequired();
         }
     }
 }

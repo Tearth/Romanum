@@ -35,7 +35,7 @@ namespace Business.Services.Tests.Integration
         [Theory]
         [InlineData("top-1", 3)]
         [InlineData("top-2", 3)]
-        [InlineData("top-3", 0)]
+        [InlineData("top-3", 1)]
         public void GetTopicWithPosts_ExistingTopicAlias_ReturnsValidPosts(string topicAlias, int expectedPostsCount)
         {
             var testDatabaseContext = DbContextFactory.Create();

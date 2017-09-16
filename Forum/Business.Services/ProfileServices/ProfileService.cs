@@ -49,18 +49,8 @@ namespace Business.Services.ProfileServices
                 PostsPerDay = user.Posts.Count() / (float)DbFunctions.DiffDays(DateTime.Now, user.JoinTime),
                 PercentageOfAllPosts = (float)user.Posts.Count() / _databaseContext.Posts.Count(),
 
-                MostActiveCategory = user.Posts
-                    .GroupBy(post => post.Topic.ID)
-                    .OrderByDescending(post => post.Count())
-                    .FirstOrDefault()
-                    .Select(post => new UserMostActiveCategoryDTO()
-                    {
-                        CategoryName = post.Topic.Category.Name,
-                        CategoryAlias = post.Topic.Category.Alias
-                    }).FirstOrDefault(),
-
                 MostActiveTopic = user.Posts
-                    .GroupBy(post => post.Topic.Category.ID)
+                    .GroupBy(post => post.Topic.ID)
                     .OrderByDescending(post => post.Count())
                     .FirstOrDefault()
                     .Select(post => new UserMostActiveTopicDTO()
@@ -68,6 +58,16 @@ namespace Business.Services.ProfileServices
                         TopicName = post.Topic.Name,
                         TopicAlias = post.Topic.Alias,
                         TopicCategoryAlias = post.Topic.Category.Alias
+                    }).FirstOrDefault(),
+
+                MostActiveCategory = user.Posts
+                    .GroupBy(post => post.Topic.Category.ID)
+                    .OrderByDescending(post => post.Count())
+                    .FirstOrDefault()
+                    .Select(post => new UserMostActiveCategoryDTO()
+                    {
+                        CategoryName = post.Topic.Category.Name,
+                        CategoryAlias = post.Topic.Category.Alias
                     }).FirstOrDefault()
             }).Single();
 
