@@ -33,9 +33,10 @@ namespace Business.Services.Tests.Integration
         }
 
         [Theory]
-        [InlineData("top-1", 3)]
+        [InlineData("top-1", 1)]
         [InlineData("top-2", 3)]
-        [InlineData("top-3", 1)]
+        [InlineData("top-3", 2)]
+        [InlineData("top-4", 2)]
         public void GetTopicWithPosts_ExistingTopicAlias_ReturnsValidPosts(string topicAlias, int expectedPostsCount)
         {
             var testDatabaseContext = DbContextFactory.Create();
@@ -85,7 +86,8 @@ namespace Business.Services.Tests.Integration
         [Theory]
         [InlineData("top-1", "cat-1")]
         [InlineData("top-2", "cat-1")]
-        [InlineData("top-3", "cat-2")]
+        [InlineData("top-3", "cat-1")]
+        [InlineData("top-4", "cat-2")]
         public void ValidateTopicAndCategoryAlias_ExistingTopicAlias_ReturnsTrue(string topicAlias, string categoryAlias)
         {
             var testDatabaseContext = DbContextFactory.Create();

@@ -33,9 +33,10 @@ namespace Business.Services.Tests.Integration
         }
 
         [Theory]
-        [InlineData("cat-1", 2)]
+        [InlineData("cat-1", 3)]
         [InlineData("cat-2", 1)]
         [InlineData("cat-3", 0)]
+        [InlineData("cat-4", 0)]
         public void GetCategoryWithPosts_ExistingCategoryAlias_ReturnsValidCategoryTopicsCount(string categoryAlias, int expectedTopicsCount)
         {
             var testDatabaseContext = DbContextFactory.Create();

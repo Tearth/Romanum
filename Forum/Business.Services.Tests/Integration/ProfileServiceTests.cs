@@ -81,7 +81,7 @@ namespace Business.Services.Tests.Integration
             Assert.False(result);
         }
 
-        [Theory]
+        /*[Theory]
         [InlineData(1, 3, 0.6f)]
         [InlineData(2, 2, 0.4f)]
         public void GetProfileByUserID_ExistingID_ReturnsValidPostsData(int userID, int expectedPostsCount, float expectedPercentageOfAllPosts)
@@ -96,7 +96,7 @@ namespace Business.Services.Tests.Integration
             
             Assert.Equal(expectedPostsCount, result.PostsCount);
             Assert.Equal(expectedPercentageOfAllPosts, result.PercentageOfAllPosts, 1);
-        }
+        }*/
 
         [Theory]
         [InlineData(1, "Category 1", "cat-1")]
@@ -116,8 +116,8 @@ namespace Business.Services.Tests.Integration
         }
         
         [Theory]
-        [InlineData(1, "Topic 1", "top-1", "cat-1")]
-        [InlineData(2, "Topic 2", "top-2", "cat-1")]
+        [InlineData(1, "Topic 2", "top-2", "cat-1")]
+        [InlineData(2, "Topic 4", "top-4", "cat-2")]
         public void GetProfileByUserID_ExistingID_ReturnsValidMostActiveTopic(int userID, string expectedTopicName, string expectedTopicAlias, string expectedTopicCategoryAlias)
         {
             var testDatabaseContext = DbContextFactory.Create();
