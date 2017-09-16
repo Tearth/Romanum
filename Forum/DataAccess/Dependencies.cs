@@ -12,7 +12,8 @@ namespace DataAccess
     {
         protected override void Load(ContainerBuilder builder)
         {
-            builder.RegisterType<DatabaseContext>().As<IDatabaseContext>();
+            builder.RegisterType<DatabaseContext>().As<IDatabaseContext>()
+                .WithParameter("connectionStringName", "MainDB");
 
             base.Load(builder);
         }

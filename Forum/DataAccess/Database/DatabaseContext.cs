@@ -21,7 +21,12 @@ namespace DataAccess.Database
 
         static bool Ready = false;
 
-        public DatabaseContext() : base("MainDB")
+        public DatabaseContext() : base()
+        {
+
+        }
+
+        public DatabaseContext(string connectionStringName) : base(connectionStringName)
         {
             if(!Ready)
             {
