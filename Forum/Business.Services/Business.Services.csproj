@@ -76,6 +76,8 @@
     <Compile Include="DTO\Section\CategoryDetailsDTO.cs" />
     <Compile Include="DTO\Section\SectionWithCategoriesDTO.cs" />
     <Compile Include="DTO\Topic\TopicWithPostsDTO.cs" />
+    <Compile Include="Helpers\Time\ITimeProvider.cs" />
+    <Compile Include="Helpers\Time\TimeProvider.cs" />
     <Compile Include="MapperProfile.cs" />
     <Compile Include="PostServices\IPostService.cs" />
     <Compile Include="PostServices\PostService.cs" />
@@ -99,9 +101,7 @@
       <Name>DataAccess</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Helpers\Time\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

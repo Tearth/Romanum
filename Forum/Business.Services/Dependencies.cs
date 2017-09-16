@@ -1,4 +1,5 @@
 ﻿using Autofac;
+using Business.Services.Helpers.Time;
 using Business.Services.PostServices;
 using System;
 using System.Collections.Generic;
@@ -15,6 +16,8 @@ namespace Business.Services
             builder.RegisterAssemblyTypes(ThisAssembly)
                 .Where(p => p.IsSubclassOf(typeof(ServiceBase)))
                 .AsImplementedInterfaces();
+
+            builder.RegisterType<TimeProvider>().As<ITimeProvider>();
 
             base.Load(builder);
         }

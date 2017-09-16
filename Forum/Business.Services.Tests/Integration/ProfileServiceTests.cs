@@ -1,4 +1,5 @@
-﻿using Business.Services.ProfileServices;
+﻿using Business.Services.Helpers.Time;
+using Business.Services.ProfileServices;
 using Business.Services.ProfileServices.Exceptions;
 using Business.Services.Tests.Helpers;
 using Business.Services.Tests.Helpers.Database;
@@ -27,7 +28,10 @@ namespace Business.Services.Tests.Integration
         {
             var testDatabaseContext = DbContextFactory.Create();
 
-            var profileService = new ProfileService(testDatabaseContext);
+            var timeProviderMock = new Mock<ITimeProvider>();
+            timeProviderMock.Setup(p => p.Now()).Returns(new DateTime(2016, 1, 1));
+
+            var profileService = new ProfileService(testDatabaseContext, timeProviderMock.Object);
             var result = profileService.UserNameExists(userName);
 
             Assert.True(result);
@@ -38,7 +42,10 @@ namespace Business.Services.Tests.Integration
         {
             var testDatabaseContext = DbContextFactory.Create();
 
-            var profileService = new ProfileService(testDatabaseContext);
+            var timeProviderMock = new Mock<ITimeProvider>();
+            timeProviderMock.Setup(p => p.Now()).Returns(new DateTime(2016, 1, 1));
+
+            var profileService = new ProfileService(testDatabaseContext, timeProviderMock.Object);
             var result = profileService.UserNameExists("Not existing user name");
 
             Assert.False(result);
@@ -51,7 +58,10 @@ namespace Business.Services.Tests.Integration
         {
             var testDatabaseContext = DbContextFactory.Create();
 
-            var profileService = new ProfileService(testDatabaseContext);
+            var timeProviderMock = new Mock<ITimeProvider>();
+            timeProviderMock.Setup(p => p.Now()).Returns(new DateTime(2016, 1, 1));
+
+            var profileService = new ProfileService(testDatabaseContext, timeProviderMock.Object);
             var result = profileService.EMailExists(email);
 
             Assert.True(result);
@@ -62,7 +72,10 @@ namespace Business.Services.Tests.Integration
         {
             var testDatabaseContext = DbContextFactory.Create();
 
-            var profileService = new ProfileService(testDatabaseContext);
+            var timeProviderMock = new Mock<ITimeProvider>();
+            timeProviderMock.Setup(p => p.Now()).Returns(new DateTime(2016, 1, 1));
+
+            var profileService = new ProfileService(testDatabaseContext, timeProviderMock.Object);
             var result = profileService.EMailExists("invalid@local.domain");
 
             Assert.False(result);
@@ -75,7 +88,10 @@ namespace Business.Services.Tests.Integration
         {
             var testDatabaseContext = DbContextFactory.Create();
 
-            var profileService = new ProfileService(testDatabaseContext);
+            var timeProviderMock = new Mock<ITimeProvider>();
+            timeProviderMock.Setup(p => p.Now()).Returns(new DateTime(2016, 1, 1));
+
+            var profileService = new ProfileService(testDatabaseContext, timeProviderMock.Object);
             var result = profileService.GetProfileByUserID(userID);
             
             Assert.Equal(expectedPostsCount, result.PostsCount);
@@ -89,7 +105,10 @@ namespace Business.Services.Tests.Integration
         {
             var testDatabaseContext = DbContextFactory.Create();
 
-            var profileService = new ProfileService(testDatabaseContext);
+            var timeProviderMock = new Mock<ITimeProvider>();
+            timeProviderMock.Setup(p => p.Now()).Returns(new DateTime(2016, 1, 1));
+
+            var profileService = new ProfileService(testDatabaseContext, timeProviderMock.Object);
             var result = profileService.GetProfileByUserID(userID);
 
             Assert.Equal(expectedCategoryName, result.MostActiveCategory.CategoryName);
@@ -103,7 +122,10 @@ namespace Business.Services.Tests.Integration
         {
             var testDatabaseContext = DbContextFactory.Create();
 
-            var profileService = new ProfileService(testDatabaseContext);
+            var timeProviderMock = new Mock<ITimeProvider>();
+            timeProviderMock.Setup(p => p.Now()).Returns(new DateTime(2016, 1, 1));
+
+            var profileService = new ProfileService(testDatabaseContext, timeProviderMock.Object);
             var result = profileService.GetProfileByUserID(userID);
 
             Assert.Equal(expectedTopicName, result.MostActiveTopic.TopicName);
@@ -116,7 +138,10 @@ namespace Business.Services.Tests.Integration
         {
             var testDatabaseContext = DbContextFactory.Create();
 
-            var profileService = new ProfileService(testDatabaseContext);
+            var timeProviderMock = new Mock<ITimeProvider>();
+            timeProviderMock.Setup(p => p.Now()).Returns(new DateTime(2016, 1, 1));
+
+            var profileService = new ProfileService(testDatabaseContext, timeProviderMock.Object);
             var exception = Record.Exception(() => profileService.GetProfileByUserID(1001));
 
             Assert.IsType<UserProfileNotFoundException>(exception);

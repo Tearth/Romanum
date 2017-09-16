@@ -8,16 +8,19 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data.Entity;
 using DataAccess.Entities.Content;
+using Business.Services.Helpers.Time;
 
 namespace Business.Services.ProfileServices
 {
     public class ProfileService : ServiceBase, IProfileService
     {
         IDatabaseContext _databaseContext;
+        ITimeProvider _timeProvider;
 
-        public ProfileService(IDatabaseContext databaseContext)
+        public ProfileService(IDatabaseContext databaseContext, ITimeProvider timeProvider)
         {
             _databaseContext = databaseContext;
+            _timeProvider = timeProvider;
         }
 
         public bool UserNameExists(string name)
@@ -41,12 +44,14 @@ namespace Business.Services.ProfileServices
                 throw new UserProfileNotFoundException();
 
             var profileQuery = _databaseContext.Users.Where(user => user.ID == id);
+            var dateTimeNow = _timeProvider.Now();
+            
             var profile = profileQuery.Select(user => new ProfileDTO()
             {
                 JoinTime = user.JoinTime,
 
                 PostsCount = user.Posts.Count(),
-                PostsPerDay = user.Posts.Count() / (float)DbFunctions.DiffDays(DateTime.Now, user.JoinTime),
+                PostsPerDay = user.Posts.Count() / (float)DbFunctions.DiffDays(dateTimeNow, user.JoinTime),
                 PercentageOfAllPosts = (float)user.Posts.Count() / _databaseContext.Posts.Count(),
 
                 MostActiveTopic = user.Posts
