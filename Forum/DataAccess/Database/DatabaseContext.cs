@@ -28,11 +28,7 @@ namespace DataAccess.Database
 
         public DatabaseContext(string connectionStringName) : base(connectionStringName)
         {
-            if(!Ready)
-            {
-                System.Data.Entity.Database.SetInitializer(new MigrateDatabaseToLatestVersion<DatabaseContext, Configuration>());
-                Ready = true;
-            }
+
         }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
