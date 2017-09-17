@@ -51,7 +51,7 @@ namespace Business.Services.ProfileServices
                 JoinTime = user.JoinTime,
 
                 PostsCount = user.Posts.Count(),
-                PostsPerDay = user.Posts.Count() / (float)DbFunctions.DiffDays(dateTimeNow, user.JoinTime),
+                PostsPerDay = user.Posts.Count() / (float)DbFunctions.DiffDays(user.JoinTime, dateTimeNow),
                 PercentageOfAllPosts = (float)user.Posts.Count() / _databaseContext.Posts.Count(),
 
                 MostActiveTopic = user.Posts

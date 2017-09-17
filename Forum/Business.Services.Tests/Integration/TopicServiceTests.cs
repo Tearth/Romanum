@@ -21,6 +21,7 @@ namespace Business.Services.Tests.Integration
         [InlineData("top-1", 1, "Topic 1")]
         [InlineData("top-2", 2, "Topic 2")]
         [InlineData("top-3", 3, "Topic 3")]
+        [InlineData("top-4", 4, "Topic 4")]
         public void GetTopicWithPosts_ExistingTopicAlias_ReturnsValidTopicData(string topicAlias, int expectedTopicID, string expectedTopicName)
         {
             var testDatabaseContext = DbContextFactory.Create();
@@ -37,7 +38,7 @@ namespace Business.Services.Tests.Integration
         [InlineData("top-2", 3)]
         [InlineData("top-3", 2)]
         [InlineData("top-4", 2)]
-        public void GetTopicWithPosts_ExistingTopicAlias_ReturnsValidPosts(string topicAlias, int expectedPostsCount)
+        public void GetTopicWithPosts_ExistingTopicAlias_ReturnsValidPostsCount(string topicAlias, int expectedPostsCount)
         {
             var testDatabaseContext = DbContextFactory.Create();
 
@@ -62,6 +63,7 @@ namespace Business.Services.Tests.Integration
         [InlineData("top-1")]
         [InlineData("top-2")]
         [InlineData("top-3")]
+        [InlineData("top-4")]
         public void Exists_ExistingTopicAlias_ReturnsTrue(string topicAlias)
         {
             var testDatabaseContext = DbContextFactory.Create();

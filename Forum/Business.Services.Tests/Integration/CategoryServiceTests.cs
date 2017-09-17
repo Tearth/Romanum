@@ -22,6 +22,7 @@ namespace Business.Services.Tests.Integration
         [InlineData("cat-1", "Category 1")]
         [InlineData("cat-2", "Category 2")]
         [InlineData("cat-3", "Category 3")]
+        [InlineData("cat-4", "Category 4")]
         public void GetCategoryWithPosts_ExistingCategoryAlias_ReturnsValidCategoryName(string categoryAlias, string expectedCategoryName)
         {
             var testDatabaseContext = DbContextFactory.Create();
@@ -62,6 +63,7 @@ namespace Business.Services.Tests.Integration
         [InlineData("cat-1")]
         [InlineData("cat-2")]
         [InlineData("cat-3")]
+        [InlineData("cat-4")]
         public void Exists_ExistingCategoryAlias_ReturnsTrue(string categoryAlias)
         {
             var testDatabaseContext = DbContextFactory.Create();

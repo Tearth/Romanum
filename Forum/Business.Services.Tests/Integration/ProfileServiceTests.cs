@@ -81,10 +81,10 @@ namespace Business.Services.Tests.Integration
             Assert.False(result);
         }
 
-        /*[Theory]
-        [InlineData(1, 3, 0.6f)]
-        [InlineData(2, 2, 0.4f)]
-        public void GetProfileByUserID_ExistingID_ReturnsValidPostsData(int userID, int expectedPostsCount, float expectedPercentageOfAllPosts)
+        [Theory]
+        [InlineData(1, 3)]
+        [InlineData(2, 5)]
+        public void GetProfileByUserID_ExistingID_ReturnsValidPostsCount(int userID, int expectedPostsCount)
         {
             var testDatabaseContext = DbContextFactory.Create();
 
@@ -95,8 +95,39 @@ namespace Business.Services.Tests.Integration
             var result = profileService.GetProfileByUserID(userID);
             
             Assert.Equal(expectedPostsCount, result.PostsCount);
-            Assert.Equal(expectedPercentageOfAllPosts, result.PercentageOfAllPosts, 1);
-        }*/
+        }
+        
+        [Theory]
+        [InlineData(1, 0.375f)]
+        [InlineData(2, 0.625f)]
+        public void GetProfileByUserID_ExistingID_ReturnsValidPercentageOfAllPosts(int userID, float expectedPercentageOfAllPosts)
+        {
+            var testDatabaseContext = DbContextFactory.Create();
+
+            var timeProviderMock = new Mock<ITimeProvider>();
+            timeProviderMock.Setup(p => p.Now()).Returns(new DateTime(2016, 1, 1));
+
+            var profileService = new ProfileService(testDatabaseContext, timeProviderMock.Object);
+            var result = profileService.GetProfileByUserID(userID);
+            
+            Assert.Equal(expectedPercentageOfAllPosts, result.PercentageOfAllPosts);
+        }
+
+        [Theory]
+        [InlineData(1, 0.008f, 0.001f)]
+        [InlineData(2, 0.013f, 0.001f)]
+        public void GetProfileByUserID_ExistingID_ReturnsValidPostsPerDay(int userID, float expectedPostsPerDay, float epsilon)
+        {
+            var testDatabaseContext = DbContextFactory.Create();
+
+            var timeProviderMock = new Mock<ITimeProvider>();
+            timeProviderMock.Setup(p => p.Now()).Returns(new DateTime(2016, 1, 1));
+
+            var profileService = new ProfileService(testDatabaseContext, timeProviderMock.Object);
+            var result = profileService.GetProfileByUserID(userID);
+            
+            Assert.True(Math.Abs(expectedPostsPerDay - result.PostsPerDay) < epsilon);
+        }
 
         [Theory]
         [InlineData(1, "Category 1", "cat-1")]
