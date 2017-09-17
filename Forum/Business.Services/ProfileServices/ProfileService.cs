@@ -46,7 +46,7 @@ namespace Business.Services.ProfileServices
 
             var profile = _databaseContext.Users.First(user => user.ID == id);
 
-            if (profile.EMail != profile.EMail && EMailExists(profileData.EMail))
+            if (profile.EMail != profileData.EMail && EMailExists(profileData.EMail))
                 throw new EMailAlreadyExistsException();
 
             profile = Mapper.Map<ChangeProfileDTO, User>(profileData, profile);

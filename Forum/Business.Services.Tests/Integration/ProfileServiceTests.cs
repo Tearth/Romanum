@@ -89,7 +89,7 @@ namespace Business.Services.Tests.Integration
         [InlineData(1, "user1@local.domain")]
         [InlineData(2, "user2@local.domain")]
         [InlineData(3, "user3@local.domain")]
-        public void ChangeProfile_ExistingID_UpdatedProfileHasValidData(int userID, string eMail)
+        public void ChangeProfile_ExistingIDSameEMail_UpdatedProfileHasValidData(int userID, string eMail)
         {
             var testDatabaseContext = DbContextFactory.Create();
 
@@ -112,6 +112,84 @@ namespace Business.Services.Tests.Integration
             Assert.Equal(changeProfileDTO.City, updatedProfile.City);
             Assert.Equal(changeProfileDTO.About, updatedProfile.About);
             Assert.Equal(changeProfileDTO.Footer, updatedProfile.Footer);
+        }
+
+        [Theory]
+        [InlineData(1, "user1-newemail@local.domain")]
+        [InlineData(2, "user2-newemail@local.domain")]
+        [InlineData(3, "user3-newemail@local.domain")]
+        public void ChangeProfile_ExistingIDNewEMail_UpdatedProfileHasValidData(int userID, string eMail)
+        {
+            var testDatabaseContext = DbContextFactory.Create();
+
+            var timeProviderMock = new Mock<ITimeProvider>();
+            timeProviderMock.Setup(p => p.Now()).Returns(new DateTime(2016, 1, 1));
+
+            var changeProfileDTO = new ChangeProfileDTO()
+            {
+                EMail = eMail,
+                City = "Test city",
+                About = "Something about me",
+                Footer = "Ultra-rare funny footer"
+            };
+
+            var profileService = new ProfileService(testDatabaseContext, timeProviderMock.Object);
+            profileService.ChangeProfile(userID, changeProfileDTO);
+
+            var updatedProfile = profileService.GetProfileByUserID(userID);
+            Assert.Equal(changeProfileDTO.EMail, updatedProfile.EMail);
+            Assert.Equal(changeProfileDTO.City, updatedProfile.City);
+            Assert.Equal(changeProfileDTO.About, updatedProfile.About);
+            Assert.Equal(changeProfileDTO.Footer, updatedProfile.Footer);
+        }
+
+        [Theory]
+        [InlineData(1, "user2@local.domain")]
+        [InlineData(2, "user3@local.domain")]
+        [InlineData(3, "user1@local.domain")]
+        public void ChangeProfile_ExistingIDExistingEMail_ThrowsEMailAlreadyExistsException(int userID, string eMail)
+        {
+            var testDatabaseContext = DbContextFactory.Create();
+
+            var timeProviderMock = new Mock<ITimeProvider>();
+            timeProviderMock.Setup(p => p.Now()).Returns(new DateTime(2016, 1, 1));
+
+            var changeProfileDTO = new ChangeProfileDTO()
+            {
+                EMail = eMail,
+                City = "Test city",
+                About = "Something about me",
+                Footer = "Ultra-rare funny footer"
+            };
+
+            var profileService = new ProfileService(testDatabaseContext, timeProviderMock.Object);
+            
+            var exception = Record.Exception(() => profileService.ChangeProfile(userID, changeProfileDTO));
+
+            Assert.IsType<EMailAlreadyExistsException>(exception);
+        }
+
+        [Fact]
+        public void ChangeProfile_NotExistingID_ThrowsUserProfileNotFoundException()
+        {
+            var testDatabaseContext = DbContextFactory.Create();
+
+            var timeProviderMock = new Mock<ITimeProvider>();
+            timeProviderMock.Setup(p => p.Now()).Returns(new DateTime(2016, 1, 1));
+
+            var changeProfileDTO = new ChangeProfileDTO()
+            {
+                EMail = "user1@local.domain",
+                City = "Test city",
+                About = "Something about me",
+                Footer = "Ultra-rare funny footer"
+            };
+
+            var profileService = new ProfileService(testDatabaseContext, timeProviderMock.Object);
+
+            var exception = Record.Exception(() => profileService.GetProfileByUserID(1000));
+
+            Assert.IsType<UserProfileNotFoundException>(exception);
         }
 
         [Theory]
