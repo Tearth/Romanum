@@ -41,6 +41,7 @@ namespace App.MVC
             CreateMap<ProfileViewModel, ProfileDTO>().ReverseMap();
             CreateMap<UserMostActiveTopicViewModel, UserMostActiveTopicDTO>().ReverseMap();
             CreateMap<UserMostActiveCategoryViewModel, UserMostActiveCategoryDTO>().ReverseMap();
+            CreateMap<ChangePasswordViewModel, ChangePasswordDTO>().ReverseMap();
         }
     }
 }
