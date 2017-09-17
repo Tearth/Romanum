@@ -33,7 +33,7 @@ namespace App.MVC.Controllers.ControlPanel
 
             if(!_authService.ChangePassword(changePasswordDTO))
             {
-                ModelState.AddModelError("Summary", "Undefined error, try again.");
+                ModelState.AddModelError("Summary", "Invalid old password, try again.");
                 return View(viewModel);
             }
 

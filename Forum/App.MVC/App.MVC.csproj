@@ -214,6 +214,8 @@
     <Content Include="Views\Registration\SuccessMessage.cshtml" />
     <Content Include="Views\LogIn\SuccessMessage.cshtml" />
     <Content Include="Views\ControlPanel\Index.cshtml" />
+    <Content Include="Views\ChangePassword\Index.cshtml" />
+    <Content Include="Views\ChangePassword\SuccessMessage.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -221,9 +223,7 @@
       <DependentUpon>Web.config</DependentUpon>
     </None>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Views\ChangePassword\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\App.Services\App.Services.csproj">
       <Project>{85242224-1539-40cf-9adb-0c54832021cb}</Project>
