@@ -24,6 +24,7 @@ namespace Business.Services.Tests.Integration
         [Theory]
         [InlineData("User 1")]
         [InlineData("User 2")]
+        [InlineData("User 3")]
         public void UserNameExists_ExistingUserName_ReturnsTrue(string userName)
         {
             var testDatabaseContext = DbContextFactory.Create();
@@ -54,6 +55,7 @@ namespace Business.Services.Tests.Integration
         [Theory]
         [InlineData("user1@local.domain")]
         [InlineData("user2@local.domain")]
+        [InlineData("user3@local.domain")]
         public void EMailExists_ExistingEMail_ReturnsTrue(string email)
         {
             var testDatabaseContext = DbContextFactory.Create();
