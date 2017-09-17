@@ -15,7 +15,7 @@ namespace Business.Services
     {
         public MapperProfile()
         {
-           
+            CreateMap<ChangeProfileDTO, User>();
         }
     }
 }

@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Data.Entity;
 using DataAccess.Entities.Content;
 using Business.Services.Helpers.Time;
+using AutoMapper;
 
 namespace Business.Services.ProfileServices
 {
@@ -40,7 +41,17 @@ namespace Business.Services.ProfileServices
 
         public void ChangeProfile(int id, ChangeProfileDTO profileData)
         {
-           
+            if (!ProfileExists(id))
+                throw new UserProfileNotFoundException();
+
+            var profile = _databaseContext.Users.First(user => user.ID == id);
+
+            if (profile.EMail != profile.EMail && EMailExists(profileData.EMail))
+                throw new EMailAlreadyExistsException();
+
+            profile = Mapper.Map<User>(profileData);
+
+            _databaseContext.SaveChanges();
         }
 
         public ProfileDTO GetProfileByUserID(int id)
