@@ -10,6 +10,10 @@ namespace Business.Services.DTO.Profile
     {
         public DateTime JoinTime { get; set; }
 
+        public string City { get; set; }
+        public string About { get; set; }
+        public string Footer { get; set; }
+
         public int PostsCount { get; set; }
         public float PostsPerDay { get; set; }
         public float PercentageOfAllPosts { get; set; }

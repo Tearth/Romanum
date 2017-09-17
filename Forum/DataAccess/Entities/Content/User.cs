@@ -13,6 +13,10 @@ namespace DataAccess.Entities.Content
         public string EMail { get; set; }
         public DateTime JoinTime { get; set; }
 
+        public string City { get; set; }
+        public string About { get; set; }
+        public string Footer { get; set; }
+
         public virtual ICollection<Post> Posts { get; set; }
 
         public User()
