@@ -82,6 +82,7 @@
     <Compile Include="MapperProfile.cs" />
     <Compile Include="PostServices\IPostService.cs" />
     <Compile Include="PostServices\PostService.cs" />
+    <Compile Include="ProfileServices\Exceptions\EMailAlreadyExistsException.cs" />
     <Compile Include="ProfileServices\Exceptions\UserProfileNotFoundException.cs" />
     <Compile Include="ProfileServices\IProfileService.cs" />
     <Compile Include="ProfileServices\ProfileService.cs" />
