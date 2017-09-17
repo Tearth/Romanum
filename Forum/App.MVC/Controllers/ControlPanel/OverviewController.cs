@@ -8,14 +8,14 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-namespace App.MVC.Controllers
+namespace App.MVC.Controllers.ControlPanel
 {
-    public class ControlPanelController : Controller
+    public class OverviewController : Controller
     {
         IProfileService _profileService;
         IAuthService _authService;
 
-        public ControlPanelController(IAuthService authService, IProfileService profileService)
+        public OverviewController(IAuthService authService, IProfileService profileService)
         {
             _profileService = profileService;
             _authService = authService;

@@ -9,7 +9,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-namespace App.MVC.Controllers
+namespace App.MVC.Controllers.Security
 {
     public class RegistrationController : Controller
     {
