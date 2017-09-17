@@ -82,6 +82,22 @@ namespace Business.Services.Tests.Integration
         }
 
         [Theory]
+        [InlineData(1, "User 1")]
+        [InlineData(2, "User 2")]
+        public void GetProfileByUserID_ExistingID_ReturnsValidUserName(int userID, string expectedUserName)
+        {
+            var testDatabaseContext = DbContextFactory.Create();
+
+            var timeProviderMock = new Mock<ITimeProvider>();
+            timeProviderMock.Setup(p => p.Now()).Returns(new DateTime(2016, 1, 1));
+
+            var profileService = new ProfileService(testDatabaseContext, timeProviderMock.Object);
+            var result = profileService.GetProfileByUserID(userID);
+
+            Assert.Equal(expectedUserName, result.UserName);
+        }
+
+        [Theory]
         [InlineData(1, 3)]
         [InlineData(2, 5)]
         public void GetProfileByUserID_ExistingID_ReturnsValidPostsCount(int userID, int expectedPostsCount)

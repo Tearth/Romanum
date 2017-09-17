@@ -48,6 +48,7 @@ namespace Business.Services.ProfileServices
             
             var profile = profileQuery.Select(user => new ProfileDTO()
             {
+                UserName = user.Name,
                 JoinTime = user.JoinTime,
 
                 PostsCount = user.Posts.Count(),
