@@ -78,7 +78,7 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
-    <Compile Include="AuthServiceTests.cs" />
+    <Compile Include="Unit\AuthServiceTests.cs" />
     <Compile Include="Helpers\FakeWebSecurityWrapper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -92,7 +92,9 @@
       <Name>App.Services</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Integration\" />
+  </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
       <ItemGroup>

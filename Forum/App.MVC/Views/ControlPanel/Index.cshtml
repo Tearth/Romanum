@@ -1,4 +1,6 @@
-﻿@{
+﻿@model ProfileViewModel
+
+@{
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
@@ -33,20 +35,27 @@
                             <table width="100%" cellspacing="1" cellpadding="4">
                                 <tr>
                                     <td align="right" valign="top" nowrap="nowrap"><b class="genmed">Joined: </b></td>
-                                    <td width="100%"><b class="gen">3 minutes ago</b></td>
+                                    <td width="100%"><b class="gen">@Model.JoinTime</b></td>
                                 </tr>
                                 <tr>
                                     <td align="right" valign="top" nowrap="nowrap"><b class="genmed">Total posts: </b></td>
-                                    <td><b class="gen">0</b><br /><span class="genmed">[0.00% of all posts / 0.00 posts per day]<br /><a href="./search.php?style=36&amp;search_id=egosearch">Show your posts</a></span></td>
+                                    <td>
+                                        <b class="gen">@Model.PostsCount</b><br />
+                                            <span class="genmed">
+                                                [@(Model.PercentageOfAllPosts * 100)% of all posts / @Model.PostsPerDay posts per day]
+                                                <br />
+                                                <a href="#">Show your posts</a>
+                                            </span>
+                                    </td>
                                 </tr>
 
                                 <tr>
                                     <td align="right" valign="top" nowrap="nowrap"><b class="genmed">Most active forum: </b></td>
-                                    <td><span class="gen">-</span></td>
+                                    <td><span class="gen">@Model.MostActiveCategory.CategoryName</span></td>
                                 </tr>
                                 <tr>
                                     <td align="right" valign="top" nowrap="nowrap"><b class="genmed">Most active topic: </b></td>
-                                    <td><span class="gen">-</span></td>
+                                    <td><span class="gen">@Model.MostActiveTopic.TopicName</span></td>
                                 </tr>
 
                             </table>

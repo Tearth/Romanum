@@ -184,6 +184,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModels\Category\CategoryWithTopicsViewModel.cs" />
     <Compile Include="ViewModels\Category\TopicDetailsViewModel.cs" />
+    <Compile Include="ViewModels\ControlPanel\ProfileViewModel.cs" />
+    <Compile Include="ViewModels\ControlPanel\UserMostActiveCategoryViewModel.cs" />
+    <Compile Include="ViewModels\ControlPanel\UserMostActiveTopicViewModel.cs" />
     <Compile Include="ViewModels\LogIn\LogInViewModel.cs" />
     <Compile Include="ViewModels\Registration\RegistrationViewModel.cs" />
     <Compile Include="ViewModels\Topic\PostViewModel.cs" />
