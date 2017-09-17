@@ -171,6 +171,7 @@
     <Compile Include="Controllers\Category\CategoryController.cs" />
     <Compile Include="Controllers\ControlPanel\ChangePasswordController.cs" />
     <Compile Include="Controllers\ControlPanel\OverviewController.cs" />
+    <Compile Include="Controllers\ControlPanel\ProfileController.cs" />
     <Compile Include="Controllers\Security\LogInController.cs" />
     <Compile Include="Controllers\Security\RegistrationController.cs" />
     <Compile Include="Controllers\Section\SectionsController.cs" />
@@ -223,7 +224,9 @@
       <DependentUpon>Web.config</DependentUpon>
     </None>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Views\Profile\" />
+  </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\App.Services\App.Services.csproj">
       <Project>{85242224-1539-40cf-9adb-0c54832021cb}</Project>
