@@ -49,7 +49,7 @@ namespace Business.Services.ProfileServices
             if (profile.EMail != profile.EMail && EMailExists(profileData.EMail))
                 throw new EMailAlreadyExistsException();
 
-            profile = Mapper.Map<User>(profileData);
+            profile = Mapper.Map<ChangeProfileDTO, User>(profileData, profile);
 
             _databaseContext.SaveChanges();
         }
@@ -67,6 +67,10 @@ namespace Business.Services.ProfileServices
                 UserName = user.Name,
                 EMail = user.EMail,
                 JoinTime = user.JoinTime,
+
+                City = user.City,
+                About = user.About,
+                Footer = user.Footer,
 
                 PostsCount = user.Posts.Count(),
                 PostsPerDay = user.Posts.Count() / (float)DbFunctions.DiffDays(user.JoinTime, dateTimeNow),

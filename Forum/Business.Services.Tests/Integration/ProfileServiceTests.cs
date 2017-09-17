@@ -20,6 +20,7 @@ using Xunit.Sdk;
 namespace Business.Services.Tests.Integration
 {
     [AutoRollback]
+    [UseMapper]
     public class ProfileServiceTests
     {
         [Theory]

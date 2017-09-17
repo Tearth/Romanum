@@ -10,7 +10,7 @@ using Xunit.Sdk;
 namespace Business.Services.Tests.Helpers.Database
 {
     [AttributeUsage(AttributeTargets.Class | AttributeTargets.Method, AllowMultiple = false, Inherited = true)]
-    public sealed class AutoRollbackAttribute : BeforeAfterTestAttribute
+    public class AutoRollbackAttribute : BeforeAfterTestAttribute
     {
         TransactionScope scope;
 
