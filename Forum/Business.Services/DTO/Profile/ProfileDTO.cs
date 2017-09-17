@@ -9,6 +9,7 @@ namespace Business.Services.DTO.Profile
     public class ProfileDTO
     {
         public string UserName { get; set; }
+        public string EMail { get; set; }
         public DateTime JoinTime { get; set; }
 
         public string City { get; set; }

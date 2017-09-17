@@ -1,4 +1,5 @@
-﻿using Business.Services.Helpers.Time;
+﻿using Business.Services.DTO.Profile;
+using Business.Services.Helpers.Time;
 using Business.Services.ProfileServices;
 using Business.Services.ProfileServices.Exceptions;
 using Business.Services.Tests.Helpers;
@@ -81,6 +82,35 @@ namespace Business.Services.Tests.Integration
             var result = profileService.EMailExists("invalid@local.domain");
 
             Assert.False(result);
+        }
+
+        [Theory]
+        [InlineData(1, "user1@local.domain")]
+        [InlineData(2, "user2@local.domain")]
+        [InlineData(3, "user3@local.domain")]
+        public void ChangeProfile_ExistingID_UpdatedProfileHasValidData(int userID, string eMail)
+        {
+            var testDatabaseContext = DbContextFactory.Create();
+
+            var timeProviderMock = new Mock<ITimeProvider>();
+            timeProviderMock.Setup(p => p.Now()).Returns(new DateTime(2016, 1, 1));
+
+            var changeProfileDTO = new ChangeProfileDTO()
+            {
+                EMail = eMail,
+                City = "Test city",
+                About = "Something about me",
+                Footer = "Ultra-rare funny footer"
+            };
+
+            var profileService = new ProfileService(testDatabaseContext, timeProviderMock.Object);
+            profileService.ChangeProfile(userID, changeProfileDTO);
+
+            var updatedProfile = profileService.GetProfileByUserID(userID);
+            Assert.Equal(changeProfileDTO.EMail, updatedProfile.EMail);
+            Assert.Equal(changeProfileDTO.City, updatedProfile.City);
+            Assert.Equal(changeProfileDTO.About, updatedProfile.About);
+            Assert.Equal(changeProfileDTO.Footer, updatedProfile.Footer);
         }
 
         [Theory]
