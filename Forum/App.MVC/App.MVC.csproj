@@ -187,6 +187,7 @@
     <Compile Include="ViewModels\Category\CategoryWithTopicsViewModel.cs" />
     <Compile Include="ViewModels\Category\TopicDetailsViewModel.cs" />
     <Compile Include="ViewModels\ControlPanel\ChangePasswordViewModel.cs" />
+    <Compile Include="ViewModels\ControlPanel\ChangeProfileViewModel.cs" />
     <Compile Include="ViewModels\ControlPanel\ProfileViewModel.cs" />
     <Compile Include="ViewModels\ControlPanel\UserMostActiveCategoryViewModel.cs" />
     <Compile Include="ViewModels\ControlPanel\UserMostActiveTopicViewModel.cs" />

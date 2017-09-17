@@ -1,12 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Web;
 
-namespace Business.Services.DTO.Profile
+namespace App.MVC.ViewModels.ControlPanel
 {
-    public class ChangeProfileDTO
+    public class ChangeProfileViewModel
     {
         public string EMail { get; set; }
         public string City { get; set; }
