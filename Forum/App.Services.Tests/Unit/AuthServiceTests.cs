@@ -49,7 +49,7 @@ namespace App.Services.Tests.Unit
 
             var exception = Record.Exception(() => authService.CreateUser(userDTO));
 
-            Assert.IsType<UserNameExistsException>(exception);
+            Assert.IsType<UserNameAlreadyExistsException>(exception);
         }
 
         [Fact]

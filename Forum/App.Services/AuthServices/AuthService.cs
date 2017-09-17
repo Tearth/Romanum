@@ -21,7 +21,7 @@ namespace App.Services.AuthServices
         public void CreateUser(RegistrationDTO user)
         {
             if (_webSecurityWrapper.UserExists(user.UserName))
-                throw new UserNameExistsException();
+                throw new UserNameAlreadyExistsException();
 
             _webSecurityWrapper.CreateUser(user);
         }
