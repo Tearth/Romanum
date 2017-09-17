@@ -38,6 +38,11 @@ namespace Business.Services.ProfileServices
             return _databaseContext.Users.Any(user => user.ID == id);
         }
 
+        public void ChangeProfile(int id, ChangeProfileDTO profileData)
+        {
+           
+        }
+
         public ProfileDTO GetProfileByUserID(int id)
         {
             if (!ProfileExists(id))
