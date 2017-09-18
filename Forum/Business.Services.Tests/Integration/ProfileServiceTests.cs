@@ -195,6 +195,7 @@ namespace Business.Services.Tests.Integration
         [Theory]
         [InlineData(1, "User 1")]
         [InlineData(2, "User 2")]
+        [InlineData(3, "User 3")]
         public void GetProfileByUserID_ExistingID_ReturnsValidUserName(int userID, string expectedUserName)
         {
             var testDatabaseContext = DbContextFactory.Create();
@@ -211,6 +212,7 @@ namespace Business.Services.Tests.Integration
         [Theory]
         [InlineData(1, 3)]
         [InlineData(2, 5)]
+        [InlineData(3, 0)]
         public void GetProfileByUserID_ExistingID_ReturnsValidPostsCount(int userID, int expectedPostsCount)
         {
             var testDatabaseContext = DbContextFactory.Create();
@@ -227,6 +229,7 @@ namespace Business.Services.Tests.Integration
         [Theory]
         [InlineData(1, 0.375f)]
         [InlineData(2, 0.625f)]
+        [InlineData(3, 0f)]
         public void GetProfileByUserID_ExistingID_ReturnsValidPercentageOfAllPosts(int userID, float expectedPercentageOfAllPosts)
         {
             var testDatabaseContext = DbContextFactory.Create();
@@ -243,6 +246,7 @@ namespace Business.Services.Tests.Integration
         [Theory]
         [InlineData(1, 0.008f, 0.001f)]
         [InlineData(2, 0.013f, 0.001f)]
+        [InlineData(3, 0f, 0.001f)]
         public void GetProfileByUserID_ExistingID_ReturnsValidPostsPerDay(int userID, float expectedPostsPerDay, float epsilon)
         {
             var testDatabaseContext = DbContextFactory.Create();
@@ -289,6 +293,36 @@ namespace Business.Services.Tests.Integration
             Assert.Equal(expectedTopicName, result.MostActiveTopic.TopicName);
             Assert.Equal(expectedTopicAlias, result.MostActiveTopic.TopicAlias);
             Assert.Equal(expectedTopicCategoryAlias, result.MostActiveTopic.TopicCategoryAlias);
+        }
+
+        [Theory]
+        [InlineData(3)]
+        public void GetProfileByUserID_ExistingID_ReturnsNullMostActiveTopic(int userID)
+        {
+            var testDatabaseContext = DbContextFactory.Create();
+
+            var timeProviderMock = new Mock<ITimeProvider>();
+            timeProviderMock.Setup(p => p.Now()).Returns(new DateTime(2016, 1, 1));
+
+            var profileService = new ProfileService(testDatabaseContext, timeProviderMock.Object);
+            var result = profileService.GetProfileByUserID(userID);
+
+            Assert.Null(result.MostActiveTopic);
+        }
+
+        [Theory]
+        [InlineData(3)]
+        public void GetProfileByUserID_ExistingID_ReturnsNullMostActiveCategory(int userID)
+        {
+            var testDatabaseContext = DbContextFactory.Create();
+
+            var timeProviderMock = new Mock<ITimeProvider>();
+            timeProviderMock.Setup(p => p.Now()).Returns(new DateTime(2016, 1, 1));
+
+            var profileService = new ProfileService(testDatabaseContext, timeProviderMock.Object);
+            var result = profileService.GetProfileByUserID(userID);
+
+            Assert.Null(result.MostActiveCategory);
         }
 
         [Fact]
