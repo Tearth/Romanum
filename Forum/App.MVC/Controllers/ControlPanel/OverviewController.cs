@@ -25,9 +25,9 @@ namespace App.MVC.Controllers.ControlPanel
         public ActionResult Index()
         {
             var currentUserID = _authService.GetCurrentUser().ID;
-            var profile = _profileService.GetProfileByUserID(currentUserID);
+            var profileDTO = _profileService.GetProfileByUserID(currentUserID);
 
-            var viewModel = Mapper.Map<ProfileViewModel>(profile);
+            var viewModel = Mapper.Map<ProfileViewModel>(profileDTO);
             return View(viewModel);
         }
     }

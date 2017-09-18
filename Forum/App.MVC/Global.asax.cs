@@ -32,8 +32,6 @@ namespace App.MVC
         {
             Logger logger = LogManager.GetCurrentClassLogger();
             logger.Fatal(Server.GetLastError());
-
-            //Server.ClearError();
         }
     }
 }
