@@ -39,17 +39,17 @@ namespace Business.Services.ProfileServices
             return _databaseContext.Users.Any(user => user.ID == id);
         }
 
-        public void ChangeProfile(int id, ChangeProfileDTO profileData)
+        public void ChangeProfile(int id, ChangeProfileDTO newProfileData)
         {
             if (!ProfileExists(id))
                 throw new UserProfileNotFoundException();
 
-            var profile = _databaseContext.Users.First(user => user.ID == id);
+            var currentProfile = _databaseContext.Users.First(user => user.ID == id);
 
-            if (profile.EMail != profileData.EMail && EMailExists(profileData.EMail))
+            if (currentProfile.EMail != newProfileData.EMail && EMailExists(newProfileData.EMail))
                 throw new EMailAlreadyExistsException();
 
-            profile = Mapper.Map<ChangeProfileDTO, User>(profileData, profile);
+            currentProfile = Mapper.Map(newProfileData, currentProfile);
 
             _databaseContext.SaveChanges();
         }
