@@ -3,6 +3,11 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+@section CustomScripts
+{
+    <script src='https://www.google.com/recaptcha/api.js'></script>    
+}
+
 @using (Html.BeginForm("Index", "Registration"))
 {
     <div class="cap-div">
