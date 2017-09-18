@@ -170,11 +170,11 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\Category\CategoryController.cs" />
     <Compile Include="Controllers\ControlPanel\ChangePasswordController.cs" />
-    <Compile Include="Controllers\ControlPanel\OverviewController.cs" />
-    <Compile Include="Controllers\ControlPanel\ProfileController.cs" />
+    <Compile Include="Controllers\ControlPanel\ProfileOverviewController.cs" />
+    <Compile Include="Controllers\ControlPanel\ChangeProfileController.cs" />
     <Compile Include="Controllers\Security\LogInController.cs" />
     <Compile Include="Controllers\Security\RegistrationController.cs" />
-    <Compile Include="Controllers\Section\SectionsController.cs" />
+    <Compile Include="Controllers\Section\SectionController.cs" />
     <Compile Include="Controllers\Topic\TopicController.cs" />
     <Compile Include="Dependencies.cs" />
     <Compile Include="App_Start\DIConfig.cs" />
@@ -188,7 +188,7 @@
     <Compile Include="ViewModels\Category\TopicDetailsViewModel.cs" />
     <Compile Include="ViewModels\ControlPanel\ChangePasswordViewModel.cs" />
     <Compile Include="ViewModels\ControlPanel\ChangeProfileViewModel.cs" />
-    <Compile Include="ViewModels\ControlPanel\ProfileViewModel.cs" />
+    <Compile Include="ViewModels\ControlPanel\ProfileOverviewViewModel.cs" />
     <Compile Include="ViewModels\ControlPanel\UserMostActiveCategoryViewModel.cs" />
     <Compile Include="ViewModels\ControlPanel\UserMostActiveTopicViewModel.cs" />
     <Compile Include="ViewModels\LogIn\LogInViewModel.cs" />
@@ -215,10 +215,10 @@
     <Content Include="Views\Registration\Index.cshtml" />
     <Content Include="Views\Registration\SuccessMessage.cshtml" />
     <Content Include="Views\LogIn\SuccessMessage.cshtml" />
-    <Content Include="Views\ControlPanel\Index.cshtml" />
+    <Content Include="Views\ProfileOverview\Index.cshtml" />
     <Content Include="Views\ChangePassword\Index.cshtml" />
     <Content Include="Views\ChangePassword\SuccessMessage.cshtml" />
-    <Content Include="Views\Profile\Index.cshtml" />
+    <Content Include="Views\ChangeProfile\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

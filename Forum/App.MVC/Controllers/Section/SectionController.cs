@@ -9,11 +9,11 @@ using System.Web.Mvc;
 
 namespace App.MVC.Controllers.Section
 {
-    public class SectionsController : Controller
+    public class SectionController : Controller
     {
         ISectionService _sections;
 
-        public SectionsController(ISectionService sections)
+        public SectionController(ISectionService sections)
         {
             _sections = sections;
         }

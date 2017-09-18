@@ -11,12 +11,12 @@ using System.Web.Mvc;
 
 namespace App.MVC.Controllers.ControlPanel
 {
-    public class ProfileController : Controller
+    public class ChangeProfileController : Controller
     {
         IAuthService _authService;
         IProfileService _profileService;
 
-        public ProfileController(IAuthService authService, IProfileService profileService)
+        public ChangeProfileController(IAuthService authService, IProfileService profileService)
         {
             _authService = authService;
             _profileService = profileService;

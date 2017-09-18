@@ -28,7 +28,7 @@ namespace App.MVC.App_Start
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}",
-                defaults: new { controller = "Sections", action = "Index" }
+                defaults: new { controller = "Section", action = "Index" }
             );
         }
     }

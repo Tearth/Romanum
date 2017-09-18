@@ -37,7 +37,7 @@
                 <th>&nbsp;Views&nbsp;</th>
                 <th>&nbsp;Last post&nbsp;</th>
             </tr>
-            @foreach (TopicDetailsViewModel topic in Model.Topics)
+            @foreach (var topic in Model.Topics)
             {
                 <tr>
                     <td class="row1" width="25" align="center"><img src="/Content/Images/topic_unread.gif" width="18" height="18" alt="Unread posts" title="Unread posts" /></td>

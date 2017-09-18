@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace App.MVC.ViewModels.ControlPanel
 {
-    public class ProfileViewModel
+    public class ProfileOverviewViewModel
     {
         public DateTime JoinTime { get; set; }
 

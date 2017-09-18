@@ -38,7 +38,7 @@ namespace App.MVC
             CreateMap<LogInViewModel, LogInDTO>().ReverseMap();
 
             //ControlPanel
-            CreateMap<ProfileViewModel, ProfileDTO>().ReverseMap();
+            CreateMap<ProfileOverviewViewModel, ProfileDTO>().ReverseMap();
             CreateMap<UserMostActiveTopicViewModel, UserMostActiveTopicDTO>().ReverseMap();
             CreateMap<UserMostActiveCategoryViewModel, UserMostActiveCategoryDTO>().ReverseMap();
             CreateMap<ChangePasswordViewModel, ChangePasswordDTO>().ReverseMap();

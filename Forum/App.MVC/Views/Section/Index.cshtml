@@ -3,7 +3,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-@foreach (SectionWithCategoriesViewModel sectionDetails in Model)
+@foreach (var sectionDetails in Model)
 {
     <div class="cap-div">
         <div class="cap-left">
@@ -21,7 +21,7 @@
                 <th width="50">&nbsp;Posts&nbsp;</th>
                 <th width="175">&nbsp;Last post&nbsp;</th>
             </tr>
-                @foreach (CategoryDetalisViewModel categoryDetails in sectionDetails.Categories)
+                @foreach (var categoryDetails in sectionDetails.Categories)
                 {
 
                     <tr>
