@@ -31,12 +31,21 @@
                     <a name="p11256"></a>
                     <div class="postauthor">@post.AuthorName</div>
                     <div class="postdetails">
-                        <br /><b>Joined:</b> 22 Jun 2009, 15:48<br /><b>Posts:</b> 1143<br /><b>Location:</b> Test
+                        <br />
+                        <b>Joined:</b> @post.AuthorJoinTime<br />
+                        <b>Posts:</b> @post.AuthorPostsCount<br />
+
+                        @if (post.AuthorCity != null)
+                        {
+                            <b>Location:</b> @post.AuthorCity
+                        }
                     </div>
                 </td>
                 <td width="100%" height="25" class="row" valign="top">
                     <div class="postbody">
                         @post.Content
+                        <ht/>
+                        @post.AuthorFooter
                     </div>
                     <br clear="all" /><br />
                 </td>
