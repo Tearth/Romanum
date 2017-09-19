@@ -8,16 +8,14 @@ using System.Threading.Tasks;
 
 namespace DataAccess.Database.MapConfig.Content
 {
-    class CategoryConfig : EntityTypeConfiguration<Category>
+    class TopicEntityConfig : EntityTypeConfiguration<Topic>
     {
-        public CategoryConfig()
+        public TopicEntityConfig()
         {
             Property(p => p.Name).HasMaxLength(50).IsRequired();
-            Property(p => p.Alias).HasMaxLength(50).IsRequired();
-            Property(p => p.Description).HasMaxLength(200);
-            Property(p => p.Order).IsRequired();
+            Property(p => p.Alias).HasMaxLength(100).IsRequired();
 
-            HasRequired(p => p.Section);
+            HasRequired(p => p.Category);
         }
     }
 }

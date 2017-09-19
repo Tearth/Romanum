@@ -9,9 +9,9 @@ using System.Threading.Tasks;
 
 namespace DataAccess.Database.MapConfig.Content
 {
-    class PostConfig : EntityTypeConfiguration<Post>
+    class PostEntityConfig : EntityTypeConfiguration<Post>
     {
-        public PostConfig()
+        public PostEntityConfig()
         {
             Property(p => p.Content).HasMaxLength(1000);
             Property(p => p.CreationTime).IsRequired();

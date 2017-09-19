@@ -8,9 +8,9 @@ using System.Threading.Tasks;
 
 namespace DataAccess.Database.MapConfig.Content
 {
-    public class UserConfig : EntityTypeConfiguration<User>
+    public class UserEntityConfig : EntityTypeConfiguration<User>
     {
-        public UserConfig()
+        public UserEntityConfig()
         {
             Property(p => p.Name).HasMaxLength(20).IsRequired();
             Property(p => p.EMail).HasMaxLength(100).IsRequired();

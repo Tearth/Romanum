@@ -59,16 +59,16 @@
   <ItemGroup>
     <Compile Include="Bootloader.cs" />
     <Compile Include="Database\IDatabaseContext.cs" />
-    <Compile Include="Database\MapConfig\Content\UserConfig.cs" />
+    <Compile Include="Database\MapConfig\Content\UserEntityConfig.cs" />
     <Compile Include="Entities\Content\Category.cs" />
     <Compile Include="Entities\Content\Post.cs" />
     <Compile Include="Entities\Content\Section.cs" />
     <Compile Include="Entities\Content\Topic.cs" />
     <Compile Include="Database\DatabaseContext.cs" />
-    <Compile Include="Database\MapConfig\Content\CategoryConfig.cs" />
-    <Compile Include="Database\MapConfig\Content\PostConfig.cs" />
-    <Compile Include="Database\MapConfig\Content\SectionConfig.cs" />
-    <Compile Include="Database\MapConfig\Content\TopicConfig.cs" />
+    <Compile Include="Database\MapConfig\Content\CategoryEntityConfig.cs" />
+    <Compile Include="Database\MapConfig\Content\PostEntityConfig.cs" />
+    <Compile Include="Database\MapConfig\Content\SectionEntityConfig.cs" />
+    <Compile Include="Database\MapConfig\Content\TopicEntityConfig.cs" />
     <Compile Include="Dependencies.cs" />
     <Compile Include="Entities\Content\User.cs" />
     <Compile Include="EntityBase.cs" />
