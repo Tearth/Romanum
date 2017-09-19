@@ -108,6 +108,7 @@
     <Compile Include="Integration\CategoryServiceTests.cs" />
     <Compile Include="Helpers\Database\DbContextFactory.cs" />
     <Compile Include="Helpers\Database\AutoRollbackAttribute.cs" />
+    <Compile Include="Integration\ConfigServiceTests.cs" />
     <Compile Include="Integration\ProfileServiceTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Integration\SectionServiceTests.cs" />
