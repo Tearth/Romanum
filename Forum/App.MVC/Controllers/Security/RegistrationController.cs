@@ -1,4 +1,5 @@
-﻿using App.MVC.ViewModels.Registration;
+﻿using App.MVC.Filters;
+using App.MVC.ViewModels.Registration;
 using App.Services.AuthServices;
 using App.Services.CaptchaService;
 using App.Services.DTO.Auth;
@@ -26,12 +27,14 @@ namespace App.MVC.Controllers.Security
         }
 
         [HttpGet]
+        [UseCaptcha]
         public ActionResult Index()
         {
             return View();
         }
 
         [HttpPost]
+        [UseCaptcha]
         public ActionResult Index(RegistrationViewModel viewModel)
         {
             if (_profileService.UserNameExists(viewModel.UserName))

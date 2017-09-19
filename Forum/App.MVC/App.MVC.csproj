@@ -178,6 +178,7 @@
     <Compile Include="Controllers\Topic\TopicController.cs" />
     <Compile Include="Dependencies.cs" />
     <Compile Include="App_Start\DIConfig.cs" />
+    <Compile Include="Filters\UseCaptchaAttribute.cs" />
     <Compile Include="Filters\ValidateModelStateAttribute.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>

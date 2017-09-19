@@ -13,6 +13,7 @@ namespace App.MVC
         protected override void Load(ContainerBuilder builder)
         {
             builder.RegisterControllers(Assembly.GetExecutingAssembly());
+            builder.RegisterFilterProvider();
 
             base.Load(builder);
         }
