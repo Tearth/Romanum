@@ -1,5 +1,6 @@
 ﻿using App.MVC.ViewModels.Registration;
 using App.Services.AuthServices;
+using App.Services.CaptchaService;
 using App.Services.DTO.Auth;
 using AutoMapper;
 using Business.Services.ProfileServices;
@@ -15,11 +16,13 @@ namespace App.MVC.Controllers.Security
     {
         IAuthService _authService;
         IProfileService _profileService;
+        ICaptchaService _captchaService;
 
-        public RegistrationController(IAuthService authService, IProfileService profileService)
+        public RegistrationController(IAuthService authService, IProfileService profileService, ICaptchaService captchaService)
         {
             _authService = authService;
             _profileService = profileService;
+            _captchaService = captchaService;
         }
 
         [HttpGet]
