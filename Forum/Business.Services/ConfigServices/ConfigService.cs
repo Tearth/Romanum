@@ -28,7 +28,7 @@ namespace Business.Services.ConfigServices
             return (T)convertedValue;
         }
 
-        public void SetValue<T>(string key, T value)
+        public void CreateOrUpdateKey<T>(string key, T value)
         {
             Config config;
 
