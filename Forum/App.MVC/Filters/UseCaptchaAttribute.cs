@@ -11,7 +11,7 @@ namespace App.MVC.Filters
     public class UseCaptchaAttribute : ActionFilterAttribute
     {
         public IConfigService ConfigService { get; set; }
-        public ICaptchaService CaptchaSerivce { get; set; }
+        public ICaptchaService CaptchaService { get; set; }
 
         public override void OnActionExecuting(ActionExecutingContext filterContext)
         {
@@ -37,7 +37,7 @@ namespace App.MVC.Filters
             var captchaSecretKey = ConfigService.GetValue<string>("CaptchaSecretKey");
             var responseCode = filterContext.HttpContext.Request.Form["g-recaptcha-response"];
 
-            if (CaptchaSerivce.Verify(captchaSecretKey, responseCode))
+            if (!CaptchaService.Verify(captchaSecretKey, responseCode))
             {
                 filterContext.Result = new ViewResult
                 {
