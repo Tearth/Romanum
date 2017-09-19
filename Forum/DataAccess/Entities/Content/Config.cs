@@ -10,5 +10,10 @@ namespace DataAccess.Entities.Content
     {
         public string Key { get; set; }
         public string Value { get; set; }
+
+        public Config(string key)
+        {
+            Key = key;
+        }
     }
 }

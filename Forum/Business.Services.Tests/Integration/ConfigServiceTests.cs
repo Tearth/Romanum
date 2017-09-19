@@ -66,5 +66,16 @@ namespace Business.Services.Tests.Integration
 
             Assert.Equal(10.34f, result);
         }
+
+        [Fact]
+        public void GetValue_NotExistingKey_ThrowsKeyNotFoundException()
+        {
+            var testDatabaseContext = DbContextFactory.Create();
+
+            var service = new ConfigService(testDatabaseContext);
+            var exception = Record.Exception(() => service.GetValue<float>("Not existing key"));
+
+            Assert.IsType<KeyNotFoundException>(exception);
+        }
     }
 }
