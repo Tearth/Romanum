@@ -51,5 +51,14 @@ namespace Business.Services.ConfigServices
         {
             return _databaseContext.Configuration.Any(p => p.Key == key);
         }
+
+        public void RemoveKey(string key)
+        {
+            if (!KeyExists(key))
+                throw new KeyNotFoundException();
+
+            var record = _databaseContext.Configuration.First(p => p.Key == key);
+            _databaseContext.Configuration.Remove(record);
+        }
     }
 }

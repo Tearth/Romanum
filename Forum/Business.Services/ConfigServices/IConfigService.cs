@@ -12,5 +12,6 @@ namespace Business.Services.ConfigServices
         void CreateOrUpdateKey<T>(string key, T value);
 
         bool KeyExists(string key);
+        void RemoveKey(string key);
     }
 }
