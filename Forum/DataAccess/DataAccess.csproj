@@ -59,8 +59,10 @@
   <ItemGroup>
     <Compile Include="Bootloader.cs" />
     <Compile Include="Database\IDatabaseContext.cs" />
+    <Compile Include="Database\MapConfig\Content\ConfigEntityConfig.cs" />
     <Compile Include="Database\MapConfig\Content\UserEntityConfig.cs" />
     <Compile Include="Entities\Content\Category.cs" />
+    <Compile Include="Entities\Content\Config.cs" />
     <Compile Include="Entities\Content\Post.cs" />
     <Compile Include="Entities\Content\Section.cs" />
     <Compile Include="Entities\Content\Topic.cs" />
