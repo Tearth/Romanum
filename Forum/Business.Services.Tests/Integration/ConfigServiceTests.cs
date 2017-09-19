@@ -149,5 +149,34 @@ namespace Business.Services.Tests.Integration
             var value = service.GetValue<float>("Key1");
             Assert.Equal(100.1234f, value);
         }
+
+        [Fact]
+        public void RemoveKey_NotExistingKey_ThrowsKeyNotFoundException()
+        {
+            var testDatabaseContext = DbContextFactory.Create();
+
+            var service = new ConfigService(testDatabaseContext);
+            var exception = Record.Exception(() => service.RemoveKey("Not existing key"));
+
+            Assert.IsType<KeyNotFoundException>(exception);
+        }
+
+        [Theory]
+        [InlineData("Key1")]
+        [InlineData("Key2")]
+        [InlineData("Key3")]
+        [InlineData("Key4")]
+        [InlineData("Key5")]
+        public void RemoveKey_ExistingKey_GetValueThrowsKeyNotFoundException(string keyToRemove)
+        {
+            var testDatabaseContext = DbContextFactory.Create();
+
+            var service = new ConfigService(testDatabaseContext);
+            service.RemoveKey(keyToRemove);
+
+            var exception = Record.Exception(() => service.RemoveKey(keyToRemove));
+
+            Assert.IsType<KeyNotFoundException>(exception);
+        }
     }
 }

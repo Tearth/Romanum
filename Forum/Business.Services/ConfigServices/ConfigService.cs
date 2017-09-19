@@ -59,6 +59,8 @@ namespace Business.Services.ConfigServices
 
             var record = _databaseContext.Configuration.First(p => p.Key == key);
             _databaseContext.Configuration.Remove(record);
+
+            _databaseContext.SaveChanges();
         }
     }
 }
