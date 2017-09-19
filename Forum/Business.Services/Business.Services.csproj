@@ -66,6 +66,7 @@
     <Compile Include="CategoryServices\Exceptions\CategoryNotFoundException.cs" />
     <Compile Include="CategoryServices\ICategoryService.cs" />
     <Compile Include="ConfigServices\ConfigService.cs" />
+    <Compile Include="ConfigServices\Exceptions\KeyNotFoundException.cs" />
     <Compile Include="ConfigServices\IConfigService.cs" />
     <Compile Include="Dependencies.cs" />
     <Compile Include="DTO\Category\CategoryWithPostsDTO.cs" />
