@@ -16,15 +16,26 @@ namespace Business.Services.ConfigServices
             _databaseContext = databaseContext;
         }
 
-        public object GetValue<T>(string key)
+        public T GetValue<T>(string key)
         {
             if (!KeyExists(key))
                 throw new KeyNotFoundException();
 
-            var rawValue = _databaseContext.Configuration.First(p => p.Key == key);
+            var rawValue = _databaseContext.Configuration.First(p => p.Key == key).Value;
             var convertedValue = Convert.ChangeType(rawValue, typeof(T));
 
-            return convertedValue;
+            return (T)convertedValue;
+        }
+
+        public void SetValue<T>(string key, T value)
+        {
+            if (!KeyExists(key))
+                throw new KeyNotFoundException();
+
+            var record = _databaseContext.Configuration.First(p => p.Key == key);
+            record.Value = (string)Convert.ChangeType(value, typeof(string));
+
+            _databaseContext.SaveChanges();
         }
 
         public bool KeyExists(string key)
