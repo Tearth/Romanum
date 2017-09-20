@@ -1,4 +1,4 @@
-﻿using App.Services.CaptchaService;
+﻿using App.Services.CaptchaServices;
 using Business.Services.ConfigServices;
 using System;
 using System.Collections.Generic;

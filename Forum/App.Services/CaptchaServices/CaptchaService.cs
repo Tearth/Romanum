@@ -8,7 +8,7 @@ using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace App.Services.CaptchaService
+namespace App.Services.CaptchaServices
 {
     public class CaptchaService : ServiceBase, ICaptchaService
     {

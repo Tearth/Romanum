@@ -1,7 +1,7 @@
 ﻿using App.MVC.Filters;
 using App.MVC.ViewModels.Registration;
 using App.Services.AuthServices;
-using App.Services.CaptchaService;
+using App.Services.CaptchaServices;
 using App.Services.DTO.Auth;
 using AutoMapper;
 using Business.Services.ProfileServices;

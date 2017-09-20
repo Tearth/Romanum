@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace App.Services.CaptchaService
+namespace App.Services.CaptchaServices
 {
     public interface ICaptchaService
     {
