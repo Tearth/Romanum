@@ -81,6 +81,7 @@
     <Compile Include="Unit\AuthServiceTests.cs" />
     <Compile Include="Helpers\FakeWebSecurityWrapper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Unit\GravatarServiceTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

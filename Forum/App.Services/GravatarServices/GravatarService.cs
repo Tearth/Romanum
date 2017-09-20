@@ -14,14 +14,31 @@ namespace App.Services.GravatarServices
 
         }
 
-        public string GetAvatarHash(string userEMail)
-        {
-            var md5 = MD5.Create();
-            var userEMailBytes = ASCIIEncoding.UTF8.GetBytes(userEMail);
 
+
+        public string GetGravatarHash(string userEMail)
+        {
+            var fixedEMail = userEMail.Trim().ToLower();
+            var userEMailBytes = ASCIIEncoding.UTF8.GetBytes(fixedEMail);
+
+            var md5 = MD5.Create();
             var hashBytes = md5.ComputeHash(userEMailBytes);
 
-            return ASCIIEncoding.UTF8.GetString(hashBytes);
+            var hashString = GetHashString(hashBytes);
+
+            return hashString;
+        }
+
+        string GetHashString(byte[] hashBytes)
+        {
+            var hashString = new StringBuilder();
+
+            foreach (byte b in hashBytes)
+            {
+                hashString.Append(b.ToString("x2"));
+            }
+
+            return hashString.ToString();
         }
     }
 }
