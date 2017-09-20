@@ -9,12 +9,12 @@ namespace App.Services.GravatarServices
 {
     public class GravatarService : ServiceBase, IGravatarService
     {
-        public GravatarService()
+        const string GravatarURL = "https://www.gravatar.com/avatar/";
+        
+        public string GetGravatarLink(string userEMail)
         {
-
+            return GravatarURL + GetGravatarHash(userEMail);
         }
-
-
 
         public string GetGravatarHash(string userEMail)
         {
