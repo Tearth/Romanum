@@ -5,7 +5,7 @@ using Business.Services.ProfileServices.Exceptions;
 using Business.Services.Tests.Helpers;
 using Business.Services.Tests.Helpers.Database;
 using DataAccess.Database;
-using DataAccess.Entities.Content;
+using DataAccess.Entities;
 using Moq;
 using System;
 using System.Collections.Generic;

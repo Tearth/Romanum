@@ -1,5 +1,5 @@
 ﻿using DataAccess.Entities;
-using DataAccess.Entities.Content;
+using DataAccess.Entities;
 using DataAccess.Migrations;
 using System;
 using System.Collections.Generic;

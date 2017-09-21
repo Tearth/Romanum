@@ -2,7 +2,7 @@
 using Business.Services.Tests.Helpers;
 using Business.Services.Tests.Helpers.Database;
 using DataAccess.Database;
-using DataAccess.Entities.Content;
+using DataAccess.Entities;
 using Moq;
 using Ploeh.AutoFixture;
 using Ploeh.AutoFixture.Kernel;

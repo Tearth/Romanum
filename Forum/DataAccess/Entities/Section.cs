@@ -4,29 +4,28 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DataAccess.Entities.Content
+namespace DataAccess.Entities
 {
-    public class Category : EntityBase
+    public class Section : EntityBase
     {
         public string Name { get; set; }
         public string Alias { get; set; }
         public string Description { get; set; }
         public int Order { get; set; }
 
-        public virtual Section Section { get; set; }
-        public virtual ICollection<Topic> Topics { get; set; }
+        public virtual ICollection<Category> Categories { get; set; }
 
-        public Category()
+        public Section()
         {
 
         }
 
-        public Category(string name, string alias)
+        public Section(string name, string alias)
         {
             Name = name;
             Alias = alias;
 
-            Topics = new List<Topic>();
+            Categories = new List<Category>();
         }
     }
 }

@@ -3,7 +3,7 @@ using Business.Services.Tests.Helpers.Database;
 using Business.Services.TopicServices;
 using Business.Services.TopicServices.Exceptions;
 using DataAccess.Database;
-using DataAccess.Entities.Content;
+using DataAccess.Entities;
 using Moq;
 using System;
 using System.Collections.Generic;

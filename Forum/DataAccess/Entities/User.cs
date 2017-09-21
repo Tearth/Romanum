@@ -4,11 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DataAccess.Entities.Content
+namespace DataAccess.Entities
 {
-    public class User
+    public class User : EntityBase
     {
-        public int ID { get; set; }
         public string Name { get; set; }
         public string EMail { get; set; }
         public DateTime JoinTime { get; set; }

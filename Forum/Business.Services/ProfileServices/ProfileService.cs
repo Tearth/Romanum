@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Data.Entity;
-using DataAccess.Entities.Content;
+using DataAccess.Entities;
 using Business.Services.Helpers.Time;
 using AutoMapper;
 

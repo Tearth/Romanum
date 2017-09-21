@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DataAccess.Entities.Content
+namespace DataAccess.Entities
 {
     public class Post : EntityBase
     {
