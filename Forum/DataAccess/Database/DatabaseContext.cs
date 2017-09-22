@@ -18,9 +18,8 @@ namespace DataAccess.Database
         public virtual IDbSet<Topic> Topics { get; set; }
         public virtual IDbSet<Post> Posts { get; set; }
         public virtual IDbSet<User> Users { get; set; }
+        public virtual IDbSet<Avatar> Avatars { get; set; }
         public virtual IDbSet<Config> Configuration { get; set; }
-
-        static bool Ready = false;
 
         public DatabaseContext() : base()
         {

@@ -59,10 +59,13 @@
   <ItemGroup>
     <Compile Include="Bootloader.cs" />
     <Compile Include="Database\IDatabaseContext.cs" />
+    <Compile Include="Database\MapConfig\AvatarEntityConfig.cs" />
     <Compile Include="Database\MapConfig\ConfigEntityConfig.cs" />
     <Compile Include="Database\MapConfig\UserEntityConfig.cs" />
+    <Compile Include="Entities\Avatar.cs" />
     <Compile Include="Entities\Category.cs" />
     <Compile Include="Entities\Config.cs" />
+    <Compile Include="Entities\Enums\AvatarType.cs" />
     <Compile Include="Entities\Post.cs" />
     <Compile Include="Entities\Section.cs" />
     <Compile Include="Entities\Topic.cs" />

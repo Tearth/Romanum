@@ -15,6 +15,7 @@ namespace DataAccess.Database
         IDbSet<Topic> Topics { get; set; }
         IDbSet<Post> Posts { get; set; }
         IDbSet<User> Users { get; set; }
+        IDbSet<Avatar> Avatars { get; set; }
         IDbSet<Config> Configuration { get; set; }
 
         int SaveChanges();

@@ -19,6 +19,8 @@ namespace DataAccess.Database.MapConfig
             Property(p => p.City).HasMaxLength(20);
             Property(p => p.About).HasMaxLength(100);
             Property(p => p.Footer).HasMaxLength(100);
+
+            HasOptional(p => p.Avatar);
         }
     }
 }
