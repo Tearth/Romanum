@@ -129,6 +129,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\Avatars\default.jpg" />
     <Content Include="Content\Images\button_topic_new.gif" />
     <Content Include="Content\Images\button_topic_reply.gif" />
     <Content Include="Content\Images\forum_link.gif" />
