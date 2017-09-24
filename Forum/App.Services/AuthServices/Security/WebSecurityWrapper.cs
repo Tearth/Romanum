@@ -28,7 +28,12 @@ namespace App.Services.AuthServices.Security
 
         public void CreateUser(RegistrationDTO user)
         {
-            WebSecurity.CreateUserAndAccount(user.UserName, user.Password, new { EMail = user.EMail });
+            WebSecurity.CreateUserAndAccount(user.UserName, user.Password, new
+            {
+                EMail = user.EMail,
+                JoinTime = DateTime.Now,
+                AvatarID = 1 }
+            );
         }
 
         public bool UserExists(string name)
