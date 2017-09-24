@@ -4,6 +4,11 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+@section CustomScripts
+{
+    @Scripts.Render("/Scripts/Views/change-avatar.js");
+}
+
 <table width="100%" cellspacing="0" cellpadding="0" border="0">
     <tr>
         <td width="20%" valign="top" id="ucp-left">
@@ -39,12 +44,18 @@
 
                                     <table align="center" cellspacing="1" cellpadding="4" style="width: 100%;">
                                         <tr>
-                                            <td valign="top"><b class="gensmall">EMail:</b></td>
+                                            <td valign="top"><b class="gensmall">Avatar:</b></td>
                                             <td>
-                                                @Html.RadioButtonFor(p => Model.Type, App.MVC.ViewModels.ControlPanel.Enums.AvatarType.Default)
-                                                @Html.RadioButtonFor(p => Model.Type, App.MVC.ViewModels.ControlPanel.Enums.AvatarType.Internal)
-                                                @Html.RadioButtonFor(p => Model.Type, App.MVC.ViewModels.ControlPanel.Enums.AvatarType.Gravatar)
-
+                                                <div class="default-avatar-section">
+                                                    <div class="default-avatar-radio">Default @Html.RadioButtonFor(p => Model.Type, global::App.MVC.ViewModels.ControlPanel.Enums.AvatarType.Default)</div>
+                                                </div>
+                                                <div class="gravatar-avatar-section">
+                                                    <div class="gravatar-avatar-radio">Gravatar @Html.RadioButtonFor(p => Model.Type, global::App.MVC.ViewModels.ControlPanel.Enums.AvatarType.Gravatar)</div>
+                                                </div>
+                                                <div class="internal-avatar-section">
+                                                    <div class="internal-avatar-radio">Internal @Html.RadioButtonFor(p => Model.Type, global::App.MVC.ViewModels.ControlPanel.Enums.AvatarType.Internal)</div>
+                                                    <div class="internal-avatar-input"><input type="file" name="file" /></div>
+                                                </div>
                                                 <br />
                                             </td>
                                         </tr>

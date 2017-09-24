@@ -16,6 +16,9 @@ namespace App.MVC.App_Start
             bundles.Add(new ScriptBundle("~/bundles/validation").Include(
                                          "~/Scripts/jquery.validate*"));
 
+            bundles.Add(new ScriptBundle("~/bundles/change-profile").Include(
+                                         "~/Scripts/Views/change-profile.js"));
+
             bundles.Add(new StyleBundle("~/Content/forum-style").Include(
                                         "~/Content/style.css"));
         }
