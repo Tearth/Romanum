@@ -61,6 +61,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AvatarServices\AvatarService.cs" />
+    <Compile Include="AvatarServices\IAvatarService.cs" />
     <Compile Include="Bootloader.cs" />
     <Compile Include="CategoryServices\CategoryService.cs" />
     <Compile Include="CategoryServices\Exceptions\CategoryNotFoundException.cs" />
@@ -106,7 +108,9 @@
       <Name>DataAccess</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="DTO\Avatar\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
