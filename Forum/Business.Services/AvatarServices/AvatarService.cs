@@ -1,5 +1,4 @@
-﻿using Business.Services.DTO.Avatar;
-using DataAccess.Database;
+﻿using DataAccess.Database;
 using DataAccess.Entities;
 using DataAccess.Entities.Enums;
 using System;
