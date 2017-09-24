@@ -73,8 +73,12 @@ namespace Business.Services.ProfileServices
                 Footer = user.Footer,
 
                 PostsCount = user.Posts.Count(),
-                PostsPerDay = user.Posts.Count() / (float)DbFunctions.DiffDays(user.JoinTime, dateTimeNow),
-                PercentageOfAllPosts = (float)user.Posts.Count() / _databaseContext.Posts.Count(),
+
+                PostsPerDay = DbFunctions.DiffDays(user.JoinTime, dateTimeNow) == 0 ?  
+                    0 : user.Posts.Count() / (float)DbFunctions.DiffDays(user.JoinTime, dateTimeNow),
+
+                PercentageOfAllPosts = _databaseContext.Posts.Count() == 0 ?
+                    0 : (float)user.Posts.Count() / _databaseContext.Posts.Count(),
 
                 MostActiveTopic = user.Posts
                     .GroupBy(post => post.Topic.ID)

@@ -51,11 +51,27 @@
 
                                 <tr>
                                     <td align="right" valign="top" nowrap="nowrap"><b class="genmed">Most active forum: </b></td>
-                                    <td><span class="gen">@Model.MostActiveCategory.CategoryName</span></td>
+                                    <td><span class="gen">
+                                        @if (Model.MostActiveCategory != null)
+                                        {
+                                            @:Model.MostActiveCategory.CategoryName
+                                        }
+                                        else
+                                        {
+                                            @:none
+                                        }</span></td>
                                 </tr>
                                 <tr>
                                     <td align="right" valign="top" nowrap="nowrap"><b class="genmed">Most active topic: </b></td>
-                                    <td><span class="gen">@Model.MostActiveTopic.TopicName</span></td>
+                                    <td><span class="gen">
+                                        @if (Model.MostActiveTopic != null)
+                                        {
+                                            @:Model.MostActiveTopic.TopicName
+                                        }
+                                        else
+                                        {
+                                            @:none
+                                        }</span></td>
                                 </tr>
 
                             </table>
