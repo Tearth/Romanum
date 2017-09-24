@@ -16,7 +16,7 @@ namespace DataAccess.Database.MapConfig
             Property(p => p.Source).HasMaxLength(256);
 
             HasMany(avatar => avatar.Users)
-                .WithRequired(user => user.Avatar)
+                .WithOptional(user => user.Avatar)
                 .HasForeignKey(user => user.AvatarID)
                 .WillCascadeOnDelete(false);
         }

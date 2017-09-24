@@ -16,14 +16,13 @@ namespace Business.Services.Tests.Helpers.Database
         protected override void Seed(DatabaseContext context)
         {
             //Avatars
-            context.Avatars.AddOrUpdate(new Avatar() { ID = 1, Type = AvatarType.Default, Source = "/Content/default.png" });
-            context.Avatars.AddOrUpdate(new Avatar() { ID = 2, Type = AvatarType.InternalImage, Source = "/Content/Avatars/internal_1.png" });
-            context.Avatars.AddOrUpdate(new Avatar() { ID = 3, Type = AvatarType.Gravatar, Source = "gravatar.com/HASH" });
+            context.Avatars.AddOrUpdate(new Avatar() { ID = 1, Type = AvatarType.InternalImage, Source = "/Content/Avatars/internal_1.png" });
+            context.Avatars.AddOrUpdate(new Avatar() { ID = 2, Type = AvatarType.Gravatar, Source = "gravatar.com/HASH" });
 
             //Users
             context.Users.AddOrUpdate(new User() { ID = 1, Name = "User 1", EMail = "user1@local.domain", JoinTime = new DateTime(2015, 1, 1), AvatarID = 1 });
-            context.Users.AddOrUpdate(new User() { ID = 2, Name = "User 2", EMail = "user2@local.domain", JoinTime = new DateTime(2015, 1, 1), AvatarID = 1 });
-            context.Users.AddOrUpdate(new User() { ID = 3, Name = "User 3", EMail = "user3@local.domain", JoinTime = new DateTime(2016, 1, 1), AvatarID = 2 });
+            context.Users.AddOrUpdate(new User() { ID = 2, Name = "User 2", EMail = "user2@local.domain", JoinTime = new DateTime(2015, 1, 1), AvatarID = 2 });
+            context.Users.AddOrUpdate(new User() { ID = 3, Name = "User 3", EMail = "user3@local.domain", JoinTime = new DateTime(2016, 1, 1), AvatarID = null });
 
             //Sections
             context.Sections.AddOrUpdate(new Section() { ID = 1, Name = "Section 1", Alias = "sec-1", Description = "Description 1", Order = 1 });

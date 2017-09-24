@@ -16,7 +16,7 @@ namespace DataAccess.Entities
         public string About { get; set; }
         public string Footer { get; set; }
 
-        public int AvatarID { get; set; }
+        public int? AvatarID { get; set; }
         public virtual Avatar Avatar { get; set; }
 
         public virtual ICollection<Post> Posts { get; set; }
