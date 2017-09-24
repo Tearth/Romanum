@@ -18,6 +18,11 @@ namespace Business.Services.Tests.Integration
     [AutoRollback]
     public class CategoryServiceTests
     {
+        public CategoryServiceTests()
+        {
+            DbContextFactory.Init();
+        }
+
         [Theory]
         [InlineData("cat-1", "Category 1")]
         [InlineData("cat-2", "Category 2")]

@@ -13,19 +13,13 @@ namespace DataAccess.Entities
         public string Description { get; set; }
         public int Order { get; set; }
 
+        public int SectionID { get; set; }
         public virtual Section Section { get; set; }
+
         public virtual ICollection<Topic> Topics { get; set; }
 
         public Category()
         {
-
-        }
-
-        public Category(string name, string alias)
-        {
-            Name = name;
-            Alias = alias;
-
             Topics = new List<Topic>();
         }
     }

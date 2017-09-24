@@ -34,7 +34,11 @@ namespace Business.Services.ConfigServices
 
             if (!KeyExists(key))
             {
-                config = new Config(key);
+                config = new Config()
+                {
+                    Key = key
+                };
+
                 _databaseContext.Configuration.Add(config);
             }
             else

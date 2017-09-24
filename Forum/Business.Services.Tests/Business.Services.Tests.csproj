@@ -104,9 +104,10 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="Helpers\Database\DbContextFactory.cs" />
+    <Compile Include="Helpers\Database\TestDataInitializer.cs" />
     <Compile Include="Helpers\Database\UseMapperAttribute.cs" />
     <Compile Include="Integration\CategoryServiceTests.cs" />
-    <Compile Include="Helpers\Database\DbContextFactory.cs" />
     <Compile Include="Helpers\Database\AutoRollbackAttribute.cs" />
     <Compile Include="Integration\ConfigServiceTests.cs" />
     <Compile Include="Integration\ProfileServiceTests.cs" />

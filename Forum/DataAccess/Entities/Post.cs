@@ -12,25 +12,15 @@ namespace DataAccess.Entities
         public DateTime ModificationTime { get; set; }
         public string Content { get; set; }
 
+        public int TopicID { get; set; }
         public virtual Topic Topic { get; set; }
+
+        public int AuthorID { get; set; }
         public virtual User Author { get; set; }
 
         public Post()
         {
 
-        }
-
-        public Post(string content) : this(content, DateTime.Now)
-        {
-            
-        }
-
-        public Post(string content, DateTime creationTime)
-        {
-            Content = content;
-
-            CreationTime = creationTime;
-            ModificationTime = creationTime;
         }
     }
 }

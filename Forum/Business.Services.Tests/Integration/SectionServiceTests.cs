@@ -18,6 +18,11 @@ namespace Business.Services.Tests.Integration
     [AutoRollback]
     public class SectionServiceTests
     {
+        public SectionServiceTests()
+        {
+            DbContextFactory.Init();
+        }
+
         [Fact]
         public void GetAllSetionsWithCategories_ReturnsValidCategoriesData()
         {

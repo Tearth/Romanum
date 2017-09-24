@@ -12,6 +12,11 @@ namespace Business.Services.Tests.Integration
     [AutoRollback]
     public class ConfigServiceTests
     {
+        public ConfigServiceTests()
+        {
+            DbContextFactory.Init();
+        }
+
         [Fact]
         public void GetValue_ExistingKey_ReturnsValidStringValue()
         {

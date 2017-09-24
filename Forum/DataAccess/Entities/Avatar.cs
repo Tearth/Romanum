@@ -12,6 +12,11 @@ namespace DataAccess.Entities
         public AvatarType Type { get; set; }
         public string Source { get; set; }
 
-        public virtual User User { get; set; }
+        public virtual ICollection<User> Users { get; set; }
+
+        public Avatar()
+        {
+            Users = new List<User>();
+        }
     }
 }

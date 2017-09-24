@@ -17,14 +17,6 @@ namespace DataAccess.Entities
 
         public Section()
         {
-
-        }
-
-        public Section(string name, string alias)
-        {
-            Name = name;
-            Alias = alias;
-
             Categories = new List<Category>();
         }
     }

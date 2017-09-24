@@ -17,7 +17,15 @@ namespace DataAccess.Database.MapConfig
             Property(p => p.Description).HasMaxLength(200);
             Property(p => p.Order).IsRequired();
 
-            HasRequired(p => p.Section);
+            HasRequired(category => category.Section)
+                .WithMany(section => section.Categories)
+                .HasForeignKey(category => category.SectionID)
+                .WillCascadeOnDelete(false);
+
+            HasMany(category => category.Topics)
+                .WithRequired(topic => topic.Category)
+                .HasForeignKey(topic => topic.CategoryID)
+                .WillCascadeOnDelete(false);
         }
     }
 }

@@ -17,8 +17,15 @@ namespace DataAccess.Database.MapConfig
             Property(p => p.CreationTime).IsRequired();
             Property(p => p.ModificationTime).IsRequired();
 
-            HasRequired(p => p.Topic);
-            HasRequired(p => p.Author);
+            HasRequired(post => post.Topic)
+                .WithMany(topic => topic.Posts)
+                .HasForeignKey(post => post.TopicID)
+                .WillCascadeOnDelete(false);
+
+            HasRequired(post => post.Author)
+                .WithMany(author => author.Posts)
+                .HasForeignKey(post => post.AuthorID)
+                .WillCascadeOnDelete(false);
         }
     }
 }

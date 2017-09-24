@@ -20,7 +20,15 @@ namespace DataAccess.Database.MapConfig
             Property(p => p.About).HasMaxLength(100);
             Property(p => p.Footer).HasMaxLength(100);
 
-            HasOptional(p => p.Avatar);
+            HasRequired(user => user.Avatar)
+                .WithMany(avatar => avatar.Users)
+                .HasForeignKey(user => user.AvatarID)
+                .WillCascadeOnDelete(false);
+
+            HasMany(user => user.Posts)
+                .WithRequired(post => post.Author)
+                .HasForeignKey(post => post.AuthorID)
+                .WillCascadeOnDelete(false);
         }
     }
 }

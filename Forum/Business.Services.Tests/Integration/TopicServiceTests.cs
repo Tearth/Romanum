@@ -17,6 +17,11 @@ namespace Business.Services.Tests.Integration
     [AutoRollback]
     public class TopicServiceTests
     {
+        public TopicServiceTests()
+        {
+            DbContextFactory.Init();
+        }
+
         [Theory]
         [InlineData("top-1", 1, "Topic 1")]
         [InlineData("top-2", 2, "Topic 2")]

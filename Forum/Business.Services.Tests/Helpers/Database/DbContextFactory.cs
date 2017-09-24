@@ -9,10 +9,30 @@ namespace Business.Services.Tests.Helpers.Database
 {
     public static class DbContextFactory
     {
+        static bool Ready = false;
+        static object ReadyLock = new object();
+
+        const string DatabaseConnectionStringName = "TestDB";
+
+        public static void Init()
+        {
+            lock(ReadyLock)
+            {
+                if (!Ready)
+                {
+                    System.Data.Entity.Database.SetInitializer(new TestDataInitializer());
+
+                    var context = new DatabaseContext(DatabaseConnectionStringName);
+                    context.Database.Initialize(true);
+
+                    Ready = true;
+                }
+            }
+        }
+
         public static IDatabaseContext Create()
         {
-            var context = new DatabaseContext("TestDB");
-            return context;
+            return new DatabaseContext(DatabaseConnectionStringName);
         }
     }
 }

@@ -8,14 +8,17 @@ using System.Threading.Tasks;
 
 namespace DataAccess.Database.MapConfig
 {
-    public class AvatarEntityConfig : EntityTypeConfiguration<Avatar>
+    class AvatarEntityConfig : EntityTypeConfiguration<Avatar>
     {
         public AvatarEntityConfig()
         {
             Property(p => p.Type).IsRequired();
             Property(p => p.Source).HasMaxLength(256);
 
-            HasRequired(p => p.User);
+            HasMany(avatar => avatar.Users)
+                .WithRequired(user => user.Avatar)
+                .HasForeignKey(user => user.AvatarID)
+                .WillCascadeOnDelete(false);
         }
     }
 }

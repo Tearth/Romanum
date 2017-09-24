@@ -11,19 +11,13 @@ namespace DataAccess.Entities
         public string Name { get; set; }
         public string Alias { get; set; }
 
+        public int CategoryID { get; set; }
         public virtual Category Category { get; set; }
+
         public virtual ICollection<Post> Posts { get; set; }
 
         public Topic()
         {
-
-        }
-
-        public Topic(string name, string alias)
-        {
-            Name = name;
-            Alias = alias;
-
             Posts = new List<Post>();
         }
     }

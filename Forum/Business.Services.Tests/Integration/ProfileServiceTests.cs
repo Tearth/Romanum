@@ -23,6 +23,11 @@ namespace Business.Services.Tests.Integration
     [UseMapper]
     public class ProfileServiceTests
     {
+        public ProfileServiceTests()
+        {
+            DbContextFactory.Init();
+        }
+
         [Theory]
         [InlineData("User 1")]
         [InlineData("User 2")]

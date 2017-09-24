@@ -16,18 +16,13 @@ namespace DataAccess.Entities
         public string About { get; set; }
         public string Footer { get; set; }
 
+        public int AvatarID { get; set; }
         public virtual Avatar Avatar { get; set; }
+
         public virtual ICollection<Post> Posts { get; set; }
 
         public User()
         {
-
-        }
-
-        public User(string userName)
-        {
-            Name = userName;
-
             Posts = new List<Post>();
         }
     }

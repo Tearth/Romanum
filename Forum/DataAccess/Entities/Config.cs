@@ -15,10 +15,5 @@ namespace DataAccess.Entities
         {
 
         }
-
-        public Config(string key)
-        {
-            Key = key;
-        }
     }
 }
