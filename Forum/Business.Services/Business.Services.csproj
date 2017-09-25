@@ -71,6 +71,7 @@
     <Compile Include="ConfigServices\Exceptions\KeyNotFoundException.cs" />
     <Compile Include="ConfigServices\IConfigService.cs" />
     <Compile Include="Dependencies.cs" />
+    <Compile Include="DTO\Avatar\AvatarDTO.cs" />
     <Compile Include="DTO\Avatar\AvatarTypeDTO.cs" />
     <Compile Include="DTO\Category\CategoryWithPostsDTO.cs" />
     <Compile Include="DTO\Category\FeaturedPostDTO.cs" />

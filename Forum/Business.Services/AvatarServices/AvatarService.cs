@@ -7,6 +7,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Data.Entity;
+using AutoMapper;
 
 namespace Business.Services.AvatarServices
 {
@@ -17,6 +19,16 @@ namespace Business.Services.AvatarServices
         public AvatarService(IDatabaseContext databaseContext)
         {
             _databaseContext = databaseContext;
+        }
+
+        public AvatarDTO GetUserAvatar(int userID)
+        {
+            var avatar = _databaseContext.Users
+                .Include(user => user.Avatar)
+                .First(p => p.ID == userID).Avatar;
+
+            var avatarDTO = Mapper.Map<AvatarDTO>(avatar);
+            return avatarDTO;
         }
 
         public void SetUserAvatarToDefault(int userID)

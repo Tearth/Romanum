@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Business.Services.DTO.Avatar;
 using Business.Services.DTO.Profile;
 using Business.Services.DTO.Section;
 using DataAccess.Entities;
@@ -16,6 +17,7 @@ namespace Business.Services
         public MapperProfile()
         {
             CreateMap<ChangeProfileDTO, User>();
+            CreateMap<AvatarDTO, Avatar>();
         }
     }
 }
