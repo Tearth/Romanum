@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DataAccess.Entities.Enums
+namespace Business.Services.DTO.Avatar
 {
-    public enum AvatarType
+    public enum  AvatarTypeDTO
     {
         InternalImage = 1,
         Gravatar = 2
