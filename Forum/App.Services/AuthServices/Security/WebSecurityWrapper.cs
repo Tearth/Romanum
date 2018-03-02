@@ -28,8 +28,8 @@ namespace App.Services.AuthServices.Security
             {
                 EMail = user.EMail,
                 JoinTime = DateTime.Now,
-                AvatarID = 1 }
-            );
+                AvatarID = 1
+            });
         }
 
         public bool UserExists(string name)

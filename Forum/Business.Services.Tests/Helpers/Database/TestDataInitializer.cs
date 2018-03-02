@@ -47,12 +47,12 @@ namespace Business.Services.Tests.Helpers.Database
             context.Posts.AddOrUpdate(new Post { ID = 7, CreationTime = new DateTime(2015, 7, 7), ModificationTime = new DateTime(2015, 7, 7), Content = "Content 7", TopicID = 4, AuthorID = 2 });
             context.Posts.AddOrUpdate(new Post { ID = 8, CreationTime = new DateTime(2015, 8, 8), ModificationTime = new DateTime(2015, 8, 8), Content = "Content 8", TopicID = 4, AuthorID = 2 });
 
-            //Configuration
-            context.Configuration.AddOrUpdate(new Config { ID = 1, Key = "Key1", Value = "String value" });
-            context.Configuration.AddOrUpdate(new Config { ID = 2, Key = "Key2", Value = "True" });
-            context.Configuration.AddOrUpdate(new Config { ID = 3, Key = "Key3", Value = "False" });
-            context.Configuration.AddOrUpdate(new Config { ID = 4, Key = "Key4", Value = "123" });
-            context.Configuration.AddOrUpdate(new Config { ID = 5, Key = "Key5", Value = "10,34" });
+            //Configs
+            context.Configs.AddOrUpdate(new Config { ID = 1, Key = "Key1", Value = "String value" });
+            context.Configs.AddOrUpdate(new Config { ID = 2, Key = "Key2", Value = "True" });
+            context.Configs.AddOrUpdate(new Config { ID = 3, Key = "Key3", Value = "False" });
+            context.Configs.AddOrUpdate(new Config { ID = 4, Key = "Key4", Value = "123" });
+            context.Configs.AddOrUpdate(new Config { ID = 5, Key = "Key5", Value = "10,34" });
 
             base.Seed(context);
         }

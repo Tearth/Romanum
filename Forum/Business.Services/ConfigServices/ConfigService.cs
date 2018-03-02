@@ -22,7 +22,7 @@ namespace Business.Services.ConfigServices
                 throw new KeyNotFoundException();
             }
 
-            var rawValue = _databaseContext.Configuration.First(p => p.Key == key).Value;
+            var rawValue = _databaseContext.Configs.First(p => p.Key == key).Value;
             var convertedValue = Convert.ChangeType(rawValue, typeof(T));
 
             return (T)convertedValue;
@@ -39,11 +39,11 @@ namespace Business.Services.ConfigServices
                     Key = key
                 };
 
-                _databaseContext.Configuration.Add(config);
+                _databaseContext.Configs.Add(config);
             }
             else
             {
-                config = _databaseContext.Configuration.First(p => p.Key == key);
+                config = _databaseContext.Configs.First(p => p.Key == key);
             }
 
             config.Value = (string)Convert.ChangeType(value, typeof(string));
@@ -53,7 +53,7 @@ namespace Business.Services.ConfigServices
 
         public bool KeyExists(string key)
         {
-            return _databaseContext.Configuration.Any(p => p.Key == key);
+            return _databaseContext.Configs.Any(p => p.Key == key);
         }
 
         public void RemoveKey(string key)
@@ -63,8 +63,8 @@ namespace Business.Services.ConfigServices
                 throw new KeyNotFoundException();
             }
 
-            var record = _databaseContext.Configuration.First(p => p.Key == key);
-            _databaseContext.Configuration.Remove(record);
+            var record = _databaseContext.Configs.First(p => p.Key == key);
+            _databaseContext.Configs.Remove(record);
 
             _databaseContext.SaveChanges();
         }
