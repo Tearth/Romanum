@@ -6,6 +6,6 @@ namespace App.MVC.ViewModels.Section
     {
         public int ID { get; set; }
         public string Name { get; set; }
-        public IEnumerable<CategoryDetalisViewModel> Categories { get; set; }
+        public IEnumerable<CategoryDetailsViewModel> Categories { get; set; }
     }
 }

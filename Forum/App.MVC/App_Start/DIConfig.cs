@@ -5,7 +5,7 @@ using Autofac.Integration.Mvc;
 
 namespace App.MVC
 {
-    internal class DIConfiguration
+    internal class DIConfig
     {
         public static void SetDependeciesResolver()
         {

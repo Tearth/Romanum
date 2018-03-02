@@ -19,7 +19,7 @@ namespace App.MVC
         {
             //Section
             CreateMap<SectionWithCategoriesViewModel, SectionWithCategoriesDTO>().ReverseMap();
-            CreateMap<CategoryDetalisViewModel, CategoryDetailsDTO>().ReverseMap();
+            CreateMap<CategoryDetailsViewModel, CategoryDetailsDTO>().ReverseMap();
 
             //Category
             CreateMap<CategoryWithTopicsViewModel, CategoryWithPostsDTO>().ReverseMap();

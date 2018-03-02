@@ -2,7 +2,7 @@
 
 namespace App.MVC.ViewModels.Section
 {
-    public class CategoryDetalisViewModel
+    public class CategoryDetailsViewModel
     {
         public int ID { get; set; }
         public string Name { get; set; }

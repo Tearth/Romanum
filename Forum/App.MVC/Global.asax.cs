@@ -19,7 +19,7 @@ namespace App.MVC
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
-            DIConfiguration.SetDependeciesResolver();
+            DIConfig.SetDependeciesResolver();
             MapperConfig.RegisterProfiles();
         }
 
