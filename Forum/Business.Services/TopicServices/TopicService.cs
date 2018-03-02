@@ -11,7 +11,7 @@ namespace Business.Services.TopicServices
 {
     public class TopicService : ServiceBase, ITopicService
     {
-        IDatabaseContext _databaseContext;
+        private IDatabaseContext _databaseContext;
 
         public TopicService(IDatabaseContext databaseContext)
         {
@@ -21,15 +21,17 @@ namespace Business.Services.TopicServices
         public TopicWithPostsDTO GetTopicWithPosts(string topicAlias)
         {
             if (!Exists(topicAlias))
+            {
                 throw new TopicNotFoundException();
+            }
 
             var topicQuery = _databaseContext.Topics.Where(topic => topic.Alias == topicAlias);
-            var topicWithPosts = topicQuery.Select(topic => new TopicWithPostsDTO()
+            var topicWithPosts = topicQuery.Select(topic => new TopicWithPostsDTO
             {
                 ID = topic.ID,
                 Name = topic.Name,
                 Alias = topic.Alias,
-                Posts = topic.Posts.Select(post => new PostDTO()
+                Posts = topic.Posts.Select(post => new PostDTO
                 {
                     ID = post.ID,
                     CreationTime = post.CreationTime,
@@ -37,7 +39,7 @@ namespace Business.Services.TopicServices
                     Content = post.Content,
 
                     AuthorName = post.Author.Name,
-                    AuthorPostsCount = post.Author.Posts.Count(),
+                    AuthorPostsCount = post.Author.Posts.Count,
                     AuthorJoinTime = post.Author.JoinTime,
                     AuthorCity = post.Author.City,
                     AuthorFooter = post.Author.Footer
@@ -54,7 +56,7 @@ namespace Business.Services.TopicServices
 
         public bool ValidateTopicAndCategoryAlias(string topicAlias, string categoryAlias)
         {
-            return _databaseContext.Topics.Any(p => p.Alias == topicAlias && 
+            return _databaseContext.Topics.Any(p => p.Alias == topicAlias &&
                                                     p.Category.Alias == categoryAlias);
         }
     }

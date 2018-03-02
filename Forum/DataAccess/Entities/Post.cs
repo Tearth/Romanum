@@ -17,10 +17,5 @@ namespace DataAccess.Entities
 
         public int AuthorID { get; set; }
         public virtual User Author { get; set; }
-
-        public Post()
-        {
-
-        }
     }
 }

@@ -10,7 +10,7 @@ namespace Business.Services.SectionServices
 {
     public class SectionService : ServiceBase, ISectionService
     {
-        IDatabaseContext _databaseContext;
+        private IDatabaseContext _databaseContext;
 
         public SectionService(IDatabaseContext databaseContext)
         {
@@ -20,17 +20,17 @@ namespace Business.Services.SectionServices
         public IEnumerable<SectionWithCategoriesDTO> GetAllSetionsWithCategories()
         {
             var sectionsQuery = _databaseContext.Sections;
-            var sectionsWithCategories = sectionsQuery.Select(section => new SectionWithCategoriesDTO()
+            var sectionsWithCategories = sectionsQuery.Select(section => new SectionWithCategoriesDTO
             {
                 Name = section.Name,
-                Categories = section.Categories.OrderBy(category => category.Order).Select(category => new CategoryDetailsDTO()
+                Categories = section.Categories.OrderBy(category => category.Order).Select(category => new CategoryDetailsDTO
                 {
                     ID = category.ID,
                     Name = category.Name,
                     Alias = category.Alias,
                     Description = category.Description,
                     Order = category.Order,
-                    TopicsCount = category.Topics.Count(),
+                    TopicsCount = category.Topics.Count,
 
                     PostsCount = category.Topics
                         .SelectMany(topic => topic.Posts)

@@ -8,7 +8,7 @@ using System.Web.Mvc;
 
 namespace App.MVC.App_Start
 {
-    class DIConfiguration
+    internal class DIConfiguration
     {
         public static void SetDependeciesResolver()
         {

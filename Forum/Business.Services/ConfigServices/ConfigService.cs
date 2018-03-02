@@ -10,7 +10,7 @@ namespace Business.Services.ConfigServices
 {
     public class ConfigService : ServiceBase, IConfigService
     {
-        IDatabaseContext _databaseContext;
+        private IDatabaseContext _databaseContext;
 
         public ConfigService(IDatabaseContext databaseContext)
         {
@@ -20,7 +20,9 @@ namespace Business.Services.ConfigServices
         public T GetValue<T>(string key)
         {
             if (!KeyExists(key))
+            {
                 throw new KeyNotFoundException();
+            }
 
             var rawValue = _databaseContext.Configuration.First(p => p.Key == key).Value;
             var convertedValue = Convert.ChangeType(rawValue, typeof(T));
@@ -34,7 +36,7 @@ namespace Business.Services.ConfigServices
 
             if (!KeyExists(key))
             {
-                config = new Config()
+                config = new Config
                 {
                     Key = key
                 };
@@ -59,7 +61,9 @@ namespace Business.Services.ConfigServices
         public void RemoveKey(string key)
         {
             if (!KeyExists(key))
+            {
                 throw new KeyNotFoundException();
+            }
 
             var record = _databaseContext.Configuration.First(p => p.Key == key);
             _databaseContext.Configuration.Remove(record);

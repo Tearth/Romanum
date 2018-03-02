@@ -15,8 +15,8 @@ namespace Business.Services.ProfileServices
 {
     public class ProfileService : ServiceBase, IProfileService
     {
-        IDatabaseContext _databaseContext;
-        ITimeProvider _timeProvider;
+        private IDatabaseContext _databaseContext;
+        private ITimeProvider _timeProvider;
 
         public ProfileService(IDatabaseContext databaseContext, ITimeProvider timeProvider)
         {
@@ -42,12 +42,16 @@ namespace Business.Services.ProfileServices
         public void ChangeProfile(int id, ChangeProfileDTO newProfileData)
         {
             if (!ProfileExists(id))
+            {
                 throw new UserProfileNotFoundException();
+            }
 
             var currentProfile = _databaseContext.Users.First(user => user.ID == id);
 
             if (currentProfile.EMail != newProfileData.EMail && EMailExists(newProfileData.EMail))
+            {
                 throw new EMailAlreadyExistsException();
+            }
 
             currentProfile = Mapper.Map(newProfileData, currentProfile);
 
@@ -57,12 +61,14 @@ namespace Business.Services.ProfileServices
         public ProfileDTO GetProfileByUserID(int id)
         {
             if (!ProfileExists(id))
+            {
                 throw new UserProfileNotFoundException();
+            }
 
             var profileQuery = _databaseContext.Users.Where(user => user.ID == id);
             var dateTimeNow = _timeProvider.Now();
-            
-            var profile = profileQuery.Select(user => new ProfileDTO()
+
+            var profile = profileQuery.Select(user => new ProfileDTO
             {
                 UserName = user.Name,
                 EMail = user.EMail,
@@ -72,19 +78,19 @@ namespace Business.Services.ProfileServices
                 About = user.About,
                 Footer = user.Footer,
 
-                PostsCount = user.Posts.Count(),
+                PostsCount = user.Posts.Count,
 
-                PostsPerDay = DbFunctions.DiffDays(user.JoinTime, dateTimeNow) == 0 ?  
-                    0 : user.Posts.Count() / (float)DbFunctions.DiffDays(user.JoinTime, dateTimeNow),
+                PostsPerDay = DbFunctions.DiffDays(user.JoinTime, dateTimeNow) == 0 ?
+                    0 : user.Posts.Count / (float)DbFunctions.DiffDays(user.JoinTime, dateTimeNow),
 
-                PercentageOfAllPosts = _databaseContext.Posts.Count() == 0 ?
-                    0 : (float)user.Posts.Count() / _databaseContext.Posts.Count(),
+                PercentageOfAllPosts = !_databaseContext.Posts.Any() ?
+                    0 : (float)user.Posts.Count / _databaseContext.Posts.Count(),
 
                 MostActiveTopic = user.Posts
                     .GroupBy(post => post.Topic.ID)
                     .OrderByDescending(post => post.Count())
                     .FirstOrDefault()
-                    .Select(post => new UserMostActiveTopicDTO()
+                    .Select(post => new UserMostActiveTopicDTO
                     {
                         TopicName = post.Topic.Name,
                         TopicAlias = post.Topic.Alias,
@@ -95,7 +101,7 @@ namespace Business.Services.ProfileServices
                     .GroupBy(post => post.Topic.Category.ID)
                     .OrderByDescending(post => post.Count())
                     .FirstOrDefault()
-                    .Select(post => new UserMostActiveCategoryDTO()
+                    .Select(post => new UserMostActiveCategoryDTO
                     {
                         CategoryName = post.Topic.Category.Name,
                         CategoryAlias = post.Topic.Category.Alias

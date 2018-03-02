@@ -12,12 +12,12 @@ using System.Web.Routing;
 
 namespace App.MVC
 {
-    public class MvcApplication : System.Web.HttpApplication
+    public class MvcApplication : HttpApplication
     {
         protected void Application_Start()
         {
             //Make sure that all necessary assemblies are loaded
-            App.Services.Bootloader.Init();
+            Services.Bootloader.Init();
             Business.Services.Bootloader.Init();
 
             AreaRegistration.RegisterAllAreas();
@@ -30,7 +30,7 @@ namespace App.MVC
 
         protected void Application_Error(object sender, EventArgs e)
         {
-            Logger logger = LogManager.GetCurrentClassLogger();
+            var logger = LogManager.GetCurrentClassLogger();
             logger.Fatal(Server.GetLastError());
         }
     }

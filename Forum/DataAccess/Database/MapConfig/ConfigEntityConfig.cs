@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 namespace DataAccess.Database.MapConfig
 {
     //"Name of this class is strange, sorry" - naming convention
-    class ConfigEntityConfig : EntityTypeConfiguration<Config>
+    internal class ConfigEntityConfig : EntityTypeConfiguration<Config>
     {
         public ConfigEntityConfig()
         {

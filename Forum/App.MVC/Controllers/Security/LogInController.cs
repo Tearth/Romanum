@@ -12,7 +12,7 @@ namespace App.MVC.Controllers.Security
 {
     public class LogInController : Controller
     {
-        IAuthService _authService;
+        private IAuthService _authService;
 
         public LogInController(IAuthService authService)
         {

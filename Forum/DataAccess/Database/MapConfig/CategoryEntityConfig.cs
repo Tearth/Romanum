@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace DataAccess.Database.MapConfig
 {
-    class CategoryEntityConfig : EntityTypeConfiguration<Category>
+    internal class CategoryEntityConfig : EntityTypeConfiguration<Category>
     {
         public CategoryEntityConfig()
         {

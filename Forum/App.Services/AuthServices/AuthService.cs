@@ -11,8 +11,8 @@ namespace App.Services.AuthServices
 {
     public class AuthService : ServiceBase, IAuthService
     {
-        IWebSecurityWrapper _webSecurityWrapper;
-        
+        private IWebSecurityWrapper _webSecurityWrapper;
+
         public AuthService(IWebSecurityWrapper webSecurityWrapper)
         {
             _webSecurityWrapper = webSecurityWrapper;
@@ -21,7 +21,9 @@ namespace App.Services.AuthServices
         public void CreateUser(RegistrationDTO user)
         {
             if (_webSecurityWrapper.UserExists(user.UserName))
+            {
                 throw new UserNameAlreadyExistsException();
+            }
 
             _webSecurityWrapper.CreateUser(user);
         }
@@ -39,7 +41,9 @@ namespace App.Services.AuthServices
         public void LogOut()
         {
             if (!_webSecurityWrapper.IsUserLoggedIn())
+            {
                 throw new UserNotLoggedInException();
+            }
 
             _webSecurityWrapper.LogOut();
         }
@@ -47,7 +51,9 @@ namespace App.Services.AuthServices
         public bool ChangePassword(ChangePasswordDTO data)
         {
             if (!_webSecurityWrapper.UserExists(data.Name))
+            {
                 throw new UserNameNotExistsException();
+            }
 
             return _webSecurityWrapper.ChangePassword(data);
         }
@@ -55,7 +61,9 @@ namespace App.Services.AuthServices
         public CurrentUserDTO GetCurrentUser()
         {
             if (!_webSecurityWrapper.IsUserLoggedIn())
+            {
                 throw new UserNotLoggedInException();
+            }
 
             return _webSecurityWrapper.GetCurrentUser();
         }

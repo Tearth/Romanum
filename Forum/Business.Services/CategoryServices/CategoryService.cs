@@ -12,7 +12,7 @@ namespace Business.Services.CategoryServices
 {
     public class CategoryService : ServiceBase, ICategoryService
     {
-        IDatabaseContext _databaseContext;
+        private IDatabaseContext _databaseContext;
 
         public CategoryService(IDatabaseContext databaseContext)
         {
@@ -22,26 +22,28 @@ namespace Business.Services.CategoryServices
         public CategoryWithPostsDTO GetCategoryWithPosts(string categoryAlias)
         {
             if (!Exists(categoryAlias))
+            {
                 throw new CategoryNotFoundException();
+            }
 
             var categoryQuery = _databaseContext.Categories.Where(category => category.Alias == categoryAlias);
 
-            var categoryWithPosts = categoryQuery.OrderBy(category => category.Order).Select(category => new CategoryWithPostsDTO()
+            var categoryWithPosts = categoryQuery.OrderBy(category => category.Order).Select(category => new CategoryWithPostsDTO
             {
                 ID = category.ID,
                 Name = category.Name,
                 Alias = category.Alias,
                 Order = category.Order,
-                Topics = category.Topics.Select(topic => new TopicDetailsDTO()
+                Topics = category.Topics.Select(topic => new TopicDetailsDTO
                 {
                     ID = topic.ID,
                     Name = topic.Name,
                     Alias = topic.Alias,
-                    PostsCount = topic.Posts.Count(),
+                    PostsCount = topic.Posts.Count,
 
                     FirstPost = topic.Posts
                         .OrderByDescending(p => p.CreationTime)
-                        .Select(post => new FeaturedPostDTO()
+                        .Select(post => new FeaturedPostDTO
                         {
                             AuthorName = post.Author.Name,
                             CreationTime = post.CreationTime
@@ -49,7 +51,7 @@ namespace Business.Services.CategoryServices
 
                     LastPost = topic.Posts
                         .OrderBy(p => p.CreationTime)
-                        .Select(post => new FeaturedPostDTO()
+                        .Select(post => new FeaturedPostDTO
                         {
                             AuthorName = post.Author.Name,
                             CreationTime = post.CreationTime

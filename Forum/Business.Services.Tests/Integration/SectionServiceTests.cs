@@ -57,7 +57,7 @@ namespace Business.Services.Tests.Integration
 
             var service = new SectionService(testDatabaseContext);
             var sections = service.GetAllSetionsWithCategories();
-            
+
             Assert.Equal(new DateTime(2015, 6, 6).Date, sections.ElementAt(0).Categories.ElementAt(0).LastPostCreationTime.Date);
             Assert.Equal(new DateTime(2015, 8, 8).Date, sections.ElementAt(0).Categories.ElementAt(1).LastPostCreationTime.Date);
             Assert.Equal(default(DateTime).Date, sections.ElementAt(1).Categories.ElementAt(0).LastPostCreationTime.Date);

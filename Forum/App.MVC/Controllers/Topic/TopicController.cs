@@ -11,7 +11,7 @@ namespace App.MVC.Controllers.Topic
 {
     public class TopicController : Controller
     {
-        ITopicService _topicService;
+        private ITopicService _topicService;
 
         public TopicController(ITopicService topicService)
         {
@@ -22,7 +22,9 @@ namespace App.MVC.Controllers.Topic
         public ActionResult Index(string categoryAlias, string topicAlias)
         {
             if (!_topicService.ValidateTopicAndCategoryAlias(topicAlias, categoryAlias))
+            {
                 throw new HttpException(404, "Not found"); //TODO
+            }
 
             var topic = _topicService.GetTopicWithPosts(topicAlias);
             var topicViewModel = Mapper.Map<TopicWithPostsViewModel>(topic);

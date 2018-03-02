@@ -11,7 +11,7 @@ namespace App.MVC.Controllers.Section
 {
     public class SectionController : Controller
     {
-        ISectionService _sections;
+        private ISectionService _sections;
 
         public SectionController(ISectionService sections)
         {

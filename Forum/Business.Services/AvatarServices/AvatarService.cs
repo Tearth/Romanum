@@ -14,7 +14,7 @@ namespace Business.Services.AvatarServices
 {
     public class AvatarService : ServiceBase, IAvatarService
     {
-        IDatabaseContext _databaseContext;
+        private IDatabaseContext _databaseContext;
 
         public AvatarService(IDatabaseContext databaseContext)
         {
@@ -48,7 +48,7 @@ namespace Business.Services.AvatarServices
             _databaseContext.SaveChanges();
         }
 
-        void RemoveUserAvatar(User user)
+        private void RemoveUserAvatar(User user)
         {
             if(user.AvatarID != null)
             {
@@ -59,9 +59,9 @@ namespace Business.Services.AvatarServices
             _databaseContext.SaveChanges();
         }
 
-        Avatar AddAvatar(AvatarTypeDTO type, string imageSource)
+        private Avatar AddAvatar(AvatarTypeDTO type, string imageSource)
         {
-            var avatar = new Avatar()
+            var avatar = new Avatar
             {
                 Type = (AvatarType)type,
                 Source = imageSource

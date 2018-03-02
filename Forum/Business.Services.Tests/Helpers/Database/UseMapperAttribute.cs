@@ -8,20 +8,20 @@ using Xunit.Sdk;
 
 namespace Business.Services.Tests.Helpers.Database
 {
-    [AttributeUsage(AttributeTargets.Class | AttributeTargets.Method, AllowMultiple = false, Inherited = true)]
+    [AttributeUsage(AttributeTargets.Class | AttributeTargets.Method)]
     public class UseMapperAttribute : BeforeAfterTestAttribute
     {
-        static bool Ready = false;
+        private static bool Ready;
 
         public UseMapperAttribute()
         {
             if (!Ready)
             {
-                Mapper.Initialize(config => 
-                    config.AddProfile(new Business.Services.MapperProfile()));
+                Mapper.Initialize(config =>
+                    config.AddProfile(new MapperProfile()));
 
                 Ready = true;
-            }    
+            }
         }
     }
 }

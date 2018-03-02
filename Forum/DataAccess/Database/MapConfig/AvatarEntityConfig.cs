@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace DataAccess.Database.MapConfig
 {
-    class AvatarEntityConfig : EntityTypeConfiguration<Avatar>
+    internal class AvatarEntityConfig : EntityTypeConfiguration<Avatar>
     {
         public AvatarEntityConfig()
         {

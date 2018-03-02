@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace DataAccess.Database.MapConfig
 {
-    class PostEntityConfig : EntityTypeConfiguration<Post>
+    internal class PostEntityConfig : EntityTypeConfiguration<Post>
     {
         public PostEntityConfig()
         {

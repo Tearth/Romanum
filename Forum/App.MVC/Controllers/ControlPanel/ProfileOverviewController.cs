@@ -12,8 +12,8 @@ namespace App.MVC.Controllers.ControlPanel
 {
     public class ProfileOverviewController : Controller
     {
-        IProfileService _profileService;
-        IAuthService _authService;
+        private IProfileService _profileService;
+        private IAuthService _authService;
 
         public ProfileOverviewController(IAuthService authService, IProfileService profileService)
         {

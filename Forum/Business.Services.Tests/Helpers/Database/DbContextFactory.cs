@@ -9,10 +9,10 @@ namespace Business.Services.Tests.Helpers.Database
 {
     public static class DbContextFactory
     {
-        static bool Ready = false;
-        static object ReadyLock = new object();
+        private static bool Ready;
+        private static object ReadyLock = new object();
 
-        const string DatabaseConnectionStringName = "TestDB";
+        private const string DatabaseConnectionStringName = "TestDB";
 
         public static void Init()
         {

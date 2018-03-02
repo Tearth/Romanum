@@ -89,7 +89,7 @@ namespace Business.Services.Tests.Integration
             var testDatabaseContext = DbContextFactory.Create();
 
             var service = new ConfigService(testDatabaseContext);
-            service.CreateOrUpdateKey<string>("NewKey", "Super long string value");
+            service.CreateOrUpdateKey("NewKey", "Super long string value");
 
             var value = service.GetValue<string>("NewKey");
             Assert.Equal("Super long string value", value);
@@ -101,7 +101,7 @@ namespace Business.Services.Tests.Integration
             var testDatabaseContext = DbContextFactory.Create();
 
             var service = new ConfigService(testDatabaseContext);
-            service.CreateOrUpdateKey<string>("Key1", "Super long string value");
+            service.CreateOrUpdateKey("Key1", "Super long string value");
 
             var value = service.GetValue<string>("Key1");
             Assert.Equal("Super long string value", value);
@@ -113,7 +113,7 @@ namespace Business.Services.Tests.Integration
             var testDatabaseContext = DbContextFactory.Create();
 
             var service = new ConfigService(testDatabaseContext);
-            service.CreateOrUpdateKey<bool>("Key1", true);
+            service.CreateOrUpdateKey("Key1", true);
 
             var value = service.GetValue<bool>("Key1");
             Assert.True(value);
@@ -125,7 +125,7 @@ namespace Business.Services.Tests.Integration
             var testDatabaseContext = DbContextFactory.Create();
 
             var service = new ConfigService(testDatabaseContext);
-            service.CreateOrUpdateKey<bool>("Key1", false);
+            service.CreateOrUpdateKey("Key1", false);
 
             var value = service.GetValue<bool>("Key1");
             Assert.False(value);
@@ -137,7 +137,7 @@ namespace Business.Services.Tests.Integration
             var testDatabaseContext = DbContextFactory.Create();
 
             var service = new ConfigService(testDatabaseContext);
-            service.CreateOrUpdateKey<int>("Key1", 1001);
+            service.CreateOrUpdateKey("Key1", 1001);
 
             var value = service.GetValue<int>("Key1");
             Assert.Equal(1001, value);
@@ -149,7 +149,7 @@ namespace Business.Services.Tests.Integration
             var testDatabaseContext = DbContextFactory.Create();
 
             var service = new ConfigService(testDatabaseContext);
-            service.CreateOrUpdateKey<float>("Key1", 100.1234f);
+            service.CreateOrUpdateKey("Key1", 100.1234f);
 
             var value = service.GetValue<float>("Key1");
             Assert.Equal(100.1234f, value);

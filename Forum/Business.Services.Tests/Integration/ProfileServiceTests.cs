@@ -101,7 +101,7 @@ namespace Business.Services.Tests.Integration
             var timeProviderMock = new Mock<ITimeProvider>();
             timeProviderMock.Setup(p => p.Now()).Returns(new DateTime(2016, 1, 1));
 
-            var changeProfileDTO = new ChangeProfileDTO()
+            var changeProfileDTO = new ChangeProfileDTO
             {
                 EMail = eMail,
                 City = "Test city",
@@ -130,7 +130,7 @@ namespace Business.Services.Tests.Integration
             var timeProviderMock = new Mock<ITimeProvider>();
             timeProviderMock.Setup(p => p.Now()).Returns(new DateTime(2016, 1, 1));
 
-            var changeProfileDTO = new ChangeProfileDTO()
+            var changeProfileDTO = new ChangeProfileDTO
             {
                 EMail = eMail,
                 City = "Test city",
@@ -159,7 +159,7 @@ namespace Business.Services.Tests.Integration
             var timeProviderMock = new Mock<ITimeProvider>();
             timeProviderMock.Setup(p => p.Now()).Returns(new DateTime(2016, 1, 1));
 
-            var changeProfileDTO = new ChangeProfileDTO()
+            var changeProfileDTO = new ChangeProfileDTO
             {
                 EMail = eMail,
                 City = "Test city",
@@ -168,7 +168,7 @@ namespace Business.Services.Tests.Integration
             };
 
             var profileService = new ProfileService(testDatabaseContext, timeProviderMock.Object);
-            
+
             var exception = Record.Exception(() => profileService.ChangeProfile(userID, changeProfileDTO));
 
             Assert.IsType<EMailAlreadyExistsException>(exception);
@@ -182,7 +182,7 @@ namespace Business.Services.Tests.Integration
             var timeProviderMock = new Mock<ITimeProvider>();
             timeProviderMock.Setup(p => p.Now()).Returns(new DateTime(2016, 1, 1));
 
-            var changeProfileDTO = new ChangeProfileDTO()
+            var changeProfileDTO = new ChangeProfileDTO
             {
                 EMail = "user1@local.domain",
                 City = "Test city",
@@ -227,10 +227,10 @@ namespace Business.Services.Tests.Integration
 
             var profileService = new ProfileService(testDatabaseContext, timeProviderMock.Object);
             var result = profileService.GetProfileByUserID(userID);
-            
+
             Assert.Equal(expectedPostsCount, result.PostsCount);
         }
-        
+
         [Theory]
         [InlineData(1, 0.375f)]
         [InlineData(2, 0.625f)]
@@ -244,7 +244,7 @@ namespace Business.Services.Tests.Integration
 
             var profileService = new ProfileService(testDatabaseContext, timeProviderMock.Object);
             var result = profileService.GetProfileByUserID(userID);
-            
+
             Assert.Equal(expectedPercentageOfAllPosts, result.PercentageOfAllPosts);
         }
 
@@ -261,7 +261,7 @@ namespace Business.Services.Tests.Integration
 
             var profileService = new ProfileService(testDatabaseContext, timeProviderMock.Object);
             var result = profileService.GetProfileByUserID(userID);
-            
+
             Assert.True(Math.Abs(expectedPostsPerDay - result.PostsPerDay) < epsilon);
         }
 
@@ -281,7 +281,7 @@ namespace Business.Services.Tests.Integration
             Assert.Equal(expectedCategoryName, result.MostActiveCategory.CategoryName);
             Assert.Equal(expectedCategoryAlias, result.MostActiveCategory.CategoryAlias);
         }
-        
+
         [Theory]
         [InlineData(1, "Topic 2", "top-2", "cat-1")]
         [InlineData(2, "Topic 4", "top-4", "cat-2")]

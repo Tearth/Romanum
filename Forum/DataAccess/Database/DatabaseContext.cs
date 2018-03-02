@@ -21,7 +21,7 @@ namespace DataAccess.Database
         public virtual IDbSet<Avatar> Avatars { get; set; }
         public virtual IDbSet<Config> Configuration { get; set; }
 
-        public DatabaseContext() : base()
+        public DatabaseContext()
         {
 
         }

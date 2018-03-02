@@ -13,8 +13,8 @@ namespace App.MVC.Controllers.ControlPanel
 {
     public class ChangeProfileController : Controller
     {
-        IAuthService _authService;
-        IProfileService _profileService;
+        private IAuthService _authService;
+        private IProfileService _profileService;
 
         public ChangeProfileController(IAuthService authService, IProfileService profileService)
         {

@@ -16,7 +16,7 @@ namespace DataAccess.Migrations
 
         protected override void Seed(DatabaseContext context)
         {
-            
+
         }
     }
 }

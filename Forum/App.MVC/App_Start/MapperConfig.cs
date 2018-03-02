@@ -7,7 +7,7 @@ using System.Web;
 
 namespace App.MVC.App_Start
 {
-    class MapperConfig
+    internal class MapperConfig
     {
         internal static void RegisterProfiles()
         {

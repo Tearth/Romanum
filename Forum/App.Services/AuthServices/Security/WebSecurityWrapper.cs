@@ -10,12 +10,12 @@ namespace App.Services.AuthServices.Security
 {
     public class WebSecurityWrapper : ServiceBase, IWebSecurityWrapper
     {
-        static bool Ready = false;
+        private static bool Ready;
 
-        const string ConnectionStringName = "MainDB";
-        const string UserTableName = "Users";
-        const string UserIDColumn = "ID";
-        const string UserNameColumn = "Name";
+        private const string ConnectionStringName = "MainDB";
+        private const string UserTableName = "Users";
+        private const string UserIDColumn = "ID";
+        private const string UserNameColumn = "Name";
 
         public WebSecurityWrapper()
         {
@@ -64,9 +64,11 @@ namespace App.Services.AuthServices.Security
         public CurrentUserDTO GetCurrentUser()
         {
             if (!WebSecurity.IsAuthenticated)
+            {
                 return null;
+            }
 
-            return new CurrentUserDTO()
+            return new CurrentUserDTO
             {
                 ID = WebSecurity.CurrentUserId,
                 Name = WebSecurity.CurrentUserName

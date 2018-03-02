@@ -21,7 +21,7 @@ namespace App.Services.Tests.Unit
             webSecurityWrapperMock.Setup(p => p.UserExists("TestUserName")).Returns(false);
 
             var authService = new AuthService(webSecurityWrapperMock.Object);
-            var userDTO = new RegistrationDTO()
+            var userDTO = new RegistrationDTO
             {
                 UserName = "TestUserName",
                 Password = "TestPassword",
@@ -40,7 +40,7 @@ namespace App.Services.Tests.Unit
             webSecurityWrapperMock.Setup(p => p.UserExists("TestUserName")).Returns(true);
 
             var authService = new AuthService(webSecurityWrapperMock.Object);
-            var userDTO = new RegistrationDTO()
+            var userDTO = new RegistrationDTO
             {
                 UserName = "TestUserName",
                 Password = "TestPassword",
@@ -80,7 +80,7 @@ namespace App.Services.Tests.Unit
         public void LogIn_ValidUserNamePassword_ReturnsTrue()
         {
             var webSecurityWrapperMock = new Mock<IWebSecurityWrapper>();
-            var logInDataDTO = new LogInDTO()
+            var logInDataDTO = new LogInDTO
             {
                 UserName = "TestUserName",
                 Password = "TestUserPassword",
@@ -99,7 +99,7 @@ namespace App.Services.Tests.Unit
         public void LogIn_InvalidUserNamePassword_ReturnsFalse()
         {
             var webSecurityWrapperMock = new Mock<IWebSecurityWrapper>();
-            var logInDataDTO = new LogInDTO()
+            var logInDataDTO = new LogInDTO
             {
                 UserName = "TestUserName",
                 Password = "TestUserPassword",
@@ -143,7 +143,7 @@ namespace App.Services.Tests.Unit
         public void ChangePassword_ValidOldNewPasswords_ReturnsTrue()
         {
             var webSecurityWrapperMock = new Mock<IWebSecurityWrapper>();
-            var changePasswordDTO = new ChangePasswordDTO()
+            var changePasswordDTO = new ChangePasswordDTO
             {
                 Name = "UserNameTest",
                 OldPassword = "OldPassword",
@@ -163,7 +163,7 @@ namespace App.Services.Tests.Unit
         public void ChangePassword_InvalidOldOrNewPassword_ReturnsTrue()
         {
             var webSecurityWrapperMock = new Mock<IWebSecurityWrapper>();
-            var changePasswordDTO = new ChangePasswordDTO()
+            var changePasswordDTO = new ChangePasswordDTO
             {
                 Name = "UserNameTest",
                 OldPassword = "OldPassword",
@@ -183,7 +183,7 @@ namespace App.Services.Tests.Unit
         public void ChangePassword_NotExistingUserName_ReturnsTrue()
         {
             var webSecurityWrapperMock = new Mock<IWebSecurityWrapper>();
-            var changePasswordDTO = new ChangePasswordDTO()
+            var changePasswordDTO = new ChangePasswordDTO
             {
                 Name = "UserNameTest",
                 OldPassword = "OldPassword",
@@ -203,7 +203,7 @@ namespace App.Services.Tests.Unit
         public void GetCurrentUser_UserLoggedIn_ReturnsValidCurrentUserData()
         {
             var webSecurityWrapperMock = new Mock<IWebSecurityWrapper>();
-            var currentUserDTO = new CurrentUserDTO()
+            var currentUserDTO = new CurrentUserDTO
             {
                 ID = 445,
                 Name = "TestUserName"

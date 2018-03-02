@@ -26,13 +26,13 @@ namespace App.MVC.Filters
             base.OnActionExecuting(filterContext);
         }
 
-        void ProcessGetRequest(ActionExecutingContext filterContext)
+        private void ProcessGetRequest(ActionExecutingContext filterContext)
         {
             var captchaPublicKey = ConfigService.GetValue<string>("CaptchaPublicKey");
             filterContext.Controller.ViewData["CaptchaPublicKey"] = captchaPublicKey;
         }
 
-        void ProcessPostRequest(ActionExecutingContext filterContext)
+        private void ProcessPostRequest(ActionExecutingContext filterContext)
         {
             var captchaSecretKey = ConfigService.GetValue<string>("CaptchaSecretKey");
             var responseCode = filterContext.HttpContext.Request.Form["g-recaptcha-response"];

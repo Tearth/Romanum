@@ -12,7 +12,7 @@ namespace App.MVC.Controllers.ControlPanel
 {
     public class ChangePasswordController : Controller
     {
-        IAuthService _authService;
+        private IAuthService _authService;
 
         public ChangePasswordController(IAuthService authService)
         {

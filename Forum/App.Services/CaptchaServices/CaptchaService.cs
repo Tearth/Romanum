@@ -12,7 +12,7 @@ namespace App.Services.CaptchaServices
 {
     public class CaptchaService : ServiceBase, ICaptchaService
     {
-        const string VerifyUrl = "https://www.google.com/recaptcha/api/siteverify";
+        private const string VerifyUrl = "https://www.google.com/recaptcha/api/siteverify";
 
         public bool Verify(string secretCode, string responseCode)
         {
@@ -22,19 +22,21 @@ namespace App.Services.CaptchaServices
             return status;
         }
 
-        string GetResponseFromGoogle(string secretCode, string responseCode)
+        private string GetResponseFromGoogle(string secretCode, string responseCode)
         {
-            var postData = new NameValueCollection();
-            postData["secret"] = secretCode;
-            postData["response"] = responseCode;
+            var postData = new NameValueCollection
+            {
+                ["secret"] = secretCode,
+                ["response"] = responseCode
+            };
 
             var webClient = new WebClient();
             var bytes = webClient.UploadValues(VerifyUrl, "POST", postData);
 
-            return ASCIIEncoding.UTF8.GetString(bytes);
+            return Encoding.UTF8.GetString(bytes);
         }
 
-        bool CheckResult(string googleResponse)
+        private bool CheckResult(string googleResponse)
         {
             var deserializedResponse = JsonConvert.DeserializeObject<GoogleResponse>(googleResponse);
             return deserializedResponse.Success;

@@ -15,9 +15,9 @@ namespace App.MVC.Controllers.Security
 {
     public class RegistrationController : Controller
     {
-        IAuthService _authService;
-        IProfileService _profileService;
-        ICaptchaService _captchaService;
+        private IAuthService _authService;
+        private IProfileService _profileService;
+        private ICaptchaService _captchaService;
 
         public RegistrationController(IAuthService authService, IProfileService profileService, ICaptchaService captchaService)
         {

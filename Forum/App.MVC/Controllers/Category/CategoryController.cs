@@ -11,7 +11,7 @@ namespace App.MVC.Controllers.Category
 {
     public class CategoryController : Controller
     {
-        ICategoryService _categoryService;
+        private ICategoryService _categoryService;
 
         public CategoryController(ICategoryService categoryService)
         {

@@ -11,7 +11,7 @@ namespace Business.Services.PostServices
 {
     public class PostService : ServiceBase, IPostService
     {
-        IDatabaseContext _databaseContext;
+        private IDatabaseContext _databaseContext;
 
         public PostService(IDatabaseContext databaseContext)
         {
