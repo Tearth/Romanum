@@ -3,7 +3,7 @@ using DataAccess.Entities;
 
 namespace DataAccess.Database.MapConfig
 {
-    internal class AvatarEntityConfig : EntityTypeConfiguration<Avatar>
+    public class AvatarEntityConfig : EntityTypeConfiguration<Avatar>
     {
         public AvatarEntityConfig()
         {

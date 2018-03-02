@@ -4,7 +4,7 @@ using AutoMapper;
 
 namespace App.MVC
 {
-    internal class MapperConfig
+    public class MapperConfig
     {
         internal static void RegisterProfiles()
         {

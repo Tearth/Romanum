@@ -4,7 +4,7 @@ using DataAccess.Entities;
 namespace DataAccess.Database.MapConfig
 {
     //"Name of this class is strange, sorry" - naming convention
-    internal class ConfigEntityConfig : EntityTypeConfiguration<Config>
+    public class ConfigEntityConfig : EntityTypeConfiguration<Config>
     {
         public ConfigEntityConfig()
         {

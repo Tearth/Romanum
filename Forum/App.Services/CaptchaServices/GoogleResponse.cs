@@ -2,7 +2,7 @@
 
 namespace App.Services.CaptchaServices
 {
-    internal class GoogleResponse
+    public class GoogleResponse
     {
         public bool Success { get; set; }
         public DateTime Challenge_ts { get; set; }

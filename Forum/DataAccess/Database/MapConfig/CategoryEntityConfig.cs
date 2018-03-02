@@ -3,7 +3,7 @@ using DataAccess.Entities;
 
 namespace DataAccess.Database.MapConfig
 {
-    internal class CategoryEntityConfig : EntityTypeConfiguration<Category>
+    public class CategoryEntityConfig : EntityTypeConfiguration<Category>
     {
         public CategoryEntityConfig()
         {
