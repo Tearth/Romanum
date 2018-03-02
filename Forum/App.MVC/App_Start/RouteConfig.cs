@@ -10,21 +10,21 @@ namespace App.MVC
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
             routes.MapRoute(
-                name: "Category",
-                url: "View/{categoryAlias}",
-                defaults: new { controller = "Category", action = "Index" }
+                "Category",
+                "View/{categoryAlias}",
+                new { controller = "Category", action = "Index" }
             );
 
             routes.MapRoute(
-                name: "Topic",
-                url: "View/{categoryAlias}/{topicAlias}",
-                defaults: new { controller = "Topic", action = "Index" }
+                "Topic",
+                "View/{categoryAlias}/{topicAlias}",
+                new { controller = "Topic", action = "Index" }
             );
 
             routes.MapRoute(
-                name: "Default",
-                url: "{controller}/{action}",
-                defaults: new { controller = "Section", action = "Index" }
+                "Default",
+                "{controller}/{action}",
+                new { controller = "Section", action = "Index" }
             );
         }
     }
