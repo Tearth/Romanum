@@ -1,16 +1,7 @@
-﻿using Business.Services.SectionServices;
-using Business.Services.Tests.Helpers;
-using Business.Services.Tests.Helpers.Database;
-using DataAccess.Database;
-using DataAccess.Entities;
-using Moq;
-using Ploeh.AutoFixture;
-using Ploeh.AutoFixture.Kernel;
-using System;
-using System.Collections.Generic;
+﻿using System;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Business.Services.SectionServices;
+using Business.Services.Tests.Helpers.Database;
 using Xunit;
 
 namespace Business.Services.Tests.Integration

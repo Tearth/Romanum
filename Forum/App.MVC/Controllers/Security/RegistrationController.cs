@@ -1,15 +1,11 @@
-﻿using App.MVC.Filters;
+﻿using System.Web.Mvc;
+using App.MVC.Filters;
 using App.MVC.ViewModels.Registration;
 using App.Services.AuthServices;
 using App.Services.CaptchaServices;
 using App.Services.DTO.Auth;
 using AutoMapper;
 using Business.Services.ProfileServices;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
 
 namespace App.MVC.Controllers.Security
 {

@@ -1,9 +1,5 @@
-﻿using App.Services.DTO.Auth;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System;
+using App.Services.DTO.Auth;
 using WebMatrix.WebData;
 
 namespace App.Services.AuthServices.Security

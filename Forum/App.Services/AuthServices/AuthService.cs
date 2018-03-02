@@ -1,11 +1,6 @@
 ﻿using App.Services.AuthServices.Exceptions;
 using App.Services.AuthServices.Security;
 using App.Services.DTO.Auth;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace App.Services.AuthServices
 {

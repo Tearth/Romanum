@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace App.MVC.ViewModels.ControlPanel
+﻿namespace App.MVC.ViewModels.ControlPanel
 {
     public class UserMostActiveTopicViewModel
     {

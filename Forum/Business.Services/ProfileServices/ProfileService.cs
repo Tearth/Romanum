@@ -1,15 +1,10 @@
-﻿using Business.Services.DTO.Profile;
+﻿using System.Data.Entity;
+using System.Linq;
+using AutoMapper;
+using Business.Services.DTO.Profile;
+using Business.Services.Helpers.Time;
 using Business.Services.ProfileServices.Exceptions;
 using DataAccess.Database;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Data.Entity;
-using DataAccess.Entities;
-using Business.Services.Helpers.Time;
-using AutoMapper;
 
 namespace Business.Services.ProfileServices
 {

@@ -1,13 +1,9 @@
-﻿using App.MVC.ViewModels.ControlPanel;
+﻿using System.Web.Mvc;
+using App.MVC.ViewModels.ControlPanel;
 using App.Services.AuthServices;
 using AutoMapper;
 using Business.Services.DTO.Profile;
 using Business.Services.ProfileServices;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
 
 namespace App.MVC.Controllers.ControlPanel
 {

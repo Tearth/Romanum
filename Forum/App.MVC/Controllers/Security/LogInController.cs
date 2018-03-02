@@ -1,12 +1,8 @@
-﻿using App.MVC.ViewModels.LogIn;
+﻿using System.Web.Mvc;
+using App.MVC.ViewModels.LogIn;
 using App.Services.AuthServices;
 using App.Services.DTO.Auth;
 using AutoMapper;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
 
 namespace App.MVC.Controllers.Security
 {

@@ -1,19 +1,15 @@
 ﻿using App.MVC.ViewModels.Category;
-using App.MVC.ViewModels.Section;
-using AutoMapper;
-using Business.Services.DTO.Section;
-using Business.Services.DTO.Category;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using App.MVC.ViewModels.Topic;
-using Business.Services.DTO.Topic;
-using App.MVC.ViewModels.Registration;
-using App.Services.DTO.Auth;
-using App.MVC.ViewModels.LogIn;
 using App.MVC.ViewModels.ControlPanel;
+using App.MVC.ViewModels.LogIn;
+using App.MVC.ViewModels.Registration;
+using App.MVC.ViewModels.Section;
+using App.MVC.ViewModels.Topic;
+using App.Services.DTO.Auth;
+using AutoMapper;
+using Business.Services.DTO.Category;
 using Business.Services.DTO.Profile;
+using Business.Services.DTO.Section;
+using Business.Services.DTO.Topic;
 
 namespace App.MVC
 {

@@ -1,10 +1,7 @@
-﻿using Business.Services.DTO.Section;
-using DataAccess.Database;
-using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Business.Services.DTO.Section;
+using DataAccess.Database;
 
 namespace Business.Services.SectionServices
 {

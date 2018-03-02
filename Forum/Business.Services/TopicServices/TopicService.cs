@@ -1,11 +1,7 @@
-﻿using Business.Services.DTO.Topic;
+﻿using System.Linq;
+using Business.Services.DTO.Topic;
 using Business.Services.TopicServices.Exceptions;
 using DataAccess.Database;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Business.Services.TopicServices
 {

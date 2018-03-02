@@ -1,15 +1,7 @@
-﻿using Business.Services.Tests.Helpers;
+﻿using System.Linq;
 using Business.Services.Tests.Helpers.Database;
 using Business.Services.TopicServices;
 using Business.Services.TopicServices.Exceptions;
-using DataAccess.Database;
-using DataAccess.Entities;
-using Moq;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Xunit;
 
 namespace Business.Services.Tests.Integration

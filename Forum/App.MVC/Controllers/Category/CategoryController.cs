@@ -1,11 +1,7 @@
-﻿using App.MVC.ViewModels.Category;
+﻿using System.Web.Mvc;
+using App.MVC.ViewModels.Category;
 using AutoMapper;
 using Business.Services.CategoryServices;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
 
 namespace App.MVC.Controllers.Category
 {

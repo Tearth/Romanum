@@ -1,11 +1,8 @@
-﻿using AutoMapper;
-using System;
-using System.Collections.Generic;
+﻿using System;
 using System.Linq;
-using System.Reflection;
-using System.Web;
+using AutoMapper;
 
-namespace App.MVC.App_Start
+namespace App.MVC
 {
     internal class MapperConfig
     {

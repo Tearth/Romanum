@@ -1,14 +1,10 @@
-﻿using Business.Services.DTO.Avatar;
+﻿using System.Data.Entity;
+using System.Linq;
+using AutoMapper;
+using Business.Services.DTO.Avatar;
 using DataAccess.Database;
 using DataAccess.Entities;
 using DataAccess.Entities.Enums;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Data.Entity;
-using AutoMapper;
 
 namespace Business.Services.AvatarServices
 {

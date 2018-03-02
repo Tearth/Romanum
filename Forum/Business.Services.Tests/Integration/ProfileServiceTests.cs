@@ -1,21 +1,11 @@
-﻿using Business.Services.DTO.Profile;
+﻿using System;
+using Business.Services.DTO.Profile;
 using Business.Services.Helpers.Time;
 using Business.Services.ProfileServices;
 using Business.Services.ProfileServices.Exceptions;
-using Business.Services.Tests.Helpers;
 using Business.Services.Tests.Helpers.Database;
-using DataAccess.Database;
-using DataAccess.Entities;
 using Moq;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
-using System.Transactions;
 using Xunit;
-using Xunit.Sdk;
 
 namespace Business.Services.Tests.Integration
 {

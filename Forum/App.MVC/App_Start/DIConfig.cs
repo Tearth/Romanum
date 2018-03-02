@@ -1,12 +1,9 @@
-﻿using Autofac;
-using Autofac.Integration.Mvc;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using System;
 using System.Web.Mvc;
+using Autofac;
+using Autofac.Integration.Mvc;
 
-namespace App.MVC.App_Start
+namespace App.MVC
 {
     internal class DIConfiguration
     {

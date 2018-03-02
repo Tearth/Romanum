@@ -3,11 +3,6 @@ using App.Services.AuthServices.Exceptions;
 using App.Services.AuthServices.Security;
 using App.Services.DTO.Auth;
 using Moq;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Xunit;
 
 namespace App.Services.Tests.Unit
