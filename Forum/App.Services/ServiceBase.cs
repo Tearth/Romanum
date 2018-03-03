@@ -4,6 +4,6 @@ namespace App.Services
 {
     public abstract class ServiceBase
     {
-        protected Logger _logger = LogManager.GetCurrentClassLogger();
+        protected Logger Logger = LogManager.GetCurrentClassLogger();
     }
 }
