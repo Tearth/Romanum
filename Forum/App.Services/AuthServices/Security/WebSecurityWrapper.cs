@@ -4,24 +4,31 @@ using WebMatrix.WebData;
 
 namespace App.Services.AuthServices.Security
 {
+    /// <summary>
+    /// Represents a WebSecurity wrapper which is easier to do unit tests than static methods.
+    /// </summary>
     public class WebSecurityWrapper : ServiceBase, IWebSecurityWrapper
     {
-        private static bool Ready;
-
         private const string ConnectionStringName = "MainDB";
         private const string UserTableName = "Users";
         private const string UserIDColumn = "ID";
         private const string UserNameColumn = "Name";
 
+        private static bool _ready;
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="WebSecurityWrapper"/> class.
+        /// </summary>
         public WebSecurityWrapper()
         {
-            if(!Ready)
+            if (!_ready)
             {
                 WebSecurity.InitializeDatabaseConnection(ConnectionStringName, UserTableName, UserIDColumn, UserNameColumn, true);
-                Ready = true;
+                _ready = true;
             }
         }
 
+        /// <inheritdoc />
         public void CreateUser(RegistrationDTO user)
         {
             WebSecurity.CreateUserAndAccount(user.UserName, user.Password, new
@@ -32,31 +39,37 @@ namespace App.Services.AuthServices.Security
             });
         }
 
+        /// <inheritdoc />
         public bool UserExists(string name)
         {
             return WebSecurity.UserExists(name);
         }
 
+        /// <inheritdoc />
         public bool IsUserLoggedIn()
         {
             return WebSecurity.IsAuthenticated;
         }
 
+        /// <inheritdoc />
         public bool LogIn(LogInDTO data)
         {
             return WebSecurity.Login(data.UserName, data.Password, data.RememberMe);
         }
 
+        /// <inheritdoc />
         public void LogOut()
         {
             WebSecurity.Logout();
         }
 
+        /// <inheritdoc />
         public bool ChangePassword(ChangePasswordDTO data)
         {
             return WebSecurity.ChangePassword(data.Name, data.OldPassword, data.NewPassword);
         }
 
+        /// <inheritdoc />
         public CurrentUserDTO GetCurrentUser()
         {
             if (!WebSecurity.IsAuthenticated)

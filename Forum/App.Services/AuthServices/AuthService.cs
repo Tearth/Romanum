@@ -4,6 +4,9 @@ using App.Services.DTO.Auth;
 
 namespace App.Services.AuthServices
 {
+    /// <summary>
+    /// Represents a set of methods to manage user authorization.
+    /// </summary>
     public class AuthService : ServiceBase, IAuthService
     {
         private IWebSecurityWrapper _webSecurityWrapper;
@@ -13,6 +16,7 @@ namespace App.Services.AuthServices
             _webSecurityWrapper = webSecurityWrapper;
         }
 
+        /// <inheritdoc />
         public void CreateUser(RegistrationDTO user)
         {
             if (_webSecurityWrapper.UserExists(user.UserName))
@@ -23,16 +27,25 @@ namespace App.Services.AuthServices
             _webSecurityWrapper.CreateUser(user);
         }
 
+        /// <inheritdoc />
+        public bool UserExists(string name)
+        {
+            return _webSecurityWrapper.UserExists(name);
+        }
+
+        /// <inheritdoc />
         public bool IsUserLoggedIn()
         {
             return _webSecurityWrapper.IsUserLoggedIn();
         }
 
+        /// <inheritdoc />
         public bool LogIn(LogInDTO data)
         {
             return _webSecurityWrapper.LogIn(data);
         }
 
+        /// <inheritdoc />
         public void LogOut()
         {
             if (!_webSecurityWrapper.IsUserLoggedIn())
@@ -43,6 +56,7 @@ namespace App.Services.AuthServices
             _webSecurityWrapper.LogOut();
         }
 
+        /// <inheritdoc />
         public bool ChangePassword(ChangePasswordDTO data)
         {
             if (!_webSecurityWrapper.UserExists(data.Name))
@@ -53,6 +67,7 @@ namespace App.Services.AuthServices
             return _webSecurityWrapper.ChangePassword(data);
         }
 
+        /// <inheritdoc />
         public CurrentUserDTO GetCurrentUser()
         {
             if (!_webSecurityWrapper.IsUserLoggedIn())

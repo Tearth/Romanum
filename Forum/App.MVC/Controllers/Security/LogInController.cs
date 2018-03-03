@@ -28,7 +28,7 @@ namespace App.MVC.Controllers.Security
 
             if(!_authService.LogIn(logInDTO))
             {
-                ModelState.AddModelError("UserName", "Incorrent username or password");
+                ModelState.AddModelError("UserName", "Incorrect username or password");
                 return View(viewModel);
             }
 
