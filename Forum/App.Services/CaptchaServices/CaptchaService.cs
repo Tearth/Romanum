@@ -5,10 +5,14 @@ using Newtonsoft.Json;
 
 namespace App.Services.CaptchaServices
 {
+    /// <summary>
+    /// Represents a set of methods to manage Google captcha.
+    /// </summary>
     public class CaptchaService : ServiceBase, ICaptchaService
     {
         private const string VerifyUrl = "https://www.google.com/recaptcha/api/siteverify";
 
+        /// <inheritdoc />
         public bool Verify(string secretCode, string responseCode)
         {
             var googleResponse = GetResponseFromGoogle(secretCode, responseCode);
