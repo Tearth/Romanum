@@ -48,6 +48,32 @@ namespace App.Services.Tests.Unit
         }
 
         [Fact]
+        public void UserExists_ExistingUserName_ReturnsTrue()
+        {
+            var webSecurityWrapperMock = new Mock<IWebSecurityWrapper>();
+
+            webSecurityWrapperMock.Setup(p => p.UserExists("TestUserName")).Returns(true);
+
+            var authService = new AuthService(webSecurityWrapperMock.Object);
+            var result = authService.UserExists("TestUserName");
+
+            Assert.True(result);
+        }
+
+        [Fact]
+        public void UserExists_NotExistingUserName_ReturnsFalse()
+        {
+            var webSecurityWrapperMock = new Mock<IWebSecurityWrapper>();
+
+            webSecurityWrapperMock.Setup(p => p.UserExists("TestUserName")).Returns(false);
+
+            var authService = new AuthService(webSecurityWrapperMock.Object);
+            var result = authService.UserExists("TestUserName");
+
+            Assert.False(result);
+        }
+
+        [Fact]
         public void IsUserLoggedIn_UserIsLoggedIn_ReturnsTrue()
         {
             var webSecurityWrapperMock = new Mock<IWebSecurityWrapper>();
