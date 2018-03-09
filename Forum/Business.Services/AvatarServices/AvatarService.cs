@@ -8,6 +8,9 @@ using DataAccess.Entities.Enums;
 
 namespace Business.Services.AvatarServices
 {
+    /// <summary>
+    /// Represents a set of methods to manage user avatars.
+    /// </summary>
     public class AvatarService : ServiceBase, IAvatarService
     {
         private IDatabaseContext _databaseContext;
