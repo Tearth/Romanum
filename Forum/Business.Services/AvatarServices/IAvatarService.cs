@@ -1,4 +1,5 @@
 ﻿using Business.Services.DTO.Avatar;
+using DataAccess.Entities;
 
 namespace Business.Services.AvatarServices
 {

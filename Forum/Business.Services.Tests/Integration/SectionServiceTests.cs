@@ -20,7 +20,7 @@ namespace Business.Services.Tests.Integration
             var testDatabaseContext = DbContextFactory.Create();
 
             var service = new SectionService(testDatabaseContext);
-            var sections = service.GetAllSetionsWithCategories();
+            var sections = service.GetAllSectionsWithCategories();
 
             Assert.Equal("Category 1", sections.ElementAt(0).Categories.ElementAt(0).Name);
             Assert.Equal("Category 2", sections.ElementAt(0).Categories.ElementAt(1).Name);
@@ -34,7 +34,7 @@ namespace Business.Services.Tests.Integration
             var testDatabaseContext = DbContextFactory.Create();
 
             var service = new SectionService(testDatabaseContext);
-            var sections = service.GetAllSetionsWithCategories();
+            var sections = service.GetAllSectionsWithCategories();
 
             Assert.Equal(2, sections.ElementAt(0).Categories.Count());
             Assert.Equal(2, sections.ElementAt(1).Categories.Count());
@@ -47,7 +47,7 @@ namespace Business.Services.Tests.Integration
             var testDatabaseContext = DbContextFactory.Create();
 
             var service = new SectionService(testDatabaseContext);
-            var sections = service.GetAllSetionsWithCategories();
+            var sections = service.GetAllSectionsWithCategories();
 
             Assert.Equal(new DateTime(2015, 6, 6).Date, sections.ElementAt(0).Categories.ElementAt(0).LastPostCreationTime.Date);
             Assert.Equal(new DateTime(2015, 8, 8).Date, sections.ElementAt(0).Categories.ElementAt(1).LastPostCreationTime.Date);

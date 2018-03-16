@@ -8,32 +8,44 @@ using DataAccess.Database;
 
 namespace Business.Services.ProfileServices
 {
+    /// <summary>
+    /// Represents a set of methods to manage profiles.
+    /// </summary>
     public class ProfileService : ServiceBase, IProfileService
     {
         private IDatabaseContext _databaseContext;
         private ITimeProvider _timeProvider;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ProfileService"/> class.
+        /// </summary>
+        /// <param name="databaseContext">The database context.</param>
+        /// <param name="timeProvider">The time provider.</param>
         public ProfileService(IDatabaseContext databaseContext, ITimeProvider timeProvider)
         {
             _databaseContext = databaseContext;
             _timeProvider = timeProvider;
         }
 
+        /// <inheritdoc />
         public bool UserNameExists(string name)
         {
             return _databaseContext.Users.Any(user => user.Name == name);
         }
 
+        /// <inheritdoc />
         public bool EMailExists(string email)
         {
             return _databaseContext.Users.Any(user => user.EMail == email);
         }
 
+        /// <inheritdoc />
         public bool ProfileExists(int id)
         {
             return _databaseContext.Users.Any(user => user.ID == id);
         }
 
+        /// <inheritdoc />
         public void ChangeProfile(int id, ChangeProfileDTO newProfileData)
         {
             if (!ProfileExists(id))
@@ -53,6 +65,7 @@ namespace Business.Services.ProfileServices
             _databaseContext.SaveChanges();
         }
 
+        /// <inheritdoc />
         public ProfileDTO GetProfileByUserID(int id)
         {
             if (!ProfileExists(id))

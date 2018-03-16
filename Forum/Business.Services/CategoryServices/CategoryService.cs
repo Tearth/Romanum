@@ -5,15 +5,23 @@ using DataAccess.Database;
 
 namespace Business.Services.CategoryServices
 {
+    /// <summary>
+    /// Represents a set of methods to manage categories.
+    /// </summary>
     public class CategoryService : ServiceBase, ICategoryService
     {
         private IDatabaseContext _databaseContext;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="CategoryService"/> class.
+        /// </summary>
+        /// <param name="databaseContext">The database context.</param>
         public CategoryService(IDatabaseContext databaseContext)
         {
             _databaseContext = databaseContext;
         }
 
+        /// <inheritdoc />
         public CategoryWithPostsDTO GetCategoryWithPosts(string categoryAlias)
         {
             if (!Exists(categoryAlias))
@@ -57,6 +65,7 @@ namespace Business.Services.CategoryServices
             return categoryWithPosts;
         }
 
+        /// <inheritdoc />
         public bool Exists(string categoryAlias)
         {
             return _databaseContext.Categories.Any(p => p.Alias == categoryAlias);

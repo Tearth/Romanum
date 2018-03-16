@@ -15,11 +15,16 @@ namespace Business.Services.AvatarServices
     {
         private IDatabaseContext _databaseContext;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="AvatarService"/> class.
+        /// </summary>
+        /// <param name="databaseContext">The database context.</param>
         public AvatarService(IDatabaseContext databaseContext)
         {
             _databaseContext = databaseContext;
         }
 
+        /// <inheritdoc />
         public AvatarDTO GetUserAvatar(int userID)
         {
             var avatar = _databaseContext.Users
@@ -30,12 +35,14 @@ namespace Business.Services.AvatarServices
             return avatarDTO;
         }
 
+        /// <inheritdoc />
         public void SetUserAvatarToDefault(int userID)
         {
             var user = _databaseContext.Users.First(p => p.ID == userID);
             RemoveUserAvatar(user);
         }
 
+        /// <inheritdoc />
         public void SetUserAvatar(int userID, AvatarTypeDTO type, string imageSource)
         {
             var user = _databaseContext.Users.First(p => p.ID == userID);

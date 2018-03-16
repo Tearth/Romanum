@@ -18,7 +18,7 @@ namespace App.MVC.Controllers.Section
         [HttpGet]
         public ActionResult Index()
         {
-            var sections = _sections.GetAllSetionsWithCategories();
+            var sections = _sections.GetAllSectionsWithCategories();
             var sectionsViewModel = Mapper.Map<IEnumerable<SectionWithCategoriesViewModel>>(sections);
 
             return View(sectionsViewModel);

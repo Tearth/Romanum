@@ -5,15 +5,23 @@ using DataAccess.Database;
 
 namespace Business.Services.TopicServices
 {
+    /// <summary>
+    /// Represents a set of methods to manage topics.
+    /// </summary>
     public class TopicService : ServiceBase, ITopicService
     {
         private IDatabaseContext _databaseContext;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="TopicService"/> class.
+        /// </summary>
+        /// <param name="databaseContext">The database context.</param>
         public TopicService(IDatabaseContext databaseContext)
         {
             _databaseContext = databaseContext;
         }
 
+        /// <inheritdoc />
         public TopicWithPostsDTO GetTopicWithPosts(string topicAlias)
         {
             if (!Exists(topicAlias))
@@ -45,11 +53,13 @@ namespace Business.Services.TopicServices
             return topicWithPosts;
         }
 
+        /// <inheritdoc />
         public bool Exists(string topicAlias)
         {
             return _databaseContext.Topics.Any(p => p.Alias == topicAlias);
         }
 
+        /// <inheritdoc />
         public bool ValidateTopicAndCategoryAlias(string topicAlias, string categoryAlias)
         {
             return _databaseContext.Topics.Any(p => p.Alias == topicAlias &&

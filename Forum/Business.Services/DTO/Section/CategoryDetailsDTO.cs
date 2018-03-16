@@ -43,7 +43,7 @@ namespace Business.Services.DTO.Section
         public int PostsCount { get; set; }
 
         /// <summary>
-        /// Gets or sets the date of the last post in the category.
+        /// Gets or sets the time of the last post in the category.
         /// </summary>
         public DateTime LastPostCreationTime { get; set; }
     }

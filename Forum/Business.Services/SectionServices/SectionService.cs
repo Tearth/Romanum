@@ -5,16 +5,24 @@ using DataAccess.Database;
 
 namespace Business.Services.SectionServices
 {
+    /// <summary>
+    /// Represents a set of methods to manage sections.
+    /// </summary>
     public class SectionService : ServiceBase, ISectionService
     {
         private IDatabaseContext _databaseContext;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="SectionService"/> class.
+        /// </summary>
+        /// <param name="databaseContext">The database context.</param>
         public SectionService(IDatabaseContext databaseContext)
         {
             _databaseContext = databaseContext;
         }
 
-        public IEnumerable<SectionWithCategoriesDTO> GetAllSetionsWithCategories()
+        /// <inheritdoc />
+        public IEnumerable<SectionWithCategoriesDTO> GetAllSectionsWithCategories()
         {
             var sectionsQuery = _databaseContext.Sections;
             var sectionsWithCategories = sectionsQuery.Select(section => new SectionWithCategoriesDTO
