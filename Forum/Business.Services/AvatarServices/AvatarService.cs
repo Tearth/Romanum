@@ -2,6 +2,7 @@
 using System.Linq;
 using AutoMapper;
 using Business.Services.DTO.Avatar;
+using Business.Services.ProfileServices.Exceptions;
 using DataAccess.Database;
 using DataAccess.Entities;
 using DataAccess.Entities.Enums;
@@ -27,6 +28,11 @@ namespace Business.Services.AvatarServices
         /// <inheritdoc />
         public AvatarDTO GetUserAvatar(int userID)
         {
+            if (!_databaseContext.Users.Any(p => p.ID == userID))
+            {
+                throw new UserProfileNotFoundException();
+            }
+
             var avatar = _databaseContext.Users
                 .Include(user => user.Avatar)
                 .First(p => p.ID == userID).Avatar;
@@ -38,6 +44,11 @@ namespace Business.Services.AvatarServices
         /// <inheritdoc />
         public void SetUserAvatarToDefault(int userID)
         {
+            if (!_databaseContext.Users.Any(p => p.ID == userID))
+            {
+                throw new UserProfileNotFoundException();
+            }
+
             var user = _databaseContext.Users.First(p => p.ID == userID);
             RemoveUserAvatar(user);
         }
@@ -45,6 +56,11 @@ namespace Business.Services.AvatarServices
         /// <inheritdoc />
         public void SetUserAvatar(int userID, AvatarTypeDTO type, string imageSource)
         {
+            if (!_databaseContext.Users.Any(p => p.ID == userID))
+            {
+                throw new UserProfileNotFoundException();
+            }
+
             var user = _databaseContext.Users.First(p => p.ID == userID);
             RemoveUserAvatar(user);
 
