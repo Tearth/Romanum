@@ -9,8 +9,8 @@ namespace Business.Services
     {
         public MapperProfile()
         {
-            CreateMap<ChangeProfileDTO, User>();
-            CreateMap<AvatarDTO, Avatar>();
+            CreateMap<ChangeProfileDTO, User>().ReverseMap();
+            CreateMap<AvatarDTO, Avatar>().ReverseMap();
         }
     }
 }
