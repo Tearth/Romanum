@@ -5,141 +5,48 @@
 
 @foreach (var sectionDetails in Model)
 {
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-md-12">
-                <table class="table">
-                    <thead>
-                    <tr>
-                        <th>
-                            #
-                        </th>
-                        <th>
-                            Product
-                        </th>
-                        <th>
-                            Payment Taken
-                        </th>
-                        <th>
-                            Status
-                        </th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr>
-                        <td>
-                            1
-                        </td>
-                        <td>
-                            TB - Monthly
-                        </td>
-                        <td>
-                            01/04/2012
-                        </td>
-                        <td>
-                            Default
-                        </td>
-                    </tr>
-                    <tr class="table-active">
-                        <td>
-                            1
-                        </td>
-                        <td>
-                            TB - Monthly
-                        </td>
-                        <td>
-                            01/04/2012
-                        </td>
-                        <td>
-                            Approved
-                        </td>
-                    </tr>
-                    <tr class="table-success">
-                        <td>
-                            2
-                        </td>
-                        <td>
-                            TB - Monthly
-                        </td>
-                        <td>
-                            02/04/2012
-                        </td>
-                        <td>
-                            Declined
-                        </td>
-                    </tr>
-                    <tr class="table-warning">
-                        <td>
-                            3
-                        </td>
-                        <td>
-                            TB - Monthly
-                        </td>
-                        <td>
-                            03/04/2012
-                        </td>
-                        <td>
-                            Pending
-                        </td>
-                    </tr>
-                    <tr class="table-danger">
-                        <td>
-                            4
-                        </td>
-                        <td>
-                            TB - Monthly
-                        </td>
-                        <td>
-                            04/04/2012
-                        </td>
-                        <td>
-                            Call in to confirm
-                        </td>
-                    </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-    </div>
-
-
-    <div class="cap-div">
-        <div class="cap-left">
-            <div class="cap-right">
-                &nbsp;<h4><a href="#">@sectionDetails.Name</a></h4>&nbsp;
-            </div>
-        </div>
-    </div>
-
-    <table class="tablebg" cellspacing="0" width="100%">
-        <tbody>
-            <tr>
-                <th colspan="2">&nbsp;Forum&nbsp;</th>
-                <th width="50">&nbsp;Topics&nbsp;</th>
-                <th width="50">&nbsp;Posts&nbsp;</th>
-                <th width="175">&nbsp;Last post&nbsp;</th>
-            </tr>
-                @foreach (var categoryDetails in sectionDetails.Categories)
-                {
-
-                    <tr>
-                        <td class="row1" width="31" align="center"><img src="/Content/Images/forum_unread.gif" width="27" height="27" alt="Unread posts" title="Unread posts" /></td>
-                        <td class="row1">
-                            @Html.ActionLink(categoryDetails.Name, "Index", "Category", new { categoryAlias = categoryDetails.Alias }, new { @class = "forumlink link" })
-                            <p class="forumdesc">@categoryDetails.Description</p>
-                        </td>
-                        <td class="row2" align="center"><p class="topicdetails">@categoryDetails.TopicsCount</p></td>
-                        <td class="row2" align="center"><p class="topicdetails">@categoryDetails.PostsCount</p></td>
-                        <td class="row2" align="center" nowrap="nowrap">
-                            <p class="topicdetails">
+    <div class="row">
+        <div class="col-md-12">
+            <table class="table">
+                <thead>
+                <tr class="table-info">
+                    <th style="width: 60%;">
+                        @sectionDetails.Name
+                    </th>
+                    <th style="width: 10%;">
+                        Topic
+                    </th>
+                    <th style="width: 10%;">
+                        Posts
+                    </th>
+                    <th style="width: 20%;">
+                        Last post
+                    </th>
+                </tr>
+                </thead>
+                <tbody>
+                    @foreach (var categoryDetails in sectionDetails.Categories)
+                    {
+                        <tr>
+                            <td>
+                                @Html.ActionLink(categoryDetails.Name, "Index", "Category", new { categoryAlias = categoryDetails.Alias }, null)
+                            </td>
+                            <td>
+                                @categoryDetails.TopicsCount
+                            </td>
+                            <td>
+                                @categoryDetails.PostsCount
+                            </td>
+                            <td>
                                 @if (categoryDetails.PostsCount != 0)
                                 {
                                     @categoryDetails.LastPostCreationTime.ToString("dd-MM-yyyy hh:mm")
                                 }
-                            </p>
-                        </td>
-                    </tr>
-                }
-        </tbody>
-    </table>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
 }
