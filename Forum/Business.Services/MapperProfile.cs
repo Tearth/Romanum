@@ -11,6 +11,7 @@ namespace Business.Services
         {
             CreateMap<ChangeProfileDTO, User>().ReverseMap();
             CreateMap<AvatarDTO, Avatar>().ReverseMap();
+            CreateMap<ChangedAvatarDTO, Avatar>().ReverseMap();
         }
     }
 }

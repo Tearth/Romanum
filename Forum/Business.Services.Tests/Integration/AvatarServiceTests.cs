@@ -1,4 +1,5 @@
 ﻿using Business.Services.AvatarServices;
+using Business.Services.DTO.Avatar;
 using Business.Services.ProfileServices.Exceptions;
 using Business.Services.Tests.Helpers.Database;
 using DataAccess.Entities.Enums;
@@ -60,6 +61,45 @@ namespace Business.Services.Tests.Integration
 
             var service = new AvatarService(testDatabaseContext);
             var exception = Record.Exception(() => service.SetUserAvatarToDefault(1001));
+
+            Assert.IsType<UserProfileNotFoundException>(exception);
+        }
+
+        [Theory]
+        [InlineData(1, AvatarType.Gravatar, "gravatarSource")]
+        [InlineData(2, AvatarType.InternalImage, "internalSource")]
+        public void SetUserAvatar_ExistingUserID_AvatarSuccessfullyChanged(int userID, AvatarTypeDTO avatarType, string avatarSource)
+        {
+            var testDatabaseContext = DbContextFactory.Create();
+
+            var service = new AvatarService(testDatabaseContext);
+            var userAvatar = new ChangedAvatarDTO
+            {
+                Type = avatarType,
+                Source = avatarSource
+            };
+
+            service.SetUserAvatar(userID, userAvatar);
+
+            var updatedUserAvatar = service.GetUserAvatar(userID);
+
+            Assert.Equal(avatarType, updatedUserAvatar.Type);
+            Assert.Equal(avatarSource, updatedUserAvatar.Source);
+        }
+
+        [Fact]
+        public void SetUserAvatar_NotExistingUserID_ThrowsUserProfileNotFoundException()
+        {
+            var testDatabaseContext = DbContextFactory.Create();
+
+            var service = new AvatarService(testDatabaseContext);
+            var userAvatar = new ChangedAvatarDTO
+            {
+                Type = AvatarTypeDTO.Gravatar,
+                Source = "gravatarSource"
+            };
+
+            var exception = Record.Exception(() => service.SetUserAvatar(1001, userAvatar));
 
             Assert.IsType<UserProfileNotFoundException>(exception);
         }

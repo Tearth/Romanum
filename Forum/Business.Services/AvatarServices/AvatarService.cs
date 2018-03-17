@@ -54,7 +54,7 @@ namespace Business.Services.AvatarServices
         }
 
         /// <inheritdoc />
-        public void SetUserAvatar(int userID, AvatarTypeDTO type, string imageSource)
+        public void SetUserAvatar(int userID, ChangedAvatarDTO changedAvatar)
         {
             if (!_databaseContext.Users.Any(p => p.ID == userID))
             {
@@ -64,7 +64,7 @@ namespace Business.Services.AvatarServices
             var user = _databaseContext.Users.First(p => p.ID == userID);
             RemoveUserAvatar(user);
 
-            var avatar = AddAvatar(type, imageSource);
+            var avatar = AddAvatar(changedAvatar);
             user.AvatarID = avatar.ID;
 
             _databaseContext.SaveChanges();
@@ -81,13 +81,9 @@ namespace Business.Services.AvatarServices
             _databaseContext.SaveChanges();
         }
 
-        private Avatar AddAvatar(AvatarTypeDTO type, string imageSource)
+        private Avatar AddAvatar(ChangedAvatarDTO changedAvatar)
         {
-            var avatar = new Avatar
-            {
-                Type = (AvatarType)type,
-                Source = imageSource
-            };
+            var avatar = Mapper.Map<Avatar>(changedAvatar);
 
             _databaseContext.Avatars.Add(avatar);
             _databaseContext.SaveChanges();

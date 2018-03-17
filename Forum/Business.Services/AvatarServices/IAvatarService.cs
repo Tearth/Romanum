@@ -28,9 +28,8 @@ namespace Business.Services.AvatarServices
         /// Sets the user avatar to the specified in parameter.
         /// </summary>
         /// <param name="userID">The user ID.</param>
-        /// <param name="type">The avatar type.</param>
-        /// <param name="imageSource">The avatar source.</param>
+        /// <param name="changedAvatar">The changed avatar.</param>
         /// <exception cref="UserProfileNotFoundException">Thrown when a user with the specified id doesn't exists.</exception>
-        void SetUserAvatar(int userID, AvatarTypeDTO type, string imageSource);
+        void SetUserAvatar(int userID, ChangedAvatarDTO changedAvatar);
     }
 }
