@@ -40,5 +40,12 @@ namespace App.MVC.Controllers.Security
         {
             return View();
         }
+
+        [HttpGet]
+        public ActionResult LogOut()
+        {
+            _authService.LogOut();
+            return RedirectToAction("Index", "Section");
+        }
     }
 }
