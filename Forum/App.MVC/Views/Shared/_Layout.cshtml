@@ -17,12 +17,24 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
-                <li class="nav-item">
-                    @Html.ActionLink("Log in", "Index", "LogIn", null, new { @class="nav-link" })
-                </li>
-                <li class="nav-item">
-                    @Html.ActionLink("Registration", "Index", "Registration", null, new { @class = "nav-link" })
-                </li>
+                @if (WebSecurity.IsAuthenticated)
+                {
+                    <li class="nav-item">
+                        @Html.ActionLink("My profile", "Index", "ProfileOverview", null, new { @class="nav-link" })
+                    </li>
+                    <li class="nav-item">
+                        @Html.ActionLink("Log out", "LogOut", "LogIn", null, new { @class = "nav-link" })
+                    </li>
+                }
+                else
+                {
+                    <li class="nav-item">
+                        @Html.ActionLink("Log in", "Index", "LogIn", null, new { @class="nav-link" })
+                    </li>
+                    <li class="nav-item">
+                        @Html.ActionLink("Registration", "Index", "Registration", null, new { @class = "nav-link" })
+                    </li>
+                }
             </ul>
             <form class="form-inline my-2 my-lg-0">
                 <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" />
