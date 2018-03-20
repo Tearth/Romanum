@@ -32,13 +32,7 @@ namespace App.MVC.Controllers.Security
                 return View(viewModel);
             }
 
-            return RedirectToAction("SuccessMessage");
-        }
-
-        [HttpGet]
-        public ActionResult SuccessMessage()
-        {
-            return View();
+            return RedirectToAction("Index", "Section");
         }
 
         [HttpGet]

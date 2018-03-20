@@ -243,7 +243,6 @@
     <Content Include="Views\LogIn\Index.cshtml" />
     <Content Include="Views\Registration\Index.cshtml" />
     <Content Include="Views\Registration\SuccessMessage.cshtml" />
-    <Content Include="Views\LogIn\SuccessMessage.cshtml" />
     <Content Include="Views\ProfileOverview\Index.cshtml" />
     <Content Include="Views\ChangePassword\Index.cshtml" />
     <Content Include="Views\ChangePassword\SuccessMessage.cshtml" />
