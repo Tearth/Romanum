@@ -10,7 +10,8 @@ namespace App.MVC
                                          "~/Scripts/jquery-{version}.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/validation").Include(
-                                         "~/Scripts/jquery.validate*"));
+                                         "~/Scripts/jquery.validate.js",
+                                         "~/Scripts/jquery.validate.unobtrusive.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/change-profile").Include(
                                          "~/Scripts/Views/change-profile.js"));
