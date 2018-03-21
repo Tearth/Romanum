@@ -19,3 +19,9 @@
     width: 100%;
     margin-top: 10px;
 }
+
+.vertical-menu
+{
+    list-style: none;
+    padding: 0;
+}
