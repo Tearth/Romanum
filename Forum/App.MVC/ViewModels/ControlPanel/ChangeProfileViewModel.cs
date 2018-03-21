@@ -8,13 +8,8 @@ namespace App.MVC.ViewModels.ControlPanel
         [EmailAddress(ErrorMessage = "E-Mail invalid format")]
         public string EMail { get; set; }
 
-        [Required(ErrorMessage = "City field cannot be empty")]
         public string City { get; set; }
-
-        [Required(ErrorMessage = "About field cannot be empty")]
         public string About { get; set; }
-
-        [Required(ErrorMessage = "Footer field cannot be empty")]
         public string Footer { get; set; }
     }
 }
