@@ -3,87 +3,49 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+<div class="row row-margin">
+    @Html.Partial("ControlPanelMenu")
 
-<table width="100%" cellspacing="0" cellpadding="0" border="0">
-    <tr>
-        <td width="20%" valign="top" id="ucp-left">
-            <div class="cap-div">
-                <div class="cap-left">
-                    <div class="cap-right">&nbsp;Options&nbsp;</div>
-                </div>
-            </div>
-            <table class="tablebg" width="100%" cellspacing="0">
-                <tr>
-                    <td class="row1">
-                        <b class="nav">Overview</b>
-                    </td>
-                </tr>
-            </table>
-        </td>
-
-        <td><img src="images/spacer.gif" width="4" alt="" /></td>
-
-        <td width="80%" valign="top">
-                <div class="cap-div"><div class="cap-left"><div class="cap-right">&nbsp;User Control Panel&nbsp;</div></div></div>
-                <table class="tablebg" width="100%" cellspacing="0">
-                    <tr>
-                        <th colspan="3">Your activity</th>
-                    </tr>
-                    <tr>
+    <div class="col-md-9">
+        <div class="card bg-light">
+            <div class="card-header">Change password</div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-12">
                         @using (Html.BeginForm("Index", "ChangePassword"))
                         {
-                            <table class="tablebg" width="100%" cellspacing="0">
-                                <tr>
-                                    @Html.ValidationMessage("Summary")
-                                    <td class="row2">
-
-                                        <table align="center" cellspacing="1" cellpadding="4" style="width: 100%;">
-                                            <tr>
-                                                <td valign="top"><b class="gensmall">Old password:</b></td>
-                                                <td>
-                                                    @Html.PasswordFor(p => Model.OldPassword)
-
-                                                    <br />
-                                                    <div class="validation-error">@Html.ValidationMessageFor(p => Model.OldPassword)</div>
-
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td valign="top"><b class="gensmall">New password:</b></td>
-                                                <td>
-                                                    @Html.PasswordFor(p => Model.NewPassword)
-
-                                                    <br />
-                                                    <div class="validation-error">@Html.ValidationMessageFor(p => Model.NewPassword)</div>
-
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td valign="top"><b class="gensmall">Confirm new password:</b></td>
-                                                <td>
-                                                    @Html.PasswordFor(p => Model.ConfirmNewPassword)
-
-                                                    <br />
-                                                    <div class="validation-error">@Html.ValidationMessageFor(p => Model.ConfirmNewPassword)</div>
-
-                                                </td>
-                                            </tr>
-                                        </table>
-                                    </td>
-                                </tr>
-
-                                <tr>
-                                    <td class="cat" colspan="2" align="center">
-                                        <input type="submit" name="login" class="btnmain" value="Change" tabindex="5" />
-                                    </td>
-                                </tr>
-                            </table>
+                            <div class="form-group row">
+                                <div class="col-md-2 text-right">
+                                    <strong>Old password</strong>
+                                </div>
+                                <div class="col-md-10">
+                                    @Html.PasswordFor(p => p.OldPassword, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(p => p.OldPassword, null, new { @class = "validation-error-text" })
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-md-2 text-right">
+                                    <strong>New password</strong>
+                                </div>
+                                <div class="col-md-10">
+                                    @Html.PasswordFor(p => p.NewPassword, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(p => p.NewPassword, null, new { @class = "validation-error-text" })
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-md-2 text-right">
+                                    <strong>Confirm new password</strong>
+                                </div>
+                                <div class="col-md-10">
+                                    @Html.TextBoxFor(p => p.ConfirmNewPassword, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(p => p.ConfirmNewPassword, null, new { @class = "validation-error-text" })
+                                </div>
+                            </div>
+                            <button type="submit" class="btn btn-primary send-button">Save</button>
                         }
-                    </tr>
-                    <tr>
-                        <td class="cat" colspan="3">&nbsp;</td>
-                    </tr>
-                </table>
-        </td>
-    </tr>
-</table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

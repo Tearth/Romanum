@@ -28,7 +28,7 @@
                                     <strong>City</strong>
                                 </div>
                                 <div class="col-md-10">
-                                    @Html.TextBoxFor(p => p.City, new { @class = "form-control", placeholder = "Enter email" })
+                                    @Html.TextBoxFor(p => p.City, new { @class = "form-control", placeholder = "Enter city" })
                                     @Html.ValidationMessageFor(p => p.City, null, new { @class = "validation-error-text" })
                                 </div>
                             </div>
@@ -37,7 +37,7 @@
                                     <strong>About</strong>
                                 </div>
                                 <div class="col-md-10">
-                                    @Html.TextBoxFor(p => p.About, new { @class = "form-control", placeholder = "Enter email" })
+                                    @Html.TextBoxFor(p => p.About, new { @class = "form-control", placeholder = "Enter something about you" })
                                     @Html.ValidationMessageFor(p => p.About, null, new { @class = "validation-error-text" })
                                 </div>
                             </div>
@@ -46,13 +46,12 @@
                                     <strong>Footer</strong>
                                 </div>
                                 <div class="col-md-10">
-                                    @Html.TextAreaFor(p => p.Footer, new { @class = "form-control", placeholder = "Enter email" })
+                                    @Html.TextAreaFor(p => p.Footer, new { @class = "form-control", placeholder = "Enter footer" })
                                     @Html.ValidationMessageFor(p => p.Footer, null, new { @class = "validation-error-text" })
                                 </div>
                             </div>
                             <button type="submit" class="btn btn-primary send-button">Save</button>
                         }
-                        </div>
                     </div>
                 </div>
             </div>
