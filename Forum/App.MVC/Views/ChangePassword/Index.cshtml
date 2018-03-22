@@ -37,7 +37,7 @@
                                     <strong>Confirm new password</strong>
                                 </div>
                                 <div class="col-md-10">
-                                    @Html.TextBoxFor(p => p.ConfirmNewPassword, new { @class = "form-control" })
+                                    @Html.PasswordFor(p => p.ConfirmNewPassword, new { @class = "form-control" })
                                     @Html.ValidationMessageFor(p => p.ConfirmNewPassword, null, new { @class = "validation-error-text" })
                                 </div>
                             </div>
