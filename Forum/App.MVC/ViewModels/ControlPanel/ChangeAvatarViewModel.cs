@@ -5,5 +5,6 @@ namespace App.MVC.ViewModels.ControlPanel
     public class ChangeAvatarViewModel
     {
         public AvatarType Type { get; set; }
+        public string Source { get; set; }
     }
 }

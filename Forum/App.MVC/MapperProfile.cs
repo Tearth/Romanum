@@ -6,6 +6,7 @@ using App.MVC.ViewModels.Section;
 using App.MVC.ViewModels.Topic;
 using App.Services.DTO.Auth;
 using AutoMapper;
+using Business.Services.DTO.Avatar;
 using Business.Services.DTO.Category;
 using Business.Services.DTO.Profile;
 using Business.Services.DTO.Section;
@@ -40,6 +41,7 @@ namespace App.MVC
             CreateMap<ChangePasswordViewModel, ChangePasswordDTO>().ReverseMap();
             CreateMap<ChangeProfileViewModel, ProfileDTO>().ReverseMap();
             CreateMap<ChangeProfileViewModel, ChangeProfileDTO>().ReverseMap();
+            CreateMap<ChangeAvatarViewModel, AvatarDTO>().ReverseMap();
         }
     }
 }

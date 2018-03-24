@@ -5,6 +5,7 @@
     /// </summary>
     public enum AvatarTypeDTO
     {
+        Default = 0,
         InternalImage = 1,
         Gravatar = 2
     }
