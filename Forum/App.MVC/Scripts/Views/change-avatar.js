@@ -12,7 +12,7 @@
     });
 
     function setInternalAvatarInputEnabled(status) {
-        var fileInput = $("input[type='file'][name='avatar-file']");
+        var fileInput = $("input[type='file'][name='AvatarFile']");
         fileInput.prop('disabled', !status);
 
         if (!status) {
