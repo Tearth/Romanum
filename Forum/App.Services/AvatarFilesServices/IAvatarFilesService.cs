@@ -17,6 +17,7 @@ namespace App.Services.AvatarFilesServices
         /// </summary>
         /// <param name="stream">The file stream to save.</param>
         /// <param name="mimeType">The file mime type.</param>
+        /// <param name="serverPath">The full path to the main directory.</param>
         /// <returns>The path to the saved avatar.</returns>
         string SaveAvatar(Stream stream, string mimeType, string serverPath);
     }

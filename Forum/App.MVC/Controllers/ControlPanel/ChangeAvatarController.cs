@@ -56,7 +56,7 @@ namespace App.MVC.Controllers.ControlPanel
                     var userEMail = _profileService.GetProfileByUserID(userID).EMail;
                     var gravatarLink = _gravatarService.GetGravatarLink(userEMail);
 
-                    var changeAvatarDTO = new ChangedAvatarDTO()
+                    var changeAvatarDTO = new ChangedAvatarDTO
                     {
                         Type = AvatarTypeDTO.Gravatar,
                         Source = gravatarLink
