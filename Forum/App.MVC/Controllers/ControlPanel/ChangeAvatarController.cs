@@ -3,23 +3,29 @@ using App.MVC.ViewModels.ControlPanel;
 using App.MVC.ViewModels.ControlPanel.Enums;
 using App.Services.AuthServices;
 using App.Services.AvatarFilesServices;
+using App.Services.GravatarServices;
 using AutoMapper;
 using Business.Services.AvatarServices;
 using Business.Services.DTO.Avatar;
+using Business.Services.ProfileServices;
 
 namespace App.MVC.Controllers.ControlPanel
 {
     public class ChangeAvatarController : Controller
     {
         private IAuthService _authService;
+        private IProfileService _profileService;
         private IAvatarService _avatarService;
         private IAvatarFilesService _avatarFilesService;
+        private IGravatarService _gravatarService;
 
-        public ChangeAvatarController(IAuthService authService, IAvatarService avatarService, IAvatarFilesService avatarFilesService)
+        public ChangeAvatarController(IAuthService authService, IProfileService profileService, IAvatarService avatarService, IAvatarFilesService avatarFilesService, IGravatarService gravatarService)
         {
             _authService = authService;
+            _profileService = profileService;
             _avatarService = avatarService;
             _avatarFilesService = avatarFilesService;
+            _gravatarService = gravatarService;
         }
 
         [HttpGet]
@@ -47,6 +53,16 @@ namespace App.MVC.Controllers.ControlPanel
 
                 case AvatarType.Gravatar:
                 {
+                    var userEMail = _profileService.GetProfileByUserID(userID).EMail;
+                    var gravatarLink = _gravatarService.GetGravatarLink(userEMail);
+
+                    var changeAvatarDTO = new ChangedAvatarDTO()
+                    {
+                        Type = AvatarTypeDTO.Gravatar,
+                        Source = gravatarLink
+                    };
+
+                    _avatarService.SetUserAvatar(userID, changeAvatarDTO);
                     break;
                 }
 
