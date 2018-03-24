@@ -69,6 +69,8 @@
     <Compile Include="AuthServices\IAuthService.cs" />
     <Compile Include="AuthServices\Security\IWebSecurityWrapper.cs" />
     <Compile Include="AuthServices\Security\WebSecurityWrapper.cs" />
+    <Compile Include="AvatarFilesServices\AvatarFilesService.cs" />
+    <Compile Include="AvatarFilesServices\IAvatarFilesService.cs" />
     <Compile Include="Bootloader.cs" />
     <Compile Include="CaptchaServices\CaptchaService.cs" />
     <Compile Include="CaptchaServices\GoogleResponse.cs" />
