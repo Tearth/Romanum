@@ -1,5 +1,6 @@
 ﻿using System.Web.Mvc;
 using App.MVC.ViewModels.ControlPanel;
+using App.MVC.ViewModels.ControlPanel.Enums;
 using App.Services.AuthServices;
 using AutoMapper;
 using Business.Services.AvatarServices;
@@ -25,6 +26,21 @@ namespace App.MVC.Controllers.ControlPanel
 
             var userAvatarViewModel = Mapper.Map<ChangeAvatarViewModel>(userAvatar);
             return View(userAvatarViewModel);
+        }
+
+        [HttpPost]
+        public ActionResult Index(ChangeAvatarViewModel viewModel)
+        {
+            if (viewModel.Type == AvatarType.Internal)
+            {
+                if (viewModel.AvatarFile == null)
+                {
+                    ModelState.AddModelError("AvatarFile", "You have to upload file.");
+                    return View(viewModel);
+                }
+            }
+
+            return View();
         }
     }
 }

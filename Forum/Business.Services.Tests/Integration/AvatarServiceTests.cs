@@ -66,8 +66,8 @@ namespace Business.Services.Tests.Integration
         }
 
         [Theory]
-        [InlineData(1, AvatarType.Gravatar, "gravatarSource")]
-        [InlineData(2, AvatarType.InternalImage, "internalSource")]
+        [InlineData(1, AvatarTypeDTO.Gravatar, "gravatarSource")]
+        [InlineData(2, AvatarTypeDTO.InternalImage, "internalSource")]
         public void SetUserAvatar_ExistingUserID_AvatarSuccessfullyChanged(int userID, AvatarTypeDTO avatarType, string avatarSource)
         {
             var testDatabaseContext = DbContextFactory.Create();
@@ -102,6 +102,31 @@ namespace Business.Services.Tests.Integration
             var exception = Record.Exception(() => service.SetUserAvatar(1001, userAvatar));
 
             Assert.IsType<UserProfileNotFoundException>(exception);
+        }
+
+        [Theory]
+        [InlineData("image/png")]
+        [InlineData("image/jpeg")]
+        [InlineData("image/bmp")]
+        public void CheckIfMimeTypeIsValid_ValidMimeType_ReturnsTrue(string mimeType)
+        {
+            var testDatabaseContext = DbContextFactory.Create();
+
+            var service = new AvatarService(testDatabaseContext);
+            var validationResult = service.CheckIfMimeTypeIsValid(mimeType);
+
+            Assert.True(validationResult);
+        }
+
+        [Fact]
+        public void CheckIfMimeTypeIsValid_InvalidMimeType_ReturnsFalse()
+        {
+            var testDatabaseContext = DbContextFactory.Create();
+
+            var service = new AvatarService(testDatabaseContext);
+            var validationResult = service.CheckIfMimeTypeIsValid("text/someweirdtype");
+
+            Assert.False(validationResult);
         }
     }
 }

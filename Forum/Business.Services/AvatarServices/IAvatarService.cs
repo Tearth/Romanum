@@ -31,5 +31,13 @@ namespace Business.Services.AvatarServices
         /// <param name="changedAvatar">The changed avatar.</param>
         /// <exception cref="UserProfileNotFoundException">Thrown when a user with the specified id doesn't exists.</exception>
         void SetUserAvatar(int userID, ChangedAvatarDTO changedAvatar);
+
+        /// <summary>
+        /// Checks if the uploaded avatar has correct mime type (to avoid uploading some weird files
+        /// like php scripts etc.).
+        /// </summary>
+        /// <param name="mimeType">The mime type to check.</param>
+        /// <returns>True if the mime type is allowed, otherwise false.</returns>
+        bool CheckIfMimeTypeIsValid(string mimeType);
     }
 }

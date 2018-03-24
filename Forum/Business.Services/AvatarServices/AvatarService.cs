@@ -1,4 +1,5 @@
-﻿using System.Data.Entity;
+﻿using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using AutoMapper;
 using Business.Services.DTO.Avatar;
@@ -15,6 +16,7 @@ namespace Business.Services.AvatarServices
     public class AvatarService : ServiceBase, IAvatarService
     {
         private IDatabaseContext _databaseContext;
+        private List<string> _allowedMimeTypes;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="AvatarService"/> class.
@@ -23,6 +25,12 @@ namespace Business.Services.AvatarServices
         public AvatarService(IDatabaseContext databaseContext)
         {
             _databaseContext = databaseContext;
+            _allowedMimeTypes = new List<string>
+            {
+                "image/png",
+                "image/jpeg",
+                "image/bmp"
+            };
         }
 
         /// <inheritdoc />
@@ -68,6 +76,12 @@ namespace Business.Services.AvatarServices
             user.AvatarID = avatar.ID;
 
             _databaseContext.SaveChanges();
+        }
+
+        /// <inheritdoc />
+        public bool CheckIfMimeTypeIsValid(string mimeType)
+        {
+            return _allowedMimeTypes.Contains(mimeType);
         }
 
         private void RemoveUserAvatar(User user)

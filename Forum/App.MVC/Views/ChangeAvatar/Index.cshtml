@@ -18,34 +18,34 @@
             <div class="card-header">Change avatar</div>
             <div class="card-body">
                 <div class="row">
-                    <div class="col-md-8">
-                        @using (Html.BeginForm("Index", "ChangeAvatar"))
-                        {
-                            @Html.ValidationMessage("Summary")
-                            <div class="form-group row">
-                                <div class="col-md-12">
-                                    @Html.RadioButtonFor(p => Model.Type, global::App.MVC.ViewModels.ControlPanel.Enums.AvatarType.Default) Default
+                    @using (Html.BeginForm("Index", "ChangeAvatar", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                    {
+                        <div class="col-md-8">
+                                @Html.ValidationMessage("Summary")
+                                <div class="form-group row">
+                                    <div class="col-md-12">
+                                        @Html.RadioButtonFor(p => Model.Type, global::App.MVC.ViewModels.ControlPanel.Enums.AvatarType.Default) Default
+                                    </div>
                                 </div>
-                            </div>
 
-                            <div class="form-group row">
-                                <div class="col-md-12">
-                                    @Html.RadioButtonFor(p => Model.Type, global::App.MVC.ViewModels.ControlPanel.Enums.AvatarType.Gravatar) Gravatar
+                                <div class="form-group row">
+                                    <div class="col-md-12">
+                                        @Html.RadioButtonFor(p => Model.Type, global::App.MVC.ViewModels.ControlPanel.Enums.AvatarType.Gravatar) Gravatar
+                                    </div>
                                 </div>
-                            </div>
 
-                            <div class="form-group row">
-                                <div class="col-md-12">
-                                    @Html.RadioButtonFor(p => Model.Type, global::App.MVC.ViewModels.ControlPanel.Enums.AvatarType.Internal) Internal
-                                    <input type="file" name="avatar-file" />
+                                <div class="form-group row">
+                                    <div class="col-md-12">
+                                        @Html.RadioButtonFor(p => Model.Type, global::App.MVC.ViewModels.ControlPanel.Enums.AvatarType.Internal) Internal
+                                        @Html.TextBoxFor(m => m.AvatarFile, new { type = "file", name = "AvatarFile" })
+                                    </div>
                                 </div>
-                            </div>
-                        }
-                    </div>
-                    <div class="col-md-4 text-right">
-                        <img src="@Model.Source" alt="User avatar"/>
-                    </div>
-                    <button type="submit" class="btn btn-primary send-button">Save</button>
+                        </div>
+                        <div class="col-md-4 text-right">
+                            <img src="@Model.Source" alt="User avatar"/>
+                        </div>
+                        <button type="submit" class="btn btn-primary send-button">Save</button>
+                    }
                  </div>
             </div>
         </div>
