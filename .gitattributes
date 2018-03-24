@@ -1,1 +1,2 @@
+$ cat .gitattributes
 Forum/App.MVC/Scripts/* linguist-vendored
