@@ -31,3 +31,7 @@
     width: 128px;
     height: 128px;
 }
+
+.post-author-time-details p {
+    margin-bottom: 0;
+}

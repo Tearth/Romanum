@@ -3,74 +3,60 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<div id="pagecontent">
-    <table width="100%" cellspacing="1">
-        <tbody>
-            <tr>
-                <td align="left" valign="middle">
-                    <a href="#">
-                        <img src="/Content/Images/button_topic_new.gif" width="79" height="22" alt="Post new topic" title="Post new topic"/>
-                    </a>
-                </td>
-                <td class="nav" valign="middle" nowrap="nowrap">&nbsp;Page <strong>1</strong> of <strong>1</strong></td>
-                <td class="gensmall" nowrap="nowrap">&nbsp;[ 6 topics ]&nbsp;</td>
-                <td align="right" width="100%"></td>
+<div class="row">
+    <div class="col-md-12">
+        @if (WebSecurity.IsAuthenticated)
+        {
+            <a href="#" class="btn btn-primary">Create new topic</a>
+        }
+        <table class="table">
+            <thead>
+            <tr class="table-info">
+                <th style="width: 65%;">
+                    @Model.Name
+                </th>
+                <th class="text-center" style="width: 10%;">
+                    Creation time
+                </th>
+                <th class="text-center" style="width: 5%;">
+                    Posts
+                </th>
+                <th class="text-center" style="width: 5%;">
+                    Views
+                </th>
+                <th class="text-center" style="width: 15%;">
+                    Last post
+                </th>
             </tr>
-        </tbody>
-    </table>
-
-    <div class="cap-div">
-        <div class="cap-left">
-            <div class="cap-right">
-                &nbsp;@Model.Name&nbsp;
-            </div>
-        </div>
-    </div>
-
-    <table class="tablebg" width="100%" cellspacing="0">
-        <tbody>
-            <tr>
-                <th colspan="2">&nbsp;Topics&nbsp;</th>
-                <th>&nbsp;Author&nbsp;</th>
-                <th>&nbsp;Creation time&nbsp;</th>
-                <th>&nbsp;Replies&nbsp;</th>
-                <th>&nbsp;Views&nbsp;</th>
-                <th>&nbsp;Last post&nbsp;</th>
-            </tr>
-            @foreach (var topic in Model.Topics)
+            </thead>
+            <tbody>
+            @foreach (var topicDetails in Model.Topics)
             {
                 <tr>
-                    <td class="row1" width="25" align="center"><img src="/Content/Images/topic_unread.gif" width="18" height="18" alt="Unread posts" title="Unread posts" /></td>
-
-                    <td class="row1">
-                        <a href="#"><img src="/Content/Images/icon_topic_newest.gif" width="9" height="9" alt="View first unread post" title="View first unread post" /></a>
-                        @Html.ActionLink(topic.Name, "Index", "Topic", new { topicAlias = topic.Alias }, new { @class = "topictitle link-new" })
+                    <td>
+                        @Html.ActionLink(topicDetails.Name, "Index", "Topic", new {topicAlias = topicDetails.Alias}, null)
                     </td>
-                    <td class="row2" width="130" align="center"><p class="topicauthor"><a href="#">@topic.AuthorName</a></p></td>
-                    <td class="row1" width="50" align="center"><p class="topicdetails">@topic.CreationTime</p></td>
-                    <td class="row1" width="50" align="center"><p class="topicdetails">@topic.PostsCount</p></td>
-                    <td class="row2" width="50" align="center"><p class="topicdetails">0</p></td>
-                    <td class="row1" width="140" align="center">
-                        <p class="topicdetails" style="white-space: nowrap;">@topic.LastPostCreationTime</p>
-                        <p class="topicdetails">
-                            <a href="#">@topic.LastPostAuthorName</a>
-                            <a href="#"><img src="/Content/Images/icon_topic_latest.gif" width="9" height="9" alt="View the latest post" title="View the latest post" /></a>
-                        </p>
+                    <td class="text-center">
+                        @topicDetails.CreationTime
+                    </td>
+                    <td class="text-center">
+                        @topicDetails.PostsCount
+                    </td>
+                    <td class="text-center">
+                        0
+                    </td>
+                    <td class="post-author-time-details text-center">
+                        @if (topicDetails.PostsCount != 0)
+                        {
+                            <p>@topicDetails.LastPostCreationTime.ToString("dd-MM-yyyy hh:mm")</p>
+                            <p>@topicDetails.LastPostAuthorName</p>
+                        }
                     </td>
                 </tr>
             }
-        </tbody>
-    </table>
-
-
-    <table width="100%" cellspacing="1">
-        <tbody>
-            <tr>
-                <td align="left" valign="middle"><a href="#"><img src="/Content/Images/button_topic_new.gif" width="79" height="22" alt="Post new topic" title="Post new topic"/></a></td>
-                <td class="nav" valign="middle" nowrap="nowrap">&nbsp;Page <strong>1</strong> of <strong>1</strong></td>
-                <td class="gensmall" nowrap="nowrap">&nbsp;[ 6 topics ]&nbsp;</td>
-                <td class="gensmall" width="100%" align="right" nowrap="nowrap"></td>
-            </tr>
-        </tbody>
-    </table>
+            </tbody>
+        </table>
+    </div>
 </div>
+
+@Html.Action("Statistics", "Statistics")
