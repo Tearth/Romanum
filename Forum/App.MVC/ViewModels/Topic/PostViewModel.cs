@@ -10,6 +10,7 @@ namespace App.MVC.ViewModels.Topic
         public string Content { get; set; }
 
         public string AuthorName { get; set; }
+        public string AuthorAvatar { get; set; }
         public int AuthorPostsCount { get; set; }
         public DateTime AuthorJoinTime { get; set; }
         public string AuthorCity { get; set; }

@@ -43,6 +43,7 @@ namespace Business.Services.TopicServices
                     Content = post.Content,
 
                     AuthorName = post.Author.Name,
+                    AuthorAvatar = post.Author.Avatar.Source,
                     AuthorPostsCount = post.Author.Posts.Count,
                     AuthorJoinTime = post.Author.JoinTime,
                     AuthorCity = post.Author.City,

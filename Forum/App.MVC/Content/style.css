@@ -32,6 +32,15 @@
     height: 128px;
 }
 
-.post-author-time-details p {
-    margin-bottom: 0;
+.author-details-container {
+    width: 150px;
+}
+
+.post-author-name {
+    margin-bottom: 5px;
+}
+
+.post-author-details {
+    font-size: 0.9em;
+    margin-top: 5px;
 }

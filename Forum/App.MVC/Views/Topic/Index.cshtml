@@ -4,77 +4,50 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<div id="pageheader">
-	<h2><a class="titles" href="#">@Model.Name</a></h2>
+<div class="row">
+    <div class="col-md-12">
+        <h3>@Model.Name</h3>      
+            @foreach (var postDetails in Model.Posts)
+            {
+                <table class="table">
+                    <thead>
+                        <tr class="table-info">
+                            <th colspan="2">
+                                <span class="float-left">RE: @Model.Name</span>
+                                <span class="float-right">
+                                    @postDetails.CreationTime
+                                    @if (postDetails.ModificationTime != DateTime.MinValue)
+                                    {
+                                        @:(edited @postDetails.CreationTime)
+                                    }
+                                </span>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="author-details-container text-center">
+                                <div class="post-author-name">
+                                    <strong><a href="#">@postDetails.AuthorName</a></strong>
+                                </div>
+                                <div><img src="@postDetails.AuthorAvatar" alt="user-avatar" /></div>
+                                <div class="post-author-details">
+                                    <div>Joined: @postDetails.AuthorJoinTime.ToString("dd-MM-yy")</div>
+                                    <div>City: @postDetails.AuthorCity</div>
+                                    <div>Posts: @postDetails.AuthorPostsCount</div>
+                                </div>
+                            </td>
+                            <td>@postDetails.Content</td>
+                        </tr>
+
+                        <tr>
+                            <td></td>
+                            <td>@postDetails.AuthorFooter</td>
+                        </tr>
+                    </tbody>
+                </table>
+            }
+    </div>
 </div>
 
-<br clear="all" /><br />
-
-<div id="pagecontent">
-	<table width="100%" cellspacing="1">
-	<tr>
-		<td align="left" valign="middle" nowrap="nowrap">
-			<a href="#"><img src="/Content/Images/button_topic_reply.gif" width="79" height="22" alt="Reply to topic" title="Reply to topic" /></a>
-		</td>
-		
-		<td class="nav" valign="middle" nowrap="nowrap">&nbsp;Page <strong>1</strong> of <strong>1</strong><br /></td>
-		<td class="gensmall" nowrap="nowrap">&nbsp;[ @Model.Posts.Count() posts ]&nbsp;</td>
-		<td class="gensmall" width="100%" align="right" nowrap="nowrap"></td>
-	</tr>
-	</table>
-
-	<table class="tablebg" width="100%" cellspacing="0"> 
-        @foreach (var post in Model.Posts)
-        {
-            <tr class="row2">
-                <td align="center" valign="top" class="row">
-                    <a name="p11256"></a>
-                    <div class="postauthor">@post.AuthorName</div>
-                    <div class="postdetails">
-                        <br />
-                        <b>Joined:</b> @post.AuthorJoinTime<br />
-                        <b>Posts:</b> @post.AuthorPostsCount<br />
-
-                        @if (post.AuthorCity != null)
-                        {
-                            <b>Location:</b> @post.AuthorCity
-                        }
-                    </div>
-                </td>
-                <td width="100%" height="25" class="row" valign="top">
-                    <div class="postbody">
-                        @post.Content
-                        <ht/>
-                        @post.AuthorFooter
-                    </div>
-                    <br clear="all" /><br />
-                </td>
-            </tr>
-            <tr class="row2">
-                <td class="postbottom" align="center">@post.CreationTime</td>
-                <td class="postbottom postbuttons" valign="middle">
-                    <div style="float: right">
-
-                    </div>
-                    <a href="#">Profile</a>
-                </td>
-            </tr>
-            <tr>
-                <td class="spacer" colspan="2" height="1"></td>
-            </tr>
-        }
-	</table>
-	
-
-	<table width="100%" cellspacing="1">
-	<tr>
-		<td align="left" valign="middle" nowrap="nowrap">
-			<a href="#"><img src="/Content/Images/button_topic_reply.gif" width="79" height="22" alt="Reply to topic" title="Reply to topic" /></a>&nbsp;
-		</td>
-		
-		<td class="nav" valign="middle" nowrap="nowrap">&nbsp;Page <strong>1</strong> of <strong>1</strong><br /></td>
-		<td class="gensmall" nowrap="nowrap">&nbsp;[ 4 posts ]&nbsp;</td>
-		<td class="gensmall" width="100%" align="right" nowrap="nowrap"></td>
-	</tr>
-	</table>
-</div>
+@Html.Action("Statistics", "Statistics")

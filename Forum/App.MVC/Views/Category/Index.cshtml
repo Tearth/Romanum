@@ -45,11 +45,11 @@
                     <td class="text-center">
                         0
                     </td>
-                    <td class="post-author-time-details text-center">
+                    <td class="no-margin-p text-center">
                         @if (topicDetails.PostsCount != 0)
                         {
-                            <p>@topicDetails.LastPostCreationTime.ToString("dd-MM-yyyy hh:mm")</p>
-                            <p>@topicDetails.LastPostAuthorName</p>
+                            <div>@topicDetails.LastPostCreationTime.ToString("dd-MM-yyyy hh:mm")</div>
+                            <div>@topicDetails.LastPostAuthorName</div>
                         }
                     </td>
                 </tr>

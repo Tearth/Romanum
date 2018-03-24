@@ -33,6 +33,11 @@ namespace Business.Services.DTO.Topic
         public string AuthorName { get; set; }
 
         /// <summary>
+        /// Gets or sets the author avatar.
+        /// </summary>
+        public string AuthorAvatar { get; set; }
+
+        /// <summary>
         /// Gets or sets the posts count of the post author.
         /// </summary>
         public int AuthorPostsCount { get; set; }
