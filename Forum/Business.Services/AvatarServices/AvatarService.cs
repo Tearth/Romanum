@@ -58,7 +58,15 @@ namespace Business.Services.AvatarServices
             }
 
             var user = _databaseContext.Users.First(p => p.ID == userID);
-            RemoveUserAvatar(user);
+            if (user.Avatar.Type != AvatarType.Default)
+            {
+                RemoveUserAvatar(user);
+            }
+
+            var defaultAvatar = _databaseContext.Avatars.First(p => p.Type == AvatarType.Default);
+
+            user.AvatarID = defaultAvatar.ID;
+            _databaseContext.SaveChanges();
         }
 
         /// <inheritdoc />
@@ -70,7 +78,10 @@ namespace Business.Services.AvatarServices
             }
 
             var user = _databaseContext.Users.First(p => p.ID == userID);
-            RemoveUserAvatar(user);
+            if (user.Avatar.Type != AvatarType.Default)
+            {
+                RemoveUserAvatar(user);
+            }
 
             var avatar = AddAvatar(changedAvatar);
             user.AvatarID = avatar.ID;

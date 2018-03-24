@@ -35,10 +35,13 @@ namespace App.MVC.Controllers.ControlPanel
         [HttpPost]
         public ActionResult Index(ChangeAvatarViewModel viewModel)
         {
+            var userID = _authService.GetCurrentUser().ID;
+
             switch (viewModel.Type)
             {
                 case AvatarType.Default:
                 {
+                    _avatarService.SetUserAvatarToDefault(userID);
                     break;
                 }
 
@@ -69,7 +72,7 @@ namespace App.MVC.Controllers.ControlPanel
                     var avatar = Mapper.Map<ChangedAvatarDTO>(viewModel);
                     avatar.Source = pathToAvatarFile;
 
-                    _avatarService.SetUserAvatar(_authService.GetCurrentUser().ID, avatar);
+                    _avatarService.SetUserAvatar(userID, avatar);
                     break;
                 }
             }
