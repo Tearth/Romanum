@@ -1,5 +1,4 @@
-﻿@using App.MVC.ViewModels.ControlPanel.Enums
-@model App.MVC.ViewModels.ControlPanel.ChangeAvatarViewModel
+﻿@model App.MVC.ViewModels.ControlPanel.ChangeAvatarViewModel
 
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -17,9 +16,9 @@
         <div class="card bg-light">
             <div class="card-header">Change avatar</div>
             <div class="card-body">
-                <div class="row">
-                    @using (Html.BeginForm("Index", "ChangeAvatar", FormMethod.Post, new { enctype = "multipart/form-data" }))
-                    {
+                @using (Html.BeginForm("Index", "ChangeAvatar", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                {
+                    <div class="row">
                         <div class="col-md-8">
                                 @Html.ValidationMessage("Summary")
                                 <div class="form-group row">
@@ -42,11 +41,11 @@
                                 </div>
                         </div>
                         <div class="col-md-4 text-right">
-                            <img src="@Model.Source" alt="User avatar"/>
+                            <img src="@Model.Source" alt="User avatar" class="avatar-image"/>
                         </div>
                         <button type="submit" class="btn btn-primary send-button">Save</button>
-                    }
-                 </div>
+                    </div>
+                }
             </div>
         </div>
     </div>
