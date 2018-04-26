@@ -360,6 +360,7 @@
     <Compile Include="ViewModels\Topic\PostViewModel.cs" />
     <Compile Include="ViewModels\Section\CategoryDetailsViewModel.cs" />
     <Compile Include="ViewModels\Section\SectionWithCategoriesViewModel.cs" />
+    <Compile Include="ViewModels\Topic\SendPostViewModel.cs" />
     <Compile Include="ViewModels\Topic\TopicWithPostsViewModel.cs" />
   </ItemGroup>
   <ItemGroup>

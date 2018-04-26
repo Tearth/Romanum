@@ -34,5 +34,12 @@ namespace App.MVC.Controllers.Topic
         {
             return View();
         }
+
+        [HttpPost]
+        [ValidateInput(false)]
+        public ActionResult SendPost(SendPostViewModel viewModel)
+        {
+            return View();
+        }
     }
 }
