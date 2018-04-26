@@ -65,5 +65,9 @@
     </div>
 </div>
 
-@Html.Action("PostMessage", "Topic")
+@if (WebSecurity.IsAuthenticated)
+{
+    @Html.Action("PostMessage", "Topic")
+}
+
 @Html.Action("Statistics", "Statistics")
