@@ -6,14 +6,23 @@
 
 <div class="row">
     <div class="col-md-12">
-        <h3>@Model.Name</h3>      
+        <h3>@Model.Name</h3>
+            @{ var firstPost = true; }
             @foreach (var postDetails in Model.Posts)
             {
                 <table class="table">
                     <thead>
                         <tr class="table-info">
                             <th colspan="2">
-                                <span class="float-left">RE: @Model.Name</span>
+                                <span class="float-left">
+                                    @if (!firstPost)
+                                    {
+                                        @:RE:
+                                    }
+                                    @{ firstPost = false; }
+                                    
+                                    @Model.Name
+                                </span>
                                 <span class="float-right">
                                     @postDetails.CreationTime
                                     @if (postDetails.ModificationTime != DateTime.MinValue)
