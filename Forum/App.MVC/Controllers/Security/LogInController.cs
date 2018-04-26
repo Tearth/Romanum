@@ -16,8 +16,13 @@ namespace App.MVC.Controllers.Security
         }
 
         [HttpGet]
-        public ActionResult Index()
+        public ActionResult Index(string returnUrl)
         {
+            if (returnUrl != null)
+            {
+                return View(new LogInViewModel { ReturnUrl = returnUrl });
+            }
+
             return View();
         }
 
@@ -32,10 +37,16 @@ namespace App.MVC.Controllers.Security
                 return View(viewModel);
             }
 
-            return RedirectToAction("Index", "Section");
+            if (viewModel.ReturnUrl == null)
+            {
+                return RedirectToAction("Index", "Section");
+            }
+
+            return Redirect(viewModel.ReturnUrl);
         }
 
         [HttpGet]
+        [Authorize]
         public ActionResult LogOut()
         {
             _authService.LogOut();
