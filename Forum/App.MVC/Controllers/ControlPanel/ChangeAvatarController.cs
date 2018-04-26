@@ -11,6 +11,7 @@ using Business.Services.ProfileServices;
 
 namespace App.MVC.Controllers.ControlPanel
 {
+    [Authorize]
     public class ChangeAvatarController : Controller
     {
         private IAuthService _authService;

@@ -6,6 +6,7 @@ using AutoMapper;
 
 namespace App.MVC.Controllers.ControlPanel
 {
+    [Authorize]
     public class ChangePasswordController : Controller
     {
         private IAuthService _authService;

@@ -7,6 +7,7 @@ using Business.Services.ProfileServices;
 
 namespace App.MVC.Controllers.ControlPanel
 {
+    [Authorize]
     public class ChangeProfileController : Controller
     {
         private IAuthService _authService;

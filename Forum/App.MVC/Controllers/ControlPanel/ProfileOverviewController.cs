@@ -6,6 +6,7 @@ using Business.Services.ProfileServices;
 
 namespace App.MVC.Controllers.ControlPanel
 {
+    [Authorize]
     public class ProfileOverviewController : Controller
     {
         private IProfileService _profileService;
