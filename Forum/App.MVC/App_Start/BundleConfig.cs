@@ -16,8 +16,14 @@ namespace App.MVC
             bundles.Add(new ScriptBundle("~/bundles/change-profile").Include(
                                          "~/Scripts/Views/change-profile.js"));
 
+            bundles.Add(new ScriptBundle("~/bundles/post-message").Include(
+                                         "~/Scripts/Views/post-message.js"));
+
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
                                          "~/Scripts/bootstrap.js"));
+
+            bundles.Add(new ScriptBundle("~/bundles/editor").Include(
+                                         "~/Scripts/tinymce/tinymce.js"));
 
             bundles.Add(new StyleBundle("~/Content/style").Include(
                                         "~/Content/style.css",

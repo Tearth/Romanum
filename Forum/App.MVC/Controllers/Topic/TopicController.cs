@@ -28,5 +28,11 @@ namespace App.MVC.Controllers.Topic
 
             return View(topicViewModel);
         }
+
+        [HttpGet]
+        public ActionResult PostMessage()
+        {
+            return View();
+        }
     }
 }

@@ -4,59 +4,66 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+@section CustomScripts
+{
+    @Scripts.Render("~/bundles/editor")
+    @Scripts.Render("~/bundles/post-message")
+}
+
 <div class="row">
     <div class="col-md-12">
         <h3>@Model.Name</h3>
-            @{ var firstPost = true; }
-            @foreach (var postDetails in Model.Posts)
-            {
-                <table class="table">
-                    <thead>
-                        <tr class="table-info">
-                            <th colspan="2">
-                                <span class="float-left">
-                                    @if (!firstPost)
-                                    {
-                                        @:RE:
-                                    }
-                                    @{ firstPost = false; }
-                                    
-                                    @Model.Name
-                                </span>
-                                <span class="float-right">
-                                    @postDetails.CreationTime
-                                    @if (postDetails.ModificationTime != DateTime.MinValue)
-                                    {
-                                        @:(edited @postDetails.CreationTime)
-                                    }
-                                </span>
-                            </th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td class="author-details-container text-center">
-                                <div class="post-author-name">
-                                    <strong><a href="#">@postDetails.AuthorName</a></strong>
-                                </div>
-                                <div><img src="@postDetails.AuthorAvatar" alt="user-avatar" /></div>
-                                <div class="post-author-details">
-                                    <div>Joined: @postDetails.AuthorJoinTime.ToString("dd-MM-yy")</div>
-                                    <div>City: @postDetails.AuthorCity</div>
-                                    <div>Posts: @postDetails.AuthorPostsCount</div>
-                                </div>
-                            </td>
-                            <td>@postDetails.Content</td>
-                        </tr>
+        @{ var firstPost = true; }
+        @foreach (var postDetails in Model.Posts)
+        {
+            <table class="table">
+                <thead>
+                    <tr class="table-info">
+                        <th colspan="2">
+                            <span class="float-left">
+                                @if (!firstPost)
+                                {
+                                    @:RE:
+                                }
+                                @{ firstPost = false; }
 
-                        <tr>
-                            <td></td>
-                            <td>@postDetails.AuthorFooter</td>
-                        </tr>
-                    </tbody>
-                </table>
-            }
+                                @Model.Name
+                            </span>
+                            <span class="float-right">
+                                @postDetails.CreationTime
+                                @if (postDetails.ModificationTime != DateTime.MinValue)
+                                {
+                                    @:(edited @postDetails.CreationTime)
+                                }
+                            </span>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="author-details-container text-center">
+                            <div class="post-author-name">
+                                <strong><a href="#">@postDetails.AuthorName</a></strong>
+                            </div>
+                            <div><img src="@postDetails.AuthorAvatar" alt="user-avatar" /></div>
+                            <div class="post-author-details">
+                                <div>Joined: @postDetails.AuthorJoinTime.ToString("dd-MM-yy")</div>
+                                <div>City: @postDetails.AuthorCity</div>
+                                <div>Posts: @postDetails.AuthorPostsCount</div>
+                            </div>
+                        </td>
+                        <td>@postDetails.Content</td>
+                    </tr>
+
+                    <tr>
+                        <td></td>
+                        <td>@postDetails.AuthorFooter</td>
+                    </tr>
+                </tbody>
+            </table>
+        }
     </div>
 </div>
 
+@Html.Action("PostMessage", "Topic")
 @Html.Action("Statistics", "Statistics")
