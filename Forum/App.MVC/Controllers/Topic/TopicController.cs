@@ -30,7 +30,7 @@ namespace App.MVC.Controllers.Topic
         }
 
         [HttpGet]
-        public ActionResult PostMessage()
+        public ActionResult SendPost()
         {
             return View();
         }

@@ -319,7 +319,7 @@
     <Content Include="Scripts\umd\popper.js" />
     <Content Include="Scripts\umd\popper.min.js" />
     <Content Include="Scripts\Views\change-avatar.js" />
-    <Content Include="Scripts\Views\post-message.js" />
+    <Content Include="Scripts\Views\send-post.js" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -396,7 +396,7 @@
     <Content Include="Scripts\popper.js.map" />
     <Content Include="Scripts\popper-utils.min.js.map" />
     <Content Include="Scripts\popper-utils.js.map" />
-    <Content Include="Views\Topic\PostMessage.cshtml" />
+    <Content Include="Views\Topic\SendPost.cshtml" />
     <Content Include="Scripts\tinymce\skins\lightgray\fonts\tinymce.woff" />
     <Content Include="Scripts\tinymce\skins\lightgray\fonts\tinymce.ttf" />
     <Content Include="Scripts\tinymce\skins\lightgray\fonts\tinymce.eot" />

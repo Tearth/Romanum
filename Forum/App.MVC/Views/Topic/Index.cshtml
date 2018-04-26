@@ -7,7 +7,7 @@
 @section CustomScripts
 {
     @Scripts.Render("~/bundles/editor")
-    @Scripts.Render("~/bundles/post-message")
+    @Scripts.Render("~/bundles/send-post")
 }
 
 <div class="row">
@@ -67,7 +67,7 @@
 
 @if (WebSecurity.IsAuthenticated)
 {
-    @Html.Action("PostMessage", "Topic")
+    @Html.Action("SendPost", "Topic")
 }
 
 @Html.Action("Statistics", "Statistics")
