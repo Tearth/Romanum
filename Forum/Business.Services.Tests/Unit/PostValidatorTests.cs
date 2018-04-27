@@ -1,4 +1,5 @@
-﻿using Business.Services.PostServices;
+﻿using System;
+using Business.Services.PostServices;
 using Xunit;
 
 namespace Business.Services.Tests.Unit
@@ -13,6 +14,7 @@ namespace Business.Services.Tests.Unit
         [InlineData("invalid <style>lorem ipsum</style> tags", false)]
         [InlineData("invalid <link>lorem ipsum</link> tags", false)]
         [InlineData("invalid <iframe>lorem ipsum</iframe> tags", false)]
+        [InlineData("shrt", false)]
         public void GetTopicWithPosts_ExistingTopicAlias_ReturnsValidTopicData(string content, bool expectedResult)
         {
             var validator = new PostValidator();
