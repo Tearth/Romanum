@@ -7,8 +7,15 @@
             @Html.TextAreaFor(p => p.Content, new { @class = "form-control" })
         </div>
     </div>
+
+    @Html.HiddenFor(p => p.CategoryAlias)
+    @Html.HiddenFor(p => p.TopicAlias)
     <div class="row row-margin">
         <div class="col-md-12">
+            @if (TempData.ContainsKey("SendPostError"))
+            {
+                <div class="validation-error-text float-left">@TempData["SendPostError"]</div>
+            }
             <input type="submit" class="btn btn-primary float-right" value="Send reply"/>
         </div>
     </div>

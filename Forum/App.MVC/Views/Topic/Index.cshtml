@@ -67,7 +67,7 @@
 
 @if (WebSecurity.IsAuthenticated)
 {
-    @Html.Action("SendPost", "Topic")
+    @Html.Action("SendPost", "Topic", new { topicAlias = Model.Alias })
 }
 
 @Html.Action("Statistics", "Statistics")
