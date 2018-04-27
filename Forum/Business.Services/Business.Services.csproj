@@ -88,7 +88,9 @@
     <Compile Include="Helpers\Time\TimeProvider.cs" />
     <Compile Include="MapperProfile.cs" />
     <Compile Include="PostServices\IPostService.cs" />
+    <Compile Include="PostServices\IPostValidator.cs" />
     <Compile Include="PostServices\PostService.cs" />
+    <Compile Include="PostServices\PostValidator.cs" />
     <Compile Include="ProfileServices\Exceptions\EMailAlreadyExistsException.cs" />
     <Compile Include="ProfileServices\Exceptions\UserProfileNotFoundException.cs" />
     <Compile Include="ProfileServices\IProfileService.cs" />
