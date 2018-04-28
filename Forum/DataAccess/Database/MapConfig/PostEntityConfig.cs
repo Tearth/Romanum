@@ -9,7 +9,7 @@ namespace DataAccess.Database.MapConfig
         {
             Property(p => p.Content).HasMaxLength(1000);
             Property(p => p.CreationTime).IsRequired();
-            Property(p => p.ModificationTime).IsRequired();
+            Property(p => p.ModificationTime).IsOptional();
 
             HasRequired(post => post.Topic)
                 .WithMany(topic => topic.Posts)

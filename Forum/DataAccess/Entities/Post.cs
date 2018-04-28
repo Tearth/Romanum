@@ -5,7 +5,7 @@ namespace DataAccess.Entities
     public class Post : EntityBase
     {
         public DateTime CreationTime { get; set; }
-        public DateTime ModificationTime { get; set; }
+        public DateTime? ModificationTime { get; set; }
         public string Content { get; set; }
 
         public int TopicID { get; set; }

@@ -20,7 +20,7 @@ namespace Business.Services.DTO.Topic
         /// <summary>
         /// Gets or sets the post modification time.
         /// </summary>
-        public DateTime ModificationTime { get; set; }
+        public DateTime? ModificationTime { get; set; }
 
         /// <summary>
         /// Gets or sets the post content.
