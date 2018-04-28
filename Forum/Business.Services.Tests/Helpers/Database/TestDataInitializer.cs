@@ -12,13 +12,14 @@ namespace Business.Services.Tests.Helpers.Database
         protected override void Seed(DatabaseContext context)
         {
             //Avatars
-            context.Avatars.AddOrUpdate(new Avatar { ID = 1, Type = AvatarType.InternalImage, Source = "/Content/Avatars/internal_1.png" });
-            context.Avatars.AddOrUpdate(new Avatar { ID = 2, Type = AvatarType.Gravatar, Source = "gravatar.com/HASH" });
+            context.Avatars.AddOrUpdate(new Avatar { ID = 1, Type = AvatarType.Default, Source = "/Content/Avatars/default.png" });
+            context.Avatars.AddOrUpdate(new Avatar { ID = 2, Type = AvatarType.InternalImage, Source = "/Content/Avatars/internal_1.png" });
+            context.Avatars.AddOrUpdate(new Avatar { ID = 3, Type = AvatarType.Gravatar, Source = "gravatar.com/HASH" });
 
             //Users
             context.Users.AddOrUpdate(new User { ID = 1, Name = "User 1", EMail = "user1@local.domain", JoinTime = new DateTime(2015, 1, 1), AvatarID = 1 });
             context.Users.AddOrUpdate(new User { ID = 2, Name = "User 2", EMail = "user2@local.domain", JoinTime = new DateTime(2015, 1, 1), AvatarID = 2 });
-            context.Users.AddOrUpdate(new User { ID = 3, Name = "User 3", EMail = "user3@local.domain", JoinTime = new DateTime(2016, 1, 1), AvatarID = null });
+            context.Users.AddOrUpdate(new User { ID = 3, Name = "User 3", EMail = "user3@local.domain", JoinTime = new DateTime(2016, 1, 1), AvatarID = 3 });
 
             //Sections
             context.Sections.AddOrUpdate(new Section { ID = 1, Name = "Section 1", Alias = "sec-1", Description = "Description 1", Order = 1 });
@@ -38,13 +39,13 @@ namespace Business.Services.Tests.Helpers.Database
             context.Topics.AddOrUpdate(new Topic { ID = 4, Name = "Topic 4", Alias = "top-4", CategoryID = 2 });
 
             //Posts
-            context.Posts.AddOrUpdate(new Post { ID = 1, CreationTime = new DateTime(2015, 1, 1), ModificationTime = new DateTime(2015, 1, 1), Content = "Content 1", TopicID = 1, AuthorID = 2 });
+            context.Posts.AddOrUpdate(new Post { ID = 1, CreationTime = new DateTime(2015, 1, 1), ModificationTime = null, Content = "Content 1", TopicID = 1, AuthorID = 2 });
             context.Posts.AddOrUpdate(new Post { ID = 2, CreationTime = new DateTime(2015, 2, 2), ModificationTime = new DateTime(2015, 2, 2), Content = "Content 2", TopicID = 2, AuthorID = 2 });
             context.Posts.AddOrUpdate(new Post { ID = 3, CreationTime = new DateTime(2015, 3, 3), ModificationTime = new DateTime(2015, 3, 3), Content = "Content 3", TopicID = 2, AuthorID = 1 });
             context.Posts.AddOrUpdate(new Post { ID = 4, CreationTime = new DateTime(2015, 4, 4), ModificationTime = new DateTime(2015, 4, 4), Content = "Content 4", TopicID = 2, AuthorID = 1 });
-            context.Posts.AddOrUpdate(new Post { ID = 5, CreationTime = new DateTime(2015, 5, 5), ModificationTime = new DateTime(2015, 5, 5), Content = "Content 5", TopicID = 3, AuthorID = 2 });
-            context.Posts.AddOrUpdate(new Post { ID = 6, CreationTime = new DateTime(2015, 6, 6), ModificationTime = new DateTime(2015, 6, 6), Content = "Content 6", TopicID = 3, AuthorID = 1 });
-            context.Posts.AddOrUpdate(new Post { ID = 7, CreationTime = new DateTime(2015, 7, 7), ModificationTime = new DateTime(2015, 7, 7), Content = "Content 7", TopicID = 4, AuthorID = 2 });
+            context.Posts.AddOrUpdate(new Post { ID = 5, CreationTime = new DateTime(2015, 5, 5), ModificationTime = null, Content = "Content 5", TopicID = 3, AuthorID = 2 });
+            context.Posts.AddOrUpdate(new Post { ID = 6, CreationTime = new DateTime(2015, 6, 6), ModificationTime = null, Content = "Content 6", TopicID = 3, AuthorID = 1 });
+            context.Posts.AddOrUpdate(new Post { ID = 7, CreationTime = new DateTime(2015, 7, 7), ModificationTime = null, Content = "Content 7", TopicID = 4, AuthorID = 2 });
             context.Posts.AddOrUpdate(new Post { ID = 8, CreationTime = new DateTime(2015, 8, 8), ModificationTime = new DateTime(2015, 8, 8), Content = "Content 8", TopicID = 4, AuthorID = 2 });
 
             //Configs

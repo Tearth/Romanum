@@ -51,7 +51,7 @@ namespace Business.Services.Tests.Integration
             service.SetUserAvatarToDefault(userID);
 
             var userAvatar = service.GetUserAvatar(userID);
-            Assert.Null(userAvatar);
+            Assert.Equal((int)AvatarType.Default, (int)userAvatar.Type);
         }
 
         [Fact]
