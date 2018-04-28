@@ -31,7 +31,7 @@
                             </span>
                             <span class="float-right">
                                 @postDetails.CreationTime
-                                @if (postDetails.ModificationTime != DateTime.MinValue)
+                                @if (postDetails.ModificationTime.HasValue)
                                 {
                                     @:(edited @postDetails.CreationTime)
                                 }
@@ -52,7 +52,7 @@
                                 <div>Posts: @postDetails.AuthorPostsCount</div>
                             </div>
                         </td>
-                        <td>@postDetails.Content</td>
+                        <td>@Html.Raw(postDetails.Content)</td>
                     </tr>
 
                     <tr>

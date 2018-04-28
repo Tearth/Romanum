@@ -2,7 +2,9 @@
 using System.Web;
 using System.Web.Mvc;
 using App.MVC.ViewModels.Topic;
+using App.Services.AuthServices;
 using AutoMapper;
+using Business.Services.DTO.Topic;
 using Business.Services.PostServices;
 using Business.Services.TopicServices;
 
@@ -12,11 +14,13 @@ namespace App.MVC.Controllers.Topic
     {
         private ITopicService _topicService;
         private IPostValidator _postValidator;
+        private IAuthService _authService;
 
-        public TopicController(ITopicService topicService, IPostValidator postValidator)
+        public TopicController(ITopicService topicService, IPostValidator postValidator, IAuthService authService)
         {
             _topicService = topicService;
             _postValidator = postValidator;
+            _authService = authService;
         }
 
         [HttpGet]
@@ -54,6 +58,13 @@ namespace App.MVC.Controllers.Topic
             {
                 TempData.Add("SendPostContent", viewModel.Content);
                 TempData.Add("SendPostError", "The post has invalid content.");
+            }
+            else if(_topicService.ValidateTopicAndCategoryAlias(viewModel.TopicAlias, viewModel.CategoryAlias))
+            {
+                var postDTO = Mapper.Map<NewPostDTO>(viewModel);
+                postDTO.AuthorID = _authService.GetCurrentUser().ID;
+
+                _topicService.AddPost(viewModel.TopicAlias, postDTO);
             }
 
             return RedirectToAction("Index", new { categoryAlias = viewModel.CategoryAlias, topicAlias = viewModel.TopicAlias });

@@ -29,6 +29,7 @@ namespace App.MVC
             //Topic
             CreateMap<TopicWithPostsViewModel, TopicWithPostsDTO>().ReverseMap();
             CreateMap<PostViewModel, PostDTO>().ReverseMap();
+            CreateMap<SendPostViewModel, NewPostDTO>().ReverseMap();
 
             //Security
             CreateMap<RegistrationViewModel, RegistrationDTO>().ReverseMap();

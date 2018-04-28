@@ -31,5 +31,13 @@ namespace Business.Services.TopicServices
         /// <param name="categoryAlias">The category alias.</param>
         /// <returns>True if topic and category alias are valid together, otherwise false.</returns>
         bool ValidateTopicAndCategoryAlias(string topicAlias, string categoryAlias);
+
+        /// <summary>
+        /// Adds new post to the topic with the specified alias.
+        /// </summary>
+        /// <param name="topicAlias">The topic alias.</param>
+        /// <param name="post">The new post to add.</param>
+        /// <exception cref="TopicNotFoundException">Thrown when a topic with the specified id doesn't exists.</exception>
+        void AddPost(string topicAlias, NewPostDTO post);
     }
 }

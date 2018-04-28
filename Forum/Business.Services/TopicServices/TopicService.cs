@@ -1,7 +1,10 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
+using AutoMapper;
 using Business.Services.DTO.Topic;
 using Business.Services.TopicServices.Exceptions;
 using DataAccess.Database;
+using DataAccess.Entities;
 
 namespace Business.Services.TopicServices
 {
@@ -65,6 +68,24 @@ namespace Business.Services.TopicServices
         {
             return _databaseContext.Topics.Any(p => p.Alias == topicAlias &&
                                                     p.Category.Alias == categoryAlias);
+        }
+
+        /// <inheritdoc />
+        public void AddPost(string topicAlias, NewPostDTO post)
+        {
+            if (!Exists(topicAlias))
+            {
+                throw new TopicNotFoundException();
+            }
+
+            var topic = _databaseContext.Topics.First(p => p.Alias == topicAlias);
+            var postToAdd = Mapper.Map<Post>(post);
+
+            postToAdd.CreationTime = DateTime.Now;
+            postToAdd.ModificationTime = null;
+
+            topic.Posts.Add(postToAdd);
+            _databaseContext.SaveChanges();
         }
     }
 }

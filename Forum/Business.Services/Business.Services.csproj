@@ -80,6 +80,7 @@
     <Compile Include="DTO\Profile\ProfileDTO.cs" />
     <Compile Include="DTO\Profile\UserMostActiveCategoryDTO.cs" />
     <Compile Include="DTO\Profile\UserMostActiveTopicDTO.cs" />
+    <Compile Include="DTO\Topic\NewPostDTO.cs" />
     <Compile Include="DTO\Topic\PostDTO.cs" />
     <Compile Include="DTO\Section\CategoryDetailsDTO.cs" />
     <Compile Include="DTO\Section\SectionWithCategoriesDTO.cs" />
