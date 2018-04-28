@@ -1,4 +1,5 @@
 ﻿using System.Linq;
+using Business.Services.DTO.Topic;
 using Business.Services.Tests.Helpers.Database;
 using Business.Services.TopicServices;
 using Business.Services.TopicServices.Exceptions;
@@ -7,6 +8,7 @@ using Xunit;
 namespace Business.Services.Tests.Integration
 {
     [AutoRollback]
+    [UseMapper]
     public class TopicServiceTests
     {
         public TopicServiceTests()
@@ -109,6 +111,41 @@ namespace Business.Services.Tests.Integration
             var result = service.ValidateTopicAndCategoryAlias(topicAlias, categoryAlias);
 
             Assert.False(result);
+        }
+
+        [Theory]
+        [InlineData("top-1", "some post content")]
+        public void AddPost_ValidTopicAlias_PostAdded(string topicAlias, string content)
+        {
+            var testDatabaseContext = DbContextFactory.Create();
+            var post = new NewPostDTO
+            {
+                Content = content,
+                AuthorID = 1
+            };
+
+            var service = new TopicService(testDatabaseContext);
+            service.AddPost(topicAlias, post);
+
+            var topicData = service.GetTopicWithPosts(topicAlias);
+            Assert.Contains(topicData.Posts, p => p.AuthorID == post.AuthorID && p.Content == post.Content);
+        }
+
+        [Theory]
+        [InlineData("invalid-top", "some post content")]
+        public void AddPost_InvalidTopicAlias_ThrowsTopicNotFoundException(string topicAlias, string content)
+        {
+            var testDatabaseContext = DbContextFactory.Create();
+            var post = new NewPostDTO
+            {
+                Content = content,
+                AuthorID = 1
+            };
+
+            var service = new TopicService(testDatabaseContext);
+            var exception = Record.Exception(() => service.AddPost(topicAlias, post));
+
+            Assert.IsType<TopicNotFoundException>(exception);
         }
     }
 }

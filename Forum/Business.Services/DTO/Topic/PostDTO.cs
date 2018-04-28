@@ -28,6 +28,11 @@ namespace Business.Services.DTO.Topic
         public string Content { get; set; }
 
         /// <summary>
+        /// Gets or sets the author ID.
+        /// </summary>
+        public int AuthorID { get; set; }
+
+        /// <summary>
         /// Gets or sets the post author name.
         /// </summary>
         public string AuthorName { get; set; }

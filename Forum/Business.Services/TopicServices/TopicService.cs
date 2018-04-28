@@ -45,6 +45,7 @@ namespace Business.Services.TopicServices
                     ModificationTime = post.ModificationTime,
                     Content = post.Content,
 
+                    AuthorID = post.AuthorID,
                     AuthorName = post.Author.Name,
                     AuthorAvatar = post.Author.Avatar.Source,
                     AuthorPostsCount = post.Author.Posts.Count,
