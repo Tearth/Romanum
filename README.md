@@ -1,5 +1,6 @@
 # Romanum
-Forum software written in ASP.NET MVC. _Work in progress._
+Forum software written in ASP.NET MVC. It's not a fully completed product but contains basic structure and the most important features (creating or displaying sections/categories/topics/posts, login and registration, editing user profile).
+The project is divided into several layers, which allows to separating logic and responsibility between them.
 
 # Project structure
   * **App.MVC** - contains MVC project with all frontend.
